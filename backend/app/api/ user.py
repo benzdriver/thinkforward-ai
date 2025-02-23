@@ -15,3 +15,7 @@ def register_user(name: str, email: str, password: str, db: Session = Depends(ge
     db.add(new_user)
     db.commit()
     return {"message": "User registered successfully"}
+
+@router.get("/admin")
+def admin_panel(current_user: User = Depends(require_admin)):
+    return {"message": "Welcome to the admin panel"}
