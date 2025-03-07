@@ -4,7 +4,7 @@ from fastapi import Depends, HTTPException, Request
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session
 from sqlalchemy.ext.declarative import declarative_base
-from clerk_backend_api import Clerk, UnauthorizedError
+from clerk_backend_api import Clerk,ClerkError
 from dotenv import load_dotenv
 import os
 
@@ -36,7 +36,7 @@ def get_current_clerk_user(request: Request):
     try:
         session = clerk.verify_session(session_token)
         return session.user_id  # Returns user_id associated with the session
-    except UnauthorizedError:
+    except ClerkError:
         raise HTTPException(status_code=401, detail="Invalid or expired session token")
 
 # Example RBAC dependency
