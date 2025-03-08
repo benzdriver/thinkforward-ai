@@ -1,0 +1,30 @@
+{
+  "welcome": "Hello! I'm your ThinkForward AI Immigration Assistant. How can I help you today?",
+  "limitReached": "You've reached your message limit. Please upgrade your subscription for unlimited access.",
+  "requestProcessing": "I'm analyzing your request. This may take a moment...",
+  "analysisSummary": "Based on my analysis of your situation:",
+  "disclaimer": "This information is provided as general guidance only and not as legal advice. For personalized legal advice, please consult with a licensed immigration consultant.",
+  "assessmentIntro": "Here's your immigration assessment based on the information you provided:",
+  "assessmentSummary": "Assessment Summary",
+  "eligibilityScore": "Overall Eligibility Score",
+  "recommendedPrograms": "Recommended Immigration Programs",
+  "strengths": "Your Strengths",
+  "weaknesses": "Areas for Improvement",
+  "nextSteps": "Recommended Next Steps",
+  "formHelp": {
+    "intro": "Here's guidance for completing this form:",
+    "fieldPurpose": "Purpose of this field:",
+    "exampleInput": "Example input:",
+    "commonMistakes": "Common mistakes to avoid:",
+    "tipHeading": "Tip:"
+  },
+  "docReview": {
+    "intro": "I've reviewed your document and here's my feedback:",
+    "strengths": "Document Strengths",
+    "improvements": "Suggested Improvements",
+    "compliance": "Compliance Check",
+    "formatIssues": "Formatting Issues"
+  },
+  "consultConsultant": "For more detailed guidance on this matter, I recommend speaking with one of our immigration consultants.",
+  "needMoreInfo": "To provide you with more accurate guidance, I need some additional information:"
+} 

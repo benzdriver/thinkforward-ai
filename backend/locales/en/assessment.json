@@ -1,0 +1,51 @@
+{
+  "report": {
+    "title": "Immigration Assessment Report",
+    "date": "Report Date",
+    "preparedBy": "Prepared By",
+    "preparedFor": "Prepared For",
+    "confidential": "CONFIDENTIAL"
+  },
+  "clientInfo": "Client Information",
+  "summary": "Assessment Summary",
+  "details": "Detailed Assessment",
+  "eligibility": {
+    "title": "Immigration Eligibility",
+    "score": "Overall Eligibility Score",
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low"
+  },
+  "programs": {
+    "title": "Immigration Programs",
+    "express": "Express Entry",
+    "pnp": "Provincial Nominee Program",
+    "family": "Family Sponsorship",
+    "business": "Business Immigration",
+    "refugee": "Refugee/Humanitarian",
+    "student": "Student Pathway",
+    "work": "Work Permit",
+    "visitor": "Visitor Visa"
+  },
+  "factors": {
+    "title": "Immigration Factors",
+    "age": "Age",
+    "education": "Education",
+    "workExperience": "Work Experience",
+    "language": "Language Proficiency",
+    "adaptability": "Adaptability",
+    "connections": "Canadian Connections",
+    "finances": "Financial Resources"
+  },
+  "recommendations": {
+    "title": "Recommendations",
+    "nextSteps": "Next Steps",
+    "additionalInfo": "Additional Documentation Required",
+    "timeline": "Expected Timeline"
+  },
+  "created": "Assessment created successfully",
+  "updated": "Assessment updated successfully",
+  "deleted": "Assessment deleted successfully",
+  "regenerated": "Assessment regenerated successfully",
+  "notFound": "Assessment not found"
+} 

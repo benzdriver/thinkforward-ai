@@ -1,0 +1,30 @@
+{
+  "welcome": "您好！我是您的ThinkForward AI移民助手。我能为您提供什么帮助？",
+  "limitReached": "您已达到消息限制。请升级您的订阅以获取无限访问权限。",
+  "requestProcessing": "我正在分析您的请求。这可能需要片刻...",
+  "analysisSummary": "根据对您情况的分析：",
+  "disclaimer": "此信息仅作为一般指导提供，而非法律建议。如需个性化法律建议，请咨询持牌移民顾问。",
+  "assessmentIntro": "以下是基于您提供信息的移民评估：",
+  "assessmentSummary": "评估摘要",
+  "eligibilityScore": "总体资格评分",
+  "recommendedPrograms": "推荐的移民项目",
+  "strengths": "您的优势",
+  "weaknesses": "需改进的领域",
+  "nextSteps": "建议的下一步",
+  "formHelp": {
+    "intro": "以下是填写此表格的指导：",
+    "fieldPurpose": "此字段的目的：",
+    "exampleInput": "输入示例：",
+    "commonMistakes": "避免常见错误：",
+    "tipHeading": "提示："
+  },
+  "docReview": {
+    "intro": "我已审核您的文档，以下是我的反馈：",
+    "strengths": "文档优势",
+    "improvements": "建议改进",
+    "compliance": "合规检查",
+    "formatIssues": "格式问题"
+  },
+  "consultConsultant": "关于此事项的更详细指导，我建议您与我们的移民顾问交流。",
+  "needMoreInfo": "为了提供更准确的指导，我需要一些额外信息："
+} 

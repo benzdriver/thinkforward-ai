@@ -1,0 +1,33 @@
+{
+  "welcome": {
+    "subject": "Welcome to ThinkForward AI",
+    "heading": "Welcome to ThinkForward AI!",
+    "greeting": "Hello",
+    "message": "Thank you for creating an account with ThinkForward AI. We're excited to help you with your immigration journey.",
+    "getStarted": "To get started, you can:",
+    "feature1": "Chat with our AI Assistant",
+    "feature2": "Create client profiles",
+    "feature3": "Get AI assessments",
+    "closing": "If you have any questions, please don't hesitate to contact us.",
+    "signature": "Best regards,"
+  },
+  "passwordReset": {
+    "subject": "Reset Your Password",
+    "heading": "Password Reset Request",
+    "message": "You requested to reset your password. Please click the link below to set a new password:",
+    "button": "Reset Password",
+    "expiry": "This link will expire in 24 hours.",
+    "ignoreMessage": "If you didn't request a password reset, you can safely ignore this email.",
+    "signature": "Best regards,"
+  },
+  "reminder": {
+    "subject": "Immigration Task Reminder",
+    "heading": "Reminder: Upcoming Immigration Task",
+    "message": "This is a reminder about your upcoming immigration task:",
+    "title": "Task",
+    "dueDate": "Due Date",
+    "description": "Description",
+    "action": "Please make sure to complete this task before the due date.",
+    "signature": "Best regards,"
+  }
+} 

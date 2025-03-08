@@ -1,0 +1,84 @@
+{
+  "appName": "ThinkForward AI",
+  "welcome": "Welcome to ThinkForward AI",
+  "nav": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "assessment": "Assessment",
+    "aiAssistant": "AI Assistant",
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Logout",
+    "login": "Login",
+    "signup": "Sign Up"
+  },
+  "user": {
+    "profileUpdated": "Profile updated successfully",
+    "consultantAssigned": "Consultant assigned successfully",
+    "roleUpdated": "User role updated successfully",
+    "deleted": "User deleted successfully",
+    "roles": {
+      "admin": "Administrator",
+      "consultant": "Immigration Consultant",
+      "client": "Client",
+      "guest": "Guest"
+    }
+  },
+  "ai": {
+    "chatCreated": "Chat created successfully",
+    "messageSent": "Message sent successfully",
+    "assessmentCompleted": "Assessment completed successfully",
+    "formHelpProvided": "Form guidance provided",
+    "documentReviewed": "Document reviewed successfully"
+  },
+  "form": {
+    "created": "Form created successfully",
+    "updated": "Form updated successfully",
+    "submitted": "Form submitted successfully",
+    "deleted": "Form deleted successfully"
+  },
+  "client": {
+    "created": "Client profile created successfully",
+    "updated": "Client profile updated successfully",
+    "educationAdded": "Education record added",
+    "workExperienceAdded": "Work experience added",
+    "languageTestAdded": "Language test added",
+    "documentAdded": "Document uploaded successfully"
+  },
+  "subscription": {
+    "upgraded": "Subscription upgraded successfully",
+    "renewed": "Subscription renewed successfully",
+    "cancelled": "Subscription cancelled successfully",
+    "levels": {
+      "free": "Free",
+      "basic": "Basic",
+      "premium": "Premium",
+      "enterprise": "Enterprise"
+    }
+  },
+  "buttons": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "edit": "Edit",
+    "delete": "Delete",
+    "upload": "Upload",
+    "download": "Download",
+    "next": "Next",
+    "previous": "Previous",
+    "back": "Back",
+    "continue": "Continue",
+    "finish": "Finish"
+  },
+  "yes": "Yes",
+  "no": "No",
+  "notSpecified": "Not specified",
+  "general": "General",
+  "success": "Success",
+  "error": "Error",
+  "warning": "Warning",
+  "info": "Information",
+  "loading": "Loading",
+  "create": "Create",
+  "view": "View"
+} 

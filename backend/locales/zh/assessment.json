@@ -1,0 +1,51 @@
+{
+  "report": {
+    "title": "移民评估报告",
+    "date": "报告日期",
+    "preparedBy": "准备人",
+    "preparedFor": "准备给",
+    "confidential": "机密"
+  },
+  "clientInfo": "客户信息",
+  "summary": "评估摘要",
+  "details": "详细评估",
+  "eligibility": {
+    "title": "移民资格",
+    "score": "总体资格评分",
+    "high": "高",
+    "medium": "中",
+    "low": "低"
+  },
+  "programs": {
+    "title": "移民项目",
+    "express": "快速通道",
+    "pnp": "省提名计划",
+    "family": "家庭担保",
+    "business": "商业移民",
+    "refugee": "难民/人道主义",
+    "student": "学生通道",
+    "work": "工作许可",
+    "visitor": "访客签证"
+  },
+  "factors": {
+    "title": "移民因素",
+    "age": "年龄",
+    "education": "教育",
+    "workExperience": "工作经验",
+    "language": "语言能力",
+    "adaptability": "适应能力",
+    "connections": "加拿大联系",
+    "finances": "经济资源"
+  },
+  "recommendations": {
+    "title": "建议",
+    "nextSteps": "下一步",
+    "additionalInfo": "需要的额外文件",
+    "timeline": "预期时间线"
+  },
+  "created": "评估创建成功",
+  "updated": "评估更新成功",
+  "deleted": "评估删除成功",
+  "regenerated": "评估重新生成成功",
+  "notFound": "未找到评估"
+} 

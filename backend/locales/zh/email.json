@@ -1,0 +1,33 @@
+{
+  "welcome": {
+    "subject": "欢迎使用 ThinkForward AI",
+    "heading": "欢迎使用 ThinkForward AI!",
+    "greeting": "您好",
+    "message": "感谢您在 ThinkForward AI 创建账户。我们很高兴能够帮助您完成移民之旅。",
+    "getStarted": "开始使用，您可以：",
+    "feature1": "与我们的AI助手聊天",
+    "feature2": "创建客户档案",
+    "feature3": "获取AI评估",
+    "closing": "如果您有任何问题，请随时与我们联系。",
+    "signature": "此致，"
+  },
+  "passwordReset": {
+    "subject": "重置您的密码",
+    "heading": "密码重置请求",
+    "message": "您请求重置密码。请点击以下链接设置新密码：",
+    "button": "重置密码",
+    "expiry": "此链接将在24小时后过期。",
+    "ignoreMessage": "如果您没有请求重置密码，可以安全地忽略此电子邮件。",
+    "signature": "此致，"
+  },
+  "reminder": {
+    "subject": "移民任务提醒",
+    "heading": "提醒：即将到期的移民任务",
+    "message": "这是关于您即将到期的移民任务的提醒：",
+    "title": "任务",
+    "dueDate": "截止日期",
+    "description": "描述",
+    "action": "请确保在截止日期前完成此任务。",
+    "signature": "此致，"
+  }
+} 

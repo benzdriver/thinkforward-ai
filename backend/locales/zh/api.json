@@ -1,0 +1,33 @@
+{
+  "success": "操作成功",
+  "clientError": "请求错误",
+  "serverError": "服务器错误",
+  "dataFetched": "数据获取成功",
+  "itemCreated": "项目创建成功",
+  "itemUpdated": "项目更新成功",
+  "itemDeleted": "项目删除成功",
+  "assessment": {
+    "created": "评估创建成功",
+    "fetched": "评估获取成功",
+    "updated": "评估更新成功",
+    "deleted": "评估删除成功",
+    "regenerated": "评估重新生成成功"
+  },
+  "chat": {
+    "created": "聊天创建成功",
+    "messageSent": "消息发送成功"
+  },
+  "client": {
+    "created": "客户创建成功", 
+    "updated": "客户更新成功",
+    "deleted": "客户删除成功"
+  },
+  "document": {
+    "uploaded": "文档上传成功",
+    "reviewed": "文档审阅成功"
+  },
+  "form": {
+    "filled": "表单填写成功",
+    "updated": "表单更新成功"
+  }
+} 

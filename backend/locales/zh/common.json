@@ -1,0 +1,92 @@
+{
+  "appName": "ThinkForward AI",
+  "welcome": "欢迎使用ThinkForward AI",
+  "nav": {
+    "home": "首页",
+    "dashboard": "控制面板",
+    "assessment": "评估",
+    "aiAssistant": "AI助手",
+    "profile": "个人资料",
+    "settings": "设置",
+    "logout": "退出登录",
+    "login": "登录",
+    "signup": "注册"
+  },
+  "user": {
+    "profileUpdated": "个人资料已成功更新",
+    "consultantAssigned": "顾问已成功分配",
+    "roleUpdated": "用户角色已成功更新",
+    "deleted": "用户已成功删除",
+    "roles": {
+      "admin": "管理员",
+      "consultant": "移民顾问",
+      "client": "客户",
+      "guest": "访客"
+    }
+  },
+  "ai": {
+    "chatCreated": "对话已成功创建",
+    "messageSent": "消息已成功发送",
+    "assessmentCompleted": "评估已成功完成",
+    "formHelpProvided": "表格指导已提供",
+    "documentReviewed": "文档已成功审核"
+  },
+  "form": {
+    "created": "表格已成功创建",
+    "updated": "表格已成功更新",
+    "submitted": "表格已成功提交",
+    "deleted": "表格已成功删除"
+  },
+  "client": {
+    "created": "客户资料已成功创建",
+    "updated": "客户资料已成功更新",
+    "educationAdded": "教育记录已添加",
+    "workExperienceAdded": "工作经验已添加",
+    "languageTestAdded": "语言测试已添加",
+    "documentAdded": "文档已成功上传"
+  },
+  "subscription": {
+    "upgraded": "订阅已成功升级",
+    "renewed": "订阅已成功续期",
+    "cancelled": "订阅已成功取消",
+    "levels": {
+      "free": "免费版",
+      "basic": "基础版",
+      "premium": "高级版",
+      "enterprise": "企业版"
+    }
+  },
+  "buttons": {
+    "save": "保存",
+    "cancel": "取消",
+    "submit": "提交",
+    "edit": "编辑",
+    "delete": "删除",
+    "upload": "上传",
+    "download": "下载",
+    "next": "下一步",
+    "previous": "上一步",
+    "back": "返回",
+    "continue": "继续",
+    "finish": "完成"
+  },
+  "yes": "是",
+  "no": "否",
+  "notSpecified": "未指定",
+  "general": "一般",
+  "success": "成功",
+  "error": "错误",
+  "warning": "警告",
+  "info": "信息",
+  "loading": "加载中",
+  "cancel": "取消",
+  "save": "保存",
+  "delete": "删除",
+  "edit": "编辑",
+  "create": "创建",
+  "view": "查看",
+  "submit": "提交",
+  "back": "返回",
+  "next": "下一步",
+  "previous": "上一步"
+} 

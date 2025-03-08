@@ -1,0 +1,33 @@
+{
+  "success": "Operation successful",
+  "clientError": "Request error",
+  "serverError": "Server error",
+  "dataFetched": "Data fetched successfully",
+  "itemCreated": "Item created successfully",
+  "itemUpdated": "Item updated successfully",
+  "itemDeleted": "Item deleted successfully",
+  "assessment": {
+    "created": "Assessment created successfully",
+    "fetched": "Assessment fetched successfully",
+    "updated": "Assessment updated successfully",
+    "deleted": "Assessment deleted successfully",
+    "regenerated": "Assessment regenerated successfully"
+  },
+  "chat": {
+    "created": "Chat created successfully",
+    "messageSent": "Message sent successfully"
+  },
+  "client": {
+    "created": "Client created successfully",
+    "updated": "Client updated successfully",
+    "deleted": "Client deleted successfully"
+  },
+  "document": {
+    "uploaded": "Document uploaded successfully",
+    "reviewed": "Document reviewed successfully"
+  },
+  "form": {
+    "filled": "Form filled successfully",
+    "updated": "Form updated successfully"
+  }
+} 
