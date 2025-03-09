@@ -4,7 +4,8 @@ const emailService = require('../services/emailService');
 const { clerkClient } = require('@clerk/clerk-sdk-node');
 const config = require('../config');
 const logger = require('../utils/logger');
-const { syncSocialLogins } = require('../utils/syncSocialLogins');
+const { syncSocialLogins } = require('../utils/userSync');
+const { getUserPermissions } = require('../utils/permissions');
 
 // 当前使用Clerk登录，重定向到Clerk
 const login = async (req, res) => {
@@ -91,7 +92,8 @@ const syncClerkUser = async (req, res) => {
     
     // 同步社交登录
     if (clerkUser.externalAccounts && clerkUser.externalAccounts.length > 0) {
-      syncSocialLogins(user, clerkUser.externalAccounts);
+      const updatedUser = syncSocialLogins(user, clerkUser.externalAccounts);
+      await updatedUser.save();
     }
     
     await user.save();
@@ -114,25 +116,35 @@ const syncClerkUser = async (req, res) => {
 // 获取当前用户信息
 const getCurrentUser = async (req, res) => {
   try {
-    const user = await User.findById(req.user._id);
+    const user = req.user;
     
     if (!user) {
       return res.status(404).json({
         success: false,
-        message: req.t('auth.userNotFound', 'User not found'),
-        error: 'User not found'
+        message: req.t('errors.userNotFound', 'User not found')
       });
     }
     
     return res.status(200).json({
       success: true,
-      data: user
+      user: {
+        id: user._id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        role: user.role,
+        profileImage: user.profileImage,
+        lastLogin: user.lastLogin,
+        authProvider: user.authProvider,
+        migrationStatus: user.migrationStatus || null,
+        hasLocalPassword: !!user.password
+      }
     });
   } catch (error) {
+    logger.error('获取用户信息错误:', error);
     return res.status(500).json({
       success: false,
-      message: req.t('errors.serverError', 'Server error'),
-      error: error.message
+      message: req.t('errors.serverError', 'Server error')
     });
   }
 };
@@ -140,75 +152,77 @@ const getCurrentUser = async (req, res) => {
 // 更新用户信息
 const updateUser = async (req, res) => {
   try {
-    const { firstName, lastName, preferredLanguage } = req.body;
-    const updates = {};
+    const updates = req.body;
+    const user = await User.findById(req.user._id);
     
-    if (firstName) updates.firstName = firstName;
-    if (lastName) updates.lastName = lastName;
-    if (preferredLanguage) updates.preferredLanguage = preferredLanguage;
-    
-    if (Object.keys(updates).length === 0) {
-      return res.status(400).json({
+    if (!user) {
+      return res.status(404).json({
         success: false,
-        message: req.t('user.noUpdates', 'No updates provided'),
-        error: 'No updates provided'
+        message: req.t('errors.userNotFound', 'User not found')
       });
     }
     
-    const user = await User.findByIdAndUpdate(
-      req.user._id,
-      { $set: updates },
-      { new: true }
-    );
+    // 只允许更新特定字段
+    const allowedUpdates = ['firstName', 'lastName', 'profileImage', 'preferences'];
+    Object.keys(updates).forEach(key => {
+      if (allowedUpdates.includes(key)) {
+        user[key] = updates[key];
+      }
+    });
+    
+    await user.save();
     
     return res.status(200).json({
       success: true,
-      message: req.t('user.updateSuccess', 'User updated successfully'),
-      data: user
+      message: req.t('success.userUpdated', 'User updated successfully'),
+      user: {
+        id: user._id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        role: user.role,
+        profileImage: user.profileImage
+      }
     });
   } catch (error) {
+    logger.error('更新用户错误:', error);
     return res.status(500).json({
       success: false,
-      message: req.t('errors.serverError', 'Server error'),
-      error: error.message
+      message: req.t('errors.serverError', 'Server error')
     });
   }
 };
 
-// 准备用户密码 - 为迁移做准备
+// 准备本地密码（迁移用）
 const prepareLocalPassword = async (req, res) => {
   try {
     const { password } = req.body;
+    const user = await User.findById(req.user._id);
     
-    if (!password) {
-      return res.status(400).json({
+    if (!user) {
+      return res.status(404).json({
         success: false,
-        message: req.t('auth.noPassword', 'Password is required'),
-        error: 'Missing password'
+        message: req.t('errors.userNotFound', 'User not found')
       });
     }
     
-    // 检查密码强度
-    if (password.length < 8) {
-      return res.status(400).json({
-        success: false,
-        message: req.t('auth.weakPassword', 'Password must be at least 8 characters'),
-        error: 'Weak password'
-      });
-    }
+    // 设置密码并更新迁移状态
+    user.password = password;
+    if (!user.migrationStatus) user.migrationStatus = {};
+    user.migrationStatus.passwordSet = true;
+    user.migrationStatus.passwordSetAt = new Date();
     
-    const user = await authService.prepareUserForMigration(req.user._id, password);
+    await user.save();
     
     return res.status(200).json({
       success: true,
-      message: req.t('auth.passwordSet', 'Local password set successfully'),
-      data: { authProvider: user.authProvider }
+      message: req.t('success.passwordSet', 'Password set successfully')
     });
   } catch (error) {
+    logger.error('设置密码错误:', error);
     return res.status(500).json({
       success: false,
-      message: req.t('errors.serverError', 'Server error'),
-      error: error.message
+      message: req.t('errors.serverError', 'Server error')
     });
   }
 };
@@ -218,39 +232,45 @@ const requestPasswordReset = async (req, res) => {
   try {
     const { email } = req.body;
     
-    if (!email) {
-      return res.status(400).json({
+    const user = await User.findOne({ email });
+    
+    if (!user) {
+      // 为了安全，即使用户不存在也返回成功
+      return res.status(200).json({
+        success: true,
+        message: req.t('success.resetEmailSent', 'If your email exists in our system, a password reset link has been sent')
+      });
+    }
+    
+    // 生成重置令牌
+    const resetToken = crypto.randomBytes(20).toString('hex');
+    const resetTokenExpire = Date.now() + 3600000; // 1小时
+    
+    user.resetPasswordToken = resetToken;
+    user.resetPasswordExpire = resetTokenExpire;
+    
+    await user.save();
+    
+    // 发送重置邮件
+    try {
+      await emailService.sendPasswordResetEmail(user.email, resetToken);
+    } catch (emailError) {
+      logger.error('发送密码重置邮件错误:', emailError);
+      return res.status(500).json({
         success: false,
-        message: req.t('auth.noEmail', 'Email is required'),
-        error: 'Missing email'
+        message: req.t('errors.emailSendFailed', 'Failed to send reset email')
       });
     }
     
-    // 获取重置令牌
-    const resetToken = await authService.createPasswordResetToken(email);
-    
-    // 在生产环境中发送重置邮件
-    if (process.env.NODE_ENV === 'production') {
-      const resetUrl = `${config.frontendUrl}/reset-password?token=${resetToken}`;
-      await emailService.sendPasswordResetEmail(email, resetUrl);
-      
-      return res.status(200).json({
-        success: true,
-        message: req.t('auth.resetEmailSent', 'Password reset email sent')
-      });
-    } else {
-      // 在开发环境中返回令牌（方便测试）
-      return res.status(200).json({
-        success: true,
-        message: req.t('auth.resetTokenCreated', 'Password reset token created'),
-        data: { resetToken }
-      });
-    }
+    return res.status(200).json({
+      success: true,
+      message: req.t('success.resetEmailSent', 'Password reset email sent')
+    });
   } catch (error) {
+    logger.error('请求密码重置错误:', error);
     return res.status(500).json({
       success: false,
-      message: req.t('errors.serverError', 'Server error'),
-      error: error.message
+      message: req.t('errors.serverError', 'Server error')
     });
   }
 };
@@ -260,62 +280,384 @@ const resetPassword = async (req, res) => {
   try {
     const { token, password } = req.body;
     
-    if (!token || !password) {
+    const user = await User.findOne({
+      resetPasswordToken: token,
+      resetPasswordExpire: { $gt: Date.now() }
+    });
+    
+    if (!user) {
       return res.status(400).json({
         success: false,
-        message: req.t('auth.missingResetInfo', 'Token and password are required'),
-        error: 'Missing token or password'
+        message: req.t('errors.invalidToken', 'Invalid or expired token')
       });
     }
     
-    // 检查密码强度
-    if (password.length < 8) {
-      return res.status(400).json({
-        success: false,
-        message: req.t('auth.weakPassword', 'Password must be at least 8 characters'),
-        error: 'Weak password'
-      });
+    // 设置新密码
+    user.password = password;
+    user.resetPasswordToken = undefined;
+    user.resetPasswordExpire = undefined;
+    
+    // 如果是迁移用户，更新迁移状态
+    if (user.migrationStatus) {
+      user.migrationStatus.passwordSet = true;
+      user.migrationStatus.passwordSetAt = new Date();
     }
     
-    const user = await authService.resetPassword(token, password);
+    await user.save();
     
     return res.status(200).json({
       success: true,
-      message: req.t('auth.passwordReset', 'Password reset successfully'),
-      data: { authProvider: user.authProvider }
+      message: req.t('success.passwordReset', 'Your password has been reset')
     });
   } catch (error) {
-    return res.status(400).json({
+    logger.error('重置密码错误:', error);
+    return res.status(500).json({
       success: false,
-      message: req.t('auth.resetFailed', 'Password reset failed'),
-      error: error.message
+      message: req.t('errors.serverError', 'Server error')
     });
   }
 };
 
-// 检查迁移状态 - 仅管理员
+// 检查迁移状态
 const checkMigrationStatus = async (req, res) => {
   try {
-    // 检查用户是否为管理员
-    if (req.user.role !== 'Admin') {
-      return res.status(403).json({
+    const user = await User.findById(req.user._id);
+    
+    if (!user) {
+      return res.status(404).json({
         success: false,
-        message: req.t('auth.notAuthorized', 'Not authorized'),
-        error: 'Not authorized'
+        message: req.t('errors.userNotFound', 'User not found')
       });
     }
     
-    const stats = await authService.bulkMigrationStatus();
+    return res.status(200).json({
+      success: true,
+      migrationStatus: user.migrationStatus || { 
+        required: false, 
+        completed: false 
+      }
+    });
+  } catch (error) {
+    logger.error('检查迁移状态错误:', error);
+    return res.status(500).json({
+      success: false,
+      message: req.t('errors.serverError', 'Server error')
+    });
+  }
+};
+
+/**
+ * 获取当前用户角色
+ */
+const getCurrentUserRole = async (req, res) => {
+  try {
+    if (!req.user) {
+      return res.status(401).json({
+        message: req.t('errors:unauthorized', 'Unauthorized')
+      });
+    }
+    
+    res.json({ role: req.user.role || 'Guest' });
+  } catch (error) {
+    logger.error('获取用户角色错误:', error);
+    res.status(500).json({ 
+      message: req.t('errors:serverError', 'Server error') 
+    });
+  }
+};
+
+/**
+ * 获取当前用户权限
+ */
+const getCurrentUserPermissions = async (req, res) => {
+  try {
+    if (!req.user) {
+      return res.status(401).json({
+        success: false,
+        message: req.t('errors.unauthorized', 'Unauthorized')
+      });
+    }
+    
+    const permissions = getUserPermissions(req.user.role);
+    return res.status(200).json({
+      success: true,
+      permissions
+    });
+  } catch (error) {
+    logger.error('获取用户权限错误:', error);
+    return res.status(500).json({
+      success: false,
+      message: req.t('errors.serverError', 'Server error')
+    });
+  }
+};
+
+/**
+ * 更新用户个人资料
+ */
+const updateUserProfile = async (req, res) => {
+  try {
+    const { firstName, lastName, profileImage } = req.body;
+    const user = await User.findById(req.user._id);
+    
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: req.t('errors.userNotFound', 'User not found')
+      });
+    }
+    
+    // 更新字段
+    if (firstName) user.firstName = firstName;
+    if (lastName) user.lastName = lastName;
+    if (profileImage) user.profileImage = profileImage;
+    
+    await user.save();
     
     return res.status(200).json({
       success: true,
-      data: stats
+      message: req.t('success.profileUpdated', 'Profile updated successfully'),
+      user: {
+        id: user._id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        profileImage: user.profileImage
+      }
     });
   } catch (error) {
+    logger.error('更新个人资料错误:', error);
     return res.status(500).json({
       success: false,
-      message: req.t('errors.serverError', 'Server error'),
-      error: error.message
+      message: req.t('errors.serverError', 'Server error')
+    });
+  }
+};
+
+/**
+ * 获取所有用户（管理员功能）
+ */
+const getAllUsers = async (req, res) => {
+  try {
+    // 检查权限
+    if (req.user.role !== 'Admin') {
+      return res.status(403).json({
+        success: false,
+        message: req.t('errors.forbidden', 'You do not have permission')
+      });
+    }
+    
+    // 支持分页
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 20;
+    const skip = (page - 1) * limit;
+    
+    // 支持搜索和筛选
+    let query = {};
+    if (req.query.search) {
+      query = {
+        $or: [
+          { firstName: new RegExp(req.query.search, 'i') },
+          { lastName: new RegExp(req.query.search, 'i') },
+          { email: new RegExp(req.query.search, 'i') }
+        ]
+      };
+    }
+    
+    if (req.query.role) {
+      query.role = req.query.role;
+    }
+    
+    const users = await User.find(query)
+      .select('-password -resetPasswordToken -resetPasswordExpire')
+      .skip(skip)
+      .limit(limit)
+      .sort({ createdAt: -1 });
+    
+    const total = await User.countDocuments(query);
+    
+    return res.status(200).json({
+      success: true,
+      count: users.length,
+      total,
+      pagination: {
+        page,
+        limit,
+        pages: Math.ceil(total / limit)
+      },
+      users
+    });
+  } catch (error) {
+    logger.error('获取所有用户错误:', error);
+    return res.status(500).json({
+      success: false,
+      message: req.t('errors.serverError', 'Server error')
+    });
+  }
+};
+
+/**
+ * 更新用户角色（管理员功能）
+ */
+const updateUserRole = async (req, res) => {
+  try {
+    // 检查权限
+    if (req.user.role !== 'Admin') {
+      return res.status(403).json({
+        success: false,
+        message: req.t('errors.forbidden', 'You do not have permission')
+      });
+    }
+    
+    const { userId, role } = req.body;
+    
+    if (!userId || !role) {
+      return res.status(400).json({
+        success: false,
+        message: req.t('errors.missingFields', 'Missing required fields')
+      });
+    }
+    
+    // 检查角色是否有效
+    const validRoles = ['Client', 'Staff', 'Admin'];
+    if (!validRoles.includes(role)) {
+      return res.status(400).json({
+        success: false,
+        message: req.t('errors.invalidRole', 'Invalid role specified')
+      });
+    }
+    
+    const user = await User.findById(userId);
+    
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: req.t('errors.userNotFound', 'User not found')
+      });
+    }
+    
+    // 更新角色
+    user.role = role;
+    await user.save();
+    
+    return res.status(200).json({
+      success: true,
+      message: req.t('success.roleUpdated', 'User role updated successfully'),
+      user: {
+        id: user._id,
+        email: user.email,
+        role: user.role
+      }
+    });
+  } catch (error) {
+    logger.error('更新用户角色错误:', error);
+    return res.status(500).json({
+      success: false,
+      message: req.t('errors.serverError', 'Server error')
+    });
+  }
+};
+
+/**
+ * 邀请新用户 (管理员专用)
+ */
+const inviteUser = async (req, res) => {
+  try {
+    const { email, role, firstName, lastName } = req.body;
+    
+    if (!email) {
+      return res.status(400).json({
+        message: req.t('errors.emailRequired', 'Email is required')
+      });
+    }
+    
+    if (!role || !['Admin', 'Consultant', 'Client'].includes(role)) {
+      return res.status(400).json({
+        message: req.t('errors.invalidRole', 'Invalid role')
+      });
+    }
+    
+    // 检查用户是否已存在
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({
+        message: req.t('errors.userExists', 'User with this email already exists')
+      });
+    }
+    
+    // 尝试通过Clerk创建邀请
+    try {
+      const invitation = await clerkClient.invitations.createInvitation({
+        emailAddress: email,
+        redirectUrl: process.env.CLERK_REDIRECT_URL || 'http://localhost:3000/onboarding',
+        publicMetadata: {
+          role,
+          invitedBy: req.user._id.toString()
+        }
+      });
+      
+      // 创建本地用户记录
+      const newUser = new User({
+        email,
+        firstName: firstName || req.t('defaults.invitedFirstName', 'Invited'),
+        lastName: lastName || req.t('defaults.invitedLastName', 'User'),
+        role,
+        authProvider: 'clerk',
+        migrationStatus: {
+          passwordSetupEmailSent: new Date(),
+          migrationCompleted: false
+        }
+      });
+      
+      await newUser.save();
+      
+      logger.info(`邀请通过Clerk发送: 邮箱 ${email} 被邀请为 ${role}，操作者: ${req.user._id}`);
+      
+      res.json({
+        message: req.t('success.inviteSent', 'Invitation sent successfully'),
+        user: {
+          id: newUser._id,
+          email: newUser.email,
+          role: newUser.role
+        }
+      });
+    } catch (clerkError) {
+      logger.error('Clerk邀请错误:', clerkError);
+      
+      // 备用解决方案: 仅创建本地用户并发送自定义邀请邮件
+      const newUser = new User({
+        email,
+        firstName: firstName || req.t('defaults.invitedFirstName', 'Invited'),
+        lastName: lastName || req.t('defaults.invitedLastName', 'User'),
+        role,
+        authProvider: 'pending',
+        migrationStatus: {
+          passwordSetupEmailSent: new Date(),
+          migrationCompleted: false
+        }
+      });
+      
+      await newUser.save();
+      
+      // 这里调用自定义邮件服务发送邀请邮件
+      // 注意: 需要实现emailService
+      // await sendInviteEmail(email, role, generateInviteLink(newUser._id));
+      
+      logger.info(`本地邀请创建: 邮箱 ${email} 被邀请为 ${role}，操作者: ${req.user._id}`);
+      
+      res.json({
+        message: req.t('success.inviteCreated', 'User created and invitation prepared'),
+        user: {
+          id: newUser._id,
+          email: newUser.email,
+          role: newUser.role
+        }
+      });
+    }
+  } catch (error) {
+    logger.error('邀请用户错误:', error);
+    res.status(500).json({ 
+      message: req.t('errors.serverError', 'Server error') 
     });
   }
 };
@@ -328,5 +670,11 @@ module.exports = {
   prepareLocalPassword,
   requestPasswordReset,
   resetPassword,
-  checkMigrationStatus
+  checkMigrationStatus,
+  getCurrentUserRole,
+  getCurrentUserPermissions,
+  updateUserProfile,
+  getAllUsers,
+  updateUserRole,
+  inviteUser
 }; 

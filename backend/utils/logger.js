@@ -8,7 +8,7 @@ const logFormat = winston.format.printf(({ level, message, timestamp, ...meta })
 
 // 创建日志器
 const logger = winston.createLogger({
-  level: config.logging.level,
+  level: process.env.NODE_ENV === 'test' ? 'none' : 'info',
   format: winston.format.combine(
     winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
     winston.format.errors({ stack: true }),

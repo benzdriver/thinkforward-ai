@@ -1,0 +1,43 @@
+{
+  "roles": {
+    "admin": "Administrator",
+    "consultant": "Immigration Consultant",
+    "client": "Client",
+    "guest": "Guest"
+  },
+  "permissions": {
+    "canAccessDashboard": "Access dashboard",
+    "canAccessAIAssistant": "Access AI assistant",
+    "canFillForms": "Fill and submit forms",
+    "canReviewClients": "Review client profiles",
+    "canAssignConsultants": "Assign consultants",
+    "canManageSystem": "Manage system",
+    "canInviteUsers": "Invite new users"
+  },
+  "actions": {
+    "roleUpdated": "User role updated successfully",
+    "profileUpdated": "Profile updated successfully",
+    "inviteSent": "Invitation sent successfully",
+    "inviteCreated": "User created and invitation prepared"
+  },
+  "fields": {
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "role": "Role",
+    "lastLogin": "Last Login",
+    "status": "Status"
+  },
+  "invitation": {
+    "title": "Invitation to Join ThinkForward.ai",
+    "greeting": "Hello,",
+    "message": "You have been invited to join ThinkForward.ai as a {{role}}. Please click the button below to accept your invitation and set up your account.",
+    "button": "Accept Invitation",
+    "expires": "This invitation will expire in 7 days.",
+    "ignore": "If you did not expect this invitation, you can safely ignore this email."
+  },
+  "defaults": {
+    "invitedFirstName": "Invited",
+    "invitedLastName": "User"
+  }
+} 

@@ -117,4 +117,7 @@ if (require.main === module) {
     });
 }
 
-module.exports = initialSync; 
+module.exports = {
+  initialSync,
+  // 其他函数...
+}; 

@@ -1,0 +1,43 @@
+{
+  "roles": {
+    "admin": "管理员",
+    "consultant": "移民顾问",
+    "client": "客户",
+    "guest": "访客"
+  },
+  "permissions": {
+    "canAccessDashboard": "访问控制面板",
+    "canAccessAIAssistant": "访问AI助手",
+    "canFillForms": "填写并提交表单",
+    "canReviewClients": "审核客户资料",
+    "canAssignConsultants": "分配顾问",
+    "canManageSystem": "管理系统",
+    "canInviteUsers": "邀请新用户"
+  },
+  "actions": {
+    "roleUpdated": "用户角色更新成功",
+    "profileUpdated": "个人资料更新成功",
+    "inviteSent": "邀请已成功发送",
+    "inviteCreated": "用户已创建并准备邀请"
+  },
+  "fields": {
+    "firstName": "名",
+    "lastName": "姓",
+    "email": "电子邮箱",
+    "role": "角色",
+    "lastLogin": "最后登录",
+    "status": "状态"
+  },
+  "invitation": {
+    "title": "邀请您加入ThinkForward.ai",
+    "greeting": "您好，",
+    "message": "您被邀请加入ThinkForward.ai，担任{{role}}角色。请点击下方按钮接受邀请并设置您的账户。",
+    "button": "接受邀请",
+    "expires": "此邀请将在7天后过期。",
+    "ignore": "如果您没有预期收到此邀请，可以安全地忽略此电子邮件。"
+  },
+  "defaults": {
+    "invitedFirstName": "已邀请",
+    "invitedLastName": "用户"
+  }
+} 

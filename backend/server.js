@@ -23,8 +23,6 @@ const clientRoutes = require('./routes/clientRoutes');
 const formRoutes = require('./routes/formRoutes');
 const aiRoutes = require('./routes/aiRoutes');
 
-const app = express();
-
 // 中间件
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));

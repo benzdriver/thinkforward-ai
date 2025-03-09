@@ -41,4 +41,6 @@ const syncSocialLogins = (user, clerkExternalAccounts) => {
   return user;
 };
 
-module.exports = { syncSocialLogins }; 
+module.exports = { 
+  syncSocialLogins
+}; 

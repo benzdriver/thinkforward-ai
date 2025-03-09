@@ -1,7 +1,7 @@
 const User = require('../models/User');
 const logger = require('../utils/logger');
 const clerkClient = require('../utils/clerkClient');
-const { syncSocialLogins } = require('../utils/socialLogins');
+const { syncSocialLogins } = require('../utils/userSync');
 
 /**
  * 创建中间件来同步每次认证后的用户信息
