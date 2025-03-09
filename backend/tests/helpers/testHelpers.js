@@ -24,7 +24,20 @@ const createMockResponse = () => {
   return res;
 };
 
+// 用于调试测试过程中的对象
+const inspect = (obj, name = 'Object') => {
+    console.log(`\n----- ${name} -----`);
+    try {
+      console.log(JSON.stringify(obj, null, 2));
+    } catch (e) {
+      console.log(`${name} contains circular reference or non-serializable values`);
+      console.log(obj);
+    }
+    console.log(`----- End ${name} -----\n`);
+  };
+
 module.exports = {
   createMockRequest,
-  createMockResponse
+  createMockResponse,
+  inspect
 }; 

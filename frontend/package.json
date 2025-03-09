@@ -11,10 +11,11 @@
   "dependencies": {
     "@clerk/clerk-react": "^5.24.0",
     "@clerk/clerk-sdk-node": "^5.1.6",
-    "@clerk/nextjs": "^6.12.0",
+    "@clerk/nextjs": "^6.12.4",
     "autoprefixer": "^10.0.0",
     "dotenv": "^16.4.7",
     "next": "latest",
+    "next-i18next": "^13.0.1",
     "postcss": "^8.0.0",
     "react": "latest",
     "react-dom": "latest",

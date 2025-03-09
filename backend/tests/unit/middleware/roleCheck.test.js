@@ -1,10 +1,11 @@
 const { expect } = require('chai');
+const httpMocks = require('node-mocks-http');
 const sinon = require('sinon');
-const httpMocks = require('../../helpers/mock-request');
-const { requirePermission, requireRole } = require('../../../middleware/roleCheck');
+const { requirePermission } = require('../../../middleware/roleCheck');
+const { ROLES } = require('../../../constants/roles');
 
 describe('角色授权中间件测试', function() {
-  it('应该允许具有所需角色的用户访问', function() {
+  it('应该允许有正确角色的用户访问', function() {
     // 创建请求对象
     const req = httpMocks.createRequest({
       user: {
@@ -12,14 +13,14 @@ describe('角色授权中间件测试', function() {
         firstName: 'Admin',
         lastName: 'User',
         email: 'admin@example.com',
-        role: 'Admin'
+        role: ROLES.ADMIN
       }
     });
     const res = httpMocks.createResponse();
     const next = sinon.spy();
     
     // 创建需要Admin角色的中间件
-    const adminMiddleware = requirePermission('Admin');
+    const adminMiddleware = requirePermission(ROLES.ADMIN);
     
     adminMiddleware(req, res, next);
     
@@ -31,17 +32,17 @@ describe('角色授权中间件测试', function() {
     const req = httpMocks.createRequest({
       user: {
         _id: '507f1f77bcf86cd799439011',
-        firstName: 'Coach',
+        firstName: 'Consultant',
         lastName: 'User',
-        email: 'coach@example.com',
-        role: 'Coach'
+        email: 'consultant@example.com',
+        role: ROLES.CONSULTANT
       }
     });
     const res = httpMocks.createResponse();
     const next = sinon.spy();
     
-    // 创建需要Admin或Coach角色的中间件
-    const middleware = requirePermission(['Admin', 'Coach']);
+    // 创建需要Admin或Consultant角色的中间件
+    const middleware = requirePermission([ROLES.ADMIN, ROLES.CONSULTANT]);
     
     middleware(req, res, next);
     
@@ -56,14 +57,14 @@ describe('角色授权中间件测试', function() {
         firstName: 'Client',
         lastName: 'User',
         email: 'client@example.com',
-        role: 'Client'
+        role: ROLES.CLIENT
       }
     });
     const res = httpMocks.createResponse();
     const next = sinon.spy();
     
     // 创建需要Admin角色的中间件
-    const adminMiddleware = requirePermission('Admin');
+    const adminMiddleware = requirePermission(ROLES.ADMIN);
     
     adminMiddleware(req, res, next);
     
@@ -81,11 +82,11 @@ describe('角色授权中间件测试', function() {
     const res = httpMocks.createResponse();
     const next = sinon.spy();
     
-    const middleware = requirePermission('Admin');
+    const middleware = requirePermission(ROLES.ADMIN);
     middleware(req, res, next);
     
     // 修改期望，与实际代码匹配
-    expect(res.statusCode).to.equal(401); // 注意这里是401而不是403
+    expect(res.statusCode).to.equal(401);
     expect(res._isJSON()).to.be.true;
     expect(res._getJSONData()).to.have.property('success', false);
   });

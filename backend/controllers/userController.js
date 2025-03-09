@@ -6,6 +6,7 @@ const config = require('../config');
 const logger = require('../utils/logger');
 const { syncSocialLogins } = require('../utils/userSync');
 const { getUserPermissions } = require('../utils/permissions');
+const { ROLES, ASSIGNABLE_ROLES } = require('../constants/roles');
 
 // 当前使用Clerk登录，重定向到Clerk
 const login = async (req, res) => {
@@ -357,7 +358,7 @@ const getCurrentUserRole = async (req, res) => {
       });
     }
     
-    res.json({ role: req.user.role || 'Guest' });
+    res.json({ role: req.user.role || ROLES.GUEST });
   } catch (error) {
     logger.error('获取用户角色错误:', error);
     res.status(500).json({ 
@@ -439,57 +440,40 @@ const updateUserProfile = async (req, res) => {
  */
 const getAllUsers = async (req, res) => {
   try {
-    // 检查权限
-    if (req.user.role !== 'Admin') {
+    // 检查请求中的用户角色是否为ADMIN
+    if (req.user.role !== ROLES.ADMIN) {
       return res.status(403).json({
         success: false,
         message: req.t('errors.forbidden', 'You do not have permission')
       });
     }
-    
-    // 支持分页
+
+    // 获取分页参数
     const page = parseInt(req.query.page) || 1;
-    const limit = parseInt(req.query.limit) || 20;
+    const limit = parseInt(req.query.limit) || 10;
     const skip = (page - 1) * limit;
-    
-    // 支持搜索和筛选
-    let query = {};
-    if (req.query.search) {
-      query = {
-        $or: [
-          { firstName: new RegExp(req.query.search, 'i') },
-          { lastName: new RegExp(req.query.search, 'i') },
-          { email: new RegExp(req.query.search, 'i') }
-        ]
-      };
-    }
-    
-    if (req.query.role) {
-      query.role = req.query.role;
-    }
-    
-    const users = await User.find(query)
+
+    // 获取总用户数
+    const total = await User.countDocuments();
+
+    // 获取用户列表，排除敏感字段
+    const users = await User.find()
       .select('-password -resetPasswordToken -resetPasswordExpire')
       .skip(skip)
       .limit(limit)
       .sort({ createdAt: -1 });
-    
-    const total = await User.countDocuments(query);
-    
-    return res.status(200).json({
+
+    res.status(200).json({
       success: true,
       count: users.length,
       total,
-      pagination: {
-        page,
-        limit,
-        pages: Math.ceil(total / limit)
-      },
+      totalPages: Math.ceil(total / limit),
+      currentPage: page,
       users
     });
   } catch (error) {
     logger.error('获取所有用户错误:', error);
-    return res.status(500).json({
+    res.status(500).json({
       success: false,
       message: req.t('errors.serverError', 'Server error')
     });
@@ -502,7 +486,7 @@ const getAllUsers = async (req, res) => {
 const updateUserRole = async (req, res) => {
   try {
     // 检查权限
-    if (req.user.role !== 'Admin') {
+    if (req.user.role !== ROLES.ADMIN) {
       return res.status(403).json({
         success: false,
         message: req.t('errors.forbidden', 'You do not have permission')
@@ -519,8 +503,7 @@ const updateUserRole = async (req, res) => {
     }
     
     // 检查角色是否有效
-    const validRoles = ['Client', 'Staff', 'Admin'];
-    if (!validRoles.includes(role)) {
+    if (!ASSIGNABLE_ROLES.includes(role)) {
       return res.status(400).json({
         success: false,
         message: req.t('errors.invalidRole', 'Invalid role specified')
@@ -571,7 +554,7 @@ const inviteUser = async (req, res) => {
       });
     }
     
-    if (!role || !['Admin', 'Consultant', 'Client'].includes(role)) {
+    if (!role || !ASSIGNABLE_ROLES.includes(role)) {
       return res.status(400).json({
         message: req.t('errors.invalidRole', 'Invalid role')
       });

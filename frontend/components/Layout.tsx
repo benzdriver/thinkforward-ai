@@ -20,7 +20,7 @@ export default function Layout({ children, userRole }: LayoutProps) {
             <div className="flex">
               <div className="flex-shrink-0 flex items-center">
                 <Link href="/">
-                  <span className="text-xl font-bold text-blue-600">移民AI助手</span>
+                  <span className="text-xl font-bold text-blue-600">Thinkforward移民AI助手</span>
                 </Link>
               </div>
               <div className="ml-6 flex items-center space-x-4">
@@ -111,7 +111,7 @@ export default function Layout({ children, userRole }: LayoutProps) {
       <footer className="bg-white border-t">
         <div className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
           <p className="text-center text-gray-500 text-sm">
-            &copy; {new Date().getFullYear()} 移民AI助手. 保留所有权利.
+            &copy; {new Date().getFullYear()} Thinkforward移民AI助手. 保留所有权利.
           </p>
         </div>
       </footer>

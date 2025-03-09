@@ -5,10 +5,10 @@ export interface User {
 }
 
 export enum UserRole {
-  ADMIN = 'Admin',
-  CONSULTANT = 'Consultant',
-  CLIENT = 'Client',
-  GUEST = 'Guest'
+  ADMIN = 'ADMIN',
+  CONSULTANT = 'CONSULTANT',
+  CLIENT = 'CLIENT',
+  GUEST = 'GUEST'
 }
 
 export interface UserPermissions {

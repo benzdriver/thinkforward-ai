@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const Schema = mongoose.Schema;
+const { ALL_ROLES, ROLES } = require('../constants/roles');
 
 const UserSchema = new Schema({
   // 外部认证信息
@@ -78,8 +79,8 @@ const UserSchema = new Schema({
   // 业务相关信息
   role: {
     type: String,
-    enum: ['Admin', 'Consultant', 'Client'],
-    default: 'Client'
+    enum: ALL_ROLES,
+    default: ROLES.CLIENT
   },
   preferredLanguage: {
     type: String,

@@ -1,8 +1,10 @@
+const { ROLES } = require('../constants/roles'); // 引入角色常量
+
 /**
  * 基于用户角色的权限映射
  */
 const rolePermissions = {
-  Admin: {
+  [ROLES.ADMIN]: { // 使用常量作为键
     canAccessDashboard: true,
     canAccessAIAssistant: true,
     canFillForms: true,
@@ -11,7 +13,7 @@ const rolePermissions = {
     canManageSystem: true,
     canInviteUsers: true
   },
-  Consultant: {
+  [ROLES.CONSULTANT]: { // 使用常量作为键
     canAccessDashboard: true,
     canAccessAIAssistant: true,
     canFillForms: true,
@@ -20,7 +22,7 @@ const rolePermissions = {
     canManageSystem: false,
     canInviteUsers: false
   },
-  Client: {
+  [ROLES.CLIENT]: { // 使用常量作为键
     canAccessDashboard: true,
     canAccessAIAssistant: true,
     canFillForms: true,
@@ -29,7 +31,7 @@ const rolePermissions = {
     canManageSystem: false,
     canInviteUsers: false
   },
-  Guest: {
+  [ROLES.GUEST]: { // 使用常量作为键
     canAccessDashboard: false,
     canAccessAIAssistant: false,
     canFillForms: false,
@@ -46,7 +48,7 @@ const rolePermissions = {
  * @returns {Object} - 权限对象
  */
 const getUserPermissions = (role) => {
-  return rolePermissions[role] || rolePermissions.Guest;
+  return rolePermissions[role] || rolePermissions[ROLES.GUEST]; // 使用常量
 };
 
 /**

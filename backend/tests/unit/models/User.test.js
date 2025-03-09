@@ -29,7 +29,7 @@ describe('用户模型测试', function() {
         lastName: 'User',
         email: 'invalid-email',
         password: 'Password123!',
-        role: 'Client'
+        role: 'CLIENT'
       });
       
       let error;
@@ -49,7 +49,7 @@ describe('用户模型测试', function() {
         lastName: 'User',
         email: 'test@example.com',
         password: 'Pass1!',
-        role: 'Client'
+        role: 'CLIENT'
       });
       
       let error;
@@ -94,7 +94,7 @@ describe('用户模型测试', function() {
         lastName: 'Test',
         email: 'hash@test.com',
         password: plainPassword,
-        role: 'Client'
+        role: 'CLIENT'
       });
       
       await user.save();
@@ -114,7 +114,7 @@ describe('用户模型测试', function() {
         lastName: 'Once',
         email: 'hashonce@test.com',
         password: 'Password123!',
-        role: 'Client'
+        role: 'CLIENT'
       });
       
       await user.save();
@@ -138,7 +138,7 @@ describe('用户模型测试', function() {
         lastName: 'User',
         email: 'test@example.com',
         password: 'password123', // 会被自动哈希
-        role: 'Client'
+        role: 'CLIENT'
       });
       
       // 保存用户以触发哈希钩子

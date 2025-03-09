@@ -21,7 +21,7 @@ export default function AIAssistant({ userRole, isSubscribed = false }: AIAssist
 
   // 初始化助手消息
   useEffect(() => {
-    let welcomeMessage = "您好！我是您的移民AI助手。我可以回答您关于移民的基本问题。";
+    let welcomeMessage = "您好！我是您的Thinkforward移民AI助手。我可以回答您关于移民的基本问题。";
     
     if (userRole === UserRole.CLIENT && isSubscribed) {
       welcomeMessage += " 作为订阅用户，您可以获得详细的移民路径分析和表格填写指导。";
@@ -107,7 +107,7 @@ export default function AIAssistant({ userRole, isSubscribed = false }: AIAssist
   return (
     <div className="flex flex-col h-[500px] bg-white rounded-lg shadow">
       <div className="bg-blue-600 text-white p-4 rounded-t-lg">
-        <h2 className="text-xl font-bold">移民AI助手</h2>
+        <h2 className="text-xl font-bold">Thinkforward移民AI助手</h2>
         {!isSubscribed && userRole === UserRole.CLIENT && (
           <p className="text-sm text-blue-100">
             提示: 订阅后可获取更详细的移民分析和指导

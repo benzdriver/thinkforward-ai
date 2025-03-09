@@ -4,6 +4,8 @@ const httpMocks = require('../../helpers/mock-request');
 const jwt = require('jsonwebtoken');
 const User = require('../../../models/User');
 const { OAuth2Client } = require('google-auth-library');
+const { ROLES } = require('../../../constants/roles');
+const authService = require('../../../services/authService');
 
 // 直接引入控制器而不是使用proxyquire
 const authController = require('../../../controllers/authController');
@@ -26,7 +28,7 @@ describe('认证控制器测试', function() {
           lastName: 'Doe',
           email: 'test@example.com',
           password: 'password123',
-          role: 'Client'
+          role: ROLES.CLIENT
         }
       });
       const res = httpMocks.createResponse();
@@ -40,7 +42,7 @@ describe('认证控制器测试', function() {
         firstName: 'John',
         lastName: 'Doe',
         email: 'test@example.com',
-        role: 'Client'
+        role: ROLES.CLIENT
       };
       
       // 模拟 User.create 返回新用户
@@ -71,7 +73,7 @@ describe('认证控制器测试', function() {
           lastName: 'User',
           email: 'existing@example.com',
           password: 'Password123!',
-          role: 'Client'
+          role: ROLES.CLIENT
         }
       });
       
@@ -110,13 +112,13 @@ describe('认证控制器测试', function() {
         firstName: 'Test',
         lastName: 'User',
         email: 'test@example.com',
-        role: 'Client',
+        role: ROLES.CLIENT,
         matchPassword: sinon.stub().resolves(true)
       };
       sinon.stub(User, 'findOne').resolves(user);
       
       // 模拟生成令牌
-      sinon.stub(AuthService.prototype, 'generateToken').returns('fake-token');
+      sinon.stub(authService.prototype, 'generateToken').returns('fake-token');
       
       await authController.login(req, res);
       
@@ -210,7 +212,7 @@ describe('认证控制器测试', function() {
         lastName: googlePayload.family_name,
         picture: googlePayload.picture,
         authProvider: 'google',
-        role: 'Client'
+        role: ROLES.CLIENT
       };
       sinon.stub(User, 'create').resolves(newUser);
       

@@ -1,0 +1,10 @@
+const CHUNK_PUBLIC_PATH = "server/pages/index.js";
+const runtime = require("../chunks/ssr/[turbopack]_runtime.js");
+runtime.loadChunk("server/chunks/ssr/node_modules_next_18ccb6._.js");
+runtime.loadChunk("server/chunks/ssr/node_modules_@clerk_c27828._.js");
+runtime.loadChunk("server/chunks/ssr/node_modules_@clerk_clerk-react_dist_f1a9ea._.js");
+runtime.loadChunk("server/chunks/ssr/node_modules_b14c62._.js");
+runtime.loadChunk("server/chunks/ssr/[root of the server]__c052df._.js");
+runtime.loadChunk("server/chunks/ssr/styles_globals_ff5908.css");
+runtime.loadChunk("server/chunks/ssr/dd92d_modules_@clerk_nextjs_dist_esm_app-router_client_keyless-creator-reader_7e670d.js");
+module.exports = runtime.getOrInstantiateRuntimeModule("[project]/node_modules/next/dist/esm/build/templates/pages.js { INNER_PAGE => \"[project]/pages/index.tsx [ssr] (ecmascript)\", INNER_DOCUMENT => \"[project]/pages/_document.tsx [ssr] (ecmascript)\", INNER_APP => \"[project]/pages/_app.tsx [ssr] (ecmascript)\" } [ssr] (ecmascript)", CHUNK_PUBLIC_PATH).exports;

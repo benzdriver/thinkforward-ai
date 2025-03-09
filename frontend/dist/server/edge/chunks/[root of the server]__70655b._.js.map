@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 23, "column": 0}, "map": {"version":3,"sources":["turbopack://[project]/middleware.ts"],"sourcesContent":["import { clerkMiddleware } from \"@clerk/nextjs/server\";\nimport { createRouteMatcher } from \"@clerk/nextjs/server\";\n\n// 定义受保护的路由\nconst isProtectedRoute = createRouteMatcher([\n  '/dashboard(.*)',\n  '/forum(.*)'\n]);\n\nexport default clerkMiddleware(async (auth, req) => {\n  // 对于登录和注册页面，不做任何保护\n  if (req.url.includes('/sign-in') || req.url.includes('/sign-up')) {\n    return;\n  }\n  \n  if (isProtectedRoute(req)) await auth.protect();\n});\n\nexport const config = {\n  matcher: [\n    '/((?!_next/static|_next/image|favicon.ico).*)',\n  ],\n};\n"],"names":[],"mappings":";;;;AACA;AADA;;;AAGA,WAAW;AACX,MAAM,mBAAmB,CAAA,GAAA,0KAAA,CAAA,qBAAkB,AAAD,EAAE;IAC1C;IACA;CACD;uCAEc,CAAA,GAAA,6KAAA,CAAA,kBAAe,AAAD,EAAE,OAAO,MAAM;IAC1C,mBAAmB;IACnB,IAAI,IAAI,GAAG,CAAC,QAAQ,CAAC,eAAe,IAAI,GAAG,CAAC,QAAQ,CAAC,aAAa;QAChE;IACF;IAEA,IAAI,iBAAiB,MAAM,MAAM,KAAK,OAAO;AAC/C;AAEO,MAAM,SAAS;IACpB,SAAS;QACP;KACD;AACH"}},
+    {"offset": {"line": 48, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+}
