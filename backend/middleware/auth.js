@@ -1,6 +1,10 @@
 const { Clerk } = require('@clerk/clerk-sdk-node');
 const User = require('../models/User');
 const config = require('../config');
+const AuthService = require('../services/authService');
+const logger = require('../utils/logger');
+
+const authService = new AuthService();
 
 const clerk = new Clerk({ secretKey: config.clerk.secretKey });
 
@@ -10,65 +14,54 @@ const clerk = new Clerk({ secretKey: config.clerk.secretKey });
  */
 const auth = async (req, res, next) => {
   try {
-    // 从请求头中获取令牌
-    const authHeader = req.headers.authorization;
+    const token = req.header('Authorization')?.replace('Bearer ', '');
     
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return res.status(401).json({
-        message: req.t('errors.unauthorized', 'Unauthorized')
+    if (!token) {
+      return res.status(401).json({ 
+        success: false, 
+        error: req.t ? req.t('auth:noToken', 'Authorization token is required') : 'Authorization token is required' 
       });
     }
     
-    const token = authHeader.split(' ')[1];
-    
-    // 使用Clerk验证令牌
-    const { sub: clerkUserId, sessionId } = await clerk.verifyToken(token);
-    
-    if (!clerkUserId) {
-      return res.status(401).json({
-        message: req.t('errors.unauthorized', 'Unauthorized')
-      });
-    }
-    
-    // 获取Clerk用户数据
-    const clerkUser = await clerk.users.getUser(clerkUserId);
-    
-    if (!clerkUser) {
-      return res.status(401).json({
-        message: req.t('errors.unauthorized', 'Unauthorized')
-      });
-    }
-    
-    // 查找或创建用户
-    let user = await User.findOne({ clerkId: clerkUserId });
-    
-    if (!user) {
-      // 创建新用户
-      const primaryEmail = clerkUser.emailAddresses.find(email => 
-        email.id === clerkUser.primaryEmailAddressId
+    try {
+      // 使用实例的方法
+      const decoded = await authService.verifyToken(token);
+      const user = await User.findById(decoded.id);
+      
+      if (!user) {
+        return res.status(401).json({ 
+          success: false, 
+          error: req.t ? req.t('auth:invalidToken', 'Authentication failed - invalid token') : 'Authentication failed - invalid token' 
+        });
+      }
+      
+      req.user = user;
+      req.token = token;
+      next();
+    } catch (error) {
+      logger.warn(
+        req.t ? 
+        req.t('auth:errors.general', '认证错误: {{message}}', { message: error.message }) : 
+        `认证错误: ${error.message}`, 
+        { error }
       );
       
-      user = await User.create({
-        clerkId: clerkUserId,
-        email: primaryEmail ? primaryEmail.emailAddress : '',
-        firstName: clerkUser.firstName || '',
-        lastName: clerkUser.lastName || '',
-        role: 'Client', // 默认角色
-        profileComplete: false,
-        subscriptionStatus: 'Free',
-        subscriptionExpiry: null,
+      return res.status(401).json({ 
+        success: false, 
+        error: req.t ? req.t('auth:failed', 'Authentication failed') : 'Authentication failed' 
       });
     }
-    
-    // 将用户信息附加到请求对象
-    req.user = user;
-    req.sessionId = sessionId;
-    
-    next();
   } catch (error) {
-    console.error('Authentication error:', error);
-    return res.status(401).json({
-      message: req.t('errors.unauthorized', 'Authentication failed')
+    logger.warn(
+      req.t ? 
+      req.t('auth:errors.general', '认证错误: {{message}}', { message: error.message }) : 
+      `认证错误: ${error.message}`, 
+      { error }
+    );
+    
+    return res.status(401).json({ 
+      success: false, 
+      error: req.t ? req.t('auth:failed', 'Authentication failed') : 'Authentication failed'
     });
   }
 };

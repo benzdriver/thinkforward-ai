@@ -6,6 +6,8 @@ const httpMocks = require('../../helpers/mock-request');
 const AuthService = require('../../../services/authService');
 const auth = require('../../../middleware/auth');
 const User = require('../../../models/User');
+const { ROLES } = require('../../../constants/roles');
+const mocki18n = require('../../mocks/i18nMock');
 
 // 使用 sinon 代替 jest 进行模拟
 describe('Auth Middleware', function() {
@@ -40,6 +42,20 @@ describe('Auth Middleware', function() {
       },
       '../config/logger': loggerMock
     });
+
+    // 创建AuthService实例的存根
+    this.authServiceStub = sinon.createStubInstance(AuthService);
+    // 模拟verifyToken方法
+    this.authServiceStub.verifyToken.resolves({ id: 'user_id' });
+    
+    // 替换导入的AuthService构造函数
+    sinon.stub(AuthService.prototype, 'verifyToken').callsFake(
+      this.authServiceStub.verifyToken
+    );
+
+    // 添加 i18n mock
+    this.req = httpMocks.createRequest();
+    this.req.t = mocki18n.t;
   });
   
   afterEach(function() {
@@ -51,7 +67,7 @@ describe('Auth Middleware', function() {
     const mockUser = { 
       _id: '507f1f77bcf86cd799439011', 
       email: 'test@example.com',
-      role: 'Client'
+      role: ROLES.CLIENT
     };
     
     // 模拟 clerk.verifyToken 返回有效负载

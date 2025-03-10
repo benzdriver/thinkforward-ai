@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const userController = require('../../../controllers/userController');
 const User = require('../../../models/User');
 const { ROLES } = require('../../../constants/roles');
+const mocki18n = require('../../mocks/i18nMock');
 
 
 describe('用户控制器测试', function() {
@@ -15,6 +16,12 @@ describe('用户控制器测试', function() {
     // 正确的写法
     const password = 'testPassword123';
     const hashedPassword = bcrypt.hashSync(password, 10);
+    
+    this.req = httpMocks.createRequest();
+    this.res = httpMocks.createResponse();
+    
+    // 添加 i18n mock
+    this.req.t = mocki18n.t;
   });
   
   afterEach(function() {

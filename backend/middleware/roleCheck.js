@@ -34,7 +34,7 @@ const requirePermission = (roles) => {
     
     if (!hasPermission) {
       // 记录权限被拒绝
-      console.warn(`权限被拒绝: 用户 ${req.user._id} 尝试访问需要 ${requiredRoles.join(',')} 的资源`);
+      logger.warn(`权限被拒绝: 用户 ${req.user._id} 尝试访问需要 ${requiredRoles.join(',')} 的资源`);
       
       return res.status(403).json({
         success: false,

@@ -18,13 +18,18 @@ const UserSchema = new Schema({
     index: true
   },
   
-  // 本地认证将使用的字段
   email: {
     type: String,
-    required: true,
+    required: [true, '{{email.required}}'], // 使用i18n键
     unique: true,
+    lowercase: true,
     trim: true,
-    lowercase: true
+    validate: {
+      validator: function(v) {
+        return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(v);
+      },
+      message: props => `${props.value} {{email.invalid}}` // 使用i18n键
+    }
   },
   
   password: {
@@ -159,6 +164,8 @@ UserSchema.methods.comparePassword = async function(candidatePassword) {
     throw error;
   }
 };
+
+UserSchema.methods.matchPassword = UserSchema.methods.comparePassword;
 
 // 账户锁定方法
 UserSchema.methods.isLocked = function() {

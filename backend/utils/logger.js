@@ -1,49 +1,34 @@
 const winston = require('winston');
 const config = require('../config');
 
-// 定义日志格式
-const logFormat = winston.format.printf(({ level, message, timestamp, ...meta }) => {
-  return `${timestamp} ${level}: ${message} ${Object.keys(meta).length ? JSON.stringify(meta) : ''}`;
-});
+// 根据环境配置适当的日志级别
+const level = process.env.NODE_ENV === 'production' ? 'info' : 'debug';
 
-// 创建日志器
+// 测试环境可以进一步降低日志级别或使用noop记录器
+const testMode = process.env.NODE_ENV === 'test';
+
 const logger = winston.createLogger({
-  level: process.env.NODE_ENV === 'test' ? 'none' : 'info',
+  level: testMode ? 'error' : level, // 测试时只记录错误
   format: winston.format.combine(
-    winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
-    winston.format.errors({ stack: true }),
-    winston.format.splat(),
-    logFormat
+    winston.format.timestamp(),
+    winston.format.json()
   ),
-  defaultMeta: { service: 'thinkforward-api' },
   transports: [
     // 控制台输出
     new winston.transports.Console({
       format: winston.format.combine(
         winston.format.colorize(),
-        logFormat
+        winston.format.simple()
       )
     }),
-    // 文件输出
-    new winston.transports.File({ 
-      filename: 'logs/error.log', 
-      level: 'error',
-      maxsize: 5242880, // 5MB
-      maxFiles: 5,
-    }),
-    new winston.transports.File({ 
-      filename: 'logs/combined.log',
-      maxsize: 5242880, // 5MB
-      maxFiles: 5,
-    })
-  ]
+    // 生产环境文件日志
+    ...(process.env.NODE_ENV === 'production' ? [
+      new winston.transports.File({ filename: 'logs/error.log', level: 'error' }),
+      new winston.transports.File({ filename: 'logs/combined.log' })
+    ] : [])
+  ],
+  // 测试环境可以完全禁用日志
+  silent: process.env.NODE_ENV === 'test' && process.env.LOG_TESTS !== 'true'
 });
-
-// 在开发环境下简化输出
-if (config.env === 'development') {
-  logger.add(new winston.transports.Console({
-    format: winston.format.simple()
-  }));
-}
 
 module.exports = logger; 
