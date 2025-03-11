@@ -18,15 +18,6 @@ router.get('/chat/history', auth, aiController.getChatHistory);
 // 获取单个对话 - GET /api/ai/chat/:chatId
 router.get('/chat/:chatId', auth, aiController.getChatById);
 
-// 执行初始评估 - POST /api/ai/assessment
-router.post('/assessment', auth, aiController.performInitialAssessment);
-
-// 获取表单帮助 - POST /api/ai/form-help
-router.post('/form-help', auth, aiController.getFormHelp);
-
-// 文档审核 - POST /api/ai/document-review
-router.post('/document-review', auth, aiController.reviewDocument);
-
 // 聊天相关端点
 router.post('/chat', auth, aiController.sendMessage);
 router.get('/chats', auth, aiController.getUserChats);
@@ -42,6 +33,6 @@ router.get('/assessment/:assessmentId', auth, aiController.getAssessmentById);
 router.post('/form-help', auth, aiController.getFormFieldHelp);
 
 // 上传文件以获取AI分析
-router.post('/analyze-file', auth, aiController.analyzeFile);
+// router.post('/analyze-file', auth, aiController.analyzeFile);  // 未实现
 
 module.exports = router; 

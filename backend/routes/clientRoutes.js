@@ -14,30 +14,30 @@ router.get('/user/:userId', auth, clientController.getClientByUserId);
 router.put('/:clientId', auth, clientController.updateClient);
 
 // 添加教育经历
-router.post('/:clientId/education', auth, clientController.addEducation);
-router.put('/:clientId/education/:eduId', auth, clientController.updateEducation);
-router.delete('/:clientId/education/:eduId', auth, clientController.deleteEducation);
+// router.post('/:clientId/education', auth, clientController.addEducation);
+// router.put('/:clientId/education/:eduId', auth, clientController.updateEducation);
+// router.delete('/:clientId/education/:eduId', auth, clientController.deleteEducation);
 
 // 添加工作经验
-router.post('/:clientId/work-experience', auth, clientController.addWorkExperience);
-router.put('/:clientId/work-experience/:expId', auth, clientController.updateWorkExperience);
-router.delete('/:clientId/work-experience/:expId', auth, clientController.deleteWorkExperience);
+// router.post('/:clientId/work-experience', auth, clientController.addWorkExperience);
+// router.put('/:clientId/work-experience/:expId', auth, clientController.updateWorkExperience);
+// router.delete('/:clientId/work-experience/:expId', auth, clientController.deleteWorkExperience);
 
 // 添加语言测试
-router.post('/:clientId/language-test', auth, clientController.addLanguageTest);
-router.put('/:clientId/language-test/:testId', auth, clientController.updateLanguageTest);
-router.delete('/:clientId/language-test/:testId', auth, clientController.deleteLanguageTest);
+// router.post('/:clientId/language-test', auth, clientController.addLanguageTest);
+// router.put('/:clientId/language-test/:testId', auth, clientController.updateLanguageTest);
+// router.delete('/:clientId/language-test/:testId', auth, clientController.deleteLanguageTest);
 
 // 添加文档
-router.post('/:clientId/document', auth, clientController.addDocument);
-router.put('/:clientId/document/:docId', auth, clientController.updateDocument);
-router.delete('/:clientId/document/:docId', auth, clientController.deleteDocument);
+// router.post('/:clientId/document', auth, clientController.addDocument);
+// router.put('/:clientId/document/:docId', auth, clientController.updateDocument);
+// router.delete('/:clientId/document/:docId', auth, clientController.deleteDocument);
 
 // 添加笔记
-router.post('/:clientId/note', auth, clientController.addNote);
-router.delete('/:clientId/note/:noteId', auth, clientController.deleteNote);
+// router.post('/:clientId/note', auth, clientController.addNote);
+// router.delete('/:clientId/note/:noteId', auth, clientController.deleteNote);
 
-// 这里可能存在问题的路由定义（第7行）
-router.post('/submit-assessment', auth, clientController.submitAssessment);
+// 临时注释掉未实现的路由
+// router.post('/submit-assessment', auth, clientController.submitAssessment);
 
 module.exports = router; 

@@ -8,6 +8,7 @@ const clientRoutes = require('./clientRoutes');
 const formRoutes = require('./formRoutes');
 const applicationRoutes = require('./applicationRoutes');
 const aiRoutes = require('./aiRoutes');
+const assessmentRoutes = require('./assessmentRoutes');
 
 // 注册路由
 router.use('/auth', authRoutes);
@@ -16,6 +17,7 @@ router.use('/clients', clientRoutes);
 router.use('/forms', formRoutes);
 router.use('/applications', applicationRoutes);
 router.use('/ai', aiRoutes);
+router.use('/assessments', assessmentRoutes);
 
 // API根路径
 router.get('/', (req, res) => {
