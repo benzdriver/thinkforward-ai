@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const clientController = require('../controllers/clientController');
-const auth = require('../middleware/auth');
+const { auth } = require('../middleware/auth');
 
 // 创建客户资料
 router.post('/', auth, clientController.createClient);
@@ -36,5 +36,8 @@ router.delete('/:clientId/document/:docId', auth, clientController.deleteDocumen
 // 添加笔记
 router.post('/:clientId/note', auth, clientController.addNote);
 router.delete('/:clientId/note/:noteId', auth, clientController.deleteNote);
+
+// 这里可能存在问题的路由定义（第7行）
+router.post('/submit-assessment', auth, clientController.submitAssessment);
 
 module.exports = router; 

@@ -25,4 +25,9 @@ router.get('/', (req, res) => {
   });
 });
 
+// 在路由文件中添加健康检查端点
+router.get('/health', (req, res) => {
+  res.status(200).json({ status: 'ok' });
+});
+
 module.exports = router; 

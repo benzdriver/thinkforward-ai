@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const formController = require('../controllers/formController');
-const auth = require('../middleware/auth');
+const { auth } = require('../middleware/auth');
 
 // 创建表单模板
 router.post('/template', auth, formController.createFormTemplate);

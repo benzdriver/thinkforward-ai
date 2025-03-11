@@ -13,6 +13,7 @@ const clerkWebhookRoutes = require('./webhooks/clerkWebhook');
 // 导入路由
 const routes = require('./routes');
 const uploadRoutes = require('./routes/uploadRoutes');
+const healthRoutes = require('./routes/healthRoutes');
 
 // 初始化Express应用
 const app = express();
@@ -47,6 +48,7 @@ app.use(auth.auth);
 // API路由
 app.use('/api', routes);
 app.use('/api/upload', uploadRoutes);
+app.use('/api/health', healthRoutes);
 
 // 健康检查
 app.get('/health', (req, res) => {
@@ -62,5 +64,18 @@ app.use((req, res, next) => {
 
 // 全局错误处理
 app.use(errorHandler);
+
+// 在app.js底部，启动服务器之前添加
+app._router.stack.forEach(function(r){
+  if (r.route && r.route.path){
+    console.log(r.route.path)
+  } else if(r.name === 'router' && r.handle.stack){
+    r.handle.stack.forEach(function(h){
+      if(h.route){
+        console.log(h.route.path)
+      }
+    })
+  }
+});
 
 module.exports = app; 

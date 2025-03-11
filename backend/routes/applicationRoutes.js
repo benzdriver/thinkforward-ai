@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const applicationController = require('../controllers/applicationController');
-const auth = require('../middleware/auth');
+const { auth } = require('../middleware/auth');
 
 // 创建申请
 router.post('/', auth, applicationController.createApplication);

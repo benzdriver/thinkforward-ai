@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const aiController = require('../controllers/aiController');
-const auth = require('../middleware/auth');
+const { auth } = require('../middleware/auth');
 
 // 旧版API兼容 - POST /api/ai/chat (支持当前前端)
 router.post('/chat', auth, aiController.handleLegacyChat);
