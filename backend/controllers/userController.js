@@ -114,10 +114,14 @@ const syncClerkUser = async (req, res) => {
   }
 };
 
-// 获取当前用户信息
+/**
+ * 获取当前登录用户信息
+ * @route GET /api/users/me
+ * @access 需要认证
+ */
 const getCurrentUser = async (req, res) => {
   try {
-    const user = req.user;
+    const user = await User.findById(req.user._id);
     
     if (!user) {
       return res.status(404).json({
@@ -142,7 +146,7 @@ const getCurrentUser = async (req, res) => {
       }
     });
   } catch (error) {
-    logger.error('获取用户信息错误:', error);
+    logger.error('获取当前用户信息错误:', error);
     return res.status(500).json({
       success: false,
       message: req.t('errors.serverError', 'Server error')
@@ -645,6 +649,159 @@ const inviteUser = async (req, res) => {
   }
 };
 
+/**
+ * 获取所有顾问用户
+ * @route GET /api/users/consultants
+ * @access 仅管理员和顾问
+ */
+const getConsultants = async (req, res) => {
+  try {
+    const consultants = await User.find({ 
+      role: ROLES.CONSULTANT,
+      isDeleted: { $ne: true }
+    }).select('_id firstName lastName email profileImage bio specialties availability');
+    
+    return res.status(200).json({
+      success: true,
+      count: consultants.length,
+      data: consultants
+    });
+  } catch (error) {
+    logger.error('获取顾问列表错误:', error);
+    return res.status(500).json({
+      success: false,
+      message: req.t('errors.serverError', 'Server error')
+    });
+  }
+};
+
+/**
+ * 获取所有客户用户
+ * @route GET /api/users/clients
+ * @access 仅管理员和顾问
+ */
+const getClients = async (req, res) => {
+  try {
+    // 基础查询条件
+    const query = { 
+      role: ROLES.CLIENT,
+      isDeleted: { $ne: true }
+    };
+    
+    // 如果是顾问，只能看到分配给自己的客户
+    if (req.user.role === ROLES.CONSULTANT) {
+      query.assignedConsultant = req.user._id;
+    }
+    
+    // 分页参数
+    const page = parseInt(req.query.page, 10) || 1;
+    const limit = parseInt(req.query.limit, 10) || 25;
+    const skip = (page - 1) * limit;
+    
+    // 查询客户
+    const clients = await User.find(query)
+      .select('_id firstName lastName email profileImage contactInfo assignedConsultant lastLogin')
+      .populate('assignedConsultant', '_id firstName lastName email')
+      .skip(skip)
+      .limit(limit)
+      .sort({ createdAt: -1 });
+    
+    // 获取总数
+    const total = await User.countDocuments(query);
+    
+    return res.status(200).json({
+      success: true,
+      data: {
+        clients,
+        pagination: {
+          total,
+          page,
+          limit,
+          pages: Math.ceil(total / limit)
+        }
+      }
+    });
+  } catch (error) {
+    logger.error('获取客户列表错误:', error);
+    return res.status(500).json({
+      success: false,
+      message: req.t('errors.serverError', 'Server error')
+    });
+  }
+};
+
+/**
+ * 分配顾问给客户
+ * @route POST /api/users/assign-consultant
+ * @access 仅管理员和顾问
+ */
+const assignConsultant = async (req, res) => {
+  try {
+    const { clientId, consultantId } = req.body;
+    
+    if (!clientId || !consultantId) {
+      return res.status(400).json({
+        success: false,
+        message: req.t('errors.missingFields', 'Client and consultant IDs are required')
+      });
+    }
+    
+    // 查找客户
+    const client = await User.findById(clientId);
+    if (!client || client.role !== ROLES.CLIENT) {
+      return res.status(404).json({
+        success: false,
+        message: req.t('errors.clientNotFound', 'Client not found')
+      });
+    }
+    
+    // 查找顾问
+    const consultant = await User.findById(consultantId);
+    if (!consultant || consultant.role !== ROLES.CONSULTANT) {
+      return res.status(404).json({
+        success: false,
+        message: req.t('errors.consultantNotFound', 'Consultant not found')
+      });
+    }
+    
+    // 权限检查：顾问只能管理自己的客户
+    if (
+      req.user.role === ROLES.CONSULTANT &&
+      req.user._id.toString() !== consultantId &&
+      (!client.assignedConsultant || client.assignedConsultant.toString() !== req.user._id.toString())
+    ) {
+      return res.status(403).json({
+        success: false,
+        message: req.t('errors.forbidden', 'You can only manage your own clients')
+      });
+    }
+    
+    // 更新客户的顾问分配
+    client.assignedConsultant = consultantId;
+    client.consultantAssignedAt = new Date();
+    await client.save();
+    
+    // 记录操作
+    logger.info(`顾问分配: 客户 ${clientId} 被分配给顾问 ${consultantId}, 操作者: ${req.user._id}`);
+    
+    return res.status(200).json({
+      success: true,
+      message: req.t('success.consultantAssigned', 'Consultant assigned successfully'),
+      data: {
+        clientId: client._id,
+        consultantId: consultant._id,
+        assignedAt: client.consultantAssignedAt
+      }
+    });
+  } catch (error) {
+    logger.error('分配顾问错误:', error);
+    return res.status(500).json({
+      success: false,
+      message: req.t('errors.serverError', 'Server error')
+    });
+  }
+};
+
 module.exports = {
   login,
   syncClerkUser,
@@ -659,5 +816,8 @@ module.exports = {
   updateUserProfile,
   getAllUsers,
   updateUserRole,
-  inviteUser
+  inviteUser,
+  getConsultants,
+  getClients,
+  assignConsultant
 }; 
