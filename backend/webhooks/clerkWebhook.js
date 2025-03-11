@@ -4,7 +4,13 @@ const crypto = require('crypto');
 const User = require('../models/User');
 const logger = require('../utils/logger');
 const config = require('../config');
-const { syncSocialLogins } = require('../utils/syncSocialLogins');
+const { ROLES } = require('../constants/roles');
+const { 
+  syncClerkUser, 
+  updateUserFromClerk, 
+  handleUserDeletion,
+  syncSocialLogins 
+} = require('../utils/userSync');
 
 // 验证Clerk的Webhook请求
 const verifyClerkWebhook = (req, res, next) => {
@@ -41,218 +47,94 @@ const verifyClerkWebhook = (req, res, next) => {
   }
 };
 
-// 处理用户创建事件
-router.post('/user.created', verifyClerkWebhook, async (req, res) => {
+// 统一处理所有Clerk事件的端点
+router.post('/', verifyClerkWebhook, async (req, res) => {
   try {
-    const { data: clerkUser } = req.body;
+    const { type, data } = req.body;
+    logger.info(`收到Clerk webhook事件: ${type}`);
     
-    // 获取用户主邮箱
-    const primaryEmail = clerkUser.email_addresses.find(
-      email => email.id === clerkUser.primary_email_address_id
-    )?.email_address;
-    
-    if (!primaryEmail) {
-      logger.warn(`Webhook: 用户 ${clerkUser.id} 没有主邮箱，跳过`);
-      return res.status(200).json({ message: 'Skipped - no primary email' });
-    }
-    
-    // 创建或更新用户
-    let user = await User.findOne({ 
-      $or: [
-        { clerkId: clerkUser.id },
-        { email: primaryEmail }
-      ]
-    });
-    
-    if (!user) {
-      user = new User({
-        clerkId: clerkUser.id,
-        authProvider: 'clerk',
-        email: primaryEmail,
-        firstName: clerkUser.first_name || 'User',
-        lastName: clerkUser.last_name || '',
-        createdAt: new Date()
-      });
-    }
-    
-    // 同步社交登录(使用您刚接受的工具函数)
-    if (clerkUser.external_accounts && clerkUser.external_accounts.length > 0) {
-      syncSocialLogins(user, clerkUser.external_accounts);
-    }
-    
-    await user.save();
-    logger.info(`Webhook: 用户 ${clerkUser.id} 已同步`);
-    
-    return res.status(200).json({ message: 'User synchronized' });
-  } catch (error) {
-    logger.error('Webhook处理错误:', error);
-    return res.status(500).json({ message: 'Error processing webhook' });
-  }
-});
-
-// 处理用户更新事件
-router.post('/user.updated', verifyClerkWebhook, async (req, res) => {
-  try {
-    const userData = req.body.data;
-    
-    logger.info(`收到用户更新Webhook: ${userData.id}`);
-    
-    // 找到用户
-    let user = await User.findOne({ clerkId: userData.id });
-    
-    if (!user) {
-      logger.warn(`用户 ${userData.id} 不存在，可能是首次同步`);
-      
-      // 尝试通过邮箱查找
-      const primaryEmailObj = userData.email_addresses.find(
-        email => email.id === userData.primary_email_address_id
-      );
-      
-      if (primaryEmailObj) {
-        user = await User.findOne({ email: primaryEmailObj.email_address });
-      }
-      
-      if (!user) {
-        // 如果仍找不到，创建新用户
-        return res.redirect(307, '/api/webhooks/clerk/user.created');
-      }
-    }
-    
-    // 更新基本信息
-    user.firstName = userData.first_name || user.firstName;
-    user.lastName = userData.last_name || user.lastName;
-    
-    // 更新邮箱(如果主邮箱发生变化)
-    const primaryEmailObj = userData.email_addresses.find(
-      email => email.id === userData.primary_email_address_id
-    );
-    
-    if (primaryEmailObj && primaryEmailObj.email_address !== user.email) {
-      user.email = primaryEmailObj.email_address;
-    }
-    
-    // 处理外部账户变化(社交登录)
-    if (userData.external_accounts && userData.external_accounts.length > 0) {
-      if (!user.socialLogins) user.socialLogins = [];
-      
-      // 检查新的社交登录
-      for (const externalAccount of userData.external_accounts) {
-        const provider = externalAccount.provider.replace('oauth_', '');
-        const providerId = externalAccount.provider_user_id;
-        
-        // 检查是否已存在此社交登录
-        const existingIndex = user.socialLogins.findIndex(
-          login => login.provider === provider && login.providerId === providerId
-        );
-        
-        if (existingIndex === -1) {
-          // 添加新的社交登录
-          user.socialLogins.push({
-            provider,
-            providerId,
-            data: {
-              email: externalAccount.email_address,
-              username: externalAccount.username,
-              firstName: externalAccount.first_name,
-              lastName: externalAccount.last_name,
-              avatarUrl: externalAccount.avatar_url
-            },
-            lastUsed: new Date(),
-            createdAt: new Date(externalAccount.created_at || Date.now())
-          });
+    switch (type) {
+      case 'user.created':
+        await syncClerkUser(data);
+        break;
+      case 'user.updated':
+        await updateUserFromClerk(data);
+        break;
+      case 'user.deleted':
+        await handleUserDeletion(data.id);
+        break;
+      case 'session.created':
+        await handleSessionCreated(data);
+        break;
+      case 'session.revoked':
+      case 'session.removed':
+        logger.info(`会话事件 ${type}: ${data.id}`);
+        break;
+      case 'user.email.created':
+      case 'user.email.updated':
+        if (data.user_id) {
+          const clerkUser = await clerkClient.users.getUser(data.user_id);
+          await updateUserFromClerk(clerkUser);
         }
-      }
+        break;
+      case 'oauth.access_token.created':
+      case 'oauth.access_token.refreshed':
+        if (data.user_id) {
+          const clerkUser = await clerkClient.users.getUser(data.user_id);
+          const userId = await getUserIdByClerkId(data.user_id);
+          if (userId && clerkUser.externalAccounts) {
+            await syncSocialLogins(userId, clerkUser.externalAccounts);
+          }
+        }
+        break;
+      default:
+        logger.info(`未处理的Webhook事件类型: ${type}`);
     }
     
-    await user.save();
-    
-    logger.info(`用户更新同步成功: ${userData.id}`);
-    return res.status(200).json({ message: 'User updated' });
+    return res.status(200).json({ success: true });
   } catch (error) {
-    logger.error('用户更新Webhook处理错误:', error);
-    return res.status(500).json({ message: 'Error processing webhook' });
+    logger.error(`Webhook处理错误: ${error.message}`, { error });
+    return res.status(200).json({ success: false, error: error.message });
   }
 });
 
-// 处理社交登录添加事件
-router.post('/externalAccount.created', verifyClerkWebhook, async (req, res) => {
+// 会话创建处理函数
+async function handleSessionCreated(sessionData) {
   try {
-    const accountData = req.body.data;
-    const userId = accountData.user_id;
-    
-    logger.info(`收到社交账号创建Webhook: ${accountData.id} 用户: ${userId}`);
-    
-    // 查找用户
-    const user = await User.findOne({ clerkId: userId });
-    
-    if (!user) {
-      logger.warn(`用户 ${userId} 不存在，跳过社交账号同步`);
-      return res.status(200).json({ message: 'User not found' });
-    }
-    
-    // 准备添加新的社交登录
-    if (!user.socialLogins) user.socialLogins = [];
-    
-    const provider = accountData.provider.replace('oauth_', '');
-    const providerId = accountData.provider_user_id;
-    
-    // 检查是否已存在
-    const existingIndex = user.socialLogins.findIndex(
-      login => login.provider === provider && login.providerId === providerId
-    );
-    
-    if (existingIndex === -1) {
-      // 添加新的社交登录
-      user.socialLogins.push({
-        provider,
-        providerId,
-        data: {
-          email: accountData.email_address,
-          username: accountData.username,
-          firstName: accountData.first_name,
-          lastName: accountData.last_name,
-          avatarUrl: accountData.avatar_url
-        },
-        lastUsed: new Date(),
-        createdAt: new Date()
-      });
-      
-      await user.save();
-      logger.info(`为用户 ${userId} 添加社交登录 ${provider} 成功`);
-    } else {
-      logger.info(`用户 ${userId} 已有社交登录 ${provider}`);
-    }
-    
-    return res.status(200).json({ message: 'Social login synced' });
-  } catch (error) {
-    logger.error('社交账号创建Webhook处理错误:', error);
-    return res.status(500).json({ message: 'Error processing webhook' });
-  }
-});
-
-// 处理用户登录事件
-router.post('/session.created', verifyClerkWebhook, async (req, res) => {
-  try {
-    const sessionData = req.body.data;
     const userId = sessionData.user_id;
     
-    logger.info(`收到用户登录Webhook: ${userId}`);
-    
-    // 更新最后登录时间
     const user = await User.findOne({ clerkId: userId });
     
     if (user) {
       user.lastLogin = new Date();
+      user.lastLoginIP = sessionData.client_ip || null;
+      if (user.failedLoginAttempts > 0) {
+        user.failedLoginAttempts = 0;
+        if (user.lockedUntil && user.lockedUntil > new Date()) {
+          user.lockedUntil = null;
+        }
+      }
+      
       await user.save();
-      logger.info(`更新用户 ${userId} 最后登录时间`);
+      logger.info(`用户 ${user.email} (Clerk ID: ${userId}) 登录成功`);
+    } else {
+      logger.warn(`会话创建: 用户 ${userId} 在本地数据库中不存在`);
     }
-    
-    return res.status(200).json({ message: 'Login recorded' });
   } catch (error) {
-    logger.error('登录Webhook处理错误:', error);
-    return res.status(500).json({ message: 'Error processing webhook' });
+    logger.error(`处理会话创建失败: ${error.message}`, { error });
+    throw error;
   }
-});
+}
 
-// 注册Clerk webhook路由
+// 辅助函数 - 通过ClerkID获取用户ID
+async function getUserIdByClerkId(clerkId) {
+  try {
+    const user = await User.findOne({ clerkId });
+    return user ? user._id : null;
+  } catch (error) {
+    logger.error(`获取用户ID失败: ${error.message}`, { error });
+    return null;
+  }
+}
+
 module.exports = router; 

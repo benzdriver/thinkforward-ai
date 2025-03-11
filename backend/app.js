@@ -7,6 +7,8 @@ const i18nextMiddleware = require('./middleware/i18n');
 const errorHandler = require('./middleware/errorHandler');
 const config = require('./config');
 const logger = require('./utils/logger');
+const auth = require('./middleware/auth');
+const clerkWebhookRoutes = require('./webhooks/clerkWebhook');
 
 // 导入路由
 const routes = require('./routes');
@@ -34,6 +36,13 @@ app.use(i18nextMiddleware);
 // 静态文件
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+// Webhook路由 - 不需要认证
+// 注意：这个路由必须在认证中间件前定义，因为webhook不需要认证
+app.use('/api/webhooks/clerk', clerkWebhookRoutes);
+
+// 认证中间件
+app.use(auth.auth);
+
 // API路由
 app.use('/api', routes);
 
@@ -50,13 +59,6 @@ app.use((req, res, next) => {
 });
 
 // 全局错误处理
-app.use((err, req, res, next) => {
-  logger.error(err.stack);
-  
-  // 使用i18n
-  const message = req.t('errors.serverError', 'Something went wrong. Please try again later.');
-  
-  res.status(500).json({ message });
-});
+app.use(errorHandler);
 
 module.exports = app; 

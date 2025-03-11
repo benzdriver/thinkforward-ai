@@ -5,6 +5,9 @@ const config = require('../config');
 const { clerkClient } = require('@clerk/clerk-sdk-node');
 const logger = require('../utils/logger');
 const { OAuth2Client } = require('google-auth-library');
+const jwksClient = require('jwks-rsa');
+const { Clerk } = require('@clerk/clerk-sdk-node');
+const { ROLES } = require('../constants/roles');
 
 class AuthService {
   constructor() {
@@ -20,7 +23,22 @@ class AuthService {
     this.googleClientSecret = process.env.GOOGLE_CLIENT_SECRET || 'test_client_secret';
     
     // Clerk认证配置
-    this.clerkApiKey = process.env.CLERK_API_KEY || 'test_clerk_api_key';
+    this.clerkApiKey = process.env.CLERK_SECRET_KEY || 'test_CLERK_SECRET_KEY';
+    
+    // 设置 JWKS 客户端，用于从 Clerk 公钥获取签名密钥
+    try {
+      const jwksJson = JSON.parse(process.env.CLERK_JWT_PUBLIC_KEY || '{"keys":[]}');
+      this.clerkJwksClient = jwksClient({
+        jwksUri: 'https://clerk.your-domain.com/.well-known/jwks.json', // 可选，如果您直接提供了 JWKS
+        cache: true,
+        rateLimit: true,
+        jwksRequestsPerMinute: 5,
+        // 如果您在环境变量中提供了完整的 JWKS，可以使用以下方式
+        getKeysInterceptor: (cb) => cb(null, jwksJson.keys)
+      });
+    } catch (error) {
+      logger.error('初始化 JWKS 客户端失败:', error.message);
+    }
     
     // 初始化认证客户端 (仅在非测试环境或如果提供了实际的客户端ID)
     if (!this.isTestEnvironment && this.googleClientId !== 'test_client_id') {
@@ -30,6 +48,9 @@ class AuthService {
         console.warn('初始化Google Auth客户端失败:', error.message);
       }
     }
+
+    // 使用配置中的 secretKey
+    this.clerk = new Clerk({ secretKey: config.clerk.secretKey });
   }
   
   // 生成JWT令牌
@@ -43,7 +64,12 @@ class AuthService {
   
   // 验证JWT令牌
   verifyToken(token) {
-    return jwt.verify(token, this.jwtSecret);
+    try {
+      return jwt.verify(token, this.jwtSecret);
+    } catch (error) {
+      logger.error(`JWT 验证失败: ${error.message}`);
+      throw new Error('无效的令牌');
+    }
   }
   
   /**
@@ -108,31 +134,15 @@ class AuthService {
     }
   }
   
-  // 验证Clerk会话令牌 (简化版)
+  // 验证由 Clerk 签发的 JWT
   async verifyClerkToken(token) {
-    // 在测试环境中，返回模拟数据
-    if (this.isTestEnvironment) {
-      return {
-        verified: true,
-        userId: 'test_user_id',
-        email: 'test@example.com'
-      };
-    }
-    
-    // 实际环境中的验证逻辑
     try {
-      // 这里应该实现实际的Clerk令牌验证
-      // 暂时返回测试数据
-      return {
-        verified: true,
-        userId: 'clerk_user_id',
-        email: 'clerk@example.com'
-      };
+      // 使用 Clerk SDK 验证会话令牌
+      const session = await this.clerk.sessions.verifySession(token);
+      return session;
     } catch (error) {
-      return {
-        verified: false,
-        error: error.message
-      };
+      logger.error(`Clerk 令牌验证失败: ${error.message}`);
+      throw new Error('无效的 Clerk 令牌');
     }
   }
   
@@ -169,7 +179,7 @@ class AuthService {
             firstName: clerkUser.firstName || 'User',
             lastName: clerkUser.lastName || '',
             displayName: `${clerkUser.firstName || ''} ${clerkUser.lastName || ''}`.trim() || primaryEmail,
-            role: 'Client',
+            role: ROLES.CLIENT,
             preferredLanguage: 'en'
           });
         }

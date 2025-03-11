@@ -68,7 +68,7 @@ describe('用户模型测试', function() {
         lastName: 'User',
         email: 'test@example.com',
         password: 'Pass1!',
-        role: 'CLIENT'
+        role: ROLES.CLIENT
       });
       
       let error;
@@ -113,7 +113,7 @@ describe('用户模型测试', function() {
         lastName: 'Test',
         email: 'hash@test.com',
         password: plainPassword,
-        role: 'CLIENT'
+        role: ROLES.CLIENT
       });
       
       await user.save();
@@ -133,7 +133,7 @@ describe('用户模型测试', function() {
         lastName: 'Once',
         email: 'hashonce@test.com',
         password: 'Password123!',
-        role: 'CLIENT'
+        role: ROLES.CLIENT
       });
       
       await user.save();

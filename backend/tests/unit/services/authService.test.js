@@ -25,7 +25,7 @@ describe('认证服务测试', function() {
         firstName: 'Test',
         lastName: 'User',
         email: 'test@example.com',
-        role: 'Client'
+        role: ROLES.CLIENT
       };
       
       const signStub = sinon.stub(jwt, 'sign').returns('fake-token');
@@ -45,7 +45,7 @@ describe('认证服务测试', function() {
     it('应该验证有效的JWT令牌', function() {
       const payload = {
         id: '507f1f77bcf86cd799439011',
-        role: 'Client',
+        role: ROLES.CLIENT,
         iat: Math.floor(Date.now() / 1000),
         exp: Math.floor(Date.now() / 1000) + 3600
       };

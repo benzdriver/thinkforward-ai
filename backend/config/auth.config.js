@@ -30,7 +30,7 @@ module.exports = {
   
   // Clerk配置
   clerk: {
-    apiKey: process.env.CLERK_API_KEY,
+    apiKey: process.env.CLERK_SECRET_KEY,
     jwtPublicKey: process.env.CLERK_JWT_PUBLIC_KEY
   },
   

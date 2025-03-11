@@ -3,6 +3,8 @@ const AuthService = require('../services/authService');
 const { syncSocialLogins } = require('../utils/userSync');
 const { OAuth2Client } = require('google-auth-library');
 const jwt = require('jsonwebtoken');
+const logger = require('../utils/logger');
+const { ROLES } = require('../constants/roles');
 
 const authService = new AuthService();
 
@@ -161,7 +163,7 @@ const googleLogin = async (req, res) => {
           lastName,
           picture,
           authProvider: 'google',
-          role: 'Client'
+          role: ROLES.CLIENT
         });
       }
       
@@ -222,9 +224,123 @@ const verifySession = async (req, res) => {
   }
 };
 
+// Clerk Webhook 处理
+const handleClerkWebhook = async (req, res) => {
+  try {
+    // 验证 Webhook 请求
+    const headerSignature = req.headers['svix-signature'];
+    const webhookSecret = process.env.CLERK_WEBHOOK_SECRET;
+    
+    if (!headerSignature || !webhookSecret) {
+      logger.warn('Webhook 签名验证失败: 缺少签名或密钥');
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+    
+    // 验证签名逻辑这里省略，实际应使用 Clerk SDK 或手动验证
+    
+    // 处理不同的事件类型
+    const { type, data } = req.body;
+    logger.info(`收到 Clerk webhook: ${type}`);
+    
+    switch (type) {
+      case 'user.created':
+        await syncClerkUser(data);
+        break;
+        
+      case 'user.updated':
+        await updateUserFromClerk(data);
+        break;
+        
+      case 'user.deleted':
+        await handleUserDeletion(data.id);
+        break;
+        
+      // 处理其他事件...
+      case 'session.created':
+      case 'session.revoked':
+        // 可以记录会话信息
+        break;
+        
+      default:
+        logger.info(`未处理的 Webhook 事件类型: ${type}`);
+    }
+    
+    return res.status(200).json({ success: true });
+  } catch (error) {
+    logger.error(`Webhook 处理错误: ${error.message}`, { error });
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+// 获取认证状态
+const getAuthStatus = async (req, res) => {
+  try {
+    return res.status(200).json({
+      success: true,
+      authenticated: true,
+      user: {
+        id: req.user.id,
+        email: req.user.email,
+        role: req.user.role
+      }
+    });
+  } catch (error) {
+    logger.error(`获取认证状态错误: ${error.message}`);
+    return res.status(500).json({ 
+      success: false, 
+      error: '服务器错误' 
+    });
+  }
+};
+
+// 验证令牌
+const verifyToken = async (req, res) => {
+  try {
+    const { token } = req.body;
+    
+    if (!token) {
+      return res.status(400).json({
+        success: false,
+        error: '缺少令牌'
+      });
+    }
+    
+    const decoded = authService.verifyToken(token);
+    
+    return res.status(200).json({
+      success: true,
+      valid: true,
+      user: decoded
+    });
+  } catch (error) {
+    logger.error(`令牌验证错误: ${error.message}`);
+    return res.status(401).json({
+      success: false,
+      valid: false,
+      error: '无效令牌'
+    });
+  }
+};
+
+// 注销
+const logout = async (req, res) => {
+  // 可能的服务器端注销逻辑
+  // 例如: 将令牌加入黑名单、清除会话等
+  
+  return res.status(200).json({
+    success: true,
+    message: '成功注销'
+  });
+};
+
+// 确保导出所有路由中使用的函数
 module.exports = {
   register,
   login,
   googleLogin,
   verifySession,
+  handleClerkWebhook,
+  getAuthStatus,
+  verifyToken,
+  logout
 }; 

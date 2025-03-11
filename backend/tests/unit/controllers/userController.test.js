@@ -82,7 +82,7 @@ describe('用户控制器测试', function() {
         firstName: 'Before',
         lastName: 'Update',
         email: 'before@example.com',
-        role: 'CLIENT',
+        role: ROLES.CLIENT,
         preferredLanguage: 'en'
       };
       
@@ -92,7 +92,7 @@ describe('用户控制器测试', function() {
         firstName: 'After',
         lastName: 'Update',
         email: 'after@example.com',
-        role: 'CLIENT',
+        role: ROLES.CLIENT,
         preferredLanguage: 'zh'
       });
       
@@ -132,13 +132,13 @@ describe('用户控制器测试', function() {
         firstName: 'Client',
         lastName: 'User',
         email: 'client@example.com',
-        role: 'CLIENT',
+        role: ROLES.CLIENT,
         save: sinon.stub().resolves({
           _id: '507f1f77bcf86cd799439011',
           firstName: 'Client',
           lastName: 'Updated',
           email: 'client@example.com',
-          role: 'CLIENT'
+          role: ROLES.CLIENT
         })
       };
       
@@ -221,7 +221,7 @@ describe('用户控制器测试', function() {
         firstName: 'Target',
         lastName: 'User',
         email: 'target@example.com',
-        role: 'CLIENT',
+        role: ROLES.CLIENT,
         save: sinon.stub().resolves({
           _id: '507f1f77bcf86cd799439011',
           firstName: 'Target',

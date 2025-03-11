@@ -43,7 +43,7 @@ describe('Permissions System Integration Tests', () => {
       email: 'client@example.com',
       firstName: 'Client',
       lastName: 'User',
-      role: 'Client',
+      role: ROLES.CLIENT,
       authProvider: 'local',
       password: 'Password123!'
     });
@@ -95,7 +95,7 @@ describe('Permissions System Integration Tests', () => {
         expect(res.status).to.equal(200);
         
         // Reset role for other tests
-        await User.findByIdAndUpdate(clientUser._id, { role: 'Client' });
+        await User.findByIdAndUpdate(clientUser._id, { role: ROLES.CLIENT });
       });
     });
 

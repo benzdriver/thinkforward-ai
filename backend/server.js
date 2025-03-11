@@ -22,6 +22,7 @@ const userRoutes = require('./routes/userRoutes');
 const clientRoutes = require('./routes/clientRoutes');
 const formRoutes = require('./routes/formRoutes');
 const aiRoutes = require('./routes/aiRoutes');
+const healthRoutes = require('./routes/healthRoutes');
 
 // 中间件
 app.use(express.json({ limit: '10mb' }));
@@ -48,6 +49,9 @@ app.use(authSyncMiddleware);
 
 // 启动定期数据同步
 scheduleDataSync();
+
+// 注册健康检查路由
+app.use('/api/health', healthRoutes);
 
 // 健康检查端点
 app.get('/health', (req, res) => {
