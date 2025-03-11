@@ -33,6 +33,10 @@ const AiChatSchema = new Schema({
     ref: 'User',
     required: true
   },
+  title: {
+    type: String,
+    default: 'New Chat'
+  },
   chatType: {
     type: String,
     enum: ['General', 'Assessment', 'FormHelper', 'DocumentReview'],
@@ -55,12 +59,21 @@ const AiChatSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Client'
   },
+  relatedApplication: {
+    type: Schema.Types.ObjectId,
+    ref: 'Application',
+    default: null
+  },
   isActive: {
     type: Boolean,
     default: true
   },
+  language: {
+    type: String,
+    default: 'en'
+  },
   summary: String
-});
+}, { timestamps: true });
 
 // 更新updatedAt时间戳
 AiChatSchema.pre('save', function(next) {

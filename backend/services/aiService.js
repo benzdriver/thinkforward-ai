@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const OpenAI = require('openai');
-const Chat = require('../models/Chat');
+const AiChat = require('../models/AiChat');
 const AiAssessment = require('../models/AiAssessment');
 const config = require('../config');
 const logger = require('../utils/logger');
@@ -68,7 +68,7 @@ class AIService {
     const currentDate = new Date();
     const startOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
     
-    const messageCount = await Chat.aggregate([
+    const messageCount = await AiChat.aggregate([
       {
         $match: {
           user: userId,
@@ -102,7 +102,7 @@ class AIService {
     try {
       const title = t('ai.newChat', 'New Chat', {}, language);
       
-      const chat = new Chat({
+      const chat = new AiChat({
         user: userId,
         title: title,
         language: language,
@@ -121,7 +121,7 @@ class AIService {
   async sendMessage(chatId, message, language = 'en') {
     try {
       // 查找聊天
-      const chat = await Chat.findById(chatId);
+      const chat = await AiChat.findById(chatId);
       
       if (!chat) {
         throw new Error('Chat not found');

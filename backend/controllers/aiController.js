@@ -1,5 +1,5 @@
 const AIService = require('../services/aiService');
-const AiChat = require('../models/Chat');
+const AiChat = require('../models/AiChat');
 const AiAssessment = require('../models/AiAssessment');
 const Client = require('../models/Client');
 const Form = require('../models/Form');
