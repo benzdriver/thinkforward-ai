@@ -13,7 +13,7 @@ const config = {
   },
   
   mongodb: {
-    uri: process.env.MONGO_URI,
+    uri: process.env.MONGO_URL,
     options: {
       useNewUrlParser: true,
       useUnifiedTopology: true,

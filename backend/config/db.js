@@ -12,7 +12,7 @@ const options = {
 // 连接函数
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGODB_URI, options);
+    const conn = await mongoose.connect(process.env.MONGO_URL, options);
     
     logger.info(`MongoDB 已连接: ${conn.connection.host}`);
     

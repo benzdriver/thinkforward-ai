@@ -22,7 +22,7 @@ if (!process.env.JWT_SECRET) {
 }
 
 // 设置 Mongoose 选项
-process.env.MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/thinkforward_test';
+process.env.MONGO_URL = process.env.MONGO_URL || 'mongodb://localhost:27017/thinkforward_test';
 
 // 添加 Sinon-Chai 插件
 chai.use(sinonChai);
