@@ -12,6 +12,7 @@ const clerkWebhookRoutes = require('./webhooks/clerkWebhook');
 
 // 导入路由
 const routes = require('./routes');
+const uploadRoutes = require('./routes/uploadRoutes');
 
 // 初始化Express应用
 const app = express();
@@ -45,6 +46,7 @@ app.use(auth.auth);
 
 // API路由
 app.use('/api', routes);
+app.use('/api/upload', uploadRoutes);
 
 // 健康检查
 app.get('/health', (req, res) => {
