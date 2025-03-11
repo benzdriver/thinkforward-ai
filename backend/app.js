@@ -7,7 +7,7 @@ const i18nextMiddleware = require('./middleware/i18n');
 const errorHandler = require('./middleware/errorHandler');
 const config = require('./config');
 const logger = require('./utils/logger');
-const auth = require('./middleware/auth');
+const { auth } = require('./middleware/auth');
 const clerkWebhookRoutes = require('./webhooks/clerkWebhook');
 
 // 导入路由
