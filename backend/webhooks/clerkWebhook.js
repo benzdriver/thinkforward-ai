@@ -49,8 +49,17 @@ const verifyClerkWebhook = (req, res, next) => {
 
 // 统一处理所有Clerk事件的端点
 router.post('/', verifyClerkWebhook, async (req, res) => {
+  const startTime = Date.now();
+  const { type, data } = req.body;
+  
+  // 添加事件开始处理日志
+  logger.info(`开始处理Webhook事件: ${type}`, { 
+    eventType: type,
+    dataId: data.id,
+    requestId: req.headers['svix-id']
+  });
+  
   try {
-    const { type, data } = req.body;
     logger.info(`收到Clerk webhook事件: ${type}`);
     
     switch (type) {
@@ -91,9 +100,25 @@ router.post('/', verifyClerkWebhook, async (req, res) => {
         logger.info(`未处理的Webhook事件类型: ${type}`);
     }
     
+    const endTime = Date.now();
+    logger.info(`成功处理Webhook事件: ${type}`, {
+      eventType: type,
+      dataId: data.id,
+      requestId: req.headers['svix-id'],
+      processingTime: `${endTime - startTime}ms`
+    });
+    
     return res.status(200).json({ success: true });
   } catch (error) {
-    logger.error(`Webhook处理错误: ${error.message}`, { error });
+    const endTime = Date.now();
+    logger.error(`Webhook处理错误: ${error.message}`, {
+      eventType: type,
+      dataId: data?.id,
+      requestId: req.headers['svix-id'],
+      processingTime: `${endTime - startTime}ms`,
+      error
+    });
+    
     return res.status(200).json({ success: false, error: error.message });
   }
 });
