@@ -11,6 +11,11 @@ RUN mkdir -p uploads
 
 COPY . .
 
+# 创建符号链接，将 /app/ai 指向 /app/backend/ai 目录
+# 这样系统就能找到 /app/ai/prompts/en/assessment.txt 文件
+RUN mkdir -p /app/ai && \
+    ln -sf /app/backend/ai/prompts /app/ai/prompts
+
 ENV NODE_ENV=production
 
 # 健康检查 - 帮助Railway监控应用状态

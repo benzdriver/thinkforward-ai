@@ -42,6 +42,8 @@ class AIService {
   _loadPrompt(language, promptName) {
     try {
       const promptPath = path.join(config.ai.promptsDir, language, `${promptName}.txt`);
+      logger.info('Loading prompt from:', promptPath); // 添加日志以便调试
+      
       if (fs.existsSync(promptPath)) {
         return fs.readFileSync(promptPath, 'utf8');
       } else {

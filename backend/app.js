@@ -43,7 +43,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/api/webhooks/clerk', clerkWebhookRoutes);
 
 // 认证中间件
-app.use(auth.auth);
+app.use(auth);
 
 // API路由
 app.use('/api', routes);
