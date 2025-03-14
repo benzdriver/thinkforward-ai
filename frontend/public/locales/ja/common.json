@@ -1,0 +1,36 @@
+{
+  "app_name": "ThinkForward AI",
+  "nav": {
+    "home": "ホーム",
+    "about": "会社概要",
+    "assessment": "評価",
+    "dashboard": "ダッシュボード",
+    "client_management": "クライアント管理",
+    "admin": "管理",
+    "assistant": "AIアシスタント",
+    "forms": "フォーム"
+  },
+  "actions": {
+    "login": "ログイン",
+    "logout": "ログアウト",
+    "save": "保存",
+    "cancel": "キャンセル",
+    "submit": "送信",
+    "edit": "編集",
+    "delete": "削除"
+  },
+  "language_selector": {
+    "label": "言語",
+    "zh": "中国語",
+    "en": "英語",
+    "ar": "アラビア語",
+    "ja": "日本語",
+    "ko": "韓国語"
+  },
+  "footer": {
+    "copyright": "© {{year}} ThinkForward AI. 全著作権所有。"
+  },
+  "all_rights_reserved": "すべての権利を保有",
+  "title": "ThinkForward AI - インテリジェント移民アシスタント",
+  "siteTitle": "ThinkForward AI"
+} 

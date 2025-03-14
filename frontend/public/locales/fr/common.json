@@ -2,5 +2,38 @@
     "login": "Connexion",
     "create_account": "Créez votre compte",
     "already_have_account": "Vous avez déjà un compte?",
-    "sign_in_now": "Connectez-vous maintenant"
+    "sign_in_now": "Connectez-vous maintenant",
+    "app_name": "ThinkForward AI",
+    "nav": {
+      "home": "Accueil",
+      "about": "À propos",
+      "assessment": "Évaluation",
+      "dashboard": "Tableau de bord",
+      "client_management": "Gestion des clients",
+      "admin": "Administration"
+    },
+    "actions": {
+      "logout": "Déconnexion",
+      "save": "Enregistrer",
+      "cancel": "Annuler",
+      "submit": "Soumettre",
+      "edit": "Modifier",
+      "delete": "Supprimer"
+    },
+    "language_selector": {
+      "label": "Langue",
+      "zh": "简体中文",
+      "en": "English",
+      "ar": "العربية",
+      "ja": "日本語",
+      "ko": "한국어",
+      "zh-TW": "繁體中文",
+      "fr": "Français"
+    },
+    "footer": {
+      "copyright": "© {{year}} ThinkForward AI. Tous droits réservés."
+    },
+    "all_rights_reserved": "Tous droits réservés",
+    "title": "ThinkForward AI - Assistant Intelligent d'Immigration",
+    "siteTitle": "ThinkForward AI"
   }

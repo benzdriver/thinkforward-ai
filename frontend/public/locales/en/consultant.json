@@ -1,0 +1,39 @@
+{
+  "dashboard": {
+    "welcome": "Welcome back",
+    "consultant": "Consultant",
+    "loading": "Loading your consultant dashboard...",
+    "error_fetching": "Error fetching dashboard data",
+    "client_summary": "Client Summary",
+    "total_clients": "Total Clients",
+    "active_clients": "Active Clients",
+    "active_rate": "Active Rate",
+    "efficiency_metrics": "Efficiency Metrics",
+    "time_saved": "Time Saved",
+    "cases_completed": "Cases Completed",
+    "hours_minutes": "{{hours}}h {{minutes}}m",
+    "minutes": "{{minutes}}m",
+    "efficiency_insight": "AI tools are helping you save significant time on routine tasks.",
+    "recent_activities": "Recent Activities",
+    "no_recent_activities": "No recent activities to display",
+    "view_all_activities": "View All Activities",
+    "client": "Client",
+    "tasks": "Tasks",
+    "no_pending_tasks": "No pending tasks",
+    "view_all_tasks": "View All Tasks",
+    "add_task": "Add Task",
+    "priority": {
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low"
+    }
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "clients": "Clients",
+    "ai_assistant": "AI Assistant",
+    "forms": "Forms",
+    "analytics": "Analytics",
+    "settings": "Settings"
+  }
+} 

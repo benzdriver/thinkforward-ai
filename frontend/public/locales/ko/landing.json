@@ -1,0 +1,127 @@
+{
+  "nav": {
+    "assessment": "평가",
+    "login": "로그인"
+  },
+  "hero": {
+    "title": "AI 기반 이민, 글로벌 여정을 시작하세요",
+    "subtitle": "전문 컨설턴트 + AI 기술로 최적의 이민 계획 제공",
+    "description": "시간 절약, 성공률 증가",
+    "background_alt": "배경 이미지"
+  },
+  "cta": {
+    "free_assessment": "무료 평가",
+    "login_register": "지금 시작하기",
+    "dashboard": "대시보드"
+  },
+  "role_selection": {
+    "title": "역할 선택",
+    "subtitle": "맞춤형 서비스 제공"
+  },
+  "roles": {
+    "guest": {
+      "consultant_heading": "컨설턴트 되기",
+      "consultant_description": "AI로 효율성 향상 및 비즈니스 확장",
+      "client_heading": "이민 솔루션 찾기",
+      "client_description": "전문적인 안내, 쉬운 이민",
+      "role_selection": "역할 선택",
+      "role_description": "맞춤형 서비스, 개인화된 지원",
+      "register_as_consultant": "컨설턴트로 등록"
+    },
+    "client": {
+      "welcome_back": "다시 오신 것을 환영합니다!",
+      "continue_application": "신청 계속하기",
+      "continue_description": "진행 상황을 확인하고 다음 단계를 완료하세요",
+      "speak_consultant": "컨설턴트와 대화하기",
+      "speak_description": "언제든지 전문적인 도움 받기"
+    },
+    "consultant": {
+      "consultant_tools": "컨설턴트 도구 상자",
+      "manage_clients": "고객 관리",
+      "manage_description": "고객 사례 보기 및 관리",
+      "ai_assistant": "AI 어시스턴트",
+      "ai_description": "AI 어시스턴트를 사용하여 효율성 향상",
+      "analytics": "데이터 분석",
+      "analytics_description": "고객 데이터 및 비즈니스 인사이트 보기"
+    },
+    "admin": {
+      "system_overview": "시스템 개요",
+      "system_description": "플랫폼 개요 및 시스템 상태",
+      "user_management": "사용자 관리",
+      "user_description": "사용자 계정 및 권한 관리",
+      "platform_analytics": "플랫폼 분석",
+      "analytics_description": "플랫폼 데이터 및 사용 통계 보기"
+    }
+  },
+  "register": {
+    "as_consultant": "컨설턴트 되기",
+    "as_client": "지금 등록"
+  },
+  "why_choose_us": "왜 우리를 선택해야 하는가",
+  "features": {
+    "title": "왜 우리를 선택해야 하는가",
+    "description": "스마트하고 효율적이며, 전문적이고 신뢰할 수 있는",
+    "explanation": "AI + 전문 서비스, 걱정 없는 이민"
+  },
+  "features.item1.title": "AI 기반 평가",
+  "features.item1.description": "3분 안에 이민 옵션 발견",
+  "features.item2.title": "전문가 지원",
+  "features.item2.description": "경험 많은 컨설턴트의 안내",
+  "features.item3.title": "진행 상황 추적",
+  "features.item3.description": "실시간 모니터링 및 자동 알림",
+  "features.item4.title": "다국어 서비스",
+  "features.item4.description": "장애 없는 소통",
+  "how_it_works": {
+    "title": "이민을 위한 세 단계",
+    "description": "간단하고 빠르게, 쉽게 시작하기",
+    "step1": {
+      "title": "자격 평가",
+      "description": "AI가 빠르게 이민 옵션 분석"
+    },
+    "step2": {
+      "title": "계획 받기",
+      "description": "맞춤형 이민 경로 및 일정"
+    },
+    "step3": {
+      "title": "전문 지원",
+      "description": "성공을 보장하기 위한 컨설턴트 지원"
+    }
+  },
+  "consultant": {
+    "title": "컨설턴트 파트너십 프로그램",
+    "description": "AI로 비즈니스 성장",
+    "benefit1": "효율성 80% 향상",
+    "benefit2": "고객 만족도 향상",
+    "benefit3": "비즈니스 규모 확장",
+    "image_alt": "컨설턴트 작업 장면"
+  },
+  "testimonials": {
+    "title": "고객 후기",
+    "subtitle": "실제 경험, 진솔한 공유",
+    "testimonial1": {
+      "content": "AI 평가가 최적의 이민 경로를 찾는 데 도움을 주어 시간과 노력을 절약했습니다.",
+      "person_alt": "고객 사진",
+      "name": "리밍",
+      "program": "캐나다 기술 이민"
+    },
+    "testimonial2": {
+      "content": "전문 컨설턴트가 전체 과정을 안내하여 이민을 쉽게 하고 걱정 없이 만들었습니다.",
+      "person_alt": "고객 사진",
+      "name": "장화",
+      "program": "호주 기술 이민"
+    },
+    "testimonial3": {
+      "content": "이민에 대해 전혀 몰랐던 저에게 ThinkForward는 모든 것을 간단하게 만들어 주었습니다.",
+      "person_alt": "고객 사진",
+      "name": "왕젠",
+      "program": "뉴질랜드 기술 이민"
+    }
+  },
+  "cta_section": {
+    "title": "이민 여정을 시작하세요",
+    "description": "무료 평가, 지금 시작하기",
+    "register_button": "지금 등록",
+    "assessment_button": "무료 평가"
+  },
+  "FEATURES.TITLE": "왜 우리를 선택해야 하는가"
+} 

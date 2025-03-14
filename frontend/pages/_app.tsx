@@ -5,10 +5,12 @@ import "../styles/globals.css";
 import { UserRole } from "../types/user";
 import type { AppProps } from 'next/app';
 import { appWithTranslation } from 'next-i18next';
+import { AuthProvider } from '../contexts/AuthContext';
 
 // 公共页面列表
 const publicPages = [
   "/",
+  "/landing",
   "/about",
   "/pricing",
   "/sign-in",
@@ -23,11 +25,37 @@ function MyApp({ Component, pageProps }: AppProps) {
   
   const localeMapping = {
     'zh': 'zh-CN',
-    'en': 'en-US'
+    'en': 'en-US',
+    'ar': 'ar',
+    'ja': 'ja-JP',
+    'ko': 'ko-KR'
   };
   
   const clerkLocale = locale ? localeMapping[locale as keyof typeof localeMapping] : 'zh-CN';
   
+  const router = useRouter();
+
+  useEffect(() => {
+    // 监听路由变化
+    const handleRouteChange = (url: string) => {
+      console.log('App is navigating to:', url);
+    };
+
+    router.events.on('routeChangeStart', handleRouteChange);
+    
+    // 打印当前路由信息
+    console.log('Current route:', {
+      pathname: router.pathname,
+      asPath: router.asPath,
+      locale: router.locale,
+      query: router.query
+    });
+
+    return () => {
+      router.events.off('routeChangeStart', handleRouteChange);
+    };
+  }, [router]);
+
   return (
     <ClerkProvider
       localization={{
@@ -40,8 +68,13 @@ function MyApp({ Component, pageProps }: AppProps) {
           footerActionLink: 'text-blue-600 hover:text-blue-500'
         }
       }}
+      signInFallbackRedirectUrl="/landing"
+      signInUrl="/sign-in"
+      signUpUrl="/sign-up"
     >
-      <AuthenticatedApp Component={Component} pageProps={pageProps} />
+      <AuthProvider>
+        <AuthenticatedApp Component={Component} pageProps={pageProps} />
+      </AuthProvider>
     </ClerkProvider>
   );
 }
@@ -65,12 +98,12 @@ function AuthenticatedApp({ Component, pageProps }: AuthAppProps) {
   // 获取用户角色
   useEffect(() => {
     async function fetchUserRole() {
-      const response = await fetch("/api/user/role", {
+      const roleResponse = await fetch('/api/user/role', {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('clerk-token')}`
+          'Authorization': `Bearer ${localStorage.getItem('clerk-token')}`
         }
       });
-      const data = await response.json();
+      const data = await roleResponse.json();
       setUserRole(data.role || UserRole.CLIENT);
     }
     
@@ -121,6 +154,26 @@ function AuthenticatedApp({ Component, pageProps }: AuthAppProps) {
   }
   
   // 用户已登录，渲染页面
+  useEffect(() => {
+    if (isLoaded && userId) {
+      // 获取Clerk token并存储
+      getToken().then(token => {
+        if (token) {
+          localStorage.setItem('clerk-token', token);
+          // 添加: 同步用户到后端
+          fetch("/api/auth/sync-user", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify({ token })
+          });
+        }
+      });
+    }
+  }, [isLoaded, userId, getToken]);
+
   return <Component {...pageProps} userRole={userRole} />;
 }
 

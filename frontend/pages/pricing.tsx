@@ -4,10 +4,13 @@ import Link from 'next/link';
 import Layout from '../components/Layout';
 import { useState } from 'react';
 import { UserRole } from '../types/user';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 export default function Pricing() {
   const { isSignedIn } = useAuth();
   const [annual, setAnnual] = useState(true);
+  const { t } = useTranslation('pricing');
   
   const toggleBilling = () => {
     setAnnual(!annual);
@@ -16,8 +19,8 @@ export default function Pricing() {
   return (
     <Layout userRole={UserRole.GUEST}>
       <Head>
-        <title>价格方案 - 移民AI助手</title>
-        <meta name="description" content="选择适合您的移民服务方案" />
+        <title>{t('page_title')} - Thinkforward</title>
+        <meta name="description" content={t('meta_description') as string} />
       </Head>
       
       <div className="bg-gray-100">
@@ -25,10 +28,10 @@ export default function Pricing() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
               <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl lg:text-5xl">
-                选择适合您的方案
+                {t('heading')}
               </h2>
               <p className="mt-4 text-xl text-gray-600">
-                我们提供多种方案以满足不同客户的需求，无论您是刚开始规划移民还是已经在申请过程中
+                {t('subheading')}
               </p>
             </div>
           </div>
@@ -46,8 +49,8 @@ export default function Pricing() {
                   }`}
                   onClick={() => setAnnual(true)}
                 >
-                  年付
-                  {annual && <span className="ml-2 bg-blue-200 text-blue-800 px-2 py-0.5 rounded-full text-xs">省20%</span>}
+                  {t('billing.annual')}
+                  {annual && <span className="ml-2 bg-blue-200 text-blue-800 px-2 py-0.5 rounded-full text-xs">{t('billing.save')}</span>}
                 </button>
                 <button
                   type="button"
@@ -56,7 +59,7 @@ export default function Pricing() {
                   }`}
                   onClick={() => setAnnual(false)}
                 >
-                  月付
+                  {t('billing.monthly')}
                 </button>
               </div>
               
@@ -64,15 +67,15 @@ export default function Pricing() {
               <div className="max-w-lg mx-auto mt-10 rounded-lg shadow-lg overflow-hidden lg:max-w-none lg:flex">
                 <div className="flex-1 bg-white px-6 py-8 lg:p-12">
                   <h3 className="text-2xl font-extrabold text-gray-900 sm:text-3xl">
-                    免费评估
+                    {t('free_plan.title')}
                   </h3>
                   <p className="mt-6 text-base text-gray-500">
-                    了解您的移民资格和最适合的移民途径，无需任何费用。我们的AI系统将分析您的背景和目标，为您提供初步建议。
+                    {t('free_plan.description')}
                   </p>
                   <div className="mt-8">
                     <div className="flex items-center">
                       <h4 className="flex-shrink-0 pr-4 bg-white text-sm tracking-wider font-semibold uppercase text-blue-600">
-                        包含内容
+                        {t('free_plan.includes')}
                       </h4>
                       <div className="flex-1 border-t-2 border-gray-200"></div>
                     </div>
@@ -84,7 +87,7 @@ export default function Pricing() {
                           </svg>
                         </div>
                         <p className="ml-3 text-sm text-gray-700">
-                          移民资格评估
+                          {t('free_plan.feature1')}
                         </p>
                       </li>
                       <li className="flex items-start lg:col-span-1">
@@ -94,7 +97,7 @@ export default function Pricing() {
                           </svg>
                         </div>
                         <p className="ml-3 text-sm text-gray-700">
-                          推荐移民途径
+                          {t('free_plan.feature2')}
                         </p>
                       </li>
                       <li className="flex items-start lg:col-span-1">
@@ -104,7 +107,7 @@ export default function Pricing() {
                           </svg>
                         </div>
                         <p className="ml-3 text-sm text-gray-700">
-                          基础成功率分析
+                          {t('free_plan.feature3')}
                         </p>
                       </li>
                       <li className="flex items-start lg:col-span-1">
@@ -114,7 +117,7 @@ export default function Pricing() {
                           </svg>
                         </div>
                         <p className="ml-3 text-sm text-gray-700">
-                          移民条件解析
+                          {t('free_plan.feature4')}
                         </p>
                       </li>
                     </ul>
@@ -122,17 +125,17 @@ export default function Pricing() {
                 </div>
                 <div className="py-8 px-6 text-center bg-gray-50 lg:flex-shrink-0 lg:flex lg:flex-col lg:justify-center lg:p-12">
                   <p className="text-lg leading-6 font-medium text-gray-900">
-                    完全免费，无需承诺
+                    {t('free_plan.cta_title')}
                   </p>
                   <div className="mt-4 flex items-center justify-center text-5xl font-extrabold text-gray-900">
                     <span>
-                      ¥0
+                      {t('free_plan.price')}
                     </span>
                   </div>
                   <div className="mt-6">
                     <Link href="/initial-assessment">
                       <span className="block w-full rounded-md shadow py-2 px-3 text-base font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                        开始免费评估
+                        {t('free_plan.cta_button')}
                       </span>
                     </Link>
                   </div>
@@ -145,44 +148,44 @@ export default function Pricing() {
               {/* 基础方案 */}
               <div className="border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200">
                 <div className="p-6">
-                  <h2 className="text-lg leading-6 font-medium text-gray-900">基础方案</h2>
-                  <p className="mt-4 text-sm text-gray-500">适合初次移民申请者，提供基本移民支持</p>
+                  <h2 className="text-lg leading-6 font-medium text-gray-900">{t('basic_plan.title')}</h2>
+                  <p className="mt-4 text-sm text-gray-500">{t('basic_plan.description')}</p>
                   <p className="mt-8">
-                    <span className="text-4xl font-extrabold text-gray-900">{annual ? '¥4,800' : '¥499'}</span>
-                    <span className="text-base font-medium text-gray-500">/{annual ? '年' : '月'}</span>
+                    <span className="text-4xl font-extrabold text-gray-900">{annual ? t('basic_plan.price_annual') : t('basic_plan.price_monthly')}</span>
+                    <span className="text-base font-medium text-gray-500">/{annual ? t('billing.year') : t('billing.month')}</span>
                   </p>
                   <Link href={isSignedIn ? "/dashboard" : "/sign-up?plan=basic"}>
                     <span className="mt-8 block w-full bg-blue-600 border border-transparent rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-blue-700">
-                      开始使用
+                      {t('basic_plan.cta_button')}
                     </span>
                   </Link>
                 </div>
                 <div className="pt-6 pb-8 px-6">
-                  <h3 className="text-xs font-medium text-gray-900 tracking-wide uppercase">包含内容</h3>
+                  <h3 className="text-xs font-medium text-gray-900 tracking-wide uppercase">{t('includes')}</h3>
                   <ul className="mt-6 space-y-4">
                     <li className="flex space-x-3">
                       <svg className="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
-                      <span className="text-sm text-gray-500">AI表单填写助手</span>
+                      <span className="text-sm text-gray-500">{t('basic_plan.feature1')}</span>
                     </li>
                     <li className="flex space-x-3">
                       <svg className="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
-                      <span className="text-sm text-gray-500">文档管理系统</span>
+                      <span className="text-sm text-gray-500">{t('basic_plan.feature2')}</span>
                     </li>
                     <li className="flex space-x-3">
                       <svg className="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
-                      <span className="text-sm text-gray-500">基础进度跟踪</span>
+                      <span className="text-sm text-gray-500">{t('basic_plan.feature3')}</span>
                     </li>
                     <li className="flex space-x-3">
                       <svg className="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
-                      <span className="text-sm text-gray-500">每月1次顾问咨询</span>
+                      <span className="text-sm text-gray-500">{t('basic_plan.feature4')}</span>
                     </li>
                   </ul>
                 </div>
@@ -345,4 +348,12 @@ export default function Pricing() {
       </div>
     </Layout>
   );
+}
+
+export async function getStaticProps({ locale }: { locale: string }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale || 'zh', ['common', 'pricing'])),
+    },
+  };
 } 

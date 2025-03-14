@@ -1,7 +1,11 @@
-import { SignOutButton, useAuth } from "@clerk/nextjs";
+import { SignOutButton } from "@clerk/nextjs";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useAuth } from "../contexts/AuthContext";
 import { UserRole } from "../types/user";
+import { useTranslation } from 'next-i18next';
+import LanguageSelector from './LanguageSwitcher';
+import Head from 'next/head';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -9,112 +13,62 @@ interface LayoutProps {
 }
 
 export default function Layout({ children, userRole }: LayoutProps) {
-  const { isSignedIn } = useAuth();
   const router = useRouter();
+  const { t } = useTranslation('common');
+  const isRTL = router.locale === 'ar';
+
+  console.log("Layout rendering with userRole:", userRole);
+  console.log("Layout children:", children ? "有内容" : "无内容");
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <nav className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
-            <div className="flex">
-              <div className="flex-shrink-0 flex items-center">
-                <Link href="/">
-                  <span className="text-xl font-bold text-blue-600">Thinkforward移民AI助手</span>
+    <>
+      <Head>
+        <title>{t('siteTitle')}</title>
+      </Head>
+      <div className={`min-h-screen bg-gray-50 ${isRTL ? 'rtl' : 'ltr'}`}>
+        <header className="bg-white shadow">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <Link href="/" className="text-xl font-bold text-blue-600">
+              ThinkForward AI
+            </Link>
+            
+            <div className="flex items-center space-x-4">
+              <nav className="flex space-x-4">
+                <Link href="/landing" className="text-gray-600 hover:text-blue-500">
+                  {t('nav.home')}
                 </Link>
-              </div>
-              <div className="ml-6 flex items-center space-x-4">
-                <Link href="/">
-                  <span className={`px-3 py-2 rounded-md text-sm font-medium ${
-                    router.pathname === "/" ? "text-blue-600" : "text-gray-500 hover:text-gray-700"
-                  }`}>
-                    首页
-                  </span>
+                <Link href="/about" className="text-gray-600 hover:text-blue-500">
+                  {t('nav.about')}
                 </Link>
-                
-                <Link href="/initial-assessment">
-                  <span className={`px-3 py-2 rounded-md text-sm font-medium ${
-                    router.pathname === "/initial-assessment" ? "text-blue-600" : "text-gray-500 hover:text-gray-700"
-                  }`}>
-                    评估
-                  </span>
-                </Link>
-                
-                {isSignedIn && (
-                  <Link href="/dashboard">
-                    <span className={`px-3 py-2 rounded-md text-sm font-medium ${
-                      router.pathname === "/dashboard" ? "text-blue-600" : "text-gray-500 hover:text-gray-700"
-                    }`}>
-                      控制台
-                    </span>
-                  </Link>
-                )}
-                
-                {userRole === UserRole.CONSULTANT && (
-                  <Link href="/consultant/clients">
-                    <span className={`px-3 py-2 rounded-md text-sm font-medium ${
-                      router.pathname.startsWith("/consultant") ? "text-blue-600" : "text-gray-500 hover:text-gray-700"
-                    }`}>
-                      客户管理
-                    </span>
-                  </Link>
-                )}
-                
-                {userRole === UserRole.ADMIN && (
-                  <Link href="/admin/dashboard">
-                    <span className={`px-3 py-2 rounded-md text-sm font-medium ${
-                      router.pathname.startsWith("/admin") ? "text-blue-600" : "text-gray-500 hover:text-gray-700"
-                    }`}>
-                      管理员
-                    </span>
-                  </Link>
-                )}
-              </div>
-            </div>
-            <div className="flex items-center">
-              {!isSignedIn ? (
-                <div className="flex items-center space-x-2">
-                  <Link href="/sign-in">
-                    <span className="text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium">
-                      登录
-                    </span>
-                  </Link>
-                  <Link href="/sign-up">
-                    <span className="bg-blue-500 text-white hover:bg-blue-600 px-3 py-2 rounded-md text-sm font-medium">
-                      注册
-                    </span>
-                  </Link>
-                </div>
+              </nav>
+              
+              <LanguageSelector />
+              
+              {userRole !== UserRole.GUEST ? (
+                <SignOutButton>
+                  <button className="text-gray-600 hover:text-red-500">
+                    {t('nav.signout')}
+                  </button>
+                </SignOutButton>
               ) : (
-                <div className="flex items-center space-x-2">
-                  <Link href="/client/profile">
-                    <span className="text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium">
-                      个人资料
-                    </span>
-                  </Link>
-                  <SignOutButton>
-                    <button className="text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium">
-                      登出
-                    </button>
-                  </SignOutButton>
-                </div>
+                <Link href="/sign-in" className="text-gray-600 hover:text-blue-500">
+                  {t('nav.login')}
+                </Link>
               )}
             </div>
           </div>
-        </div>
-      </nav>
+        </header>
 
-      <main className="py-6 sm:py-8 lg:py-10">
-        {children}
-      </main>
+        <main className="py-6 sm:py-8 lg:py-10">
+          {children}
+        </main>
 
-      <footer className="bg-white border-t">
-        <div className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
-          <p className="text-center text-gray-500 text-sm">
-            &copy; {new Date().getFullYear()} Thinkforward移民AI助手. 保留所有权利.
-          </p>
-        </div>
-      </footer>
-    </div>
+        <footer className="bg-gray-800 text-white py-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p>© {new Date().getFullYear()} ThinkForward AI</p>
+          </div>
+        </footer>
+      </div>
+    </>
   );
 }

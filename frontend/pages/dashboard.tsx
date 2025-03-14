@@ -5,6 +5,9 @@ import { UserRole } from '../types/user';
 import AdminDashboard from './admin/dashboard';
 import Link from 'next/link';
 import AIAssistant from '../components/AIAssistant';
+import { useTranslation } from 'react-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import PageHeader from '../components/ui/PageHeader';
 
 // Add this interface near the top of your file
 interface UserInfo {
@@ -24,20 +27,35 @@ export default function Dashboard() {
   const [isLoading, setIsLoading] = useState(true);
   const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
   const [isSubscribed, setIsSubscribed] = useState(false);
+  const { t } = useTranslation('dashboard');
   
   useEffect(() => {
     async function fetchUserData() {
       try {
         // 获取用户角色
-        const roleResponse = await fetch('/api/user/role');
+        const roleResponse = await fetch('/api/user/role', {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('clerk-token')}`
+          }
+        });
         if (!roleResponse.ok) {
           throw new Error('Failed to fetch user role');
         }
         const roleData = await roleResponse.json();
         setUserRole(roleData.role);
         
+        // 如果是游客，重定向到游客仪表板
+        if (roleData.role === UserRole.GUEST) {
+          router.push('/guest/dashboard');
+          return;
+        }
+        
         // 获取用户信息
-        const infoResponse = await fetch('/api/user/info');
+        const infoResponse = await fetch('/api/user/info', {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('clerk-token')}`
+          }
+        });
         if (!infoResponse.ok) {
           throw new Error('Failed to fetch user info');
         }
@@ -46,7 +64,6 @@ export default function Dashboard() {
         setIsSubscribed(infoData.isSubscribed);
       } catch (error) {
         console.error('Error fetching user data:', error);
-      } finally {
         setIsLoading(false);
       }
     }
@@ -54,7 +71,8 @@ export default function Dashboard() {
     if (isLoaded && userId) {
       fetchUserData();
     } else if (isLoaded && !userId) {
-      router.push('/sign-in');
+      // 未登录用户视为游客
+      router.push('/guest/dashboard');
     }
   }, [isLoaded, userId, router]);
   
@@ -76,7 +94,11 @@ export default function Dashboard() {
     return (
       <div className="bg-gray-50 min-h-screen">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <h1 className="text-2xl font-bold text-gray-900">顾问控制台</h1>
+          <PageHeader 
+            title={t('consultant.title')} 
+            subtitle={t('consultant.subtitle')} 
+            alignment="left"
+          />
           
           <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
             <div className="bg-white overflow-hidden shadow rounded-lg">
@@ -90,7 +112,7 @@ export default function Dashboard() {
                   <div className="ml-5 w-0 flex-1">
                     <dl>
                       <dt className="text-sm font-medium text-gray-500 truncate">
-                        客户管理
+                        {t('consultant.client_management')}
                       </dt>
                       <dd>
                         <div className="text-lg font-medium text-gray-900">
@@ -105,7 +127,7 @@ export default function Dashboard() {
                 <div className="text-sm">
                   <Link href="/consultant/clients">
                     <span className="font-medium text-blue-700 hover:text-blue-900">
-                      查看所有客户
+                      {t('consultant.view_all_clients')}
                     </span>
                   </Link>
                 </div>
@@ -148,7 +170,7 @@ export default function Dashboard() {
           
           {/* 最近活动 */}
           <div className="mt-8">
-            <h2 className="text-lg font-medium text-gray-900">最近活动</h2>
+            <h2 className="text-lg font-medium text-gray-900">{t('consultant.recent_activities')}</h2>
             <div className="mt-4 bg-white shadow overflow-hidden sm:rounded-md">
               <ul className="divide-y divide-gray-200">
                 {userInfo?.recentActivities && userInfo.recentActivities.length > 0 ? (
@@ -196,7 +218,7 @@ export default function Dashboard() {
                   ))
                 ) : (
                   <li className="px-4 py-6 sm:px-6 text-center text-gray-500">
-                    暂无活动记录
+                    {t('consultant.no_activity_record')}
                   </li>
                 )}
               </ul>
@@ -216,167 +238,208 @@ export default function Dashboard() {
   }
   
   // 客户控制台
-  return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="py-4">
-        <h1 className="text-2xl font-bold mb-4">欢迎来到客户控制台</h1>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* 客户状态卡片 */}
-          <div className="col-span-1 bg-white p-6 rounded-lg shadow">
-            <h2 className="text-lg font-semibold mb-4">您的状态</h2>
-            <div className="space-y-3">
-              <div className="flex justify-between">
-                <span className="text-gray-600">用户类型:</span>
-                <span className="font-medium">客户</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-gray-600">订阅状态:</span>
-                <span className={`font-medium ${isSubscribed ? 'text-green-600' : 'text-red-600'}`}>
-                  {isSubscribed ? '已订阅' : '未订阅'}
-                </span>
-              </div>
-              {userInfo?.consultantName && (
-                <div className="flex justify-between">
-                  <span className="text-gray-600">您的顾问:</span>
-                  <span className="font-medium">{userInfo.consultantName}</span>
+  if (userRole === UserRole.CLIENT) {
+    return (
+      <div className="bg-gray-50 min-h-screen">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <PageHeader 
+            title={t('client.title')} 
+            subtitle={t('client.subtitle')} 
+            alignment="left"
+          />
+          
+          <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3">
+            {/* 进度概览 */}
+            <div className="col-span-1 bg-white p-6 rounded-lg shadow">
+              <h2 className="text-lg font-semibold mb-4">{t('client.progress_overview')}</h2>
+              {isSubscribed ? (
+                <div className="relative pt-1">
+                  <div className="flex mb-2 items-center justify-between">
+                    <div>
+                      <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200">
+                        {t('client.application_progress')}
+                      </span>
+                    </div>
+                    <div className="text-right">
+                      <span className="text-xs font-semibold inline-block text-blue-600">
+                        30%
+                      </span>
+                    </div>
+                  </div>
+                  <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200">
+                    <div style={{ width: "30%" }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"></div>
+                  </div>
+                  
+                  <div className="mt-4 space-y-2">
+                    <div className="flex items-center">
+                      <svg className="h-5 w-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span className="ml-2 text-sm text-gray-600">{t('client.profile_completed')}</span>
+                    </div>
+                    <div className="flex items-center">
+                      <svg className="h-5 w-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span className="ml-2 text-sm text-gray-600">{t('client.assessment_completed')}</span>
+                    </div>
+                    <div className="flex items-center">
+                      <svg className="h-5 w-5 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span className="ml-2 text-sm text-gray-600">{t('client.documents_pending')}</span>
+                    </div>
+                  </div>
                 </div>
-              )}
-              {!isSubscribed && (
-                <div className="mt-4">
+              ) : (
+                <div className="text-center py-4">
+                  <p className="text-gray-600 mb-4">{t('client.subscribe_to_view_progress')}</p>
                   <Link href="/subscription">
-                    <span className="block text-center bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">
-                      升级订阅
+                    <span className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700">
+                      {t('client.subscribe_now')}
                     </span>
                   </Link>
                 </div>
               )}
             </div>
-          </div>
 
-          {/* 进度卡片 */}
-          <div className="col-span-2 bg-white p-6 rounded-lg shadow">
-            <h2 className="text-lg font-semibold mb-4">移民进度</h2>
-            {isSubscribed ? (
-              <div className="space-y-4">
-                <div>
-                  <div className="flex justify-between mb-1">
-                    <span>信息收集</span>
-                    <span>70%</span>
+            {/* 顾问信息 */}
+            <div className="col-span-1 bg-white p-6 rounded-lg shadow">
+              <h2 className="text-lg font-semibold mb-4">{t('client.your_consultant')}</h2>
+              {isSubscribed && userInfo?.consultantName ? (
+                <div className="flex flex-col items-center">
+                  <div className="w-16 h-16 bg-gray-300 rounded-full mb-4 flex items-center justify-center text-gray-600">
+                    <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2.5">
-                    <div className="bg-blue-600 h-2.5 rounded-full" style={{ width: '70%' }}></div>
-                  </div>
-                </div>
-                <div>
-                  <div className="flex justify-between mb-1">
-                    <span>表格准备</span>
-                    <span>50%</span>
-                  </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2.5">
-                    <div className="bg-blue-600 h-2.5 rounded-full" style={{ width: '50%' }}></div>
-                  </div>
-                </div>
-                <div>
-                  <div className="flex justify-between mb-1">
-                    <span>顾问审核</span>
-                    <span>20%</span>
-                  </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2.5">
-                    <div className="bg-blue-600 h-2.5 rounded-full" style={{ width: '20%' }}></div>
-                  </div>
-                </div>
-                <div className="mt-4">
-                  <Link href="/client/forms">
-                    <span className="text-blue-600 hover:underline">
-                      继续填写表格 →
+                  <h3 className="text-gray-900 font-medium">{userInfo.consultantName}</h3>
+                  <p className="text-gray-600 text-sm">{t('client.immigration_consultant')}</p>
+                  <Link href="/client/chat">
+                    <span className="mt-4 inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200">
+                      {t('client.send_message')}
                     </span>
                   </Link>
                 </div>
-              </div>
-            ) : (
-              <div className="bg-gray-50 p-4 rounded">
-                <p className="text-gray-600">您需要订阅我们的服务才能跟踪移民进度。</p>
-              </div>
-            )}
-          </div>
+              ) : (
+                <div className="text-center py-4">
+                  <p className="text-gray-600 mb-4">{t('client.subscribe_to_get_consultant')}</p>
+                  <Link href="/subscription">
+                    <span className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700">
+                      {t('client.subscribe_now')}
+                    </span>
+                  </Link>
+                </div>
+              )}
+            </div>
 
-          {/* 快速链接 */}
-          <div className="col-span-1 bg-white p-6 rounded-lg shadow">
-            <h2 className="text-lg font-semibold mb-4">快速链接</h2>
-            <nav className="space-y-2">
-              <Link href="/client/forms">
-                <span className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
-                  我的表格
-                </span>
-              </Link>
-              <Link href="/client/documents">
-                <span className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
-                  我的文档
-                </span>
-              </Link>
-              <Link href="/client/chat">
-                <span className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
-                  与顾问聊天
-                </span>
-              </Link>
-              <Link href="/client/profile">
-                <span className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
-                  个人资料
-                </span>
-              </Link>
-            </nav>
-          </div>
+            {/* 快速链接 */}
+            <div className="col-span-1 bg-white p-6 rounded-lg shadow">
+              <h2 className="text-lg font-semibold mb-4">{t('client.quick_links')}</h2>
+              <nav className="space-y-2">
+                <Link href="/client/forms">
+                  <span className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
+                    {t('client.my_forms')}
+                  </span>
+                </Link>
+                <Link href="/client/documents">
+                  <span className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
+                    {t('client.my_documents')}
+                  </span>
+                </Link>
+                <Link href="/client/chat">
+                  <span className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
+                    {t('client.chat_with_consultant')}
+                  </span>
+                </Link>
+                <Link href="/client/profile">
+                  <span className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
+                    {t('client.profile')}
+                  </span>
+                </Link>
+              </nav>
+            </div>
 
-          {/* 待办事项 */}
-          <div className="col-span-2 bg-white p-6 rounded-lg shadow">
-            <h2 className="text-lg font-semibold mb-4">待办事项</h2>
-            {isSubscribed ? (
-              <ul className="divide-y divide-gray-200">
-                <li className="py-3 flex justify-between items-center">
-                  <div className="flex items-center">
-                    <svg className="h-5 w-5 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span className="ml-2 text-gray-700">完成个人信息表</span>
-                  </div>
-                  <span className="text-sm text-gray-500">截止：3天后</span>
-                </li>
-                <li className="py-3 flex justify-between items-center">
-                  <div className="flex items-center">
-                    <svg className="h-5 w-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span className="ml-2 text-gray-700">上传学历证明</span>
-                  </div>
-                  <span className="text-sm text-gray-500">截止：今天</span>
-                </li>
-                <li className="py-3 flex justify-between items-center">
-                  <div className="flex items-center">
-                    <svg className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span className="ml-2 text-gray-700">安排顾问通话</span>
-                  </div>
-                  <span className="text-sm text-gray-500">截止：下周</span>
-                </li>
-              </ul>
-            ) : (
-              <div className="bg-gray-50 p-4 rounded">
-                <p className="text-gray-600">订阅后查看您的待办事项。</p>
-              </div>
-            )}
-          </div>
+            {/* 待办事项 */}
+            <div className="col-span-2 bg-white p-6 rounded-lg shadow">
+              <h2 className="text-lg font-semibold mb-4">{t('client.todo_items')}</h2>
+              {isSubscribed ? (
+                <ul className="divide-y divide-gray-200">
+                  <li className="py-3 flex justify-between items-center">
+                    <div className="flex items-center">
+                      <svg className="h-5 w-5 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <span className="ml-2 text-gray-700">{t('client.complete_personal_info')}</span>
+                    </div>
+                    <span className="text-sm text-gray-500">{t('client.due_in_days', { days: 3 })}</span>
+                  </li>
+                  <li className="py-3 flex justify-between items-center">
+                    <div className="flex items-center">
+                      <svg className="h-5 w-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <span className="ml-2 text-gray-700">{t('client.upload_education_proof')}</span>
+                    </div>
+                    <span className="text-sm text-gray-500">{t('client.due_today')}</span>
+                  </li>
+                  <li className="py-3 flex justify-between items-center">
+                    <div className="flex items-center">
+                      <svg className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <span className="ml-2 text-gray-700">{t('client.schedule_consultant_call')}</span>
+                    </div>
+                    <span className="text-sm text-gray-500">{t('client.due_next_week')}</span>
+                  </li>
+                </ul>
+              ) : (
+                <div className="bg-gray-50 p-4 rounded">
+                  <p className="text-gray-600">{t('client.subscribe_to_view_todos')}</p>
+                </div>
+              )}
+            </div>
 
-          {/* AI助手 */}
-          <div className="col-span-3">
-            <AIAssistant 
-              userRole={userRole || UserRole.GUEST} 
-              isSubscribed={isSubscribed} 
-            />
+            {/* AI助手 */}
+            <div className="col-span-3">
+              <AIAssistant 
+                userRole={userRole || UserRole.GUEST} 
+                isSubscribed={isSubscribed} 
+              />
+            </div>
           </div>
+        </div>
+      </div>
+    );
+  }
+  
+  // 如果没有认可的用户角色，显示默认仪表板或重定向
+  return (
+    <div className="bg-gray-50 min-h-screen">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <PageHeader 
+          title={t('default.title')} 
+          subtitle={t('default.subtitle')} 
+          alignment="center"
+        />
+        
+        <div className="mt-8 text-center">
+          <button
+            onClick={() => router.push('/')}
+            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200"
+          >
+            {t('default.go_home')}
+          </button>
         </div>
       </div>
     </div>
   );
+}
+
+export async function getServerSideProps({ locale }: { locale: string }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale || 'zh', ['common', 'dashboard'])),
+    },
+  };
 }

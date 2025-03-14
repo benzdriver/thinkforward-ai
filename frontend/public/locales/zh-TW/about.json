@@ -1,0 +1,110 @@
+{
+  "meta": {
+    "title": "關於我們 | ThinkForward 移民",
+    "description": "了解 ThinkForward，我們簡化移民流程的使命，以及我們創新的 AI 驅動解決方案背後的團隊。"
+  },
+  "hero": {
+    "title": "用 AI 簡化移民",
+    "subtitle": "我們的使命是通過創新科技使移民過程更加便捷、高效和無憂。",
+    "cta": "聯絡我們"
+  },
+  "mission_vision": {
+    "title": "我們的使命與願景",
+    "subtitle": "我們的動力與方向",
+    "mission": {
+      "title": "我們的使命",
+      "description": "利用 AI 科技民主化移民服務，使移民過程對每個人都更加便捷、高效和透明。"
+    },
+    "vision": {
+      "title": "我們的願景",
+      "description": "創造一個地理邊界不限制人類潛能的世界，通過科技創新賦能個人，使他們能夠自信地駕馭移民系統。"
+    }
+  },
+  "values": {
+    "title": "我們的核心價值觀",
+    "subtitle": "指導我們一切行動的原則",
+    "items": {
+      "trust": {
+        "title": "信任與誠信",
+        "description": "我們通過透明、誠實，並在每個決策中優先考慮用戶的最佳利益來建立信任。"
+      },
+      "innovation": {
+        "title": "持續創新",
+        "description": "我們致力於突破界限，開發前沿解決方案，從而改變移民體驗。"
+      },
+      "community": {
+        "title": "社區關注",
+        "description": "我們相信社區的力量，並努力創造能夠團結和賦能全球移民社區的產品。"
+      },
+      "quality": {
+        "title": "卓越與品質",
+        "description": "我們對自己有著最高標準，確保我們的科技和建議準確、可靠且用戶友好。"
+      }
+    }
+  },
+  "team": {
+    "title": "認識我們的團隊",
+    "subtitle": "ThinkForward 背後的專業人才",
+    "members": {
+      "member1": {
+        "name": "Yansi He",
+        "position": "創辦人兼行政總裁",
+        "bio": "UBC畢業的金牌移民顧問，曾任律師事務所首席移民顧問，Yansi創立ThinkForward的願景是讓移民過程變得更簡單。她將法律專業知識與對科技的熱情相結合，幫助人們自信地完成移民之旅。"
+      },
+      "member2": {
+        "name": "Ben Zhou",
+        "position": "首席技術長",
+        "bio": "作為 AI 和機器學習領域的領先專家，Ben 推動著支撐我們平台的技術創新，確保解決方案智能可靠。"
+      },
+      "member3": {
+        "name": "Danniel Zheng",
+        "position": "產品負責人",
+        "bio": "秉持以用戶為中心的理念，Danniel 負責產品開發，確保我們的工具直觀、高效，並符合客戶需求。"
+      },
+      "member4": {
+        "name": "Dongmei Ma",
+        "position": "首席法律顧問",
+        "bio": "Dongmei 在移民法律方面擁有豐富的專業知識，確保我們的 AI 解決方案在複雜的法律框架下提供準確指導。"
+      }
+    }
+  },
+  "milestones": {
+    "title": "我們的成長歷程",
+    "subtitle": "我們在改變移民體驗的關鍵里程碑",
+    "items": {
+      "founding": {
+        "title": "在溫哥華成立",
+        "description": "ThinkForward 成立之初，就懷揣著利用 AI 為每個人簡化移民流程的願景。"
+      },
+      "launch": {
+        "title": "首個 AI 移民助手",
+        "description": "推出我們首個 AI 驅動的移民助手，幫助用戶解答基本移民問題。"
+      },
+      "expansion": {
+        "title": "全球拓展",
+        "description": "擴展服務以支持多個國家和移民途徑，並支持 7 種語言。"
+      },
+      "ai": {
+        "title": "高級 AI 平台",
+        "description": "推出面向移民顧問的全面 AI 平台，徹底改變專業人士服務客戶的方式。"
+      }
+    }
+  },
+  "contact": {
+    "title": "聯絡我們",
+    "subtitle": "有問題或想了解更多？我們很樂意聽取您的意見。",
+    "email": {
+      "title": "發送郵件",
+      "description": "用於一般諮詢和支援"
+    },
+    "phone": {
+      "title": "致電我們",
+      "description": "週一至週五，太平洋時間上午9點至下午5點"
+    },
+    "address": {
+      "title": "訪問我們",
+      "description": "我們位於本拿比的總部"
+    },
+    "cta": "聯絡我們"
+  }
+}

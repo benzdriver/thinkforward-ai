@@ -1,0 +1,39 @@
+{
+  "dashboard": {
+    "welcome": "欢迎回来",
+    "consultant": "顾问",
+    "loading": "正在加载您的顾问仪表盘...",
+    "error_fetching": "获取仪表盘数据时出错",
+    "client_summary": "客户概况",
+    "total_clients": "客户总数",
+    "active_clients": "活跃客户",
+    "active_rate": "活跃率",
+    "efficiency_metrics": "效率指标",
+    "time_saved": "节省时间",
+    "cases_completed": "完成案例",
+    "hours_minutes": "{{hours}}小时{{minutes}}分钟",
+    "minutes": "{{minutes}}分钟",
+    "efficiency_insight": "AI工具正在帮助您在日常任务上节省大量时间。",
+    "recent_activities": "近期活动",
+    "no_recent_activities": "暂无近期活动",
+    "view_all_activities": "查看所有活动",
+    "client": "客户",
+    "tasks": "任务",
+    "no_pending_tasks": "暂无待处理任务",
+    "view_all_tasks": "查看所有任务",
+    "add_task": "添加任务",
+    "priority": {
+      "high": "高",
+      "medium": "中",
+      "low": "低"
+    }
+  },
+  "navigation": {
+    "dashboard": "仪表盘",
+    "clients": "客户管理",
+    "ai_assistant": "AI助手",
+    "forms": "表单",
+    "analytics": "数据分析",
+    "settings": "设置"
+  }
+} 

@@ -1,0 +1,128 @@
+{
+  "nav": {
+    "assessment": "評価",
+    "login": "ログイン"
+  },
+  "hero": {
+    "title": "あなたの未来のためのスマート移民コンサルティング",
+    "subtitle": "プロのコンサルタントとAI技術を組み合わせて、パーソナライズされた移民アドバイスと申請サポートを提供します",
+    "description": "時間を節約し、成功率を向上",
+    "start_button": "評価を開始",
+    "learn_more": "詳細を見る"
+  },
+  "cta": {
+    "free_assessment": "無料評価",
+    "login_register": "今すぐ始める",
+    "dashboard": "ダッシュボード"
+  },
+  "role_selection": {
+    "title": "役割を選択",
+    "subtitle": "あなたに合わせたサービス"
+  },
+  "roles": {
+    "guest": {
+      "consultant_heading": "コンサルタントになる",
+      "consultant_description": "AIで効率を高め、ビジネスを拡大",
+      "client_heading": "移民ソリューションを見つける",
+      "client_description": "プロのガイダンス、簡単な移民",
+      "role_selection": "役割を選択",
+      "role_description": "あなたに合わせたサービス、個別対応",
+      "register_as_consultant": "コンサルタントとして登録"
+    },
+    "client": {
+      "welcome_back": "おかえりなさい！",
+      "continue_application": "申請を続ける",
+      "continue_description": "申請の進捗状況を確認し、次のステップを完了してください",
+      "speak_consultant": "コンサルタントと話す",
+      "speak_description": "コンサルタントまたはAIアシスタントと連絡を取り、サポートを受ける"
+    },
+    "consultant": {
+      "consultant_tools": "コンサルタントツールボックス",
+      "manage_clients": "クライアント管理",
+      "manage_description": "クライアントケースの閲覧と管理",
+      "ai_assistant": "AIアシスタント",
+      "ai_description": "AIアシスタントを使用して効率を向上させる",
+      "analytics": "データ分析",
+      "analytics_description": "クライアントデータとビジネスインサイトを閲覧"
+    },
+    "admin": {
+      "system_overview": "システム概要",
+      "system_description": "プラットフォームの概要とシステムの状態",
+      "user_management": "ユーザー管理",
+      "user_description": "ユーザーアカウントと権限を管理",
+      "platform_analytics": "プラットフォーム分析",
+      "analytics_description": "プラットフォームデータと使用統計を表示"
+    }
+  },
+  "register": {
+    "as_consultant": "コンサルタントになる",
+    "as_client": "クライアントとして登録"
+  },
+  "why_choose_us": "なぜ私たちを選ぶのか",
+  "features": {
+    "title": "なぜ私たちを選ぶのか",
+    "description": "スマートで効率的、プロフェッショナルで信頼できる",
+    "explanation": "AI + プロフェッショナルサービス、心配のない移民"
+  },
+  "features.item1.title": "AI駆動の評価",
+  "features.item1.description": "3分で移民オプションを発見",
+  "features.item2.title": "専門家のサポート",
+  "features.item2.description": "経験豊富なコンサルタントによるガイダンス",
+  "features.item3.title": "進捗追跡",
+  "features.item3.description": "リアルタイムの監視と自動リマインダー",
+  "features.item4.title": "多言語サービス",
+  "features.item4.description": "障害のないコミュニケーション",
+  "how_it_works": {
+    "title": "移民への3ステップ",
+    "description": "シンプルで迅速、簡単に始める",
+    "step1": {
+      "title": "適格性を評価",
+      "description": "AIが迅速に移民オプションを分析"
+    },
+    "step2": {
+      "title": "プランを取得",
+      "description": "カスタマイズされた移民パスとタイムライン"
+    },
+    "step3": {
+      "title": "プロフェッショナルサポート",
+      "description": "成功を確実にするためのコンサルタントの支援"
+    }
+  },
+  "consultant": {
+    "title": "コンサルタントパートナーシッププログラム",
+    "description": "AIによるビジネス成長",
+    "benefit1": "効率を80%向上",
+    "benefit2": "顧客満足度を向上",
+    "benefit3": "ビジネス規模を拡大",
+    "image_alt": "コンサルタントの作業シーン"
+  },
+  "testimonials": {
+    "title": "クライアントの声",
+    "subtitle": "実際の経験、誠実な共有",
+    "testimonial1": {
+      "content": "AI評価は最適な移民パスを見つけるのに役立ち、時間と労力を節約しました。",
+      "person_alt": "クライアントの写真",
+      "name": "李明",
+      "program": "カナダの技術移民"
+    },
+    "testimonial2": {
+      "content": "プロのコンサルタントがプロセス全体をガイドし、移民を簡単で心配のないものにしました。",
+      "person_alt": "クライアントの写真",
+      "name": "張華",
+      "program": "オーストラリアの技術移民"
+    },
+    "testimonial3": {
+      "content": "移民に不慣れな私にとって、ThinkForwardはすべてを簡単にしました。",
+      "person_alt": "クライアントの写真",
+      "name": "王健",
+      "program": "ニュージーランドの技術移民"
+    }
+  },
+  "cta_section": {
+    "title": "移民の旅を始めましょう",
+    "description": "無料評価、今すぐ始める",
+    "register_button": "今すぐ登録",
+    "assessment_button": "無料評価"
+  },
+  "FEATURES.TITLE": "なぜ私たちを選ぶのか"
+} 

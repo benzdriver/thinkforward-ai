@@ -1,0 +1,110 @@
+{
+  "meta": {
+    "title": "À propos de nous | ThinkForward Immigration",
+    "description": "Découvrez ThinkForward, notre mission de simplifier le processus d'immigration, et l'équipe derrière nos solutions innovantes propulsées par l'IA."
+  },
+  "hero": {
+    "title": "Simplifier l'immigration grâce à l'IA",
+    "subtitle": "Notre mission est de rendre l'immigration plus accessible, efficace et sans stress grâce à une technologie innovante.",
+    "cta": "Contactez-nous"
+  },
+  "mission_vision": {
+    "title": "Notre Mission & Vision",
+    "subtitle": "Ce qui nous motive et où nous allons",
+    "mission": {
+      "title": "Notre Mission",
+      "description": "Démocratiser l'accès aux services d'immigration en exploitant la technologie de l'IA, rendant le processus plus accessible, efficace et transparent pour tous."
+    },
+    "vision": {
+      "title": "Notre Vision",
+      "description": "Un monde où les frontières géographiques ne limitent pas le potentiel humain, et où l'innovation technologique permet aux individus de naviguer dans les systèmes d'immigration avec confiance."
+    }
+  },
+  "values": {
+    "title": "Nos Valeurs Fondamentales",
+    "subtitle": "Les principes qui guident tout ce que nous faisons",
+    "items": {
+      "trust": {
+        "title": "Confiance & Intégrité",
+        "description": "Nous construisons la confiance par la transparence, l'honnêteté et en priorisant les intérêts de nos utilisateurs dans chaque décision que nous prenons."
+      },
+      "innovation": {
+        "title": "Innovation Continue",
+        "description": "Nous nous engageons à repousser les limites et à développer des solutions de pointe qui transforment l'expérience d'immigration."
+      },
+      "community": {
+        "title": "Focus sur la Communauté",
+        "description": "Nous croyons en la puissance de la communauté et nous nous efforçons de créer des produits qui unissent et autonomisent les communautés d'immigrants dans le monde entier."
+      },
+      "quality": {
+        "title": "Excellence & Qualité",
+        "description": "Nous nous imposons les normes les plus élevées, en veillant à ce que notre technologie et nos conseils soient précis, fiables et conviviaux."
+      }
+    }
+  },
+  "team": {
+    "title": "Rencontrez Notre Équipe",
+    "subtitle": "Les personnes passionnées derrière ThinkForward",
+    "members": {
+      "member1": {
+        "name": "Yansi He",
+        "position": "Fondatrice et PDG",
+        "bio": "Consultante en immigration médaillée d'or de l'UBC et ancienne conseillère en chef en immigration dans un cabinet d'avocats, Yansi a fondé ThinkForward avec la vision de simplifier l'immigration pour tous. Elle combine son expertise juridique et sa passion pour la technologie pour aider les gens à naviguer dans leur parcours d'immigration en toute confiance."
+      },
+      "member2": {
+        "name": "Ben Zhou",
+        "position": "Directeur Technique",
+        "bio": "Expert de premier plan en IA et en apprentissage automatique, Ben pilote les innovations technologiques qui alimentent notre plateforme, garantissant des solutions intelligentes et fiables."
+      },
+      "member3": {
+        "name": "Danniel Zheng",
+        "position": "Responsable Produit",
+        "bio": "Avec une approche centrée sur l'utilisateur, Danniel supervise le développement des produits, s'assurant que nos outils sont intuitifs, efficaces et alignés avec les besoins des clients."
+      },
+      "member4": {
+        "name": "Dongmei Ma",
+        "position": "Conseillère Juridique Principale",
+        "bio": "Dongmei apporte une vaste expertise en droit de l'immigration, garantissant que nos solutions d'IA fournissent des conseils précis tout en naviguant dans des cadres juridiques complexes."
+      }
+    }
+  },
+  "milestones": {
+    "title": "Notre Parcours",
+    "subtitle": "Jalons clés dans notre mission de transformer l'immigration",
+    "items": {
+      "founding": {
+        "title": "Fondée à Vancouver",
+        "description": "ThinkForward a été fondée avec une vision d'exploiter l'IA pour simplifier les processus d'immigration pour tous."
+      },
+      "launch": {
+        "title": "Premier Assistant d'Immigration IA",
+        "description": "Lancement de notre premier assistant d'immigration propulsé par l'IA, aidant les utilisateurs à naviguer dans les questions d'immigration de base."
+      },
+      "expansion": {
+        "title": "Expansion Mondiale",
+        "description": "Extension de nos services pour soutenir plusieurs pays et voies d'immigration, avec support en 7 langues."
+      },
+      "ai": {
+        "title": "Plateforme IA Avancée",
+        "description": "Introduction de notre plateforme d'IA complète pour les consultants en immigration, révolutionnant la manière dont les professionnels servent leurs clients."
+      }
+    }
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "subtitle": "Vous avez des questions ou souhaitez en savoir plus? Nous serions ravis d'avoir de vos nouvelles.",
+    "email": {
+      "title": "Envoyez-nous un email",
+      "description": "Pour les demandes générales et le support"
+    },
+    "phone": {
+      "title": "Appelez-nous",
+      "description": "Du lundi au vendredi, de 9h à 17h heure du Pacifique"
+    },
+    "address": {
+      "title": "Rendez-nous visite",
+      "description": "Notre siège social à Burnaby"
+    },
+    "cta": "Contactez-nous"
+  }
+} 

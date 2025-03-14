@@ -1,0 +1,119 @@
+{
+  "header": {
+    "title": "顧問合作計劃",
+    "subtitle": "選擇合適的計劃，借助AI工具助力您的移民諮詢業務增長"
+  },
+  "value": {
+    "efficiency": {
+      "title": "節省時間",
+      "description": "通過我們的AI工具，減少高達70%的行政工作"
+    },
+    "growth": {
+      "title": "發展業務",
+      "description": "在不增加工作量的情況下管理更多客戶"
+    },
+    "expertise": {
+      "title": "提升專業知識",
+      "description": "獲取專業知識並及時了解移民政策變化"
+    }
+  },
+  "plans": {
+    "starter": {
+      "name": "起步合作計劃",
+      "description": "適合剛起步的獨立顧問",
+      "features": {
+        "clients": "管理最多15位客戶",
+        "ai_assistant": "核心AI助手功能",
+        "document_automation": "基礎文檔自動化",
+        "client_portal": "客戶門戶訪問",
+        "consultation_tools": "諮詢工具",
+        "advanced_analytics": "高級分析",
+        "priority_support": "優先支持",
+        "white_label": "白標選項"
+      }
+    },
+    "growth": {
+      "name": "成長合作計劃",
+      "description": "適合正在成長的諮詢業務",
+      "features": {
+        "clients": "管理最多40位客戶",
+        "ai_assistant": "增強型AI助手功能",
+        "document_automation": "高級文檔自動化",
+        "client_portal": "高級客戶門戶",
+        "consultation_tools": "擴展諮詢工具",
+        "advanced_analytics": "全面分析",
+        "priority_support": "優先支持與培訓",
+        "white_label": "白標選項"
+      }
+    },
+    "professional": {
+      "name": "專業合作計劃",
+      "description": "適合成熟的移民諮詢公司",
+      "features": {
+        "clients": "無限客戶管理",
+        "unlimited": "無限",
+        "ai_assistant": "完整AI套件訪問",
+        "document_automation": "完整文檔自動化",
+        "client_portal": "企業級客戶門戶",
+        "consultation_tools": "高級諮詢工具",
+        "advanced_analytics": "定制分析與報告",
+        "priority_support": "專屬支持團隊",
+        "white_label": "完整白標選項"
+      }
+    }
+  },
+  "recommended": "推薦",
+  "per_month": "月",
+  "select_plan": "選擇計劃",
+  "features_included": "包含功能",
+  "testimonials": {
+    "title": "移民顧問們的評價",
+    "first": {
+      "quote": "ThinkForward徹底改變了我管理業務的方式。我的客戶容量翻了一倍，同時實際工作時間卻減少了。",
+      "author": "莎拉·約翰遜",
+      "role": "註冊移民顧問, 溫哥華"
+    },
+    "second": {
+      "quote": "AI工具大大減少了文書工作時間。以前需要幾小時的工作現在只需幾分鐘。",
+      "author": "陳明",
+      "role": "移民顧問, 多倫多"
+    },
+    "third": {
+      "quote": "AI輔助和客戶管理工具的結合對我的業務增長產生了革命性的變化。",
+      "author": "普里亞·夏爾馬",
+      "role": "ICCRC成員, 蒙特利爾"
+    }
+  },
+  "faq": {
+    "title": "常見問題",
+    "q1": "客戶限制是如何運作的？",
+    "a1": "客戶限制是指您可以在系統中管理的活躍客戶檔案數量。您可以歸檔不活躍的客戶以釋放空間。",
+    "q2": "我可以升級或降級我的計劃嗎？",
+    "a2": "是的，您可以隨時更改您的計劃。變更將在下一個賬單週期開始時生效。",
+    "q3": "是否有合同或承諾期限？",
+    "a3": "所有計劃都按月計費，沒有長期承諾。您可以隨時取消。",
+    "q4": "您接受哪些支付方式？",
+    "a4": "我們接受所有主要信用卡以及PayPal，以方便您的支付。",
+    "q5": "您提供免費試用嗎？",
+    "a5": "是的，新顧問可以免費試用成長計劃14天，無需信用卡。"
+  },
+  "cta": {
+    "title": "立即發展您的業務",
+    "description": "加入數百位使用ThinkForward轉變諮詢業務的移民顧問",
+    "button": "開始使用"
+  },
+  "subscription": {
+    "complete_subscription": "完成您的訂閱",
+    "selected_plan": "已選計劃",
+    "first_name": "名",
+    "last_name": "姓",
+    "email": "電子郵箱",
+    "company_name": "公司或執業機構名稱",
+    "payment_details": "付款詳情",
+    "required_field": "此欄位為必填項",
+    "valid_email": "請輸入有效的電子郵箱",
+    "processing": "處理中...",
+    "start_subscription": "開始訂閱",
+    "error_generic": "處理您的訂閱時出現錯誤。請重試。"
+  }
+} 

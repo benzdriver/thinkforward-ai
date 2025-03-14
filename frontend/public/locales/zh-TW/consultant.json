@@ -1,0 +1,39 @@
+{
+  "dashboard": {
+    "welcome": "歡迎回來",
+    "consultant": "顧問",
+    "loading": "正在載入您的顧問儀表板...",
+    "error_fetching": "獲取儀表板數據時出錯",
+    "client_summary": "客戶概況",
+    "total_clients": "客戶總數",
+    "active_clients": "活躍客戶",
+    "active_rate": "活躍率",
+    "efficiency_metrics": "效率指標",
+    "time_saved": "節省時間",
+    "cases_completed": "完成案例",
+    "hours_minutes": "{{hours}}小時{{minutes}}分鐘",
+    "minutes": "{{minutes}}分鐘",
+    "efficiency_insight": "AI工具正在幫助您在日常任務上節省大量時間。",
+    "recent_activities": "近期活動",
+    "no_recent_activities": "暫無近期活動",
+    "view_all_activities": "查看所有活動",
+    "client": "客戶",
+    "tasks": "任務",
+    "no_pending_tasks": "暫無待處理任務",
+    "view_all_tasks": "查看所有任務",
+    "add_task": "添加任務",
+    "priority": {
+      "high": "高",
+      "medium": "中",
+      "low": "低"
+    }
+  },
+  "navigation": {
+    "dashboard": "儀表板",
+    "clients": "客戶管理",
+    "ai_assistant": "AI助手",
+    "forms": "表單",
+    "analytics": "數據分析",
+    "settings": "設置"
+  }
+} 

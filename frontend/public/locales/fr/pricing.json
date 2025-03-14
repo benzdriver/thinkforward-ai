@@ -1,0 +1,119 @@
+{
+  "header": {
+    "title": "Plans de partenariat pour consultants",
+    "subtitle": "Choisissez le plan adapté pour développer votre cabinet de conseil en immigration avec des outils alimentés par l'IA"
+  },
+  "value": {
+    "efficiency": {
+      "title": "Gagnez du temps",
+      "description": "Réduisez le travail administratif jusqu'à 70% grâce à nos outils d'IA"
+    },
+    "growth": {
+      "title": "Développez votre cabinet",
+      "description": "Gérez plus de clients sans augmenter votre charge de travail"
+    },
+    "expertise": {
+      "title": "Améliorez votre expertise",
+      "description": "Accédez à des connaissances spécialisées et restez informé des changements de politique d'immigration"
+    }
+  },
+  "recommended": "Recommandé",
+  "per_month": "mois",
+  "select_plan": "Sélectionner le plan",
+  "features_included": "Fonctionnalités incluses",
+  "plans": {
+    "starter": {
+      "name": "Partenariat Débutant",
+      "description": "Parfait pour les consultants indépendants qui démarrent",
+      "features": {
+        "clients": "Gérez jusqu'à 15 clients",
+        "ai_assistant": "Fonctionnalités de base de l'assistant IA",
+        "document_automation": "Automatisation basique des documents",
+        "client_portal": "Accès au portail client",
+        "consultation_tools": "Outils de consultation",
+        "advanced_analytics": "Analyses avancées",
+        "priority_support": "Support prioritaire",
+        "white_label": "Options de marque blanche"
+      }
+    },
+    "growth": {
+      "name": "Partenariat Croissance",
+      "description": "Idéal pour les cabinets en pleine croissance",
+      "features": {
+        "clients": "Gérez jusqu'à 40 clients",
+        "ai_assistant": "Fonctionnalités améliorées de l'assistant IA",
+        "document_automation": "Automatisation avancée des documents",
+        "client_portal": "Portail client premium",
+        "consultation_tools": "Outils de consultation complets",
+        "advanced_analytics": "Analyses complètes",
+        "priority_support": "Support prioritaire et formation",
+        "white_label": "Options de marque blanche"
+      }
+    },
+    "professional": {
+      "name": "Partenariat Professionnel",
+      "description": "Pour les cabinets d'immigration établis",
+      "features": {
+        "clients": "Gestion illimitée de clients",
+        "unlimited": "Illimité",
+        "ai_assistant": "Accès complet à la suite IA",
+        "document_automation": "Automatisation complète des documents",
+        "client_portal": "Portail client entreprise",
+        "consultation_tools": "Outils de consultation premium",
+        "advanced_analytics": "Analyses et rapports personnalisés",
+        "priority_support": "Équipe de support dédiée",
+        "white_label": "Personnalisation complète"
+      }
+    }
+  },
+  "testimonials": {
+    "title": "Ce que disent les consultants en immigration",
+    "first": {
+      "quote": "ThinkForward a transformé ma façon de gérer mon cabinet. J'ai doublé ma capacité client tout en travaillant moins d'heures.",
+      "author": "Sarah Johnson",
+      "role": "CRIC, Vancouver"
+    },
+    "second": {
+      "quote": "Les outils d'IA ont considérablement réduit le temps de paperasse. Ce qui me prenait des heures ne prend maintenant que quelques minutes.",
+      "author": "Michael Chen",
+      "role": "Consultant en immigration, Toronto"
+    },
+    "third": {
+      "quote": "La combinaison de l'assistance IA et des outils de gestion client a révolutionné la croissance de mon entreprise.",
+      "author": "Priya Sharma",
+      "role": "Membre CRCIC, Montréal"
+    }
+  },
+  "faq": {
+    "title": "Questions fréquemment posées",
+    "q1": "Comment fonctionne la limite de clients?",
+    "a1": "La limite de clients fait référence au nombre de profils clients actifs que vous pouvez gérer dans le système. Vous pouvez archiver les clients inactifs pour libérer de l'espace.",
+    "q2": "Puis-je upgrader ou downgrader mon plan?",
+    "a2": "Oui, vous pouvez changer de plan à tout moment. Les changements prendront effet au début de votre prochain cycle de facturation.",
+    "q3": "Y a-t-il un contrat ou une période d'engagement?",
+    "a3": "Tous les plans sont facturés mensuellement sans engagement à long terme. Vous pouvez annuler à tout moment.",
+    "q4": "Quels modes de paiement acceptez-vous?",
+    "a4": "Nous acceptons toutes les principales cartes de crédit, ainsi que PayPal pour votre commodité.",
+    "q5": "Offrez-vous un essai gratuit?",
+    "a5": "Oui, les nouveaux consultants peuvent essayer le plan Croissance gratuitement pendant 14 jours, sans carte de crédit requise."
+  },
+  "cta": {
+    "title": "Développez votre cabinet dès aujourd'hui",
+    "description": "Rejoignez des centaines de consultants en immigration qui utilisent ThinkForward pour transformer leur pratique",
+    "button": "Commencer"
+  },
+  "subscription": {
+    "complete_subscription": "Complétez votre abonnement",
+    "selected_plan": "Plan sélectionné",
+    "first_name": "Prénom",
+    "last_name": "Nom",
+    "email": "Adresse e-mail",
+    "company_name": "Nom de l'entreprise ou du cabinet",
+    "payment_details": "Détails de paiement",
+    "required_field": "Ce champ est requis",
+    "valid_email": "Veuillez entrer un email valide",
+    "processing": "Traitement en cours...",
+    "start_subscription": "Démarrer l'abonnement",
+    "error_generic": "Une erreur s'est produite lors du traitement de votre abonnement. Veuillez réessayer."
+  }
+} 

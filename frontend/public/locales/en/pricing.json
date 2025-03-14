@@ -1,0 +1,119 @@
+{
+  "header": {
+    "title": "Consultant Partnership Plans",
+    "subtitle": "Choose the right plan to grow your immigration consulting business with AI-powered tools"
+  },
+  "value": {
+    "efficiency": {
+      "title": "Save Time",
+      "description": "Reduce administrative work by up to 70% with our AI tools"
+    },
+    "growth": {
+      "title": "Grow Your Practice",
+      "description": "Manage more clients without increasing your workload"
+    },
+    "expertise": {
+      "title": "Enhance Expertise",
+      "description": "Access specialized knowledge and stay updated with immigration policy changes"
+    }
+  },
+  "plans": {
+    "starter": {
+      "name": "Starter Partnership",
+      "description": "Perfect for solo consultants getting started",
+      "features": {
+        "clients": "Manage up to 15 clients",
+        "ai_assistant": "Core AI assistant features",
+        "document_automation": "Basic document automation",
+        "client_portal": "Client portal access",
+        "consultation_tools": "Consultation tools",
+        "advanced_analytics": "Advanced analytics",
+        "priority_support": "Priority support",
+        "white_label": "White labeling options"
+      }
+    },
+    "growth": {
+      "name": "Growth Partnership",
+      "description": "Ideal for growing practices",
+      "features": {
+        "clients": "Manage up to 40 clients",
+        "ai_assistant": "Enhanced AI assistant features",
+        "document_automation": "Advanced document automation",
+        "client_portal": "Premium client portal",
+        "consultation_tools": "Extensive consultation tools",
+        "advanced_analytics": "Comprehensive analytics",
+        "priority_support": "Priority support & training",
+        "white_label": "White labeling options"
+      }
+    },
+    "professional": {
+      "name": "Professional Partnership",
+      "description": "For established immigration firms",
+      "features": {
+        "clients": "Unlimited client management",
+        "unlimited": "Unlimited",
+        "ai_assistant": "Full AI suite access",
+        "document_automation": "Complete document automation",
+        "client_portal": "Enterprise client portal",
+        "consultation_tools": "Premium consultation tools",
+        "advanced_analytics": "Custom analytics & reporting",
+        "priority_support": "Dedicated support team",
+        "white_label": "Complete white labeling"
+      }
+    }
+  },
+  "recommended": "Recommended",
+  "per_month": "month",
+  "select_plan": "Select Plan",
+  "features_included": "Features included",
+  "testimonials": {
+    "title": "What Immigration Consultants Are Saying",
+    "first": {
+      "quote": "ThinkForward has transformed how I manage my practice. I've doubled my client capacity while actually working fewer hours.",
+      "author": "Sarah Johnson",
+      "role": "RCIC, Vancouver"
+    },
+    "second": {
+      "quote": "The AI tools have dramatically reduced paperwork time. What used to take me hours now takes minutes.",
+      "author": "Michael Chen",
+      "role": "Immigration Consultant, Toronto"
+    },
+    "third": {
+      "quote": "The combination of AI assistance and client management tools has been game-changing for my business growth.",
+      "author": "Priya Sharma",
+      "role": "ICCRC Member, Montreal"
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "q1": "How does the client limit work?",
+    "a1": "The client limit refers to the number of active client profiles you can manage in the system. You can archive inactive clients to free up space.",
+    "q2": "Can I upgrade or downgrade my plan?",
+    "a2": "Yes, you can change your plan at any time. Changes will take effect at the start of your next billing cycle.",
+    "q3": "Is there a contract or commitment period?",
+    "a3": "All plans are billed monthly with no long-term commitment. You can cancel at any time.",
+    "q4": "What payment methods do you accept?",
+    "a4": "We accept all major credit cards, as well as PayPal for your convenience.",
+    "q5": "Do you offer a free trial?",
+    "a5": "Yes, new consultants can try the Growth plan free for 14 days, no credit card required."
+  },
+  "cta": {
+    "title": "Grow Your Practice Today",
+    "description": "Join hundreds of immigration consultants using ThinkForward to transform their practice",
+    "button": "Get Started"
+  },
+  "subscription": {
+    "complete_subscription": "Complete Your Subscription",
+    "selected_plan": "Selected plan",
+    "first_name": "First name",
+    "last_name": "Last name",
+    "email": "Email address",
+    "company_name": "Company or practice name",
+    "payment_details": "Payment details",
+    "required_field": "This field is required",
+    "valid_email": "Please enter a valid email",
+    "processing": "Processing...",
+    "start_subscription": "Start Subscription",
+    "error_generic": "There was an error processing your subscription. Please try again."
+  }
+} 

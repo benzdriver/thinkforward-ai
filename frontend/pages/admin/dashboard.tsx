@@ -3,6 +3,9 @@ import { useRouter } from 'next/router';
 import { useAuth } from '@clerk/nextjs';
 import { UserRole } from '../../types/user';
 import Link from 'next/link';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import PageHeader from '../../components/ui/PageHeader';
 
 interface AdminDashboardProps {
   userRole: UserRole;
@@ -32,6 +35,7 @@ export default function AdminDashboard({ userRole }: AdminDashboardProps) {
   const { getToken, isLoaded } = useAuth();
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const { t } = useTranslation('admin');
   
   // 如果不是管理员角色，重定向到控制台
   useEffect(() => {
@@ -80,7 +84,7 @@ export default function AdminDashboard({ userRole }: AdminDashboardProps) {
     return (
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div className="text-center py-10">
-          <p className="text-lg text-gray-500">无法加载仪表盘数据</p>
+          <p className="text-lg text-gray-500">{t('dashboard.error_loading')}</p>
         </div>
       </div>
     );
@@ -88,6 +92,13 @@ export default function AdminDashboard({ userRole }: AdminDashboardProps) {
   
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <PageHeader 
+        title={t('dashboard.title')}
+        subtitle={t('dashboard.subtitle')}
+        alignment="left"
+        className="mb-6"
+      />
+      
       <div className="md:flex md:items-center md:justify-between mb-6">
         <div className="flex-1 min-w-0">
           <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
@@ -100,7 +111,7 @@ export default function AdminDashboard({ userRole }: AdminDashboardProps) {
         <div className="mt-4 flex md:mt-0 md:ml-4">
           <Link href="/admin/users">
             <span className="ml-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-              用户管理
+              {t('dashboard.manage_users')}
             </span>
           </Link>
         </div>
@@ -300,4 +311,12 @@ export default function AdminDashboard({ userRole }: AdminDashboardProps) {
       </div>
     </div>
   );
+}
+
+export async function getServerSideProps({ locale }: { locale: string }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale || 'zh', ['common', 'admin'])),
+    },
+  };
 } 

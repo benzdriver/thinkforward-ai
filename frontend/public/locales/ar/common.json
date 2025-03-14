@@ -1,0 +1,31 @@
+{
+  "app_name": "ThinkForward AI",
+  "nav": {
+    "home": "الرئيسية",
+    "about": "عننا",
+    "assessment": "التقييم",
+    "dashboard": "لوحة التحكم",
+    "client_management": "إدارة العملاء",
+    "admin": "المسؤول"
+  },
+  "actions": {
+    "login": "تسجيل الدخول",
+    "logout": "تسجيل الخروج",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "submit": "إرسال",
+    "edit": "تعديل",
+    "delete": "حذف"
+  },
+  "language_selector": {
+    "label": "اللغة",
+    "zh": "الصينية",
+    "en": "الإنجليزية",
+    "ar": "العربية",
+    "ja": "اليابانية",
+    "ko": "الكورية"
+  },
+  "footer": {
+    "copyright": "© {{year}} ThinkForward AI. جميع الحقوق محفوظة."
+  }
+} 

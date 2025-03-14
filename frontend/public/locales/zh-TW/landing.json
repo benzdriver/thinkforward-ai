@@ -1,0 +1,136 @@
+{
+    "nav": {
+      "assessment": "評估",
+      "login": "登入"
+    },
+    "title": "ThinkForward AI - 智能移民助手",
+    "hero": {
+      "title": "AI智能移民，一鍵開啟全球之路",
+      "subtitle": "專業顧問+AI技術，為您定制最佳移民方案",
+      "description": "省時省力，提高成功率",
+      "background_alt": "背景圖像"
+    },
+    "cta": {
+      "free_assessment": "免費評估",
+      "login_register": "立即開始",
+      "dashboard": "儀表板"
+    },
+    "role_selection": {
+      "title": "選擇角色",
+      "subtitle": "為您提供專屬服務"
+    },
+    "roles": {
+      "guest": {
+        "consultant_heading": "成為顧問",
+        "consultant_description": "AI助力，提升效率，擴大業務",
+        "client_heading": "尋找移民方案",
+        "client_description": "專業指導，輕鬆移民",
+        "role_selection": "選擇角色",
+        "role_description": "專屬服務，量身定制",
+        "register_as_consultant": "註冊為顧問"
+      },
+      "client": {
+        "welcome_back": "歡迎回來！",
+        "continue_application": "繼續申請",
+        "continue_description": "查看進度，完成下一步",
+        "speak_consultant": "諮詢顧問",
+        "speak_description": "隨時獲取專業幫助"
+      },
+      "consultant": {
+        "consultant_tools": "顧問工具箱",
+        "manage_clients": "管理客戶",
+        "manage_description": "查看和管理您的客戶案例",
+        "ai_assistant": "AI助手",
+        "ai_description": "使用AI助手提高工作效率",
+        "analytics": "數據分析",
+        "analytics_description": "查看客戶數據和業務洞察"
+      },
+      "admin": {
+        "system_overview": "系統概覽",
+        "system_description": "平台概覽和系統狀態",
+        "user_management": "用戶管理",
+        "user_description": "管理用戶賬戶和權限",
+        "platform_analytics": "平台分析",
+        "analytics_description": "查看平台數據和使用統計"
+      }
+    },
+    "register": {
+      "as_consultant": "成為顧問",
+      "as_client": "立即註冊"
+    },
+    "why_choose_us": "為何選擇我們",
+    "features": {
+      "title": "為何選擇我們",
+      "description": "智能高效，專業可靠",
+      "explanation": "AI+人工專業服務，移民無憂",
+      "item1": {
+        "title": "AI智能評估",
+        "description": "3分鐘了解您的移民資格"
+      },
+      "item2": {
+        "title": "專家支持",
+        "description": "資深顧問全程指導"
+      },
+      "item3": {
+        "title": "進度追蹤",
+        "description": "實時監控，自動提醒"
+      },
+      "item4": {
+        "title": "多語言服務",
+        "description": "無障礙溝通"
+      }
+    },
+    "how_it_works": {
+      "title": "三步移民",
+      "description": "簡單快捷，輕鬆開始",
+      "step1": {
+        "title": "評估資格",
+        "description": "AI快速分析您的移民選項"
+      },
+      "step2": {
+        "title": "獲取方案",
+        "description": "定制移民路徑和時間表"
+      },
+      "step3": {
+        "title": "專業支持",
+        "description": "顧問協助，確保成功"
+      }
+    },
+    "consultant": {
+      "title": "顧問合作計劃",
+      "description": "AI賦能，業務倍增",
+      "benefit1": "效率提升80%",
+      "benefit2": "客戶滿意度提高",
+      "benefit3": "業務規模擴大",
+      "image_alt": "顧問工作場景"
+    },
+    "testimonials": {
+      "title": "客戶心聲",
+      "subtitle": "真實體驗，真誠分享",
+      "testimonial1": {
+        "content": "AI評估幫我找到最佳移民途徑，省時又省力。",
+        "person_alt": "客戶照片",
+        "name": "李明",
+        "program": "加拿大技術移民"
+      },
+      "testimonial2": {
+        "content": "專業顧問全程指導，移民過程輕鬆無憂。",
+        "person_alt": "客戶照片",
+        "name": "張華",
+        "program": "澳大利亞技術移民"
+      },
+      "testimonial3": {
+        "content": "對移民一無所知，ThinkForward讓一切變得簡單。",
+        "person_alt": "客戶照片",
+        "name": "王健",
+        "program": "紐西蘭技術移民"
+      }
+    },
+    "cta_section": {
+      "title": "開啟您的移民之旅",
+      "description": "免費評估，立即開始",
+      "register_button": "立即註冊",
+      "assessment_button": "免費評估"
+    },
+    "FEATURES.TITLE": "為何選擇我們"
+  }

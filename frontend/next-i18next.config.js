@@ -1,10 +1,17 @@
-const path = require('path')
-
 module.exports = {
   i18n: {
     defaultLocale: 'zh',
-    locales: ['en', 'fr', 'zh'],
-    localeDetection: true
+    locales: ['zh', 'zh-TW', 'en', 'fr', 'ja', 'ko', 'ar'],
+    localeDetection: false,
   },
-  localePath: path.resolve(__dirname, './public/locales')
-}
+  fallbackLng: 'zh',
+  ns: ['common', 'landing'],
+  defaultNS: 'common',
+  debug: process.env.NODE_ENV === 'development',
+  interpolation: {
+    escapeValue: false
+  },
+  react: {
+    useSuspense: false
+  }
+};

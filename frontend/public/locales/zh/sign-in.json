@@ -1,0 +1,17 @@
+{
+  "page_title": "登录",
+  "heading": "登录您的账户",
+  "email_label": "电子邮箱",
+  "password_label": "密码",
+  "forgot_password": "忘记密码?",
+  "submit_button": "登录",
+  "no_account": "还没有账户?",
+  "create_account": "创建账户",
+  "or_continue_with": "或继续使用",
+  "loading": "加载中...",
+  "debug_info": "调试信息",
+  "locale_from_props": "来自props的区域设置",
+  "locale_from_router": "来自路由的区域设置",
+  "clerk_locale": "Clerk区域设置",
+  "path": "路径"
+} 

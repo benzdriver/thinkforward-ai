@@ -1,0 +1,127 @@
+{
+    "nav": {
+      "assessment": "التقييم",
+      "login": "تسجيل الدخول"
+    },
+    "hero": {
+      "title": "الهجرة الذكية، ابدأ رحلتك العالمية",
+      "subtitle": "مستشارون خبراء + تقنية الذكاء الاصطناعي لأفضل خطة هجرة",
+      "description": "وفر الوقت، وزد النجاح",
+      "background_alt": "صورة الخلفية"
+    },
+    "cta": {
+      "free_assessment": "تقييم مجاني",
+      "login_register": "ابدأ الآن",
+      "dashboard": "لوحة التحكم"
+    },
+    "role_selection": {
+      "title": "اختر دورك",
+      "subtitle": "خدمات مخصصة لك"
+    },
+    "roles": {
+      "guest": {
+        "consultant_heading": "كن مستشارًا",
+        "consultant_description": "عزز الكفاءة ووسع عملك باستخدام الذكاء الاصطناعي",
+        "client_heading": "ابحث عن حلول الهجرة",
+        "client_description": "إرشاد احترافي، هجرة سهلة",
+        "role_selection": "اختر دورك",
+        "role_description": "خدمات مخصصة، مصممة لك",
+        "register_as_consultant": "سجل كمستشار"
+      },
+      "client": {
+        "welcome_back": "مرحبًا بعودتك!",
+        "continue_application": "تابع طلبك",
+        "continue_description": "تحقق من تقدمك وأكمل الخطوات التالية",
+        "speak_consultant": "تحدث مع مستشار",
+        "speak_description": "احصل على المساعدة المهنية في أي وقت"
+      },
+      "consultant": {
+        "consultant_tools": "صندوق أدوات المستشار",
+        "manage_clients": "إدارة العملاء",
+        "manage_description": "عرض وإدارة حالات العملاء الخاصة بك",
+        "ai_assistant": "مساعد الذكاء الاصطناعي",
+        "ai_description": "استخدم مساعد الذكاء الاصطناعي لتحسين الكفاءة",
+        "analytics": "تحليل البيانات",
+        "analytics_description": "عرض بيانات العملاء والرؤى التجارية"
+      },
+      "admin": {
+        "system_overview": "نظرة عامة على النظام",
+        "system_description": "نظرة عامة على المنصة وحالة النظام",
+        "user_management": "إدارة المستخدمين",
+        "user_description": "إدارة حسابات المستخدمين والأذونات",
+        "platform_analytics": "تحليلات المنصة",
+        "analytics_description": "عرض بيانات المنصة وإحصاءات الاستخدام"
+      }
+    },
+    "register": {
+      "as_consultant": "كن مستشارًا",
+      "as_client": "التسجيل كعميل"
+    },
+    "why_choose_us": "لماذا تختارنا",
+    "features": {
+      "title": "لماذا تختارنا",
+      "description": "ذكي وفعال، محترف وموثوق",
+      "explanation": "الذكاء الاصطناعي + الخدمات المهنية، هجرة بلا قلق"
+    },
+    "features.item1.title": "تقييم مدعوم بالذكاء الاصطناعي",
+    "features.item1.description": "اكتشف خيارات الهجرة الخاصة بك في 3 دقائق",
+    "features.item2.title": "دعم الخبراء",
+    "features.item2.description": "إرشاد من مستشارين ذوي خبرة",
+    "features.item3.title": "تتبع التقدم",
+    "features.item3.description": "مراقبة في الوقت الحقيقي وتذكيرات تلقائية",
+    "features.item4.title": "خدمات متعددة اللغات",
+    "features.item4.description": "اتصال بلا حواجز",
+    "how_it_works": {
+      "title": "ثلاث خطوات للهجرة",
+      "description": "بسيطة وسريعة، ابدأ بسهولة",
+      "step1": {
+        "title": "تقييم الأهلية",
+        "description": "يحلل الذكاء الاصطناعي بسرعة خيارات الهجرة الخاصة بك"
+      },
+      "step2": {
+        "title": "احصل على خطة",
+        "description": "مسار وجدول زمني للهجرة مخصص"
+      },
+      "step3": {
+        "title": "دعم احترافي",
+        "description": "مساعدة المستشار لضمان النجاح"
+      }
+    },
+    "consultant": {
+      "title": "برنامج شراكة المستشار",
+      "description": "مدعوم بالذكاء الاصطناعي، نمو الأعمال",
+      "benefit1": "زيادة الكفاءة بنسبة 80%",
+      "benefit2": "تحسين رضا العملاء",
+      "benefit3": "توسيع نطاق الأعمال",
+      "image_alt": "مشهد عمل المستشار"
+    },
+    "testimonials": {
+      "title": "شهادات العملاء",
+      "subtitle": "تجارب حقيقية، مشاركة صادقة",
+      "testimonial1": {
+        "content": "ساعدني التقييم بالذكاء الاصطناعي في العثور على أفضل مسار للهجرة، مما وفر الوقت والجهد.",
+        "person_alt": "صورة العميل",
+        "name": "لي مينغ",
+        "program": "الهجرة الماهرة الكندية"
+      },
+      "testimonial2": {
+        "content": "أرشدني المستشارون المحترفون طوال العملية، مما جعل الهجرة سهلة وبدون قلق.",
+        "person_alt": "صورة العميل",
+        "name": "تشانغ هوا",
+        "program": "الهجرة الماهرة الأسترالية"
+      },
+      "testimonial3": {
+        "content": "بصفتي شخصًا جديدًا في الهجرة، جعلت ThinkForward كل شيء بسيطًا.",
+        "person_alt": "صورة العميل",
+        "name": "وانغ جيان",
+        "program": "الهجرة الماهرة النيوزيلندية"
+      }
+    },
+    "cta_section": {
+      "title": "ابدأ رحلتك للهجرة",
+      "description": "تقييم مجاني، ابدأ الآن",
+      "register_button": "سجل الآن",
+      "assessment_button": "تقييم مجاني"
+    },
+    "FEATURES.TITLE": "لماذا تختارنا"
+  }

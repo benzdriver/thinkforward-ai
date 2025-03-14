@@ -3,5 +3,38 @@
     "login_title": "Sign in to your account",
     "login_description": "Access your immigration AI assistant account",
     "no_account": "Don't have an account?",
-    "sign_up_now": "Sign up now"
+    "sign_up_now": "Sign up now",
+    "app_name": "ThinkForward AI",
+    "nav": {
+      "home": "Home",
+      "about": "About",
+      "assessment": "Assessment",
+      "dashboard": "Dashboard",
+      "client_management": "Client Management",
+      "admin": "Admin",
+      "assistant": "AI Assistant",
+      "forms": "Forms"
+    },
+    "actions": {
+      "login": "Login",
+      "logout": "Logout",
+      "save": "Save",
+      "cancel": "Cancel",
+      "submit": "Submit",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "language_selector": {
+      "label": "Language",
+      "zh": "Chinese",
+      "en": "English",
+      "ar": "Arabic",
+      "ja": "Japanese",
+      "ko": "Korean"
+    },
+    "footer": {
+      "copyright": "© {{year}} ThinkForward AI. All rights reserved."
+    },
+    "title": "ThinkForward AI - Intelligent Immigration Assistant",
+    "all_rights_reserved": "All Rights Reserved"
   }

@@ -1,0 +1,110 @@
+{
+  "meta": {
+    "title": "About Us | ThinkForward Immigration",
+    "description": "Learn about ThinkForward, our mission to simplify the immigration process, and the team behind our innovative AI-powered solutions."
+  },
+  "hero": {
+    "title": "Simplifying Immigration with AI",
+    "subtitle": "We're on a mission to make immigration more accessible, efficient, and stress-free through innovative technology.",
+    "cta": "Get in Touch"
+  },
+  "mission_vision": {
+    "title": "Our Mission & Vision",
+    "subtitle": "What drives us and where we're headed",
+    "mission": {
+      "title": "Our Mission",
+      "description": "To democratize access to immigration services by leveraging AI technology, making the process more accessible, efficient, and transparent for everyone."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "A world where geographic borders don't limit human potential, and where technological innovation empowers individuals to navigate immigration systems with confidence."
+    }
+  },
+  "values": {
+    "title": "Our Core Values",
+    "subtitle": "The principles that guide everything we do",
+    "items": {
+      "trust": {
+        "title": "Trust & Integrity",
+        "description": "We build trust through transparency, honesty, and by prioritizing our users' best interests in every decision we make."
+      },
+      "innovation": {
+        "title": "Continuous Innovation",
+        "description": "We're committed to pushing boundaries and developing cutting-edge solutions that transform the immigration experience."
+      },
+      "community": {
+        "title": "Community Focus",
+        "description": "We believe in the power of community and strive to create products that unite and empower immigrant communities worldwide."
+      },
+      "quality": {
+        "title": "Excellence & Quality",
+        "description": "We hold ourselves to the highest standards, ensuring our technology and advice is accurate, reliable, and user-friendly."
+      }
+    }
+  },
+  "team": {
+    "title": "Meet Our Team",
+    "subtitle": "The passionate people behind ThinkForward",
+    "members": {
+      "member1": {
+        "name": "Yansi He",
+        "position": "Founder & CEO",
+        "bio": "A gold medal immigration consultant from UBC and former chief immigration advisor at a law firm, Yansi founded ThinkForward with a vision to make immigration simpler for everyone. She combines her legal expertise with a passion for technology to help people navigate their immigration journey with confidence."
+      },
+      "member2": {
+        "name": "Ben Zhou",
+        "position": "CTO",
+        "bio": "A leading expert in AI and machine learning, Ben drives the technological innovations that power our platform, ensuring intelligent and reliable solutions."
+      },
+      "member3": {
+        "name": "Danniel Zheng",
+        "position": "Head of Product",
+        "bio": "With a user-centric approach, Danniel oversees product development, ensuring our tools are intuitive, effective, and aligned with client needs."
+      },
+      "member4": {
+        "name": "Dongmei Ma",
+        "position": "Chief Legal Advisor",
+        "bio": "Dongmei brings extensive expertise in immigration law, ensuring our AI solutions provide accurate guidance while navigating complex legal frameworks."
+      }
+    }
+  },
+  "milestones": {
+    "title": "Our Journey",
+    "subtitle": "Key milestones in our mission to transform immigration",
+    "items": {
+      "founding": {
+        "title": "Founded in Vancouver",
+        "description": "ThinkForward was founded with a vision to leverage AI to simplify immigration processes for everyone."
+      },
+      "launch": {
+        "title": "First AI Immigration Assistant",
+        "description": "Launched our first AI-powered immigration assistant, helping users navigate basic immigration questions."
+      },
+      "expansion": {
+        "title": "Global Expansion",
+        "description": "Expanded our services to support multiple countries and immigration pathways, with support for 7 languages."
+      },
+      "ai": {
+        "title": "Advanced AI Platform",
+        "description": "Introduced our comprehensive AI platform for immigration consultants, revolutionizing how professionals serve clients."
+      }
+    }
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "Have questions or want to learn more? We'd love to hear from you.",
+    "email": {
+      "title": "Email Us",
+      "description": "For general inquiries and support"
+    },
+    "phone": {
+      "title": "Call Us",
+      "description": "Monday to Friday, 9am-5pm PT"
+    },
+    "address": {
+      "title": "Visit Us",
+      "description": "Our headquarters in Burnaby"
+    },
+    "cta": "Contact Us"
+  }
+} 

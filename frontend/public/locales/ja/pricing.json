@@ -1,0 +1,119 @@
+{
+  "header": {
+    "title": "コンサルタントパートナーシッププラン",
+    "subtitle": "AI搭載ツールで移民コンサルティング事業を成長させるための最適なプランを選択"
+  },
+  "value": {
+    "efficiency": {
+      "title": "時間の節約",
+      "description": "AIツールで管理業務を最大70%削減"
+    },
+    "growth": {
+      "title": "事業の成長",
+      "description": "作業量を増やすことなく、より多くのクライアントを管理"
+    },
+    "expertise": {
+      "title": "専門知識の向上",
+      "description": "専門知識へのアクセスと移民政策の変更に関する最新情報の入手"
+    }
+  },
+  "recommended": "おすすめ",
+  "per_month": "月",
+  "select_plan": "プランを選択",
+  "features_included": "含まれる機能",
+  "plans": {
+    "starter": {
+      "name": "スタータープラン",
+      "description": "始めたばかりの個人コンサルタントに最適",
+      "features": {
+        "clients": "最大15名のクライアント管理",
+        "ai_assistant": "基本的なAIアシスタント機能",
+        "document_automation": "基本的な文書自動化",
+        "client_portal": "クライアントポータルアクセス",
+        "consultation_tools": "コンサルテーションツール",
+        "advanced_analytics": "高度な分析",
+        "priority_support": "優先サポート",
+        "white_label": "ホワイトラベルオプション"
+      }
+    },
+    "growth": {
+      "name": "成長プラン",
+      "description": "成長中の事務所に最適",
+      "features": {
+        "clients": "最大40名のクライアント管理",
+        "ai_assistant": "強化されたAIアシスタント機能",
+        "document_automation": "高度な文書自動化",
+        "client_portal": "プレミアムクライアントポータル",
+        "consultation_tools": "広範なコンサルテーションツール",
+        "advanced_analytics": "包括的な分析",
+        "priority_support": "優先サポートとトレーニング",
+        "white_label": "ホワイトラベルオプション"
+      }
+    },
+    "professional": {
+      "name": "プロフェッショナルプラン",
+      "description": "確立された移民事務所向け",
+      "features": {
+        "clients": "無制限のクライアント管理",
+        "unlimited": "無制限",
+        "ai_assistant": "AIスイート完全アクセス",
+        "document_automation": "完全な文書自動化",
+        "client_portal": "エンタープライズクライアントポータル",
+        "consultation_tools": "プレミアムコンサルテーションツール",
+        "advanced_analytics": "カスタム分析とレポート",
+        "priority_support": "専任サポートチーム",
+        "white_label": "完全なホワイトラベル"
+      }
+    }
+  },
+  "testimonials": {
+    "title": "移民コンサルタントの声",
+    "first": {
+      "quote": "ThinkForwardは私の事務所管理方法を変革しました。実際の作業時間は減りながらも、クライアント容量を倍増できました。",
+      "author": "サラ・ジョンソン",
+      "role": "公認移民コンサルタント、バンクーバー"
+    },
+    "second": {
+      "quote": "AIツールで書類作業の時間が劇的に削減されました。以前は何時間もかかっていたことが、今は数分で完了します。",
+      "author": "マイケル・チェン",
+      "role": "移民コンサルタント、トロント"
+    },
+    "third": {
+      "quote": "AIアシスタンスとクライアント管理ツールの組み合わせが、私のビジネス成長に革命をもたらしました。",
+      "author": "プリヤ・シャルマ",
+      "role": "ICCRC会員、モントリオール"
+    }
+  },
+  "faq": {
+    "title": "よくある質問",
+    "q1": "クライアント制限はどのように機能しますか？",
+    "a1": "クライアント制限とは、システム内で管理できるアクティブなクライアントプロファイルの数を指します。非アクティブなクライアントをアーカイブしてスペースを確保できます。",
+    "q2": "プランをアップグレードまたはダウングレードできますか？",
+    "a2": "はい、いつでもプランを変更できます。変更は次の請求サイクルの開始時に有効になります。",
+    "q3": "契約や契約期間はありますか？",
+    "a3": "すべてのプランは長期契約なしで月額請求されます。いつでもキャンセル可能です。",
+    "q4": "どの支払い方法を受け付けていますか？",
+    "a4": "便宜上、主要なクレジットカードとPayPalをすべて受け付けています。",
+    "q5": "無料トライアルはありますか？",
+    "a5": "はい、新規コンサルタントはクレジットカード不要で14日間無料で成長プランを試すことができます。"
+  },
+  "cta": {
+    "title": "今日から事業を成長させましょう",
+    "description": "ThinkForwardを使って事務所を変革している何百人もの移民コンサルタントに参加しましょう",
+    "button": "今すぐ始める"
+  },
+  "subscription": {
+    "complete_subscription": "サブスクリプションを完了する",
+    "selected_plan": "選択したプラン",
+    "first_name": "名",
+    "last_name": "姓",
+    "email": "メールアドレス",
+    "company_name": "会社または事務所名",
+    "payment_details": "支払い詳細",
+    "required_field": "この項目は必須です",
+    "valid_email": "有効なメールアドレスを入力してください",
+    "processing": "処理中...",
+    "start_subscription": "サブスクリプションを開始",
+    "error_generic": "サブスクリプションの処理中にエラーが発生しました。もう一度お試しください。"
+  }
+} 

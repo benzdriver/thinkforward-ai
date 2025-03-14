@@ -1,0 +1,119 @@
+{
+  "header": {
+    "title": "顾问合作计划",
+    "subtitle": "选择合适的方案，用AI驱动的工具增强您的移民咨询服务"
+  },
+  "value": {
+    "efficiency": {
+      "title": "节省70%的行政时间",
+      "description": "我们的AI助手处理常规查询和文档工作，让您专注于战略咨询。"
+    },
+    "growth": {
+      "title": "扩大您的客户基础",
+      "description": "在不牺牲质量的情况下高效管理更多案例，壮大您的咨询业务。"
+    },
+    "expertise": {
+      "title": "提升您的专业水平",
+      "description": "将您的专业知识与实时政策分析相结合，提供无与伦比的服务。"
+    }
+  },
+  "plans": {
+    "starter": {
+      "name": "启动合作计划",
+      "description": "适合新顾问或个人执业者",
+      "features": {
+        "clients": "客户限制",
+        "ai_assistant": "核心AI助手",
+        "document_automation": "基础文档自动化",
+        "client_portal": "客户门户访问",
+        "consultation_tools": "在线咨询工具",
+        "advanced_analytics": "高级分析",
+        "priority_support": "优先支持",
+        "white_label": "白标选项"
+      }
+    },
+    "growth": {
+      "name": "成长合作计划",
+      "description": "适合希望扩展业务的成熟顾问",
+      "features": {
+        "clients": "客户限制",
+        "ai_assistant": "高级AI助手",
+        "document_automation": "完整文档自动化",
+        "client_portal": "增强型客户门户",
+        "consultation_tools": "高级咨询工具",
+        "advanced_analytics": "商业智能仪表盘",
+        "priority_support": "优先支持与培训",
+        "white_label": "白标选项"
+      }
+    },
+    "professional": {
+      "name": "专业合作计划",
+      "description": "适合拥有多名顾问的咨询机构",
+      "features": {
+        "clients": "客户限制",
+        "unlimited": "无限制",
+        "ai_assistant": "高级AI套件",
+        "document_automation": "全套文档自动化",
+        "client_portal": "定制客户门户",
+        "consultation_tools": "企业级咨询工具",
+        "advanced_analytics": "高级分析与报告",
+        "priority_support": "专属客户经理",
+        "white_label": "完整白标解决方案"
+      }
+    }
+  },
+  "recommended": "最受欢迎",
+  "per_month": "月",
+  "select_plan": "选择计划",
+  "features_included": "包含功能",
+  "testimonials": {
+    "title": "移民顾问怎么说",
+    "first": {
+      "quote": "ThinkForward彻底改变了我的业务。我现在能够以相同的个性化服务水平处理两倍的客户。",
+      "author": "陈丽娜",
+      "role": "移民顾问，5年经验"
+    },
+    "second": {
+      "quote": "AI助手完美处理常规问题，让我能够专注于真正需要我专业知识的复杂案例。",
+      "author": "迈克尔·罗德里格斯",
+      "role": "移民顾问，8年经验"
+    },
+    "third": {
+      "quote": "我的客户喜欢通过平台全天候获取信息的便利性。这对提升客户满意度产生了革命性的影响。",
+      "author": "普里亚·夏尔马",
+      "role": "移民顾问，3年经验"
+    }
+  },
+  "faq": {
+    "title": "常见问题",
+    "q1": "AI助手如何增强我的咨询业务？",
+    "a1": "我们的AI助手处理日常查询、文档准备和初步评估，为您节省时间用于高价值的咨询工作，同时确保客户全天候获得及时回应。",
+    "q2": "我可以稍后升级或降级我的计划吗？",
+    "a2": "是的，您可以随时更改计划。升级时，新功能将立即可用，并且您将按比例支付当前计费周期的差额。",
+    "q3": "您如何确保客户数据的隐私和安全？",
+    "a3": "我们采用银行级加密、严格的访问控制和定期安全审核。我们的平台符合相关数据保护法规，我们绝不使用客户数据来训练我们的AI模型。",
+    "q4": "使用平台需要技术专长吗？",
+    "a4": "完全不需要。我们的平台设计直观且用户友好。我们还提供全面的入职培训，确保您能充分利用所有功能。",
+    "q5": "我可以期待什么样的支持？",
+    "a5": "所有计划都包含标准支持，而成长和专业计划包含更快响应时间的优先支持。专业计划订阅者还将获得专属客户经理提供的个性化帮助。"
+  },
+  "cta": {
+    "title": "今天就提升您的移民咨询业务",
+    "description": "加入数百名利用AI提供卓越服务、发展业务并保持竞争优势的顾问。",
+    "button": "立即开始"
+  },
+  "subscription": {
+    "complete_subscription": "完成您的订阅",
+    "selected_plan": "已选计划",
+    "first_name": "名",
+    "last_name": "姓",
+    "email": "电子邮箱",
+    "company_name": "公司或执业机构名称",
+    "payment_details": "付款详情",
+    "required_field": "此字段为必填项",
+    "valid_email": "请输入有效的电子邮箱",
+    "processing": "处理中...",
+    "start_subscription": "开始订阅",
+    "error_generic": "处理您的订阅时出现错误。请重试。"
+  }
+} 

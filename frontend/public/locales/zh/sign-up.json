@@ -1,0 +1,18 @@
+{
+  "page_title": "注册",
+  "heading": "创建新账户",
+  "name_label": "姓名",
+  "email_label": "电子邮箱",
+  "password_label": "密码",
+  "confirm_password": "确认密码",
+  "submit_button": "注册",
+  "have_account": "已有账户?",
+  "sign_in": "登录",
+  "or_continue_with": "或继续使用",
+  "loading": "加载中...",
+  "debug_info": "调试信息",
+  "locale_from_props": "来自props的区域设置",
+  "locale_from_router": "来自路由的区域设置",
+  "clerk_locale": "Clerk区域设置",
+  "path": "路径"
+} 

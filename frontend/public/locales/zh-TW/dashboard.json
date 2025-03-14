@@ -1,0 +1,48 @@
+{
+    "default": {
+      "title": "儀表板",
+      "loading_message": "載入您的個人儀表板...",
+      "go_home": "返回首頁"
+    },
+    "client": {
+      "title": "歡迎回來",
+      "progress_overview": "進度概覽",
+      "application_progress": "申請進度",
+      "profile_completed": "個人資料已完成",
+      "assessment_completed": "評估已完成",
+      "documents_pending": "文件待提交",
+      "subscribe_to_view_progress": "訂閱計劃以查看您的移民申請進度",
+      "subscribe_now": "立即訂閱",
+      "your_consultant": "您的顧問",
+      "immigration_consultant": "移民顧問",
+      "chat_now": "立即聯繫",
+      "upcoming_tasks": "待辦事項",
+      "complete_personal_info": "完成個人資訊",
+      "upload_education_proof": "上傳教育證明",
+      "schedule_consultant_call": "安排顧問通話",
+      "due_in_days": "{{days}}天後到期",
+      "due_today": "今天到期",
+      "due_next_week": "下週到期",
+      "subscribe_to_view_todos": "訂閱計劃以查看您的待辦事項"
+    },
+    "consultant": {
+      "title": "顧問儀表板",
+      "client_management": "客戶管理",
+      "view_all_clients": "查看所有客戶",
+      "pending_reviews": "待審核",
+      "view_all_reviews": "查看所有待審核",
+      "recent_activities": "最近活動",
+      "view_all_activities": "查看所有活動",
+      "no_recent_activities": "沒有最近活動",
+      "minutes_ago": "{{time}}分鐘前",
+      "hours_ago": "{{time}}小時前"
+    },
+    "admin": {
+      "title": "管理員儀表板",
+      "total_users": "用戶總數",
+      "active_subscriptions": "活躍訂閱",
+      "pending_cases": "待處理案例",
+      "revenue": "收入",
+      "view_reports": "查看詳細報告"
+    }
+  }

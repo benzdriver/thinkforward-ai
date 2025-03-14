@@ -1,0 +1,39 @@
+{
+  "dashboard": {
+    "welcome": "Bon retour",
+    "consultant": "Consultant",
+    "loading": "Chargement de votre tableau de bord consultant...",
+    "error_fetching": "Erreur lors de la récupération des données du tableau de bord",
+    "client_summary": "Résumé des clients",
+    "total_clients": "Total des clients",
+    "active_clients": "Clients actifs",
+    "active_rate": "Taux d'activité",
+    "efficiency_metrics": "Métriques d'efficacité",
+    "time_saved": "Temps économisé",
+    "cases_completed": "Dossiers complétés",
+    "hours_minutes": "{{hours}}h {{minutes}}m",
+    "minutes": "{{minutes}}m",
+    "efficiency_insight": "Les outils d'IA vous aident à économiser un temps considérable sur les tâches routinières.",
+    "recent_activities": "Activités récentes",
+    "no_recent_activities": "Aucune activité récente à afficher",
+    "view_all_activities": "Voir toutes les activités",
+    "client": "Client",
+    "tasks": "Tâches",
+    "no_pending_tasks": "Aucune tâche en attente",
+    "view_all_tasks": "Voir toutes les tâches",
+    "add_task": "Ajouter une tâche",
+    "priority": {
+      "high": "Haute",
+      "medium": "Moyenne",
+      "low": "Basse"
+    }
+  },
+  "navigation": {
+    "dashboard": "Tableau de bord",
+    "clients": "Clients",
+    "ai_assistant": "Assistant IA",
+    "forms": "Formulaires",
+    "analytics": "Analyses",
+    "settings": "Paramètres"
+  }
+} 
