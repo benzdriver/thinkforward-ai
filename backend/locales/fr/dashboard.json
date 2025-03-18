@@ -1,0 +1,31 @@
+{
+  "case_studies": {
+    "tech_immigration": {
+      "title": "Cas d'immigration technologique réussi",
+      "program": "Programme des travailleurs qualifiés fédéral",
+      "timeFrame": "8 mois",
+      "challenge": "Le candidat avait des scores IELTS légèrement faibles mais un solide bagage technique",
+      "solution": "Utilisation du système d'analyse IA pour trouver la meilleure stratégie de candidature, mettant en valeur l'expérience technique",
+      "result": "Demande approuvée, économisant 2 mois de temps de traitement"
+    },
+    "family_reunification": {
+      "title": "Réunification familiale accélérée",
+      "program": "Programme des parents et grands-parents",
+      "timeFrame": "14 mois",
+      "challenge": "Preuve complexe de relations familiales et problèmes de santé",
+      "solution": "Préparation proactive des documents et explications des problèmes de santé assistées par IA",
+      "result": "Approuvé avec succès, 3 mois plus rapide que le temps de traitement moyen"
+    },
+    "student_pr": {
+      "title": "Transition d'étudiant à résident permanent",
+      "program": "Catégorie de l'expérience canadienne",
+      "timeFrame": "6 mois",
+      "challenge": "Problèmes de classification et d'évaluation de l'expérience professionnelle",
+      "solution": "Analyse détaillée de l'expérience professionnelle et correspondance précise avec la CNP",
+      "result": "Approuvé à la première tentative sans documents supplémentaires demandés"
+    }
+  },
+  "errors": {
+    "serverError": "Erreur de serveur"
+  }
+} 

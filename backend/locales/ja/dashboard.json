@@ -1,0 +1,31 @@
+{
+  "case_studies": {
+    "tech_immigration": {
+      "title": "成功した技術移民ケース",
+      "program": "連邦熟練労働者プログラム",
+      "timeFrame": "8ヶ月",
+      "challenge": "申請者のIELTSスコアはやや低かったが、技術的なバックグラウンドが強かった",
+      "solution": "AI分析システムを使用して最適な申請戦略を見つけ、技術経験を強調",
+      "result": "申請が承認され、処理時間を2ヶ月短縮"
+    },
+    "family_reunification": {
+      "title": "家族再会の迅速処理",
+      "program": "親と祖父母のプログラム",
+      "timeFrame": "14ヶ月",
+      "challenge": "複雑な家族関係の証明と健康上の問題",
+      "solution": "事前の書類準備とAIによる健康問題の説明支援",
+      "result": "平均処理時間より3ヶ月速く承認成功"
+    },
+    "student_pr": {
+      "title": "学生から永住者への移行",
+      "program": "カナダ経験クラス",
+      "timeFrame": "6ヶ月",
+      "challenge": "職歴の分類と評価の問題",
+      "solution": "詳細な職歴分析と正確なNOCマッチング",
+      "result": "追加書類要求なしで初回申請で承認"
+    }
+  },
+  "errors": {
+    "serverError": "サーバーエラー"
+  }
+} 

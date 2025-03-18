@@ -6,6 +6,7 @@ const { MongoMemoryServer } = require('mongodb-memory-server');
 const app = require('../../app');
 const User = require('../../models/User');
 const jwt = require('jsonwebtoken');
+const { ROLES } = require('../../constants/roles');
 
 describe('Permissions System Integration Tests', () => {
   let mongoServer;

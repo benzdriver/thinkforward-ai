@@ -1,0 +1,31 @@
+{
+  "case_studies": {
+    "tech_immigration": {
+      "title": "Successful Tech Immigration Case",
+      "program": "Federal Skilled Worker Program",
+      "timeFrame": "8 months",
+      "challenge": "Applicant had slightly low IELTS scores but strong technical background",
+      "solution": "Used AI analysis system to find the best application strategy, highlighting technical experience",
+      "result": "Application approved, saving 2 months of processing time"
+    },
+    "family_reunification": {
+      "title": "Expedited Family Reunification",
+      "program": "Parents and Grandparents Program",
+      "timeFrame": "14 months",
+      "challenge": "Complex family relationship proof and health issues",
+      "solution": "Proactive document preparation and AI-assisted health issue explanations",
+      "result": "Successfully approved, 3 months faster than average processing time"
+    },
+    "student_pr": {
+      "title": "Student to Permanent Resident Transition",
+      "program": "Canadian Experience Class",
+      "timeFrame": "6 months",
+      "challenge": "Work experience classification and evaluation issues",
+      "solution": "Detailed work experience analysis and precise NOC matching",
+      "result": "Approved on first attempt with no additional documents requested"
+    }
+  },
+  "errors": {
+    "serverError": "Server error occurred"
+  }
+} 

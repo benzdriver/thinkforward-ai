@@ -1,0 +1,31 @@
+{
+  "case_studies": {
+    "tech_immigration": {
+      "title": "成功的技术移民案例",
+      "program": "联邦技术移民",
+      "timeFrame": "8个月",
+      "challenge": "申请人IELTS成绩略低，但有强大的技术背景",
+      "solution": "利用AI分析系统找到最佳申请策略，突出技术经验",
+      "result": "申请成功获批，节省了2个月处理时间"
+    },
+    "family_reunification": {
+      "title": "家庭团聚快速处理",
+      "program": "父母团聚计划",
+      "timeFrame": "14个月",
+      "challenge": "复杂的家庭关系证明和健康问题",
+      "solution": "前瞻性文档准备和AI辅助健康问题解释",
+      "result": "成功获批，比平均处理时间快3个月"
+    },
+    "student_pr": {
+      "title": "留学生转永久居民",
+      "program": "经验类别",
+      "timeFrame": "6个月",
+      "challenge": "工作经验分类和评估问题",
+      "solution": "详细的工作经验分析和精准的NOC匹配",
+      "result": "一次通过，无需补充材料"
+    }
+  },
+  "errors": {
+    "serverError": "服务器错误"
+  }
+} 

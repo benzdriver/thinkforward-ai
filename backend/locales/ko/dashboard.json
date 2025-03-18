@@ -1,0 +1,31 @@
+{
+  "case_studies": {
+    "tech_immigration": {
+      "title": "성공적인 기술 이민 사례",
+      "program": "연방 숙련 근로자 프로그램",
+      "timeFrame": "8개월",
+      "challenge": "지원자는 IELTS 점수가 약간 낮았지만 강력한 기술적 배경 보유",
+      "solution": "AI 분석 시스템을 활용하여 최적의 신청 전략을 찾고 기술 경험을 강조",
+      "result": "신청 승인, 처리 시간 2개월 절약"
+    },
+    "family_reunification": {
+      "title": "가족 재결합 신속 처리",
+      "program": "부모 및 조부모 프로그램",
+      "timeFrame": "14개월",
+      "challenge": "복잡한 가족 관계 증명 및 건강 문제",
+      "solution": "선제적 문서 준비 및 AI 지원 건강 문제 설명",
+      "result": "성공적으로 승인, 평균 처리 시간보다 3개월 빠름"
+    },
+    "student_pr": {
+      "title": "학생에서 영주권자로의 전환",
+      "program": "캐나다 경험 클래스",
+      "timeFrame": "6개월",
+      "challenge": "직장 경험 분류 및 평가 문제",
+      "solution": "상세한 직장 경험 분석 및 정확한 NOC 매칭",
+      "result": "추가 서류 요청 없이 첫 시도에서 승인"
+    }
+  },
+  "errors": {
+    "serverError": "서버 오류"
+  }
+} 
