@@ -1,40 +1,349 @@
 {
+  "login": "Login",
+  "login_title": "Sign in to your account",
+  "login_description": "Access your immigration AI assistant account",
+  "no_account": "Don't have an account?",
+  "sign_up_now": "Sign up now",
+  "create_account": "Create your account",
+  "already_have_account": "Already have an account?",
+  "sign_in_now": "Sign in now",
+  "app_name": "ThinkForward AI",
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact",
+    "assessment": "Assessment",
+    "dashboard": "Dashboard",
+    "client_management": "Client Management",
+    "admin": "Admin",
+    "assistant": "AI Assistant",
+    "forms": "Forms",
     "login": "Login",
-    "login_title": "Sign in to your account",
-    "login_description": "Access your immigration AI assistant account",
-    "no_account": "Don't have an account?",
-    "sign_up_now": "Sign up now",
-    "app_name": "ThinkForward AI",
-    "nav": {
+    "signup": "Sign up"
+  },
+  "actions": {
+    "login": "Login",
+    "logout": "Logout",
+    "save": "Save",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "edit": "Edit",
+    "delete": "Delete"
+  },
+  "language_selector": {
+    "label": "Language",
+    "zh-CN": "Simplified Chinese",
+    "en": "English",
+    "ar": "Arabic",
+    "ja": "Japanese",
+    "ko": "Korean",
+    "zh-TW": "Traditional Chinese"
+  },
+  "footer": {
+    "copyright": "© {{year}} ThinkForward AI. All rights reserved."
+  },
+  "title": "ThinkForward AI - Intelligent Immigration Assistant",
+  "siteTitle": "ThinkForward AI",
+  "all_rights_reserved": "All Rights Reserved",
+  "components": {
+    "alert": {
+      "close": "Close",
+      "success": "Success",
+      "info": "Information",
+      "warning": "Warning",
+      "error": "Error"
+    },
+    "avatar": {
+      "alt": "Avatar"
+    },
+    "breadcrumb": {
+      "ariaLabel": "Breadcrumb",
       "home": "Home",
-      "about": "About",
-      "assessment": "Assessment",
-      "dashboard": "Dashboard",
-      "client_management": "Client Management",
-      "admin": "Admin",
-      "assistant": "AI Assistant",
-      "forms": "Forms"
+      "separator": "/"
     },
-    "actions": {
-      "login": "Login",
-      "logout": "Logout",
-      "save": "Save",
-      "cancel": "Cancel",
+    "button": {
+      "loading": "Loading...",
+      "more": "More",
+      "variants": {
+        "primary": "Primary",
+        "secondary": "Secondary",
+        "success": "Success",
+        "danger": "Danger",
+        "warning": "Warning",
+        "info": "Info",
+        "light": "Light",
+        "dark": "Dark",
+        "link": "Link"
+      },
+      "sizes": {
+        "xs": "Extra Small",
+        "sm": "Small",
+        "md": "Medium",
+        "lg": "Large",
+        "xl": "Extra Large"
+      }
+    },
+    "dataTable": {
+      "emptyText": "No data available",
+      "loading": "Loading...",
+      "search": "Search",
+      "showing": "Showing {{from}} to {{to}} of {{total}} results",
+      "filter": "Filter",
+      "reset": "Reset",
+      "sortAscending": "Sort Ascending",
+      "sortDescending": "Sort Descending",
+      "actions": "Actions"
+    },
+    "empty": {
+      "description": "No data",
+      "noData": "No data",
+      "noResult": "No results",
+      "noContent": "No content"
+    },
+    "error": {
+      "title": "Error",
+      "message": "Sorry, an error occurred",
+      "retry": "Retry",
+      "goBack": "Go back",
+      "details": "Error details",
+      "close": "Close"
+    },
+    "form": {
       "submit": "Submit",
-      "edit": "Edit",
-      "delete": "Delete"
+      "cancel": "Cancel",
+      "reset": "Reset",
+      "save": "Save",
+      "required": "Required",
+      "optional": "Optional",
+      "loading": "Loading...",
+      "layout": {
+        "vertical": "Vertical",
+        "horizontal": "Horizontal",
+        "inline": "Inline"
+      },
+      "size": {
+        "small": "Small",
+        "middle": "Middle",
+        "large": "Large"
+      },
+      "validation": {
+        "required": "This field is required",
+        "email": "Please enter a valid email address",
+        "url": "Please enter a valid URL",
+        "minLength": "Please enter at least {{count}} characters",
+        "maxLength": "Please enter no more than {{count}} characters",
+        "min": "Please enter a value greater than or equal to {{min}}",
+        "max": "Please enter a value less than or equal to {{max}}",
+        "pattern": "Please enter a valid format"
+      },
+      "section": {
+        "basicInfo": "Basic Information",
+        "contactInfo": "Contact Information",
+        "addressInfo": "Address Information",
+        "accountInfo": "Account Information",
+        "personalInfo": "Personal Information",
+        "professionalInfo": "Professional Information",
+        "additionalInfo": "Additional Information",
+        "settings": "Settings",
+        "preferences": "Preferences"
+      },
+      "help": {
+        "passwordRequirements": "Password must be at least 8 characters and include a number and a special character",
+        "emailUsage": "We'll never share your email with anyone else",
+        "optional": "This field is optional"
+      },
+      "footer": {
+        "align": {
+          "left": "Left",
+          "center": "Center",
+          "right": "Right"
+        }
+      },
+      "fields": {
+        "username": "Username",
+        "password": "Password",
+        "confirmPassword": "Confirm Password",
+        "email": "Email",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "fullName": "Full Name",
+        "phone": "Phone Number",
+        "address": "Address",
+        "city": "City",
+        "state": "State/Province",
+        "country": "Country",
+        "zipCode": "Zip/Postal Code",
+        "dateOfBirth": "Date of Birth",
+        "gender": "Gender",
+        "bio": "Bio",
+        "website": "Website",
+        "company": "Company",
+        "jobTitle": "Job Title"
+      },
+      "placeholders": {
+        "username": "Enter your username",
+        "password": "Enter your password",
+        "confirmPassword": "Confirm your password",
+        "email": "Enter your email",
+        "firstName": "Enter your first name",
+        "lastName": "Enter your last name",
+        "fullName": "Enter your full name",
+        "phone": "Enter your phone number",
+        "address": "Enter your address",
+        "city": "Enter your city",
+        "state": "Enter your state/province",
+        "country": "Enter your country",
+        "zipCode": "Enter your zip/postal code",
+        "dateOfBirth": "Enter your date of birth",
+        "gender": "Select your gender",
+        "bio": "Enter your bio",
+        "website": "Enter your website",
+        "company": "Enter your company",
+        "jobTitle": "Enter your job title"
+      },
+      "sections": {
+        "basicInfo": "Basic Information",
+        "contactInfo": "Contact Information",
+        "addressInfo": "Address Information",
+        "accountInfo": "Account Information",
+        "personalInfo": "Personal Information",
+        "professionalInfo": "Professional Information",
+        "additionalInfo": "Additional Information"
+      },
+      "select": {
+        "placeholder": "Please select",
+        "loading": "Loading...",
+        "noOptions": "No options available",
+        "noResults": "No matching results",
+        "clear": "Clear",
+        "search": "Search",
+        "selected": "Selected",
+        "selectAll": "Select All",
+        "deselectAll": "Deselect All"
+      },
+      "datePicker": {
+        "placeholder": "Select date",
+        "today": "Today",
+        "now": "Now",
+        "backToToday": "Back to today",
+        "ok": "OK",
+        "clear": "Clear",
+        "month": "Month",
+        "year": "Year",
+        "previousMonth": "Previous month",
+        "nextMonth": "Next month",
+        "previousYear": "Previous year",
+        "nextYear": "Next year",
+        "previousDecade": "Previous decade",
+        "nextDecade": "Next decade",
+        "previousCentury": "Previous century",
+        "nextCentury": "Next century"
+      },
+      "timePicker": {
+        "placeholder": "Select time",
+        "hour": "Hour",
+        "minute": "Minute",
+        "second": "Second",
+        "now": "Now",
+        "clear": "Clear",
+        "ok": "OK"
+      }
     },
-    "language_selector": {
-      "label": "Language",
-      "zh": "Chinese",
-      "en": "English",
-      "ar": "Arabic",
-      "ja": "Japanese",
-      "ko": "Korean"
+    "loading": {
+      "default": "Loading...",
+      "message": "Loading..."
     },
-    "footer": {
-      "copyright": "© {{year}} ThinkForward AI. All rights reserved."
+    "modal": {
+      "close": "Close",
+      "confirm": {
+        "ok": "OK",
+        "cancel": "Cancel"
+      }
     },
-    "title": "ThinkForward AI - Intelligent Immigration Assistant",
-    "all_rights_reserved": "All Rights Reserved"
-  }
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next",
+      "total": "Total {{total}} items",
+      "jumpTo": "Jump to",
+      "page": "page",
+      "perPage": "/ page",
+      "showing": "Showing {{from}}-{{to}} of {{total}}"
+    },
+    "table": {
+      "empty": "No data",
+      "loading": "Loading...",
+      "search": "Search",
+      "filter": "Filter",
+      "reset": "Reset",
+      "actions": "Actions",
+      "showing": "Showing {{from}} to {{to}} of {{total}} entries",
+      "noResults": "No matching records found",
+      "pagination": {
+        "prev": "Previous",
+        "next": "Next",
+        "first": "First",
+        "last": "Last",
+        "total": "Total {{total}} items",
+        "pageSize": "{{size}} / page",
+        "jumpTo": "Go to",
+        "page": "page"
+      },
+      "sort": {
+        "asc": "Sort ascending",
+        "desc": "Sort descending",
+        "cancel": "Cancel sort"
+      },
+      "columns": {
+        "show": "Show columns",
+        "hide": "Hide columns"
+      }
+    },
+    "languageSwitcher": {
+      "title": "Switch language"
+    },
+    "card": {
+      "more": "More",
+      "collapse": "Collapse",
+      "expand": "Expand",
+      "actions": "Actions"
+    },
+    "checkbox": {
+      "ariaLabel": "Checkbox",
+      "selectAll": "Select All",
+      "unselectAll": "Unselect All"
+    },
+    "divider": {
+      "text": "Text"
+    },
+    "errorBoundary": {
+      "title": "Something went wrong",
+      "message": "An error occurred in this component",
+      "refresh": "Refresh page",
+      "tryAgain": "Try again",
+      "contactSupport": "Please try refreshing the page or contact support team."
+    },
+    "radio": {
+      "ariaLabel": "Radio option",
+      "select": "Select",
+      "selected": "Selected",
+      "notSelected": "Not selected"
+    },
+    "radioGroup": {
+      "selectOne": "Select one option",
+      "required": "Please select an option"
+    },
+    "switch": {
+      "on": "On",
+      "off": "Off",
+      "ariaLabel": {
+        "on": "Switch is on",
+        "off": "Switch is off"
+      },
+      "enabled": "Enabled",
+      "disabled": "Disabled"
+    }
+  },
+  "hello": "Hello",
+  "includes": "Includes"
+}

@@ -1,0 +1,17 @@
+{
+  "page_title": "로그인",
+  "heading": "계정에 로그인",
+  "email_label": "이메일",
+  "password_label": "암호",
+  "forgot_password": "비밀번호를 잊으셨나요?",
+  "submit_button": "로그인",
+  "no_account": "아직 계정이 없으신가요?",
+  "create_account": "계정 만들기",
+  "or_continue_with": "또는 계속하기",
+  "loading": "로딩 중...",
+  "debug_info": "디버그 정보",
+  "locale_from_props": "프롭스로부터의 로캘",
+  "locale_from_router": "라우터로부터의 로캘",
+  "clerk_locale": "Clerk 로캘",
+  "path": "경로"
+}

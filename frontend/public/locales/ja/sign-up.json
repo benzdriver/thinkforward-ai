@@ -1,0 +1,18 @@
+{
+  "page_title": "登録",
+  "heading": "新しいアカウントを作成",
+  "name_label": "名前",
+  "email_label": "メールアドレス",
+  "password_label": "パスワード",
+  "confirm_password": "パスワードを確認",
+  "submit_button": "登録",
+  "have_account": "既にアカウントをお持ちですか？",
+  "sign_in": "サインイン",
+  "or_continue_with": "または続行する",
+  "loading": "読み込み中...",
+  "debug_info": "デバッグ情報",
+  "locale_from_props": "プロップスからのロケール",
+  "locale_from_router": "ルーターからのロケール",
+  "clerk_locale": "Clerkのロケール",
+  "path": "パス"
+}

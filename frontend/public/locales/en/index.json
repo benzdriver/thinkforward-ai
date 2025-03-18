@@ -1,0 +1,109 @@
+{
+  "landing": {
+    "hero": {
+      "title": "ThinkForward AI - Intelligent Immigration Assistant",
+      "subtitle": "AI-powered tools for immigration consultants to boost efficiency and streamline processes",
+      "cta": "Get Started",
+      "secondary_cta": "Learn More"
+    },
+    "features": {
+      "title": "Smart Tools for Immigration Consultants",
+      "subtitle": "Increase efficiency, streamline processes, and enhance client experience",
+      "ai_assistant": {
+        "title": "AI Consultant Assistant",
+        "description": "Get instant expert advice and answers to complex immigration questions"
+      },
+      "document_analysis": {
+        "title": "Intelligent Document Analysis",
+        "description": "Automatically analyze and extract key information, saving manual review time"
+      },
+      "form_automation": {
+        "title": "Form Automation",
+        "description": "Intelligently fill immigration forms, reducing errors and saving time"
+      },
+      "client_management": {
+        "title": "Client Management System",
+        "description": "Centrally manage client information, documents, and application progress"
+      }
+    },
+    "testimonials": {
+      "title": "Trusted by Consultants",
+      "subtitle": "Hear how other immigration consultants are using ThinkForward AI to elevate their practice",
+      "testimonial_1": {
+        "quote": "ThinkForward AI has helped me reduce document processing time by 60%, allowing me to focus on providing better service to my clients.",
+        "author": "Michael Lee",
+        "position": "Senior Immigration Consultant, Canada"
+      },
+      "testimonial_2": {
+        "quote": "The intelligent form filling feature is a game-changer. It not only saves time but also significantly reduces error rates.",
+        "author": "Sarah Wang",
+        "position": "Immigration Consultant, Australia"
+      },
+      "testimonial_3": {
+        "quote": "The client management system allows me to easily track the progress of all applications, improving my workflow efficiency.",
+        "author": "David Zhang",
+        "position": "Immigration Consultant, New Zealand"
+      }
+    },
+    "consultant_plans": {
+      "title": "Plans Tailored for Immigration Consultants",
+      "subtitle": "Choose the plan that best fits your business needs",
+      "period": "month",
+      "starter": {
+        "title": "Starter Plan",
+        "badge": "Entry",
+        "price": "299",
+        "description": "Perfect for new or small-scale immigration consultants",
+        "features": [
+          "Basic AI Consultant Assistant",
+          "Manage up to 10 clients",
+          "Basic document analysis",
+          "Standard form auto-filling",
+          "Email support"
+        ],
+        "cta": "Choose This Plan"
+      },
+      "professional": {
+        "title": "Professional Plan",
+        "badge": "Most Popular",
+        "price": "599",
+        "description": "Ideal for growing immigration consultant practices",
+        "features": [
+          "Advanced AI Consultant Assistant",
+          "Manage up to 50 clients",
+          "Advanced document analysis & extraction",
+          "Advanced form automation",
+          "Priority email & chat support",
+          "Client insights analytics"
+        ],
+        "cta": "Choose This Plan"
+      },
+      "enterprise": {
+        "title": "Enterprise Plan",
+        "badge": "Premium",
+        "price": "999",
+        "description": "For large immigration consultant firms",
+        "features": [
+          "Enterprise-grade AI Consultant Assistant",
+          "Unlimited client management",
+          "Advanced document analysis & batch processing",
+          "Complete form automation suite",
+          "24/7 priority support",
+          "Advanced analytics & reporting",
+          "Dedicated account manager"
+        ],
+        "cta": "Choose This Plan"
+      }
+    },
+    "cta_section": {
+      "title": "Ready to Elevate Your Immigration Consultant Practice?",
+      "subtitle": "Sign up today and experience how AI can transform your workflow",
+      "cta": "Try Free for 14 Days",
+      "secondary_cta": "Schedule a Demo"
+    }
+  },
+  "common": {
+    "title": "ThinkForward AI - Intelligent Immigration Assistant",
+    "description": "AI-powered immigration assistant to help with your immigration journey"
+  }
+}

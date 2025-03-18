@@ -1,0 +1,17 @@
+{
+  "page_title": "تسجيل الدخول",
+  "heading": "تسجيل الدخول إلى حسابك",
+  "email_label": "البريد الإلكتروني",
+  "password_label": "كلمة المرور",
+  "forgot_password": "نسيت كلمة المرور؟",
+  "submit_button": "تسجيل الدخول",
+  "no_account": "لا تملك حساباً بعد؟",
+  "create_account": "إنشاء حساب",
+  "or_continue_with": "أو الاستمرار باستخدام",
+  "loading": "جار التحميل...",
+  "debug_info": "معلومات التصحيح",
+  "locale_from_props": "اللغة من الخصائص",
+  "locale_from_router": "اللغة من الموجه",
+  "clerk_locale": "إعدادات Clerk",
+  "path": "المسار"
+}

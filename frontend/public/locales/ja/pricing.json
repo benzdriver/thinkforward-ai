@@ -101,19 +101,5 @@
     "title": "今日から事業を成長させましょう",
     "description": "ThinkForwardを使って事務所を変革している何百人もの移民コンサルタントに参加しましょう",
     "button": "今すぐ始める"
-  },
-  "subscription": {
-    "complete_subscription": "サブスクリプションを完了する",
-    "selected_plan": "選択したプラン",
-    "first_name": "名",
-    "last_name": "姓",
-    "email": "メールアドレス",
-    "company_name": "会社または事務所名",
-    "payment_details": "支払い詳細",
-    "required_field": "この項目は必須です",
-    "valid_email": "有効なメールアドレスを入力してください",
-    "processing": "処理中...",
-    "start_subscription": "サブスクリプションを開始",
-    "error_generic": "サブスクリプションの処理中にエラーが発生しました。もう一度お試しください。"
   }
-} 
+}

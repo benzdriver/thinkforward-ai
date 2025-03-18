@@ -1,0 +1,18 @@
+{
+  "page_title": "註冊",
+  "heading": "創建新帳戶",
+  "name_label": "姓名",
+  "email_label": "電子郵件",
+  "password_label": "密碼",
+  "confirm_password": "確認密碼",
+  "submit_button": "註冊",
+  "have_account": "已有帳戶?",
+  "sign_in": "登錄",
+  "or_continue_with": "或繼續使用",
+  "loading": "加載中...",
+  "debug_info": "調試信息",
+  "locale_from_props": "來自props的區域設置",
+  "locale_from_router": "來自路由的區域設置",
+  "clerk_locale": "Clerk區域設置",
+  "path": "路徑"
+}

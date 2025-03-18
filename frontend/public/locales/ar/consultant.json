@@ -1,0 +1,39 @@
+{
+  "dashboard": {
+    "welcome": "مرحبا بك",
+    "consultant": "مستشار",
+    "loading": "جاري تحميل لوحة المستشار الخاصة بك...",
+    "error_fetching": "حدث خطأ أثناء جلب بيانات لوحة المستشار",
+    "client_summary": "ملخص العملاء",
+    "total_clients": "إجمالي العملاء",
+    "active_clients": "العملاء النشطين",
+    "active_rate": "معدل النشاط",
+    "efficiency_metrics": "مؤشرات الكفاءة",
+    "time_saved": "الوقت الموفر",
+    "cases_completed": "الحالات المكتملة",
+    "hours_minutes": "{{hours}} ساعة {{minutes}} دقيقة",
+    "minutes": "{{minutes}} دقيقة",
+    "efficiency_insight": "تساعد أدوات الذكاء الاصطناعي في توفير الكثير من الوقت في المهام اليومية.",
+    "recent_activities": "الأنشطة الأخيرة",
+    "no_recent_activities": "لا توجد أنشطة حديثة",
+    "view_all_activities": "عرض جميع الأنشطة",
+    "client": "العميل",
+    "tasks": "المهام",
+    "no_pending_tasks": "لا توجد مهام قيد الانتظار",
+    "view_all_tasks": "عرض جميع المهام",
+    "add_task": "إضافة مهمة",
+    "priority": {
+      "high": "عالية",
+      "medium": "متوسطة",
+      "low": "منخفضة"
+    }
+  },
+  "navigation": {
+    "dashboard": "لوحة القيادة",
+    "clients": "إدارة العملاء",
+    "ai_assistant": "مساعد الذكاء الاصطناعي",
+    "forms": "النماذج",
+    "analytics": "تحليلات البيانات",
+    "settings": "الإعدادات"
+  }
+}

@@ -1,3 +1,5 @@
+import hybridLogger from '../utils/hybridLogger';
+
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useAuth as useClerkAuth, useUser, useClerk } from '@clerk/nextjs';
 import { UserRole } from '../types/user';
@@ -39,7 +41,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setUserRole(UserRole.GUEST);
       setUserData(null);
     } catch (error) {
-      console.error('退出登录失败:', error);
+      hybridLogger.error('退出登录失败:', error);
     }
   };
 
@@ -57,7 +59,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setUserRole(UserRole.GUEST);
       }
     } catch (error) {
-      console.error('获取用户角色失败:', error);
+      hybridLogger.error('获取用户角色失败:', error);
       setUserRole(UserRole.GUEST);
     }
   };
@@ -74,7 +76,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setUserData(null);
       }
     } catch (error) {
-      console.error('获取用户数据失败:', error);
+      hybridLogger.error('获取用户数据失败:', error);
       setUserData(null);
     }
   };
@@ -91,7 +93,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       }
       return false;
     } catch (error) {
-      console.error('存储 Clerk token 失败:', error);
+      hybridLogger.error('存储 Clerk token 失败:', error);
       return false;
     }
   };
@@ -111,7 +113,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
               await refreshUserRole();
               await refreshUserData();
             } catch (error) {
-              console.error('初始化用户状态失败:', error);
+              hybridLogger.error('初始化用户状态失败:', error);
               setUserRole(UserRole.GUEST);
               setUserData(null);
             }

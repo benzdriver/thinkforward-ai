@@ -25,15 +25,19 @@ next.config.js.bak
 # misc
 .DS_Store
 *.pem
+Thumbs.db
 
 # debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+*.log
+logs/
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -41,3 +45,27 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# temp
+temp/
+
+# IDE configurations
+.vscode/
+.idea/
+*.sublime-*
+
+
+# Test and temporary files
+pages/test.tsx
+test.tsx
+**/landing_tmp_test.tsx
+
+# Scripts and tools
+bash/
+clean-all.sh
+
+# Large media files
+public/videos/
+
+# Cache
+.cache/

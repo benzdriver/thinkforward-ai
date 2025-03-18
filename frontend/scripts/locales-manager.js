@@ -15,6 +15,7 @@
  *   translate - 自动翻译缺失的内容
  *   merge    - 合并翻译内容到目标文件
  *   auto     - 自动执行整个工作流程 (检查->同步->提取->翻译->合并)
+ *   sync-all - 同步所有翻译文件
  * 
  * 示例:
  *   node locales-manager.js check common.json
@@ -23,6 +24,7 @@
  *   node locales-manager.js translate temp/common_fr_missing.json fr
  *   node locales-manager.js merge temp/common_fr_translated.json fr
  *   node locales-manager.js auto common.json fr,ja,ko
+ *   node locales-manager.js sync-all 
  */
 
 require('dotenv').config();
@@ -126,6 +128,9 @@ async function main() {
       break;
     case 'auto':
       await autoCommand(commandArgs);
+      break;
+    case 'sync-all':
+      await syncAllCommand(commandArgs);
       break;
     case 'help':
       printUsage();
@@ -373,6 +378,142 @@ async function autoCommand(args) {
   }
   
   console.log(chalk.green('\n自动工作流程完成!'));
+}
+
+// 同步所有翻译文件
+async function syncAllCommand(args) {
+  let baseLanguage = 'zh-CN';
+  let targetLanguages = [];
+  let deleteFiles = false; // 默认不删除文件
+  
+  // 解析参数
+  for (let i = 0; i < args.length; i++) {
+    if (args[i] === '--base' && i + 1 < args.length) {
+      baseLanguage = args[i + 1];
+      i++;
+    } else if (args[i] === '--all') {
+      targetLanguages = languages.filter(lang => lang !== baseLanguage);
+    } else if (args[i] === '--delete') {
+      deleteFiles = true; // 启用文件删除
+    } else if (args[i].includes(',')) {
+      // 支持逗号分隔的语言列表
+      targetLanguages = targetLanguages.concat(args[i].split(','));
+    } else {
+      targetLanguages.push(args[i]);
+    }
+  }
+  
+  // 如果没有指定目标语言，默认使用所有语言
+  if (targetLanguages.length === 0) {
+    targetLanguages = languages.filter(lang => lang !== baseLanguage);
+  }
+  
+  console.log(chalk.blue(`开始同步所有翻译文件，基准语言: ${baseLanguage}, 目标语言: ${targetLanguages.join(', ')}`));
+  if (deleteFiles) {
+    console.log(chalk.yellow('警告: 已启用文件删除模式，将删除基准语言中不存在的文件'));
+  }
+  
+  // 检查基准语言目录是否存在
+  const baseDir = path.join(localesDir, baseLanguage);
+  if (!fs.existsSync(baseDir)) {
+    console.error(chalk.red(`错误: 基准语言目录 ${baseLanguage} 不存在`));
+    process.exit(1);
+  }
+  
+  // 获取基准语言中的所有翻译文件
+  const baseFiles = fs.readdirSync(baseDir)
+    .filter(file => file.endsWith('.json'));
+  
+  if (baseFiles.length === 0) {
+    console.error(chalk.red(`错误: 基准语言目录 ${baseLanguage} 中没有找到任何 JSON 文件`));
+    process.exit(1);
+  }
+  
+  console.log(chalk.blue(`在 ${baseLanguage} 中找到以下翻译文件: ${baseFiles.join(', ')}`));
+  
+  // 检查 OpenAI API 密钥
+  const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+  if (!OPENAI_API_KEY) {
+    console.error(chalk.red('错误：未设置 OPENAI_API_KEY 环境变量'));
+    console.log(chalk.yellow('请设置环境变量或创建 .env 文件，包含 OPENAI_API_KEY=your_api_key'));
+    process.exit(1);
+  }
+  
+  if (!axios) {
+    console.error(chalk.red('错误：自动工作流程需要 axios 包，请运行 npm install axios'));
+    process.exit(1);
+  }
+  
+  // 如果启用了文件删除，检查并删除不需要的文件
+  if (deleteFiles) {
+    for (const lang of targetLanguages) {
+      const langDir = path.join(localesDir, lang);
+      if (!fs.existsSync(langDir)) {
+        console.log(chalk.yellow(`语言目录 ${lang} 不存在，跳过删除检查`));
+        continue;
+      }
+      
+      const langFiles = fs.readdirSync(langDir)
+        .filter(file => file.endsWith('.json'));
+      
+      for (const file of langFiles) {
+        if (!baseFiles.includes(file)) {
+          const filePath = path.join(langDir, file);
+          console.log(chalk.yellow(`删除不需要的文件: ${lang}/${file}`));
+          
+          try {
+            fs.unlinkSync(filePath);
+            console.log(chalk.green(`  ✓ 已删除 ${lang}/${file}`));
+          } catch (error) {
+            console.error(chalk.red(`  ✗ 无法删除 ${lang}/${file}: ${error.message}`));
+          }
+        }
+      }
+    }
+  }
+  
+  // 对每个基准文件执行同步和翻译
+  for (const fileName of baseFiles) {
+    console.log(chalk.cyan(`\n处理文件: ${fileName}`));
+    
+    // 对每种目标语言执行同步、提取、翻译和合并
+    for (const lang of targetLanguages) {
+      console.log(chalk.blue(`\n处理语言: ${lang}`));
+      
+      // 步骤 1: 同步
+      console.log(chalk.cyan(`步骤 1: 同步 ${lang} 的文件结构`));
+      const syncResult = syncTranslationFiles(fileName, baseLanguage);
+      
+      if (!syncResult) {
+        console.log(chalk.yellow(`同步 ${lang}/${fileName} 失败，跳过后续步骤`));
+        continue;
+      }
+      
+      // 步骤 2: 提取
+      console.log(chalk.cyan(`步骤 2: 提取 ${lang} 的缺失翻译`));
+      const missingFilePath = extractMissingTranslations(fileName, [lang], baseLanguage);
+      
+      if (!missingFilePath) {
+        console.log(chalk.green(`${lang} 没有缺失的翻译，跳过`));
+        continue;
+      }
+      
+      // 步骤 3: 翻译
+      console.log(chalk.cyan(`步骤 3: 翻译 ${lang} 的缺失内容`));
+      const translatedFilePath = await translateMissingTranslations(missingFilePath, lang, OPENAI_API_KEY);
+      
+      if (!translatedFilePath) {
+        console.log(chalk.yellow(`${lang} 的翻译失败，跳过合并步骤`));
+        continue;
+      }
+      
+      // 步骤 4: 合并
+      console.log(chalk.cyan(`步骤 4: 合并 ${lang} 的翻译`));
+      mergeTranslations(translatedFilePath, lang, fileName);
+    }
+  }
+  
+  console.log(chalk.green('\n所有翻译文件同步完成!'));
 }
 
 // 检查翻译文件
@@ -1041,8 +1182,16 @@ ${languageName}翻译（仅返回JSON格式）:
              node locales-manager.js auto common.json fr,ja,ko
              node locales-manager.js auto common.json --all
 
+  sync-all   同步并翻译基准语言中的所有文件到其他语言
+    参数:    [目标语言] [--base <基准语言>] [--all] [--delete]
+    示例:    node locales-manager.js sync-all
+             node locales-manager.js sync-all fr,ja,ko
+             node locales-manager.js sync-all --base en
+             node locales-manager.js sync-all --all
+             node locales-manager.js sync-all --delete  # 删除基准语言中不存在的文件
+
   help       显示此帮助信息
-  `);
+    `);
   }
 
   // 执行主函数

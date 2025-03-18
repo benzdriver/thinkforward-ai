@@ -21,7 +21,7 @@ interface ConsultantLayoutProps {
 }
 
 export default function ConsultantLayout({ children }: ConsultantLayoutProps) {
-  const { t } = useTranslation('consultant');
+  const { t } = useTranslation(['consultant', 'common', 'layout']);
   const { user, signOut } = useAuth();
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);

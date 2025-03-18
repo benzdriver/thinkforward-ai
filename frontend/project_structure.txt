@@ -1,0 +1,288 @@
+.
+├── README.md
+├── assign_roles.js
+├── bash
+│   ├── clean-all.sh
+│   ├── clean.sh
+│   └── cleanup.sh
+├── clean-all.sh
+├── components
+│   ├── AIAssistant.tsx
+│   ├── Navbar.tsx
+│   ├── OAuthButton.tsx
+│   ├── SubscriptionBanner.tsx
+│   ├── about
+│   │   ├── Contact.tsx
+│   │   ├── Hero.tsx
+│   │   ├── Milestones.tsx
+│   │   ├── MissionVision.tsx
+│   │   ├── Team.tsx
+│   │   └── Values.tsx
+│   ├── animations
+│   │   └── FadeInWhenVisible.tsx
+│   ├── auth
+│   │   ├── AuthenticatedApp.tsx
+│   │   └── withPagePermission.tsx
+│   ├── common
+│   ├── consultant
+│   │   └── dashboard
+│   │       ├── ClientSummary.tsx
+│   │       ├── EfficiencyMetrics.tsx
+│   │       ├── RecentActivities.tsx
+│   │       └── TasksList.tsx
+│   ├── error
+│   │   └── ErrorBoundary.tsx
+│   ├── forms
+│   │   ├── ImmigrationForm.tsx
+│   │   └── ProfileForm.tsx
+│   ├── layout
+│   │   ├── AuthLayout.tsx
+│   │   ├── ConsultantLayout.tsx
+│   │   ├── DashboardLayout.tsx
+│   │   ├── Footer.tsx
+│   │   ├── Header.tsx
+│   │   ├── PublicLayout.tsx
+│   │   ├── RTLWrapper.tsx
+│   │   ├── Sidebar.tsx
+│   │   └── index.ts
+│   ├── pricing
+│   │   ├── PlanFeature.tsx
+│   │   ├── SubscriptionForm.tsx
+│   │   ├── TestimonialCard.tsx
+│   │   └── ValueProposition.tsx
+│   └── ui
+│       ├── Alert.tsx
+│       ├── Avatar.tsx
+│       ├── Badge.tsx
+│       ├── Breadcrumb.tsx
+│       ├── Button.tsx
+│       ├── Card.tsx
+│       ├── Checkbox.tsx
+│       ├── DataTable.tsx
+│       ├── Divider.tsx
+│       ├── Empty.tsx
+│       ├── FileUpload.tsx
+│       ├── Form
+│       │   ├── Form.tsx
+│       │   ├── FormField.tsx
+│       │   ├── FormFooter.tsx
+│       │   ├── FormItem.tsx
+│       │   ├── FormSection.tsx
+│       │   └── index.ts
+│       ├── Input.tsx
+│       ├── LanguageSwitcher.tsx
+│       ├── LoadingScreen.tsx
+│       ├── Modal.tsx
+│       ├── Pagination.tsx
+│       ├── PasswordInput.tsx
+│       ├── PermissionGuard.tsx
+│       ├── Radio.tsx
+│       ├── RadioGroup.tsx
+│       ├── Select.tsx
+│       ├── Skeleton.tsx
+│       ├── Switch.tsx
+│       ├── Table.tsx
+│       ├── Tabs.tsx
+│       ├── Tag.tsx
+│       ├── TextArea.tsx
+│       ├── Tooltip.tsx
+│       ├── VerificationInput.tsx
+│       └── index.ts
+├── config
+│   └── api.ts
+├── contexts
+│   └── AuthContext.tsx
+├── eslint.config.mjs
+├── frontend_prompt_new.md
+├── guideline.md
+├── hooks
+│   ├── usePermission.ts
+│   └── useUserRole.ts
+├── i18next.config.js
+├── logs
+├── middleware
+│   └── withPermission.ts
+├── middleware.ts
+├── next-env.d.ts
+├── next-i18next.config.js
+├── next.config.js
+├── next.config.ts
+├── output.css
+├── package-lock.json
+├── package.json
+├── pages
+│   ├── _app.tsx
+│   ├── _document.tsx
+│   ├── about.tsx
+│   ├── admin
+│   │   ├── consultants.tsx
+│   │   ├── dashboard.tsx
+│   │   ├── settings.tsx
+│   │   └── users.tsx
+│   ├── api
+│   │   ├── log
+│   │   │   ├── clear.ts
+│   │   │   ├── export.ts
+│   │   │   └── view.ts
+│   │   ├── log.ts
+│   │   └── users
+│   │       └── role.ts
+│   ├── assessment
+│   │   └── result.tsx
+│   ├── auth
+│   │   ├── forgot-password.tsx
+│   │   ├── login.tsx
+│   │   ├── register.tsx
+│   │   └── verify.tsx
+│   ├── client
+│   │   ├── chat.tsx
+│   │   ├── consultant.tsx
+│   │   ├── documents.tsx
+│   │   ├── forms.tsx
+│   │   └── profile.tsx
+│   ├── consultant
+│   │   ├── clients
+│   │   │   ├── [id]
+│   │   │   │   ├── cases
+│   │   │   │   │   ├── [caseId]
+│   │   │   │   │   │   └── edit.tsx
+│   │   │   │   │   ├── [caseId].tsx
+│   │   │   │   │   └── new.tsx
+│   │   │   │   ├── documents
+│   │   │   │   │   └── upload.tsx
+│   │   │   │   └── edit.tsx
+│   │   │   ├── [id].tsx
+│   │   │   └── new.tsx
+│   │   ├── clients.tsx
+│   │   ├── dashboard.tsx
+│   │   ├── plans.tsx
+│   │   └── review.tsx
+│   ├── dashboard.tsx
+│   ├── guest
+│   │   └── dashboard.tsx
+│   ├── index.tsx
+│   ├── index.tsx_gai
+│   ├── initial-assessment.tsx
+│   ├── landing.tsx
+│   ├── landing_tmp_test.tsx
+│   ├── pricing.tsx
+│   ├── sign-in
+│   │   └── [[...index]].tsx
+│   ├── sign-up
+│   │   └── [[...index]].tsx
+│   ├── subscription
+│   │   ├── index.tsx
+│   │   └── success.tsx
+│   └── test.tsx
+├── postcss.config.js
+├── postcss.config.mjs
+├── project_structure.txt
+├── public
+│   ├── favicon.ico
+│   ├── file.svg
+│   ├── globe.svg
+│   ├── images
+│   │   ├── hero-background.jpg
+│   │   └── logo.png
+│   ├── locales
+│   │   ├── ar
+│   │   │   ├── about.json
+│   │   │   ├── auth.json
+│   │   │   ├── common.json
+│   │   │   ├── dashboard.json
+│   │   │   ├── index.json
+│   │   │   ├── landing.json
+│   │   │   ├── layout.json
+│   │   │   ├── pricing.json
+│   │   │   └── sign-in.json
+│   │   ├── en
+│   │   │   ├── about.json
+│   │   │   ├── auth.json
+│   │   │   ├── common.json
+│   │   │   ├── consultant.json
+│   │   │   ├── dashboard.json
+│   │   │   ├── index.json
+│   │   │   ├── landing.json
+│   │   │   ├── layout.json
+│   │   │   ├── pricing.json
+│   │   │   ├── sign-in.json
+│   │   │   └── sign-up.json
+│   │   ├── fr
+│   │   │   ├── about.json
+│   │   │   ├── auth.json
+│   │   │   ├── common.json
+│   │   │   ├── consultant.json
+│   │   │   ├── dashboard.json
+│   │   │   ├── index.json
+│   │   │   ├── landing.json
+│   │   │   ├── layout.json
+│   │   │   ├── pricing.json
+│   │   │   └── sign-in.json
+│   │   ├── ja
+│   │   │   ├── about.json
+│   │   │   ├── auth.json
+│   │   │   ├── common.json
+│   │   │   ├── dashboard.json
+│   │   │   ├── index.json
+│   │   │   ├── landing.json
+│   │   │   ├── layout.json
+│   │   │   ├── pricing.json
+│   │   │   └── sign-in.json
+│   │   ├── ko
+│   │   │   ├── about.json
+│   │   │   ├── auth.json
+│   │   │   ├── common.json
+│   │   │   ├── dashboard.json
+│   │   │   ├── index.json
+│   │   │   ├── landing.json
+│   │   │   ├── layout.json
+│   │   │   ├── pricing.json
+│   │   │   └── sign-in.json
+│   │   ├── zh-CN
+│   │   │   ├── about.json
+│   │   │   ├── auth.json
+│   │   │   ├── common.json
+│   │   │   ├── consultant.json
+│   │   │   ├── dashboard.json
+│   │   │   ├── index.json
+│   │   │   ├── landing.json
+│   │   │   ├── layout.json
+│   │   │   ├── pricing.json
+│   │   │   ├── sign-in.json
+│   │   │   └── sign-up.json
+│   │   └── zh-TW
+│   │       ├── about.json
+│   │       ├── auth.json
+│   │       ├── common.json
+│   │       ├── consultant.json
+│   │       ├── dashboard.json
+│   │       ├── index.json
+│   │       ├── landing.json
+│   │       ├── layout.json
+│   │       ├── pricing.json
+│   │       └── sign-in.json
+│   ├── next.svg
+│   ├── vercel.svg
+│   └── window.svg
+├── scripts
+│   ├── check-env.js
+│   └── replace-console-logs.js
+├── styles
+│   ├── clerk-overrides.css
+│   ├── globals.css
+│   └── rtl.css
+├── tailwind.config.js
+├── test.tsx
+├── tsconfig.json
+├── types
+│   ├── consultant.ts
+│   ├── subscription.ts
+│   └── user.ts
+└── utils
+    ├── api.ts
+    ├── hybridLogger.ts
+    ├── i18n.ts
+    ├── logger.ts
+    └── mongodb.ts
+
+52 directories, 234 files

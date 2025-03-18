@@ -1,0 +1,53 @@
+{
+  "header": {
+    "home": "ホーム",
+    "about": "会社概要",
+    "services": "サービス",
+    "contact": "お問い合わせ",
+    "dashboard": "ダッシュボード",
+    "login": "ログイン",
+    "register": "登録",
+    "signout": "ログアウト"
+  },
+  "footer": {
+    "about": "会社概要",
+    "description": "ThinkForward AIは、AI駆動のツールを使用して、移民コンサルタントとクライアントが複雑な移民プロセスをナビゲートするのを支援します。",
+    "links": "クイックリンク",
+    "home": "ホーム",
+    "about_link": "会社概要",
+    "services": "サービス",
+    "contact": "お問い合わせ",
+    "legal": "法的情報",
+    "terms": "利用規約",
+    "privacy": "プライバシーポリシー",
+    "contact_us": "お問い合わせ",
+    "email": "メール",
+    "rights": "全著作権所有"
+  },
+  "sidebar": {
+    "dashboard": "ダッシュボード",
+    "profile": "プロフィール",
+    "clients": "クライアント",
+    "cases": "ケース",
+    "documents": "書類",
+    "analytics": "分析",
+    "applications": "私の申請",
+    "my_documents": "私の書類",
+    "consultant": "私のコンサルタント",
+    "users": "ユーザー",
+    "settings": "設定",
+    "guest": "ゲスト"
+  },
+  "dashboard": {
+    "title": "ダッシュボード",
+    "welcome": "お帰りなさい",
+    "overview": "概要",
+    "recent_activity": "最近のアクティビティ",
+    "notifications": "通知",
+    "no_notifications": "通知はありません"
+  },
+  "public": {
+    "site_title": "ThinkForward AI - インテリジェント移民ソリューション",
+    "meta_description": "ThinkForward AIは、コンサルタントと申請者が移民プロセスを合理化するのを支援するAI駆動の移民コンサルティングおよび申請管理ツールを提供します。"
+  }
+}

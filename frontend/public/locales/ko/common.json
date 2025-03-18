@@ -1,12 +1,26 @@
 {
+  "login": "로그인",
+  "login_title": "계정에 로그인",
+  "login_description": "이민 AI 어시스턴트 계정에 접속",
+  "no_account": "계정이 없으신가요?",
+  "sign_up_now": "지금 가입하기",
+  "create_account": "계정 만들기",
+  "already_have_account": "이미 계정이 있으신가요?",
+  "sign_in_now": "지금 로그인하기",
   "app_name": "ThinkForward AI",
   "nav": {
     "home": "홈",
-    "about": "회사 소개",
+    "about": "소개",
+    "services": "서비스",
+    "contact": "연락처",
     "assessment": "평가",
     "dashboard": "대시보드",
     "client_management": "고객 관리",
-    "admin": "관리자"
+    "admin": "관리자",
+    "assistant": "AI 어시스턴트",
+    "forms": "양식",
+    "login": "로그인",
+    "signup": "회원가입"
   },
   "actions": {
     "login": "로그인",
@@ -19,16 +33,317 @@
   },
   "language_selector": {
     "label": "언어",
-    "zh": "중국어",
+    "zh-CN": "중국어 간체",
     "en": "영어",
     "ar": "아랍어",
     "ja": "일본어",
-    "ko": "한국어"
+    "ko": "한국어",
+    "zh-TW": "중국어 번체"
   },
   "footer": {
     "copyright": "© {{year}} ThinkForward AI. 모든 권리 보유."
   },
   "title": "ThinkForward AI - 지능형 이민 어시스턴트",
   "siteTitle": "ThinkForward AI",
-  "all_rights_reserved": "모든 권리 보유"
-} 
+  "all_rights_reserved": "모든 권리 보유",
+  "components": {
+    "alert": {
+      "close": "닫기",
+      "success": "성공",
+      "info": "정보",
+      "warning": "경고",
+      "error": "오류"
+    },
+    "avatar": {
+      "alt": "아바타"
+    },
+    "breadcrumb": {
+      "ariaLabel": "경로 탐색",
+      "home": "홈",
+      "separator": "/"
+    },
+    "button": {
+      "loading": "로딩 중...",
+      "more": "더 보기",
+      "variants": {
+        "primary": "기본",
+        "secondary": "보조",
+        "success": "성공",
+        "danger": "위험",
+        "warning": "경고",
+        "info": "정보",
+        "light": "밝음",
+        "dark": "어두움",
+        "link": "링크"
+      },
+      "sizes": {
+        "xs": "아주 작게",
+        "sm": "작게",
+        "md": "중간",
+        "lg": "크게",
+        "xl": "아주 크게"
+      }
+    },
+    "dataTable": {
+      "emptyText": "데이터 없음",
+      "loading": "로딩 중...",
+      "search": "검색",
+      "showing": "{{total}}개 중 {{from}}~{{to}}개 표시",
+      "filter": "필터",
+      "reset": "초기화",
+      "sortAscending": "오름차순 정렬",
+      "sortDescending": "내림차순 정렬",
+      "actions": "작업"
+    },
+    "empty": {
+      "description": "데이터 없음",
+      "noData": "데이터 없음",
+      "noResult": "결과 없음",
+      "noContent": "내용 없음"
+    },
+    "error": {
+      "title": "오류",
+      "message": "죄송합니다, 오류가 발생했습니다",
+      "retry": "다시 시도",
+      "goBack": "돌아가기",
+      "details": "오류 세부 정보",
+      "close": "닫기"
+    },
+    "form": {
+      "submit": "제출",
+      "cancel": "취소",
+      "reset": "초기화",
+      "save": "저장",
+      "required": "필수",
+      "optional": "선택 사항",
+      "loading": "로딩 중...",
+      "layout": {
+        "vertical": "수직",
+        "horizontal": "수평",
+        "inline": "인라인"
+      },
+      "size": {
+        "small": "작은",
+        "middle": "중간",
+        "large": "큰"
+      },
+      "validation": {
+        "required": "이 필드는 필수입니다",
+        "email": "유효한 이메일 주소를 입력하세요",
+        "url": "유효한 URL을 입력하세요",
+        "minLength": "최소 {{min}}자 이상 입력하세요",
+        "maxLength": "최대 {{max}}자까지 입력하세요",
+        "min": "{{min}} 이상의 값을 입력하세요",
+        "max": "{{max}} 이하의 값을 입력하세요",
+        "pattern": "입력 형식이 올바르지 않습니다"
+      },
+      "section": {
+        "basicInfo": "기본 정보",
+        "contactInfo": "연락처 정보",
+        "addressInfo": "주소 정보",
+        "accountInfo": "계정 정보",
+        "personalInfo": "개인 정보",
+        "professionalInfo": "직업 정보",
+        "additionalInfo": "추가 정보",
+        "settings": "설정",
+        "preferences": "환경 설정"
+      },
+      "help": {
+        "passwordRequirements": "비밀번호는 최소 8자 이상이어야 하며 숫자와 특수 문자를 포함해야 합니다",
+        "emailUsage": "우리는 귀하의 이메일을 아무와도 공유하지 않습니다",
+        "optional": "이 필드는 선택 사항입니다"
+      },
+      "footer": {
+        "align": {
+          "left": "왼쪽 정렬",
+          "center": "가운데 정렬",
+          "right": "오른쪽 정렬"
+        }
+      },
+      "fields": {
+        "username": "사용자 이름",
+        "password": "비밀번호",
+        "confirmPassword": "비밀번호 확인",
+        "email": "이메일",
+        "firstName": "이름",
+        "lastName": "성",
+        "fullName": "전체 이름",
+        "phone": "전화번호",
+        "address": "주소",
+        "city": "도시",
+        "state": "주/도",
+        "country": "국가",
+        "zipCode": "우편번호",
+        "dateOfBirth": "생년월일",
+        "gender": "성별",
+        "bio": "자기소개",
+        "website": "웹사이트",
+        "company": "회사",
+        "jobTitle": "직책"
+      },
+      "placeholders": {
+        "username": "사용자 이름을 입력하세요",
+        "password": "비밀번호를 입력하세요",
+        "confirmPassword": "비밀번호를 확인하세요",
+        "email": "이메일을 입력하세요",
+        "firstName": "이름을 입력하세요",
+        "lastName": "성을 입력하세요",
+        "fullName": "전체 이름을 입력하세요",
+        "phone": "전화번호를 입력하세요",
+        "address": "주소를 입력하세요",
+        "city": "도시를 입력하세요",
+        "state": "주/도를 입력하세요",
+        "country": "국가를 입력하세요",
+        "zipCode": "우편번호를 입력하세요",
+        "dateOfBirth": "생년월일을 입력하세요",
+        "gender": "성별을 선택하세요",
+        "bio": "자기 소개를 입력하세요",
+        "website": "웹사이트를 입력하세요",
+        "company": "회사를 입력하세요",
+        "jobTitle": "직책을 입력하세요"
+      },
+      "sections": {
+        "basicInfo": "기본 정보",
+        "contactInfo": "연락처 정보",
+        "addressInfo": "주소 정보",
+        "accountInfo": "계정 정보",
+        "personalInfo": "개인 정보",
+        "professionalInfo": "직업 정보",
+        "additionalInfo": "추가 정보"
+      },
+      "select": {
+        "placeholder": "선택하세요",
+        "loading": "로딩 중...",
+        "noOptions": "옵션 없음",
+        "noResults": "일치하는 결과 없음",
+        "clear": "지우기",
+        "search": "검색",
+        "selected": "선택됨",
+        "selectAll": "모두 선택",
+        "deselectAll": "모두 선택 해제"
+      },
+      "datePicker": {
+        "placeholder": "날짜 선택",
+        "today": "오늘",
+        "now": "지금",
+        "backToToday": "오늘로 돌아가기",
+        "ok": "확인",
+        "clear": "지우기",
+        "month": "월",
+        "year": "년",
+        "previousMonth": "이전 달",
+        "nextMonth": "다음 달",
+        "previousYear": "이전 해",
+        "nextYear": "다음 해",
+        "previousDecade": "이전 10년",
+        "nextDecade": "다음 10년",
+        "previousCentury": "이전 세기",
+        "nextCentury": "다음 세기"
+      },
+      "timePicker": {
+        "placeholder": "시간 선택",
+        "hour": "시",
+        "minute": "분",
+        "second": "초",
+        "now": "지금",
+        "clear": "지우기",
+        "ok": "확인"
+      }
+    },
+    "loading": {
+      "default": "로딩 중...",
+      "message": "로딩 중..."
+    },
+    "modal": {
+      "close": "닫기",
+      "confirm": {
+        "ok": "확인",
+        "cancel": "취소"
+      }
+    },
+    "pagination": {
+      "previous": "이전",
+      "next": "다음",
+      "total": "총 {{total}}개",
+      "jumpTo": "이동",
+      "page": "페이지",
+      "perPage": "/ 페이지",
+      "showing": "{{from}}-{{to}} / {{total}}개"
+    },
+    "table": {
+      "empty": "데이터 없음",
+      "loading": "로딩 중...",
+      "search": "검색",
+      "filter": "필터",
+      "reset": "초기화",
+      "actions": "작업",
+      "showing": "{{total}}개 중 {{from}}~{{to}}개 표시",
+      "noResults": "일치하는 레코드를 찾을 수 없습니다",
+      "pagination": {
+        "prev": "이전",
+        "next": "다음",
+        "first": "처음",
+        "last": "마지막",
+        "total": "총 {{total}}개",
+        "pageSize": "{{size}}개 / 페이지",
+        "jumpTo": "이동",
+        "page": "페이지"
+      },
+      "sort": {
+        "asc": "오름차순 정렬",
+        "desc": "내림차순 정렬",
+        "cancel": "정렬 취소"
+      },
+      "columns": {
+        "show": "열 표시",
+        "hide": "열 숨기기"
+      }
+    },
+    "languageSwitcher": {
+      "title": "언어 전환"
+    },
+    "card": {
+      "more": "더 보기",
+      "collapse": "접기",
+      "expand": "펼치기",
+      "actions": "작업"
+    },
+    "checkbox": {
+      "ariaLabel": "체크박스",
+      "selectAll": "모두 선택",
+      "unselectAll": "모두 선택 해제"
+    },
+    "divider": {
+      "text": "텍스트"
+    },
+    "errorBoundary": {
+      "title": "문제가 발생했습니다",
+      "message": "이 컴포넌트에서 오류가 발생했습니다",
+      "refresh": "페이지 새로고침",
+      "tryAgain": "다시 시도",
+      "contactSupport": "페이지를 새로고침하거나 지원팀에 문의하세요."
+    },
+    "radio": {
+      "ariaLabel": "라디오 옵션",
+      "select": "선택",
+      "selected": "선택됨",
+      "notSelected": "선택되지 않음"
+    },
+    "radioGroup": {
+      "selectOne": "옵션을 선택하세요",
+      "required": "옵션을 선택하세요"
+    },
+    "switch": {
+      "on": "켜기",
+      "off": "끄기",
+      "ariaLabel": {
+        "on": "스위치가 켜져 있습니다",
+        "off": "스위치가 꺼져 있습니다"
+      },
+      "enabled": "활성화됨",
+      "disabled": "비활성화됨"
+    }
+  },
+  "hello": "안녕하세요",
+  "includes": "포함"
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'next-i18next';
 
 interface LoadingScreenProps {
   message?: string;
@@ -8,15 +9,14 @@ interface LoadingScreenProps {
  * LoadingScreen component
  * Displays a loading spinner with an optional message
  */
-const LoadingScreen: React.FC<LoadingScreenProps> = ({ message = 'Loading...' }) => {
+export const LoadingScreen: React.FC<LoadingScreenProps> = ({ message }) => {
+  const { t } = useTranslation('common');
+  const defaultMessage = t('components.loading.message', { defaultValue: 'Loading...' });
+  
   return (
-    <div className="flex items-center justify-center min-h-[300px] h-full w-full">
-      <div className="text-center">
-        <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary border-blue-700"></div>
-        <p className="mt-4 text-gray-700 font-medium">{message}</p>
-      </div>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mb-4"></div>
+      <p className="text-gray-600">{message || defaultMessage}</p>
     </div>
   );
 };
-
-export default LoadingScreen; 

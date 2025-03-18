@@ -101,19 +101,5 @@
     "title": "오늘 비즈니스를 성장시키세요",
     "description": "ThinkForward를 사용하여 업무를 혁신하고 있는 수백 명의 이민 컨설턴트와 함께하세요",
     "button": "시작하기"
-  },
-  "subscription": {
-    "complete_subscription": "구독 완료하기",
-    "selected_plan": "선택한 플랜",
-    "first_name": "이름",
-    "last_name": "성",
-    "email": "이메일 주소",
-    "company_name": "회사 또는 사무소 이름",
-    "payment_details": "결제 정보",
-    "required_field": "필수 입력 항목입니다",
-    "valid_email": "유효한 이메일 주소를 입력해 주세요",
-    "processing": "처리 중...",
-    "start_subscription": "구독 시작하기",
-    "error_generic": "구독 처리 중 오류가 발생했습니다. 다시 시도해 주세요."
   }
-} 
+}

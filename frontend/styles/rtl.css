@@ -1,0 +1,9 @@
+[dir="rtl"] {
+  /* RTL specific styles */
+  .cl-headerTitle {
+    text-align: right;
+  }
+  .cl-formFieldInput {
+    direction: rtl;
+  }
+} 

@@ -9,8 +9,8 @@ import ClientSummary from '@/components/consultant/dashboard/ClientSummary';
 import EfficiencyMetrics from '@/components/consultant/dashboard/EfficiencyMetrics';
 import RecentActivities from '@/components/consultant/dashboard/RecentActivities';
 import TasksList from '@/components/consultant/dashboard/TasksList';
-import LoadingScreen from '@/components/ui/LoadingScreen';
-import ErrorAlert from '@/components/ui/ErrorAlert';
+import { LoadingScreen } from '@/components/ui/LoadingScreen';
+import { ErrorAlert } from '@/components/ui/ErrorAlert';
 import PageHeader from '@/components/ui/PageHeader';
 import { DashboardData } from '@/types/consultant';
 

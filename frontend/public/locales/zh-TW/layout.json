@@ -1,0 +1,53 @@
+{
+  "header": {
+    "home": "首頁",
+    "about": "關於我們",
+    "services": "服務",
+    "contact": "聯繫我們",
+    "dashboard": "控制面板",
+    "login": "登入",
+    "register": "註冊",
+    "signout": "登出"
+  },
+  "footer": {
+    "about": "關於我們",
+    "description": "ThinkForward AI 通過AI驅動的工具幫助移民顧問和客戶簡化複雜的移民流程。",
+    "links": "快速連結",
+    "home": "首頁",
+    "about_link": "關於我們",
+    "services": "服務",
+    "contact": "聯繫我們",
+    "legal": "法律條款",
+    "terms": "服務條款",
+    "privacy": "隱私政策",
+    "contact_us": "聯繫我們",
+    "email": "電子郵件",
+    "rights": "版權所有"
+  },
+  "sidebar": {
+    "dashboard": "控制面板",
+    "profile": "個人資料",
+    "clients": "客戶管理",
+    "cases": "案例管理",
+    "documents": "文檔管理",
+    "analytics": "數據分析",
+    "applications": "我的申請",
+    "my_documents": "我的文檔",
+    "consultant": "我的顧問",
+    "users": "用戶管理",
+    "settings": "系統設置",
+    "guest": "訪客"
+  },
+  "dashboard": {
+    "title": "控制面板",
+    "welcome": "歡迎回來",
+    "overview": "概覽",
+    "recent_activity": "最近活動",
+    "notifications": "通知",
+    "no_notifications": "暫無通知"
+  },
+  "public": {
+    "site_title": "ThinkForward AI - 智能移民解決方案",
+    "meta_description": "ThinkForward AI 提供AI驅動的移民諮詢和申請管理工具，幫助顧問和申請人簡化移民流程。"
+  }
+}

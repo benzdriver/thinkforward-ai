@@ -1,0 +1,18 @@
+{
+  "page_title": "Inscription",
+  "heading": "Créer un nouveau compte",
+  "name_label": "Nom",
+  "email_label": "Adresse e-mail",
+  "password_label": "Mot de passe",
+  "confirm_password": "Confirmer le mot de passe",
+  "submit_button": "S'inscrire",
+  "have_account": "Déjà un compte?",
+  "sign_in": "Se connecter",
+  "or_continue_with": "ou continuer avec",
+  "loading": "Chargement en cours...",
+  "debug_info": "Informations de débogage",
+  "locale_from_props": "Paramètres régionaux provenant des props",
+  "locale_from_router": "Paramètres régionaux provenant du routeur",
+  "clerk_locale": "Paramètres régionaux de Clerk",
+  "path": "Chemin"
+}

@@ -1,12 +1,26 @@
 {
+  "login": "تسجيل الدخول",
+  "login_title": "تسجيل الدخول إلى حسابك",
+  "login_description": "الوصول إلى حساب مساعد الهجرة الذكي الخاص بك",
+  "no_account": "ليس لديك حساب؟",
+  "sign_up_now": "سجل الآن",
+  "create_account": "إنشاء حسابك",
+  "already_have_account": "لديك حساب بالفعل؟",
+  "sign_in_now": "تسجيل الدخول الآن",
   "app_name": "ThinkForward AI",
   "nav": {
     "home": "الرئيسية",
     "about": "عننا",
+    "services": "الخدمات",
+    "contact": "اتصل بنا",
     "assessment": "التقييم",
     "dashboard": "لوحة التحكم",
     "client_management": "إدارة العملاء",
-    "admin": "المسؤول"
+    "admin": "المسؤول",
+    "assistant": "المساعد الذكي",
+    "forms": "النماذج",
+    "login": "تسجيل الدخول",
+    "signup": "التسجيل"
   },
   "actions": {
     "login": "تسجيل الدخول",
@@ -19,13 +33,317 @@
   },
   "language_selector": {
     "label": "اللغة",
-    "zh": "الصينية",
+    "zh-CN": "الصينية المبسطة",
     "en": "الإنجليزية",
     "ar": "العربية",
     "ja": "اليابانية",
-    "ko": "الكورية"
+    "ko": "الكورية",
+    "zh-TW": "الصينية التقليدية"
   },
   "footer": {
     "copyright": "© {{year}} ThinkForward AI. جميع الحقوق محفوظة."
-  }
-} 
+  },
+  "title": "ThinkForward AI - مساعد الهجرة الذكي",
+  "siteTitle": "ThinkForward AI",
+  "all_rights_reserved": "جميع الحقوق محفوظة",
+  "components": {
+    "alert": {
+      "close": "إغلاق",
+      "success": "نجاح",
+      "info": "معلومات",
+      "warning": "تحذير",
+      "error": "خطأ"
+    },
+    "avatar": {
+      "alt": "الصورة الرمزية"
+    },
+    "breadcrumb": {
+      "ariaLabel": "مسار التنقل",
+      "home": "الرئيسية",
+      "separator": "/"
+    },
+    "button": {
+      "loading": "جاري التحميل...",
+      "more": "المزيد",
+      "variants": {
+        "primary": "أساسي",
+        "secondary": "ثانوي",
+        "success": "نجاح",
+        "danger": "خطر",
+        "warning": "تحذير",
+        "info": "معلومات",
+        "light": "فاتح",
+        "dark": "داكن",
+        "link": "رابط"
+      },
+      "sizes": {
+        "xs": "صغير جداً",
+        "sm": "صغير",
+        "md": "متوسط",
+        "lg": "كبير",
+        "xl": "كبير جداً"
+      }
+    },
+    "dataTable": {
+      "emptyText": "لا توجد بيانات",
+      "loading": "جاري التحميل...",
+      "search": "بحث",
+      "showing": "عرض {{from}} إلى {{to}} من {{total}} نتيجة",
+      "filter": "تصفية",
+      "reset": "إعادة تعيين",
+      "sortAscending": "ترتيب تصاعدي",
+      "sortDescending": "ترتيب تنازلي",
+      "actions": "إجراءات"
+    },
+    "empty": {
+      "description": "لا توجد بيانات",
+      "noData": "لا توجد بيانات",
+      "noResult": "لا توجد نتائج",
+      "noContent": "لا يوجد محتوى"
+    },
+    "error": {
+      "title": "خطأ",
+      "message": "عذراً، حدث خطأ",
+      "retry": "إعادة المحاولة",
+      "goBack": "العودة",
+      "details": "تفاصيل الخطأ",
+      "close": "إغلاق"
+    },
+    "form": {
+      "submit": "إرسال",
+      "cancel": "إلغاء",
+      "reset": "إعادة تعيين",
+      "save": "حفظ",
+      "required": "مطلوب",
+      "optional": "اختياري",
+      "loading": "جاري التحميل...",
+      "layout": {
+        "vertical": "عمودي",
+        "horizontal": "أفقي",
+        "inline": "مضمن"
+      },
+      "size": {
+        "small": "صغير",
+        "middle": "متوسط",
+        "large": "كبير"
+      },
+      "validation": {
+        "required": "هذا الحقل مطلوب",
+        "email": "يرجى إدخال بريد إلكتروني صالح",
+        "url": "يرجى إدخال رابط صالح",
+        "minLength": "يجب أن يكون الطول على الأقل {{min}} حرفاً",
+        "maxLength": "يجب أن يكون الطول أقل من أو يساوي {{max}} حرفاً",
+        "min": "يجب أن تكون القيمة أكبر من أو تساوي {{min}}",
+        "max": "يجب أن تكون القيمة أقل من أو تساوي {{max}}",
+        "pattern": "القيمة لا تطابق النمط المطلوب"
+      },
+      "section": {
+        "basicInfo": "معلومات أساسية",
+        "contactInfo": "معلومات الاتصال",
+        "addressInfo": "معلومات العنوان",
+        "accountInfo": "معلومات الحساب",
+        "personalInfo": "معلومات شخصية",
+        "professionalInfo": "معلومات مهنية",
+        "additionalInfo": "معلومات إضافية",
+        "settings": "الإعدادات",
+        "preferences": "تفضيلات"
+      },
+      "help": {
+        "passwordRequirements": "يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل وتتضمن رقمًا وحرفًا خاصًا",
+        "emailUsage": "لن نشارك بريدك الإلكتروني مع أي شخص",
+        "optional": "هذا الحقل اختياري"
+      },
+      "footer": {
+        "align": {
+          "left": "محاذاة إلى اليسار",
+          "center": "محاذاة في الوسط",
+          "right": "محاذاة إلى اليمين"
+        }
+      },
+      "fields": {
+        "username": "اسم المستخدم",
+        "password": "كلمة المرور",
+        "confirmPassword": "تأكيد كلمة المرور",
+        "email": "البريد الإلكتروني",
+        "firstName": "الاسم الأول",
+        "lastName": "الاسم الأخير",
+        "fullName": "الاسم الكامل",
+        "phone": "رقم الهاتف",
+        "address": "العنوان",
+        "city": "المدينة",
+        "state": "الولاية/المقاطعة",
+        "country": "الدولة",
+        "zipCode": "الرمز البريدي",
+        "dateOfBirth": "تاريخ الميلاد",
+        "gender": "الجنس",
+        "bio": "السيرة الذاتية",
+        "website": "الموقع الإلكتروني",
+        "company": "الشركة",
+        "jobTitle": "المسمى الوظيفي"
+      },
+      "placeholders": {
+        "username": "الرجاء إدخال اسم المستخدم",
+        "password": "الرجاء إدخال كلمة المرور",
+        "confirmPassword": "الرجاء تأكيد كلمة المرور",
+        "email": "الرجاء إدخال البريد الإلكتروني",
+        "firstName": "الرجاء إدخال الاسم الأول",
+        "lastName": "الرجاء إدخال الاسم الأخير",
+        "fullName": "الرجاء إدخال الاسم الكامل",
+        "phone": "الرجاء إدخال رقم الهاتف",
+        "address": "الرجاء إدخال العنوان",
+        "city": "الرجاء إدخال المدينة",
+        "state": "الرجاء إدخال الولاية/المقاطعة",
+        "country": "الرجاء إدخال الدولة",
+        "zipCode": "أدخل الرمز البريدي",
+        "dateOfBirth": "أدخل تاريخ الميلاد",
+        "gender": "اختر الجنس",
+        "bio": "أدخل السيرة الذاتية",
+        "website": "أدخل الموقع الإلكتروني",
+        "company": "أدخل اسم الشركة",
+        "jobTitle": "أدخل الوظيفة"
+      },
+      "sections": {
+        "basicInfo": "المعلومات الأساسية",
+        "contactInfo": "معلومات الاتصال",
+        "addressInfo": "معلومات العنوان",
+        "accountInfo": "معلومات الحساب",
+        "personalInfo": "المعلومات الشخصية",
+        "professionalInfo": "المعلومات المهنية",
+        "additionalInfo": "معلومات إضافية"
+      },
+      "select": {
+        "placeholder": "يرجى الاختيار",
+        "loading": "جاري التحميل...",
+        "noOptions": "لا توجد خيارات متاحة",
+        "noResults": "لا توجد نتائج مطابقة",
+        "clear": "مسح",
+        "search": "بحث",
+        "selected": "محدد",
+        "selectAll": "تحديد الكل",
+        "deselectAll": "إلغاء تحديد الكل"
+      },
+      "datePicker": {
+        "placeholder": "اختر التاريخ",
+        "today": "اليوم",
+        "now": "الآن",
+        "backToToday": "العودة إلى اليوم",
+        "ok": "موافق",
+        "clear": "مسح",
+        "month": "شهر",
+        "year": "سنة",
+        "previousMonth": "الشهر السابق",
+        "nextMonth": "الشهر التالي",
+        "previousYear": "السنة السابقة",
+        "nextYear": "السنة التالية",
+        "previousDecade": "العقد السابق",
+        "nextDecade": "العقد التالي",
+        "previousCentury": "القرن السابق",
+        "nextCentury": "القرن التالي"
+      },
+      "timePicker": {
+        "placeholder": "اختر الوقت",
+        "hour": "ساعة",
+        "minute": "دقيقة",
+        "second": "ثانية",
+        "now": "الآن",
+        "clear": "مسح",
+        "ok": "موافق"
+      }
+    },
+    "loading": {
+      "default": "جاري التحميل...",
+      "message": "جاري التحميل..."
+    },
+    "modal": {
+      "close": "إغلاق",
+      "confirm": {
+        "ok": "موافق",
+        "cancel": "إلغاء"
+      }
+    },
+    "pagination": {
+      "previous": "السابق",
+      "next": "التالي",
+      "total": "الإجمالي {{total}} عنصر",
+      "jumpTo": "انتقال إلى",
+      "page": "صفحة",
+      "perPage": "/ صفحة",
+      "showing": "عرض {{from}}-{{to}} من {{total}}"
+    },
+    "table": {
+      "empty": "لا توجد بيانات",
+      "loading": "جاري التحميل...",
+      "search": "بحث",
+      "filter": "تصفية",
+      "reset": "إعادة تعيين",
+      "actions": "إجراءات",
+      "showing": "عرض {{from}} إلى {{to}} من {{total}} سجل",
+      "noResults": "لم يتم العثور على سجلات مطابقة",
+      "pagination": {
+        "prev": "السابق",
+        "next": "التالي",
+        "first": "الأول",
+        "last": "الأخير",
+        "total": "الإجمالي {{total}} عنصر",
+        "pageSize": "{{size}} / صفحة",
+        "jumpTo": "انتقال إلى",
+        "page": "صفحة"
+      },
+      "sort": {
+        "asc": "ترتيب تصاعدي",
+        "desc": "ترتيب تنازلي",
+        "cancel": "إلغاء الترتيب"
+      },
+      "columns": {
+        "show": "إظهار الأعمدة",
+        "hide": "إخفاء الأعمدة"
+      }
+    },
+    "languageSwitcher": {
+      "title": "تغيير اللغة"
+    },
+    "card": {
+      "more": "المزيد",
+      "collapse": "طي",
+      "expand": "توسيع",
+      "actions": "إجراءات"
+    },
+    "checkbox": {
+      "ariaLabel": "خانة اختيار",
+      "selectAll": "تحديد الكل",
+      "unselectAll": "إلغاء تحديد الكل"
+    },
+    "divider": {
+      "text": "نص"
+    },
+    "errorBoundary": {
+      "title": "حدث خطأ ما",
+      "message": "حدث خطأ في هذا المكون",
+      "refresh": "تحديث الصفحة",
+      "tryAgain": "حاول مرة أخرى",
+      "contactSupport": "يرجى محاولة تحديث الصفحة أو الاتصال بفريق الدعم."
+    },
+    "radio": {
+      "ariaLabel": "خيار زر الراديو",
+      "select": "اختيار",
+      "selected": "محدد",
+      "notSelected": "غير محدد"
+    },
+    "radioGroup": {
+      "selectOne": "اختر خياراً واحداً",
+      "required": "يرجى اختيار خيار"
+    },
+    "switch": {
+      "on": "تشغيل",
+      "off": "إيقاف",
+      "ariaLabel": {
+        "on": "المفتاح قيد التشغيل",
+        "off": "المفتاح متوقف"
+      },
+      "enabled": "مفعّل",
+      "disabled": "معطّل"
+    }
+  },
+  "hello": "مرحباً",
+  "includes": "يتضمن"
+}

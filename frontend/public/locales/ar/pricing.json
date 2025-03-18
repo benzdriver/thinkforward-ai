@@ -101,19 +101,5 @@
     "title": "نمِّ ممارستك اليوم",
     "description": "انضم إلى مئات مستشاري الهجرة الذين يستخدمون ThinkForward لتحويل ممارستهم",
     "button": "ابدأ الآن"
-  },
-  "subscription": {
-    "complete_subscription": "أكمل اشتراكك",
-    "selected_plan": "الخطة المختارة",
-    "first_name": "الاسم الأول",
-    "last_name": "اسم العائلة",
-    "email": "البريد الإلكتروني",
-    "company_name": "اسم الشركة أو الممارسة",
-    "payment_details": "تفاصيل الدفع",
-    "required_field": "هذا الحقل مطلوب",
-    "valid_email": "يرجى إدخال بريد إلكتروني صالح",
-    "processing": "جارٍ المعالجة...",
-    "start_subscription": "بدء الاشتراك",
-    "error_generic": "حدث خطأ أثناء معالجة اشتراكك. يرجى المحاولة مرة أخرى."
   }
-} 
+}

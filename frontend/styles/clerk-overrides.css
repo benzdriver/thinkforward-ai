@@ -1,0 +1,12 @@
+.cl-rootBox {
+  width: 100%;
+}
+
+.cl-card {
+  box-shadow: none;
+  border: 1px solid #e5e7eb;
+}
+
+.cl-headerTitle {
+  font-size: 1.5rem;
+} 

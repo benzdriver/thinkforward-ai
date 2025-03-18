@@ -101,19 +101,5 @@
     "title": "Développez votre cabinet dès aujourd'hui",
     "description": "Rejoignez des centaines de consultants en immigration qui utilisent ThinkForward pour transformer leur pratique",
     "button": "Commencer"
-  },
-  "subscription": {
-    "complete_subscription": "Complétez votre abonnement",
-    "selected_plan": "Plan sélectionné",
-    "first_name": "Prénom",
-    "last_name": "Nom",
-    "email": "Adresse e-mail",
-    "company_name": "Nom de l'entreprise ou du cabinet",
-    "payment_details": "Détails de paiement",
-    "required_field": "Ce champ est requis",
-    "valid_email": "Veuillez entrer un email valide",
-    "processing": "Traitement en cours...",
-    "start_subscription": "Démarrer l'abonnement",
-    "error_generic": "Une erreur s'est produite lors du traitement de votre abonnement. Veuillez réessayer."
   }
-} 
+}

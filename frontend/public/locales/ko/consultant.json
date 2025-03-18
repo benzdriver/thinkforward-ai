@@ -1,0 +1,39 @@
+{
+  "dashboard": {
+    "welcome": "다시 오신 것을 환영합니다",
+    "consultant": "컨설턴트",
+    "loading": "컨설턴트 대시 보드를 불러오는 중...",
+    "error_fetching": "대시 보드 데이터를 가져오는 중 오류가 발생했습니다",
+    "client_summary": "고객 개요",
+    "total_clients": "총 고객 수",
+    "active_clients": "활성 고객",
+    "active_rate": "활성 비율",
+    "efficiency_metrics": "효율성 지표",
+    "time_saved": "절약된 시간",
+    "cases_completed": "완료된 사례",
+    "hours_minutes": "{{hours}}시간{{minutes}}분",
+    "minutes": "{{minutes}}분",
+    "efficiency_insight": "AI 도구가 일상 업무에서 많은 시간을 절약하도록 도와줍니다.",
+    "recent_activities": "최근 활동",
+    "no_recent_activities": "최근 활동이 없습니다",
+    "view_all_activities": "모든 활동 보기",
+    "client": "고객",
+    "tasks": "작업",
+    "no_pending_tasks": "보류 중인 작업이 없습니다",
+    "view_all_tasks": "모든 작업 보기",
+    "add_task": "작업 추가",
+    "priority": {
+      "high": "높음",
+      "medium": "중간",
+      "low": "낮음"
+    }
+  },
+  "navigation": {
+    "dashboard": "대시 보드",
+    "clients": "고객 관리",
+    "ai_assistant": "AI 어시스턴트",
+    "forms": "양식",
+    "analytics": "분석",
+    "settings": "설정"
+  }
+}

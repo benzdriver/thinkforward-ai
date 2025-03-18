@@ -1,0 +1,18 @@
+{
+  "page_title": "التسجيل",
+  "heading": "إنشاء حساب جديد",
+  "name_label": "الاسم",
+  "email_label": "البريد الإلكتروني",
+  "password_label": "كلمة المرور",
+  "confirm_password": "تأكيد كلمة المرور",
+  "submit_button": "تسجيل",
+  "have_account": "لديك حساب؟",
+  "sign_in": "تسجيل الدخول",
+  "or_continue_with": "أو الاستمرار باستخدام",
+  "loading": "جار التحميل...",
+  "debug_info": "معلومات التصحيح",
+  "locale_from_props": "اللغة من الخصائص",
+  "locale_from_router": "اللغة من الموجه",
+  "clerk_locale": "إعدادات Clerk",
+  "path": "المسار"
+}

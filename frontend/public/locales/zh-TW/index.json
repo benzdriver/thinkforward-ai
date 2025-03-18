@@ -1,0 +1,109 @@
+{
+  "landing": {
+    "hero": {
+      "title": "ThinkForward AI - 智能移民助手",
+      "subtitle": "為移民顧問提供AI驅動的工具，提高效率，簡化流程",
+      "cta": "立即開始",
+      "secondary_cta": "了解更多"
+    },
+    "features": {
+      "title": "為移民顧問打造的智能工具",
+      "subtitle": "提高效率，簡化流程，增強客戶體驗",
+      "ai_assistant": {
+        "title": "AI顧問助手",
+        "description": "獲取即時專業建議，回答複雜的移民問題"
+      },
+      "document_analysis": {
+        "title": "文檔智能分析",
+        "description": "自動分析和提取關鍵信息，節省手動審核時間"
+      },
+      "form_automation": {
+        "title": "表單自動化",
+        "description": "智能填充移民表格，減少錯誤和節省時間"
+      },
+      "client_management": {
+        "title": "客戶管理系統",
+        "description": "集中管理客戶信息、文檔和申請進度"
+      }
+    },
+    "testimonials": {
+      "title": "顧問的信任之選",
+      "subtitle": "聽聽其他移民顧問如何使用ThinkForward AI提升業務",
+      "testimonial_1": {
+        "quote": "ThinkForward AI幫助我將文檔處理時間減少了60%，讓我能夠專注於為客戶提供更好的服務。",
+        "author": "李明",
+        "position": "資深移民顧問，加拿大"
+      },
+      "testimonial_2": {
+        "quote": "智能表單填充功能是一個遊戲規則的改變者。它不僅節省了時間，還大大減少了錯誤率。",
+        "author": "王華",
+        "position": "移民顧問，澳大利亞"
+      },
+      "testimonial_3": {
+        "quote": "客戶管理系統讓我能夠輕鬆跟蹤所有申請的進度，提高了我的工作效率。",
+        "author": "張偉",
+        "position": "移民顧問，紐西蘭"
+      }
+    },
+    "consultant_plans": {
+      "title": "為移民顧問定制的方案",
+      "subtitle": "選擇最適合您業務需求的方案",
+      "period": "月",
+      "starter": {
+        "title": "啟動計劃",
+        "badge": "入門",
+        "price": "299",
+        "description": "適合剛開始或規模較小的移民顧問",
+        "features": [
+          "基礎AI顧問助手",
+          "最多管理10位客戶",
+          "基礎文檔分析",
+          "標準表單自動填充",
+          "電子郵件支持"
+        ],
+        "cta": "選擇此方案"
+      },
+      "professional": {
+        "title": "專業計劃",
+        "badge": "最受歡迎",
+        "price": "599",
+        "description": "適合成長中的移民顧問業務",
+        "features": [
+          "高級AI顧問助手",
+          "最多管理50位客戶",
+          "高級文檔分析與提取",
+          "高級表單自動化",
+          "優先電子郵件和聊天支持",
+          "客戶洞察分析"
+        ],
+        "cta": "選擇此方案"
+      },
+      "enterprise": {
+        "title": "企業計劃",
+        "badge": "高級",
+        "price": "999",
+        "description": "適合大型移民顧問公司",
+        "features": [
+          "企業級AI顧問助手",
+          "無限客戶管理",
+          "高級文檔分析與批量處理",
+          "完整表單自動化套件",
+          "24/7優先支持",
+          "高級分析和報告",
+          "專屬客戶經理"
+        ],
+        "cta": "選擇此方案"
+      }
+    },
+    "cta_section": {
+      "title": "準備好提升您的移民顧問業務了嗎？",
+      "subtitle": "立即註冊，體驗AI如何改變您的工作方式",
+      "cta": "免費試用14天",
+      "secondary_cta": "預約演示"
+    }
+  },
+  "common": {
+    "title": "ThinkForward AI - 智能移民助手",
+    "description": "AI驅動的移民助手，幫助您完成移民之旅"
+  }
+}

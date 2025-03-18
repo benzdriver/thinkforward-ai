@@ -1,0 +1,109 @@
+{
+  "landing": {
+    "hero": {
+      "title": "ThinkForward AI - Assistant Intelligent d'Immigration",
+      "subtitle": "Outils alimentés par l'IA pour les consultants en immigration afin d'améliorer l'efficacité et simplifier les processus",
+      "cta": "Commencer",
+      "secondary_cta": "En savoir plus"
+    },
+    "features": {
+      "title": "Outils Intelligents pour Consultants en Immigration",
+      "subtitle": "Augmentez l'efficacité, simplifiez les processus et améliorez l'expérience client",
+      "ai_assistant": {
+        "title": "Assistant IA pour Consultants",
+        "description": "Obtenez des conseils d'experts instantanés et des réponses aux questions complexes d'immigration"
+      },
+      "document_analysis": {
+        "title": "Analyse Intelligente de Documents",
+        "description": "Analysez et extrayez automatiquement les informations clés, économisant du temps de révision manuelle"
+      },
+      "form_automation": {
+        "title": "Automatisation des Formulaires",
+        "description": "Remplissez intelligemment les formulaires d'immigration, réduisant les erreurs et gagnant du temps"
+      },
+      "client_management": {
+        "title": "Système de Gestion des Clients",
+        "description": "Gérez de manière centralisée les informations clients, les documents et l'avancement des demandes"
+      }
+    },
+    "testimonials": {
+      "title": "Approuvé par les Consultants",
+      "subtitle": "Découvrez comment d'autres consultants en immigration utilisent ThinkForward AI pour améliorer leur pratique",
+      "testimonial_1": {
+        "quote": "ThinkForward AI m'a aidé à réduire le temps de traitement des documents de 60%, me permettant de me concentrer sur un meilleur service à mes clients.",
+        "author": "Michel Lee",
+        "position": "Consultant Senior en Immigration, Canada"
+      },
+      "testimonial_2": {
+        "quote": "La fonction de remplissage intelligent des formulaires change la donne. Elle économise non seulement du temps, mais réduit également considérablement les taux d'erreur.",
+        "author": "Sarah Wang",
+        "position": "Consultante en Immigration, Australie"
+      },
+      "testimonial_3": {
+        "quote": "Le système de gestion des clients me permet de suivre facilement l'avancement de toutes les demandes, améliorant l'efficacité de mon flux de travail.",
+        "author": "David Zhang",
+        "position": "Consultant en Immigration, Nouvelle-Zélande"
+      }
+    },
+    "consultant_plans": {
+      "title": "Plans Adaptés aux Consultants en Immigration",
+      "subtitle": "Choisissez le plan qui correspond le mieux aux besoins de votre entreprise",
+      "period": "mois",
+      "starter": {
+        "title": "Plan Débutant",
+        "badge": "Entrée",
+        "price": "299",
+        "description": "Parfait pour les consultants en immigration nouveaux ou à petite échelle",
+        "features": [
+          "Assistant IA de base pour consultants",
+          "Gérez jusqu'à 10 clients",
+          "Analyse de documents de base",
+          "Remplissage automatique standard des formulaires",
+          "Support par email"
+        ],
+        "cta": "Choisir ce Plan"
+      },
+      "professional": {
+        "title": "Plan Professionnel",
+        "badge": "Le Plus Populaire",
+        "price": "599",
+        "description": "Idéal pour les cabinets de consultants en immigration en croissance",
+        "features": [
+          "Assistant IA avancé pour consultants",
+          "Gérez jusqu'à 50 clients",
+          "Analyse et extraction avancées de documents",
+          "Automatisation avancée des formulaires",
+          "Support prioritaire par email et chat",
+          "Analyses des insights clients"
+        ],
+        "cta": "Choisir ce Plan"
+      },
+      "enterprise": {
+        "title": "Plan Entreprise",
+        "badge": "Premium",
+        "price": "999",
+        "description": "Pour les grandes entreprises de consultation en immigration",
+        "features": [
+          "Assistant IA de niveau entreprise pour consultants",
+          "Gestion illimitée des clients",
+          "Analyse avancée de documents et traitement par lots",
+          "Suite complète d'automatisation des formulaires",
+          "Support prioritaire 24/7",
+          "Analyses et rapports avancés",
+          "Gestionnaire de compte dédié"
+        ],
+        "cta": "Choisir ce Plan"
+      }
+    },
+    "cta_section": {
+      "title": "Prêt à Élever Votre Cabinet de Consultation en Immigration?",
+      "subtitle": "Inscrivez-vous aujourd'hui et découvrez comment l'IA peut transformer votre flux de travail",
+      "cta": "Essai Gratuit de 14 Jours",
+      "secondary_cta": "Planifier une Démo"
+    }
+  },
+  "common": {
+    "title": "ThinkForward AI - Assistant Intelligent d'Immigration",
+    "description": "Assistant d'immigration alimenté par l'IA pour vous aider dans votre parcours d'immigration"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "page_title": "Connexion",
+  "heading": "Connectez-vous à votre compte",
+  "email_label": "Adresse e-mail",
+  "password_label": "Mot de passe",
+  "forgot_password": "Mot de passe oublié?",
+  "submit_button": "Connexion",
+  "no_account": "Pas encore de compte?",
+  "create_account": "Créer un compte",
+  "or_continue_with": "ou continuer avec",
+  "loading": "Chargement en cours...",
+  "debug_info": "Informations de débogage",
+  "locale_from_props": "Paramètres régionaux à partir des props",
+  "locale_from_router": "Paramètres régionaux à partir du routeur",
+  "clerk_locale": "Paramètres régionaux de Clerk",
+  "path": "Chemin"
+}

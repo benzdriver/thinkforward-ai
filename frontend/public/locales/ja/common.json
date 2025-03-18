@@ -1,14 +1,26 @@
 {
+  "login": "ログイン",
+  "login_title": "アカウントにログイン",
+  "login_description": "移民AIアシスタントアカウントにアクセス",
+  "no_account": "アカウントをお持ちでないですか？",
+  "sign_up_now": "今すぐ登録",
+  "create_account": "アカウントを作成",
+  "already_have_account": "すでにアカウントをお持ちですか？",
+  "sign_in_now": "今すぐログイン",
   "app_name": "ThinkForward AI",
   "nav": {
     "home": "ホーム",
     "about": "会社概要",
+    "services": "サービス",
+    "contact": "お問い合わせ",
     "assessment": "評価",
     "dashboard": "ダッシュボード",
     "client_management": "クライアント管理",
     "admin": "管理",
     "assistant": "AIアシスタント",
-    "forms": "フォーム"
+    "forms": "フォーム",
+    "login": "ログイン",
+    "signup": "登録"
   },
   "actions": {
     "login": "ログイン",
@@ -21,16 +33,317 @@
   },
   "language_selector": {
     "label": "言語",
-    "zh": "中国語",
+    "zh-CN": "簡体中国語",
     "en": "英語",
     "ar": "アラビア語",
     "ja": "日本語",
-    "ko": "韓国語"
+    "ko": "韓国語",
+    "zh-TW": "繁体中国語"
   },
   "footer": {
     "copyright": "© {{year}} ThinkForward AI. 全著作権所有。"
   },
-  "all_rights_reserved": "すべての権利を保有",
   "title": "ThinkForward AI - インテリジェント移民アシスタント",
-  "siteTitle": "ThinkForward AI"
-} 
+  "siteTitle": "ThinkForward AI",
+  "all_rights_reserved": "全著作権所有",
+  "components": {
+    "alert": {
+      "close": "閉じる",
+      "success": "成功",
+      "info": "情報",
+      "warning": "警告",
+      "error": "エラー"
+    },
+    "avatar": {
+      "alt": "アバター"
+    },
+    "breadcrumb": {
+      "ariaLabel": "パンくずリスト",
+      "home": "ホーム",
+      "separator": "/"
+    },
+    "button": {
+      "loading": "読み込み中...",
+      "more": "もっと見る",
+      "variants": {
+        "primary": "プライマリ",
+        "secondary": "セカンダリ",
+        "success": "成功",
+        "danger": "危険",
+        "warning": "警告",
+        "info": "情報",
+        "light": "ライト",
+        "dark": "ダーク",
+        "link": "リンク"
+      },
+      "sizes": {
+        "xs": "極小",
+        "sm": "小",
+        "md": "中",
+        "lg": "大",
+        "xl": "極大"
+      }
+    },
+    "dataTable": {
+      "emptyText": "データがありません",
+      "loading": "読み込み中...",
+      "search": "検索",
+      "showing": "{{total}}件中{{from}}〜{{to}}件を表示",
+      "filter": "フィルター",
+      "reset": "リセット",
+      "sortAscending": "昇順",
+      "sortDescending": "降順",
+      "actions": "アクション"
+    },
+    "empty": {
+      "description": "データがありません",
+      "noData": "データなし",
+      "noResult": "結果なし",
+      "noContent": "コンテンツなし"
+    },
+    "error": {
+      "title": "エラー",
+      "message": "申し訳ありません、エラーが発生しました",
+      "retry": "再試行",
+      "goBack": "戻る",
+      "details": "エラー詳細",
+      "close": "閉じる"
+    },
+    "form": {
+      "submit": "送信",
+      "cancel": "キャンセル",
+      "reset": "リセット",
+      "save": "保存",
+      "required": "必須",
+      "optional": "任意",
+      "loading": "読み込み中...",
+      "layout": {
+        "vertical": "垂直",
+        "horizontal": "水平",
+        "inline": "インライン"
+      },
+      "size": {
+        "small": "小",
+        "middle": "中",
+        "large": "大"
+      },
+      "validation": {
+        "required": "この項目は必須です",
+        "email": "有効なメールアドレスを入力してください",
+        "url": "有効なURLを入力してください",
+        "minLength": "{{min}}文字以上入力してください",
+        "maxLength": "{{max}}文字以下で入力してください",
+        "min": "{{min}}以上の値を入力してください",
+        "max": "{{max}}以下の値を入力してください",
+        "pattern": "入力形式が正しくありません"
+      },
+      "section": {
+        "basicInfo": "基本情報",
+        "contactInfo": "連絡先情報",
+        "addressInfo": "住所情報",
+        "accountInfo": "アカウント情報",
+        "personalInfo": "個人情報",
+        "professionalInfo": "職業情報",
+        "additionalInfo": "追加情報",
+        "settings": "設定",
+        "preferences": "設定"
+      },
+      "help": {
+        "passwordRequirements": "パスワードは8文字以上で、数字と特殊文字を含める必要があります",
+        "emailUsage": "あなたのメールアドレスは他の人と共有されることはありません",
+        "optional": "この項目は任意です"
+      },
+      "footer": {
+        "align": {
+          "left": "左揃え",
+          "center": "中央揃え",
+          "right": "右揃え"
+        }
+      },
+      "fields": {
+        "username": "ユーザー名",
+        "password": "パスワード",
+        "confirmPassword": "パスワード確認",
+        "email": "メールアドレス",
+        "firstName": "名",
+        "lastName": "姓",
+        "fullName": "氏名",
+        "phone": "電話番号",
+        "address": "住所",
+        "city": "市区町村",
+        "state": "都道府県",
+        "country": "国",
+        "zipCode": "郵便番号",
+        "dateOfBirth": "生年月日",
+        "gender": "性別",
+        "bio": "自己紹介",
+        "website": "ウェブサイト",
+        "company": "会社",
+        "jobTitle": "役職"
+      },
+      "placeholders": {
+        "username": "ユーザー名を入力",
+        "password": "パスワードを入力",
+        "confirmPassword": "パスワードを再入力",
+        "email": "メールアドレスを入力",
+        "firstName": "名を入力",
+        "lastName": "姓を入力",
+        "fullName": "氏名を入力してください",
+        "phone": "電話番号を入力",
+        "address": "住所を入力",
+        "city": "市区町村を入力",
+        "state": "都道府県を入力",
+        "country": "国を入力",
+        "zipCode": "郵便番号を入力",
+        "dateOfBirth": "生年月日を入力してください",
+        "gender": "性別を選択",
+        "bio": "自己紹介を入力",
+        "website": "ウェブサイトを入力",
+        "company": "会社名を入力",
+        "jobTitle": "役職を入力"
+      },
+      "sections": {
+        "basicInfo": "基本情報",
+        "contactInfo": "連絡先情報",
+        "addressInfo": "住所情報",
+        "accountInfo": "アカウント情報",
+        "personalInfo": "個人情報",
+        "professionalInfo": "職業情報",
+        "additionalInfo": "追加情報"
+      },
+      "select": {
+        "placeholder": "選択してください",
+        "loading": "読み込み中...",
+        "noOptions": "オプションがありません",
+        "noResults": "該当する結果がありません",
+        "clear": "クリア",
+        "search": "検索",
+        "selected": "選択済み",
+        "selectAll": "すべて選択",
+        "deselectAll": "すべて選択解除"
+      },
+      "datePicker": {
+        "placeholder": "日付を選択",
+        "today": "今日",
+        "now": "現在",
+        "backToToday": "今日に戻る",
+        "ok": "OK",
+        "clear": "クリア",
+        "month": "月",
+        "year": "年",
+        "previousMonth": "前月",
+        "nextMonth": "翌月",
+        "previousYear": "前年",
+        "nextYear": "翌年",
+        "previousDecade": "前の10年",
+        "nextDecade": "次の10年",
+        "previousCentury": "前世紀",
+        "nextCentury": "次世紀"
+      },
+      "timePicker": {
+        "placeholder": "時間を選択",
+        "hour": "時",
+        "minute": "分",
+        "second": "秒",
+        "now": "今",
+        "clear": "クリア",
+        "ok": "OK"
+      }
+    },
+    "loading": {
+      "default": "読み込み中...",
+      "message": "読み込み中..."
+    },
+    "modal": {
+      "close": "閉じる",
+      "confirm": {
+        "ok": "OK",
+        "cancel": "キャンセル"
+      }
+    },
+    "pagination": {
+      "previous": "前へ",
+      "next": "次へ",
+      "total": "合計 {{total}} 件",
+      "jumpTo": "ジャンプ",
+      "page": "ページ",
+      "perPage": "/ ページ",
+      "showing": "{{from}}-{{to}} / {{total}}件"
+    },
+    "table": {
+      "empty": "データがありません",
+      "loading": "読み込み中...",
+      "search": "検索",
+      "filter": "フィルター",
+      "reset": "リセット",
+      "actions": "アクション",
+      "showing": "{{total}}件中{{from}}〜{{to}}件を表示",
+      "noResults": "一致するレコードが見つかりません",
+      "pagination": {
+        "prev": "前へ",
+        "next": "次へ",
+        "first": "最初",
+        "last": "最後",
+        "total": "合計 {{total}} 件",
+        "pageSize": "{{size}} / ページ",
+        "jumpTo": "ジャンプ",
+        "page": "ページ"
+      },
+      "sort": {
+        "asc": "昇順",
+        "desc": "降順",
+        "cancel": "ソート解除"
+      },
+      "columns": {
+        "show": "列を表示",
+        "hide": "列を非表示"
+      }
+    },
+    "languageSwitcher": {
+      "title": "言語を切り替え"
+    },
+    "card": {
+      "more": "もっと見る",
+      "collapse": "折りたたむ",
+      "expand": "展開する",
+      "actions": "アクション"
+    },
+    "checkbox": {
+      "ariaLabel": "チェックボックス",
+      "selectAll": "すべて選択",
+      "unselectAll": "すべて選択解除"
+    },
+    "divider": {
+      "text": "テキスト"
+    },
+    "errorBoundary": {
+      "title": "問題が発生しました",
+      "message": "このコンポーネントでエラーが発生しました",
+      "refresh": "ページを更新",
+      "tryAgain": "再試行",
+      "contactSupport": "ページを更新するか、サポートチームにお問い合わせください。"
+    },
+    "radio": {
+      "ariaLabel": "ラジオオプション",
+      "select": "選択",
+      "selected": "選択済み",
+      "notSelected": "未選択"
+    },
+    "radioGroup": {
+      "selectOne": "オプションを選択してください",
+      "required": "オプションを選択してください"
+    },
+    "switch": {
+      "on": "オン",
+      "off": "オフ",
+      "ariaLabel": {
+        "on": "スイッチはオンです",
+        "off": "スイッチはオフです"
+      },
+      "enabled": "有効",
+      "disabled": "無効"
+    }
+  },
+  "hello": "こんにちは",
+  "includes": "包含"
+}

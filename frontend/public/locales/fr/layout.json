@@ -1,0 +1,53 @@
+{
+  "header": {
+    "home": "Accueil",
+    "about": "À propos",
+    "services": "Services",
+    "contact": "Contact",
+    "dashboard": "Tableau de bord",
+    "login": "Connexion",
+    "register": "S'inscrire",
+    "signout": "Déconnexion"
+  },
+  "footer": {
+    "about": "À propos de nous",
+    "description": "ThinkForward AI aide les consultants en immigration et les clients à naviguer dans le processus complexe d'immigration grâce à des outils alimentés par l'IA.",
+    "links": "Liens rapides",
+    "home": "Accueil",
+    "about_link": "À propos",
+    "services": "Services",
+    "contact": "Contact",
+    "legal": "Mentions légales",
+    "terms": "Conditions d'utilisation",
+    "privacy": "Politique de confidentialité",
+    "contact_us": "Contactez-nous",
+    "email": "Email",
+    "rights": "Tous droits réservés"
+  },
+  "sidebar": {
+    "dashboard": "Tableau de bord",
+    "profile": "Profil",
+    "clients": "Clients",
+    "cases": "Dossiers",
+    "documents": "Documents",
+    "analytics": "Analyses",
+    "applications": "Mes demandes",
+    "my_documents": "Mes documents",
+    "consultant": "Mon consultant",
+    "users": "Utilisateurs",
+    "settings": "Paramètres",
+    "guest": "Invité"
+  },
+  "dashboard": {
+    "title": "Tableau de bord",
+    "welcome": "Bienvenue",
+    "overview": "Aperçu",
+    "recent_activity": "Activité récente",
+    "notifications": "Notifications",
+    "no_notifications": "Aucune notification"
+  },
+  "public": {
+    "site_title": "ThinkForward AI - Solutions d'immigration intelligentes",
+    "meta_description": "ThinkForward AI fournit des outils de consultation et de gestion des demandes d'immigration alimentés par l'IA pour aider les consultants et les demandeurs à simplifier le processus d'immigration."
+  }
+}

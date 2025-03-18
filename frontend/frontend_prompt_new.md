@@ -4,6 +4,7 @@
 - v1.0-v1.3 (2023-11至2024-01): 初始文档与更新
 - v2.0 (2024-05): 重新定位为"顾问优先"战略
 - v3.0 (2024-06): 架构优化与国际化完善
+- v3.1 (2024-06): 更新国际化实现策略，采用按页面组织翻译文件
 
 ## 项目战略重新定位
 
@@ -29,166 +30,257 @@ ThinkForward移民AI助手是一个基于AI技术的移民服务平台，旨在�
 ```bash
 frontend/
 ├── components/ # 可复用UI组件
-│ ├── layout/ # 布局组件
-│ │ ├── AppLayout.tsx # 应用主布局
-│ │ ├── AuthenticatedLayout.tsx # 认证用户布局
-│ │ ├── ConsultantLayout.tsx # 顾问专用布局
-│ │ ├── ClientLayout.tsx # 客户专用布局
-│ │ ├── AdminLayout.tsx # 管理员专用布局
-│ │ └── ErrorBoundary.tsx # 全局错误边界
+│ ├── AIAssistant.tsx # AI助手组件
+│ ├── Navbar.tsx # 导航栏组件
+│ ├── OAuthButton.tsx # OAuth按钮组件
+│ ├── SubscriptionBanner.tsx # 订阅横幅组件
+│ ├── about/ # 关于页面组件
+│ │ ├── Contact.tsx # 联系我们组件
+│ │ ├── Hero.tsx # 英雄区组件
+│ │ ├── Milestones.tsx # 里程碑组件
+│ │ ├── MissionVision.tsx # 使命愿景组件
+│ │ ├── Team.tsx # 团队组件
+│ │ └── Values.tsx # 价值观组件
+│ ├── animations/ # 动画组件
+│ │ └── FadeInWhenVisible.tsx # 渐显动画组件
+│ ├── auth/ # 认证相关组件
+│ │ ├── AuthenticatedApp.tsx # 已认证应用组件
+│ │ └── withPagePermission.tsx # 页面权限HOC
+│ ├── common/ # 通用组件
+│ ├── consultant/ # 顾问相关组件
+│ │ └── dashboard/ # 顾问仪表盘组件
+│ │   ├── ClientSummary.tsx # 客户概览组件
+│ │   ├── EfficiencyMetrics.tsx # 效率指标组件
+│ │   ├── RecentActivities.tsx # 最近活动组件
+│ │   └── TasksList.tsx # 任务列表组件
+│ ├── error/ # 错误处理组件
+│ │ └── ErrorBoundary.tsx # 错误边界组件
 │ ├── forms/ # 表单相关组件
-│ │ ├── FormBuilder/ # 表单构建器
-│ │ ├── FormRenderer/ # 表单渲染器
-│ │ ├── FormValidation/ # 表单验证
-│ │ └── FormControls/ # 表单控件
-│ ├── ui/ # 基础UI组件 [已完成国际化]
-│ │ ├── Button/ # 按钮组件
-│ │ ├── Card/ # 卡片组件
-│ │ ├── Table/ # 表格组件
-│ │ ├── Modal/ # 模态框组件
-│ │ ├── Dropdown/ # 下拉菜单组件
-│ │ ├── Form/ # 表单组件
-│ │ ├── Tabs/ # 标签页组件
-│ │ ├── Pagination/ # 分页组件
-│ │ ├── Alert/ # 提示组件
-│ │ ├── Toast/ # 轻提示组件
-│ │ ├── Skeleton/ # 骨架屏组件 [新增]
-│ │ ├── ErrorAlert/ # 错误提示组件
-│ │ └── LoadingIndicator/ # 加载指示器
-│ ├── dashboard/ # 仪表盘相关组件
-│ │ ├── StatCard/ # 统计卡片
-│ │ ├── Chart/ # 图表组件
-│ │ ├── ActivityFeed/ # 活动流
-│ │ └── QuickActions/ # 快速操作
-│ ├── consultant/ # 顾问专用组件
-│ │ ├── ClientManagement/ # 客户管理相关组件
-│ │ │ ├── ClientList/ # 客户列表
-│ │ │ ├── ClientDetail/ # 客户详情
-│ │ │ ├── ClientForm/ # 客户表单
-│ │ │ └── ClientFilter/ # 客户筛选
-│ │ ├── AITools/ # 顾问专用AI工具组件
-│ │ │ ├── DocumentAnalyzer/ # 文档分析
-│ │ │ ├── PathwayRecommender/ # 路径推荐
-│ │ │ ├── FormAssistant/ # 表单助手
-│ │ │ └── PrecedentSearch/ # 案例搜索
-│ │ └── Analytics/ # 顾问业务分析组件
-│ │   ├── PerformanceMetrics/ # 绩效指标
-│ │   ├── ClientInsights/ # 客户洞察
-│ │   ├── RevenueAnalysis/ # 收入分析
-│ │   └── TrendReports/ # 趋势报告
-│ └── client/ # 客户端组件
-│   ├── ApplicationStatus/ # 申请状态
-│   ├── DocumentUpload/ # 文档上传
-│   ├── FormFilling/ # 表单填写
-│   └── ConsultantFinder/ # 顾问查找
+│ │ ├── ImmigrationForm.tsx # 移民表单组件
+│ │ └── ProfileForm.tsx # 个人资料表单组件
+│ ├── layout/ # 布局组件
+│ │ ├── AuthLayout.tsx # 认证布局组件
+│ │ ├── ConsultantLayout.tsx # 顾问布局组件
+│ │ ├── DashboardLayout.tsx # 仪表盘布局组件
+│ │ ├── Footer.tsx # 页脚组件
+│ │ ├── Header.tsx # 页头组件
+│ │ ├── PublicLayout.tsx # 公共布局组件
+│ │ ├── RTLWrapper.tsx # RTL包装器组件
+│ │ ├── Sidebar.tsx # 侧边栏组件
+│ │ └── index.ts # 布局组件导出
+│ ├── pricing/ # 定价相关组件
+│ │ ├── PlanFeature.tsx # 计划特性组件
+│ │ ├── SubscriptionForm.tsx # 订阅表单组件
+│ │ ├── TestimonialCard.tsx # 推荐卡片组件
+│ │ └── ValueProposition.tsx # 价值主张组件
+│ └── ui/ # UI基础组件
+│   ├── Alert.tsx # 提示组件
+│   ├── Avatar.tsx # 头像组件
+│   ├── Badge.tsx # 徽章组件
+│   ├── Breadcrumb.tsx # 面包屑组件
+│   ├── Button.tsx # 按钮组件
+│   ├── Card.tsx # 卡片组件
+│   ├── Checkbox.tsx # 复选框组件
+│   ├── DataTable.tsx # 数据表格组件
+│   ├── Divider.tsx # 分割线组件
+│   ├── Empty.tsx # 空状态组件
+│   ├── FileUpload.tsx # 文件上传组件
+│   ├── Form/ # 表单组件
+│   │ ├── Form.tsx # 表单组件
+│   │ ├── FormField.tsx # 表单字段组件
+│   │ ├── FormFooter.tsx # 表单页脚组件
+│   │ ├── FormItem.tsx # 表单项组件
+│   │ ├── FormSection.tsx # 表单分区组件
+│   │ └── index.ts # 表单组件导出
+│   ├── Input.tsx # 输入框组件
+│   ├── LanguageSwitcher.tsx # 语言切换器组件
+│   ├── LoadingScreen.tsx # 加载屏幕组件
+│   ├── Modal.tsx # 模态框组件
+│   ├── Pagination.tsx # 分页组件
+│   ├── PasswordInput.tsx # 密码输入组件
+│   ├── PermissionGuard.tsx # 权限守卫组件
+│   ├── Radio.tsx # 单选框组件
+│   ├── RadioGroup.tsx # 单选框组组件
+│   ├── Select.tsx # 选择框组件
+│   ├── Skeleton.tsx # 骨架屏组件
+│   ├── Switch.tsx # 开关组件
+│   ├── Table.tsx # 表格组件
+│   ├── Tabs.tsx # 标签页组件
+│   ├── Tag.tsx # 标签组件
+│   ├── TextArea.tsx # 文本域组件
+│   ├── Tooltip.tsx # 提示框组件
+│   ├── VerificationInput.tsx # 验证码输入组件
+│   └── index.ts # UI组件导出
+├── config/ # 配置文件
+│ └── api.ts # API配置
+├── contexts/ # React Context
+│ └── AuthContext.tsx # 认证上下文
+├── hooks/ # 自定义Hooks
+│ ├── usePermission.ts # 权限Hook
+│ └── useUserRole.ts # 用户角色Hook
+├── middleware/ # 中间件
+│ └── withPermission.ts # 权限中间件
 ├── pages/ # 页面组件和路由
 │ ├── _app.tsx # 应用入口
 │ ├── _document.tsx # 文档结构
+│ ├── about.tsx # 关于页面
+│ ├── admin/ # 管理员页面
+│ │ ├── consultants.tsx # 顾问管理页面
+│ │ ├── dashboard.tsx # 管理员仪表盘
+│ │ ├── settings.tsx # 设置页面
+│ │ └── users.tsx # 用户管理页面
+│ ├── api/ # API路由
+│ │ ├── log/ # 日志API
+│ │ │ ├── clear.ts # 清除日志
+│ │ │ ├── export.ts # 导出日志
+│ │ │ └── view.ts # 查看日志
+│ │ ├── log.ts # 日志API入口
+│ │ └── users/ # 用户API
+│ │   └── role.ts # 角色API
+│ ├── assessment/ # 评估页面
+│ │ └── result.tsx # 评估结果页面
+│ ├── auth/ # 认证页面
+│ │ ├── forgot-password.tsx # 忘记密码页面
+│ │ ├── login.tsx # 登录页面
+│ │ ├── register.tsx # 注册页面
+│ │ └── verify.tsx # 验证页面
+│ ├── client/ # 客户页面
+│ │ ├── chat.tsx # 聊天页面
+│ │ ├── consultant.tsx # 顾问页面
+│ │ ├── documents.tsx # 文档页面
+│ │ ├── forms.tsx # 表单页面
+│ │ └── profile.tsx # 个人资料页面
+│ ├── consultant/ # 顾问页面
+│ │ ├── clients/ # 客户管理页面
+│ │ │ ├── [id]/ # 特定客户页面
+│ │ │ │ ├── cases/ # 案例管理页面
+│ │ │ │ │ ├── [caseId]/ # 特定案例页面
+│ │ │ │ │ │ └── edit.tsx # 编辑案例页面
+│ │ │ │ │ ├── [caseId].tsx # 案例详情页面
+│ │ │ │ │ └── new.tsx # 新建案例页面
+│ │ │ │ ├── documents/ # 文档管理页面
+│ │ │ │ │ └── upload.tsx # 上传文档页面
+│ │ │ │ └── edit.tsx # 编辑客户页面
+│ │ │ ├── [id].tsx # 客户详情页面
+│ │ │ └── new.tsx # 新建客户页面
+│ │ ├── clients.tsx # 客户列表页面
+│ │ ├── dashboard.tsx # 顾问仪表盘页面
+│ │ ├── plans.tsx # 计划页面
+│ │ └── review.tsx # 审核页面
+│ ├── dashboard.tsx # 仪表盘页面
+│ ├── guest/ # 访客页面
+│ │ └── dashboard.tsx # 访客仪表盘页面
 │ ├── index.tsx # 首页
-│ ├── auth/ # 认证相关页面
-│ │ ├── signin.tsx # 登录
-│ │ ├── signup.tsx # 注册
-│ │ ├── forgot-password.tsx # 忘记密码
-│ │ └── reset-password.tsx # 重置密码
-│ ├── dashboard/ # 仪表盘(根据角色显示不同内容)
-│ │ ├── index.tsx # 仪表盘首页
-│ │ └── profile.tsx # 个人资料
-│ ├── consultant/ # 顾问专用页面
-│ │ ├── index.tsx # 顾问首页
-│ │ ├── clients/ # 客户管理
-│ │ │ ├── index.tsx # 客户列表
-│ │ │ ├── [id].tsx # 客户详情
-│ │ │ ├── add.tsx # 添加客户
-│ │ │ └── import.tsx # 导入客户
-│ │ ├── tools/ # 顾问工具
-│ │ │ ├── index.tsx # 工具首页
-│ │ │ ├── ai-assistant.tsx # AI助手
-│ │ │ ├── document-analyzer.tsx # 文档分析
-│ │ │ ├── form-automation.tsx # 表单自动化
-│ │ │ └── pathway-finder.tsx # 路径查找
-│ │ ├── analytics/ # 业务分析
-│ │ │ ├── index.tsx # 分析首页
-│ │ │ ├── performance.tsx # 绩效分析
-│ │ │ ├── clients.tsx # 客户分析
-│ │ │ └── revenue.tsx # 收入分析
-│ │ └── settings/ # 顾问设置
-│ │   ├── index.tsx # 设置首页
-│ │   ├── profile.tsx # 个人资料
-│ │   ├── business.tsx # 业务设置
-│ │   ├── subscription.tsx # 订阅管理
-│ │   └── team.tsx # 团队管理
-│ ├── client/ # 客户专用页面
-│ │ ├── index.tsx # 客户首页
-│ │ ├── applications/ # 申请管理
-│ │ ├── documents/ # 文档管理
-│ │ ├── forms/ # 表单管理
-│ │ └── consultants/ # 顾问查找
-│ └── admin/ # 管理员专用页面
-│   ├── index.tsx # 管理首页
-│   ├── users/ # 用户管理
-│   ├── consultants/ # 顾问管理
-│   ├── settings/ # 系统设置
-│   └── analytics/ # 平台分析
-├── public/ # 静态资源
-│ ├── locales/ # 国际化翻译文件 [已完善]
-│ │ ├── en/ # 英文
-│ │ │ ├── common.json # 通用翻译
-│ │ │ ├── auth.json # 认证相关
-│ │ │ └── consultant.json # 顾问相关
-│ │ ├── zh-CN/ # 简体中文
-│ │ │ ├── common.json # 通用翻译
-│ │ │ ├── auth.json # 认证相关
-│ │ │ └── consultant.json # 顾问相关
-│ │ └── ... # 其他语言
+│ ├── initial-assessment.tsx # 初始评估页面
+│ ├── landing.tsx # 落地页
+│ ├── pricing.tsx # 定价页面
+│ ├── sign-in/ # 登录页面
+│ │ └── [[...index]].tsx # 登录页面入口
+│ ├── sign-up/ # 注册页面
+│ │ └── [[...index]].tsx # 注册页面入口
+│ ├── subscription/ # 订阅页面
+│ │ ├── index.tsx # 订阅页面入口
+│ │ └── success.tsx # 订阅成功页面
+│ └── test.tsx # 测试页面
+├── public/ # 公共资源
+│ ├── favicon.ico # 网站图标
 │ ├── images/ # 图片资源
-│ └── fonts/ # 字体资源
-├── styles/ # 全局样式
-│ ├── globals.css # 全局CSS
-│ ├── tailwind.css # Tailwind入口
-│ └── rtl.css # RTL支持样式 [新增]
-├── contexts/ # React Context
-│ ├── AuthContext.tsx # 认证上下文
-│ ├── ConsultantContext.tsx # 顾问专用上下文
-│ ├── UIContext.tsx # UI状态上下文 [新增]
-│ ├── LanguageContext.tsx # 语言上下文 [新增]
-│ └── ThemeContext.tsx # 主题上下文 [新增]
-├── hooks/ # 自定义Hooks
-│ ├── api/ # API相关hooks [新增]
-│ │ ├── useConsultant.ts # 顾问数据hooks
-│ │ ├── useClient.ts # 客户数据hooks
-│ │ ├── useForm.ts # 表单数据hooks
-│ │ └── useAnalytics.ts # 分析数据hooks
-│ ├── useAuth.ts # 认证hooks
-│ ├── useToast.ts # 提示hooks
-│ ├── useMediaQuery.ts # 媒体查询hooks [新增]
-│ ├── useLocalStorage.ts # 本地存储hooks [新增]
-│ └── useTranslation.ts # 翻译hooks [已完善]
-├── services/ # 服务层 [新增]
-│ ├── api.ts # API基础服务
-│ ├── auth.ts # 认证服务
-│ ├── consultant.ts # 顾问服务
-│ ├── client.ts # 客户服务
-│ └── analytics.ts # 分析服务
-├── utils/ # 工具函数
-│ ├── api/ # API工具
-│ │ ├── fetcher.ts # 数据获取器
-│ │ └── endpoints.ts # API端点定义
-│ ├── validation.ts # 验证工具
-│ ├── formatting.ts # 格式化工具
-│ ├── date.ts # 日期工具
-│ ├── storage.ts # 存储工具
-│ └── i18n.ts # 国际化工具 [已完善]
+│ │ ├── hero-background.jpg # 英雄区背景
+│ │ └── logo.png # 网站Logo
+│ └── locales/ # 国际化翻译文件
+│   ├── ar/ # 阿拉伯语翻译
+│   │ ├── about.json # 关于页面翻译
+│   │ ├── auth.json # 认证页面翻译
+│   │ ├── common.json # 通用翻译
+│   │ ├── dashboard.json # 仪表盘翻译
+│   │ ├── index.json # 首页翻译
+│   │ ├── landing.json # 落地页翻译
+│   │ ├── layout.json # 布局翻译
+│   │ ├── pricing.json # 定价页面翻译
+│   │ └── sign-in.json # 登录页面翻译
+│   ├── en/ # 英语翻译
+│   │ ├── about.json # 关于页面翻译
+│   │ ├── auth.json # 认证页面翻译
+│   │ ├── common.json # 通用翻译
+│   │ ├── consultant.json # 顾问页面翻译
+│   │ ├── dashboard.json # 仪表盘翻译
+│   │ ├── index.json # 首页翻译
+│   │ ├── landing.json # 落地页翻译
+│   │ ├── layout.json # 布局翻译
+│   │ ├── pricing.json # 定价页面翻译
+│   │ ├── sign-in.json # 登录页面翻译
+│   │ └── sign-up.json # 注册页面翻译
+│   ├── fr/ # 法语翻译
+│   │ ├── about.json # 关于页面翻译
+│   │ ├── auth.json # 认证页面翻译
+│   │ ├── common.json # 通用翻译
+│   │ ├── consultant.json # 顾问页面翻译
+│   │ ├── dashboard.json # 仪表盘翻译
+│   │ ├── index.json # 首页翻译
+│   │ ├── landing.json # 落地页翻译
+│   │ ├── layout.json # 布局翻译
+│   │ ├── pricing.json # 定价页面翻译
+│   │ └── sign-in.json # 登录页面翻译
+│   ├── ja/ # 日语翻译
+│   │ ├── about.json # 关于页面翻译
+│   │ ├── auth.json # 认证页面翻译
+│   │ ├── common.json # 通用翻译
+│   │ ├── dashboard.json # 仪表盘翻译
+│   │ ├── index.json # 首页翻译
+│   │ ├── landing.json # 落地页翻译
+│   │ ├── layout.json # 布局翻译
+│   │ ├── pricing.json # 定价页面翻译
+│   │ └── sign-in.json # 登录页面翻译
+│   ├── ko/ # 韩语翻译
+│   │ ├── about.json # 关于页面翻译
+│   │ ├── auth.json # 认证页面翻译
+│   │ ├── common.json # 通用翻译
+│   │ ├── dashboard.json # 仪表盘翻译
+│   │ ├── index.json # 首页翻译
+│   │ ├── landing.json # 落地页翻译
+│   │ ├── layout.json # 布局翻译
+│   │ ├── pricing.json # 定价页面翻译
+│   │ └── sign-in.json # 登录页面翻译
+│   ├── zh-CN/ # 简体中文翻译
+│   │ ├── about.json # 关于页面翻译
+│   │ ├── auth.json # 认证页面翻译
+│   │ ├── common.json # 通用翻译
+│   │ ├── consultant.json # 顾问页面翻译
+│   │ ├── dashboard.json # 仪表盘翻译
+│   │ ├── index.json # 首页翻译
+│   │ ├── landing.json # 落地页翻译
+│   │ ├── layout.json # 布局翻译
+│   │ ├── pricing.json # 定价页面翻译
+│   │ ├── sign-in.json # 登录页面翻译
+│   │ └── sign-up.json # 注册页面翻译
+│   └── zh-TW/ # 繁体中文翻译
+│       ├── about.json # 关于页面翻译
+│       ├── auth.json # 认证页面翻译
+│       ├── common.json # 通用翻译
+│       ├── consultant.json # 顾问页面翻译
+│       ├── dashboard.json # 仪表盘翻译
+│       ├── index.json # 首页翻译
+│       ├── landing.json # 落地页翻译
+│       ├── layout.json # 布局翻译
+│       ├── pricing.json # 定价页面翻译
+│       └── sign-in.json # 登录页面翻译
+├── scripts/ # 脚本文件
+│ ├── check-env.js # 环境检查脚本
+│ └── replace-console-logs.js # 替换控制台日志脚本
+├── styles/ # 样式文件
+│ ├── clerk-overrides.css # Clerk样式覆盖
+│ ├── globals.css # 全局样式
+│ └── rtl.css # RTL样式
 ├── types/ # TypeScript类型定义
-│ ├── user.ts # 用户类型
 │ ├── consultant.ts # 顾问类型
-│ ├── client.ts # 客户类型
-│ ├── form.ts # 表单类型
-│ └── api.ts # API响应类型
-├── middleware.ts # NextJS中间件(权限控制)
-├── next.config.js # Next.js配置
-├── tailwind.config.js # Tailwind配置
-├── i18n.js # 国际化配置 [已完善]
-└── tsconfig.json # TypeScript配置
+│ ├── subscription.ts # 订阅类型
+│ └── user.ts # 用户类型
+└── utils/ # 工具函数
+    ├── api.ts # API工具
+    ├── hybridLogger.ts # 混合日志工具
+    ├── i18n.ts # 国际化工具
+    ├── logger.ts # 日志工具
+    └── mongodb.ts # MongoDB工具
 ```
 
 ## 用户角色与权限系统 (更新)
@@ -536,16 +628,16 @@ export const SwipeableItem = ({ onSwipe, children }) => {
 使用Next.js的动态导入功能实现组件懒加载:
 
 ```jsx
-// 懒加载复杂组件
-import dynamic from 'next/dynamic';
+// 动态导入重量级组件
+const AIAssistant = dynamic(() => import('@/components/AIAssistant'), {
+  loading: () => <Skeleton height="500px" />,
+  ssr: false // 对于客户端专用组件禁用SSR
+});
 
-const DashboardAnalytics = dynamic(
-  () => import('../components/dashboard/Analytics'),
-  {
-    loading: () => <SkeletonLoader height="400px" />,
-    ssr: false // 对于客户端专用组件
-  }
-);
+// 动态导入整个页面
+const DashboardPage = dynamic(() => import('@/pages/dashboard/index'), {
+  loading: () => <LoadingScreen />,
+});
 ```
 
 ### 图片优化
@@ -553,663 +645,108 @@ const DashboardAnalytics = dynamic(
 使用Next.js的Image组件优化图片加载:
 
 ```jsx
-import Image from 'next/image';
-
-// 优化图片
+// 优化图片加载
 <Image
-  src="/images/consultant-dashboard.jpg"
-  alt="顾问仪表盘"
-  width={800}
+  src="/images/hero-background.jpg"
+  alt="Hero Background"
+  width={1200}
   height={600}
-  placeholder="blur"
-  blurDataURL="data:image/jpeg;base64,..."
-  priority={isAboveFold}
+  priority={true} // 对于首屏图片
+  placeholder="blur" // 使用模糊占位符
+  blurDataURL="data:image/jpeg;base64,..." // 低质量图片占位符
+  loading="lazy" // 对于非首屏图片
 />
 ```
 
-### 渲染性能优化
+### 虚拟列表
 
-1. **使用React.memo避免不必要的重渲染**:
+对于长列表使用虚拟化技术:
+
 ```jsx
-const ClientCard = React.memo(({ client }) => {
-  return (
-    <div className="border p-4 rounded-lg">
-      <h3>{client.name}</h3>
-      <p>{client.email}</p>
-    </div>
-  );
+// 使用react-window实现虚拟列表
+import { FixedSizeList } from 'react-window';
+
+const VirtualizedClientList = ({ clients }) => (
+  <FixedSizeList
+    height={500}
+    width="100%"
+    itemCount={clients.length}
+    itemSize={60}
+  >
+    {({ index, style }) => (
+      <div style={style}>
+        <ClientListItem client={clients[index]} />
+      </div>
+    )}
+  </FixedSizeList>
+);
+```
+
+### 代码分割
+
+利用Next.js的自动代码分割功能:
+
+```jsx
+// 页面级代码分割 (Next.js自动处理)
+// pages/consultant/dashboard.tsx
+export default function ConsultantDashboard() {
+  return <DashboardLayout>...</DashboardLayout>;
+}
+
+// 手动代码分割
+const AnalyticsCharts = dynamic(() => import('@/components/AnalyticsCharts'), {
+  ssr: false
 });
 ```
 
-2. **使用虚拟滚动处理大列表**:
-```jsx
-import { FixedSizeList } from 'react-window';
+### 缓存优化
 
-const ClientList = ({ clients }) => {
-  const Row = ({ index, style }) => (
-    <div style={style} className="border-b p-4">
-      <h3>{clients[index].name}</h3>
-      <p>{clients[index].email}</p>
-    </div>
-  );
-  
-  return (
-    <FixedSizeList
-      height={500}
-      width="100%"
-      itemCount={clients.length}
-      itemSize={80}
-    >
-      {Row}
-    </FixedSizeList>
-  );
-};
-```
-
-3. **使用useCallback和useMemo优化函数和计算**:
-```jsx
-const ClientAnalytics = ({ clients }) => {
-  // 优化计算
-  const statistics = useMemo(() => {
-    return {
-      total: clients.length,
-      active: clients.filter(c => c.status === 'active').length,
-      pending: clients.filter(c => c.status === 'pending').length,
-    };
-  }, [clients]);
-  
-  // 优化事件处理函数
-  const handleExport = useCallback(() => {
-    exportClientsToCSV(clients);
-  }, [clients]);
-  
-  return (
-    <div>
-      <StatisticCard data={statistics} />
-      <button onClick={handleExport}>导出数据</button>
-    </div>
-  );
-};
-```
-
-## 错误处理与用户反馈 [新增]
-
-### 全局错误边界
+使用React Query实现数据缓存:
 
 ```jsx
-// ErrorBoundary.tsx
-import React from 'react';
+// 使用React Query缓存API数据
+export function useClients() {
+  return useQuery({
+    queryKey: ['clients'],
+    queryFn: () => fetchClients(),
+    staleTime: 5 * 60 * 1000, // 5分钟
+    cacheTime: 30 * 60 * 1000, // 30分钟
+  });
+}
 
-export class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false, error: null };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true, error };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    console.error("Uncaught error:", error, errorInfo);
-    // 可以将错误发送到监控服务
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return (
-        <div className="p-8 text-center">
-          <h2 className="text-2xl font-bold text-red-600 mb-4">
-            {this.props.fallbackHeading || '出现了问题'}
-          </h2>
-          <p className="mb-4">
-            {this.props.fallbackMessage || '应用遇到了意外错误，请刷新页面重试。'}
-          </p>
-          <button
-            className="px-4 py-2 bg-blue-600 text-white rounded"
-            onClick={() => window.location.reload()}
-          >
-            刷新页面
-          </button>
-        </div>
-      );
-    }
-
-    return this.props.children;
-  }
+// 预取数据
+export function prefetchClients() {
+  return queryClient.prefetchQuery({
+    queryKey: ['clients'],
+    queryFn: () => fetchClients(),
+  });
 }
 ```
 
-### 统一的Toast通知系统
+### 组件优化
 
-```jsx
-// ToastProvider.tsx
-import { createContext, useContext, useState } from 'react';
-import { Toast } from '../components/ui/Toast';
-
-const ToastContext = createContext(null);
-
-export const ToastProvider = ({ children }) => {
-  const [toasts, setToasts] = useState([]);
-  
-  const addToast = (message, type = 'info', duration = 5000) => {
-    const id = Date.now();
-    setToasts(prev => [...prev, { id, message, type, duration }]);
-    
-    setTimeout(() => {
-      setToasts(prev => prev.filter(toast => toast.id !== id));
-    }, duration);
-  };
-  
-  const removeToast = (id) => {
-    setToasts(prev => prev.filter(toast => toast.id !== id));
-  };
-  
-  return (
-    <ToastContext.Provider value={{ addToast, removeToast }}>
-      {children}
-      <div className="fixed bottom-4 right-4 z-50 space-y-2">
-        {toasts.map(toast => (
-          <Toast
-            key={toast.id}
-            message={toast.message}
-            type={toast.type}
-            onClose={() => removeToast(toast.id)}
-          />
-        ))}
-      </div>
-    </ToastContext.Provider>
-  );
-};
-
-export const useToast = () => {
-  const context = useContext(ToastContext);
-  if (!context) {
-    throw new Error('useToast must be used within a ToastProvider');
-  }
-  
-  return {
-    success: (message, duration) => context.addToast(message, 'success', duration),
-    error: (message, duration) => context.addToast(message, 'error', duration),
-    info: (message, duration) => context.addToast(message, 'info', duration),
-    warning: (message, duration) => context.addToast(message, 'warning', duration),
-  };
-};
-```
-
-## 用户体验改进 [新增]
-
-### 表单验证与反馈
-
-使用统一的表单验证系统:
-
-```jsx
-// FormField组件示例
-export const FormField = ({ 
-  label, 
-  name, 
-  required, 
-  error, 
-  children 
-}) => {
-  return (
-    <div className="mb-4">
-      <label 
-        htmlFor={name} 
-        className="block text-sm font-medium text-gray-700 mb-1"
-      >
-        {label}
-        {required && <span className="text-red-500 ml-1">*</span>}
-      </label>
-      
-      {children}
-      
-      {error && (
-        <p className="mt-1 text-sm text-red-600">{error}</p>
-      )}
-    </div>
-  );
-};
-
-// 使用示例
-const ClientForm = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
-  
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <FormField 
-        label="客户姓名" 
-        name="name" 
-        required 
-        error={errors.name?.message}
-      >
-        <input
-          id="name"
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
-          {...register("name", { 
-            required: "客户姓名为必填项" 
-          })}
-        />
-      </FormField>
-      
-      <FormField 
-        label="电子邮件" 
-        name="email" 
-        required 
-        error={errors.email?.message}
-      >
-        <input
-          id="email"
-          type="email"
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
-          {...register("email", {
-            required: "电子邮件为必填项",
-            pattern: {
-              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-              message: "请输入有效的电子邮件地址"
-            }
-          })}
-        />
-      </FormField>
-      
-      <button 
-        type="submit"
-        className="mt-4 px-4 py-2 bg-blue-600 text-white rounded"
-      >
-        提交
-      </button>
-    </form>
-  );
-};
-```
-
-### 状态转换的视觉反馈
-
-为用户操作提供清晰的视觉反馈:
-
-```jsx
-// 按钮加载状态示例
-const ActionButton = ({ 
-  children, 
-  isLoading, 
-  onClick, 
-  ...props 
-}) => {
-  return (
-    <button
-      onClick={onClick}
-      disabled={isLoading}
-      className={`
-        px-4 py-2 rounded font-medium
-        ${isLoading ? 'bg-gray-400' : 'bg-blue-600 hover:bg-blue-700'}
-        text-white transition-colors
-      `}
-      {...props}
-    >
-      {isLoading ? (
-        <span className="flex items-center">
-          <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-          </svg>
-          处理中...
-        </span>
-      ) : children}
-    </button>
-  );
-};
-
-// 使用示例
-const SaveClientButton = () => {
-  const { mutate, isLoading } = useSaveClient();
-  
-  return (
-    <ActionButton 
-      isLoading={isLoading} 
-      onClick={() => mutate(clientData)}
-    >
-      保存客户信息
-    </ActionButton>
-  );
-};
-```
-
-### 骨架屏加载状态
-
-为数据加载提供平滑的视觉过渡:
-
-```jsx
-// 客户列表骨架屏示例
-const ClientListSkeleton = () => {
-  return (
-    <div className="space-y-4">
-      {[...Array(5)].map((_, i) => (
-        <div key={i} className="border rounded-lg p-4">
-          <div className="flex items-center space-x-4">
-            <div className="h-12 w-12 bg-gray-200 rounded-full animate-pulse"></div>
-            <div className="space-y-2 flex-1">
-              <div className="h-4 bg-gray-200 rounded w-1/3 animate-pulse"></div>
-              <div className="h-3 bg-gray-200 rounded w-1/2 animate-pulse"></div>
-            </div>
-            <div className="h-8 w-24 bg-gray-200 rounded animate-pulse"></div>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-};
-
-// 使用示例
-const ClientList = () => {
-  const { data: clients, isLoading } = useConsultantClients();
-  
-  if (isLoading) {
-    return <ClientListSkeleton />;
-  }
-  
-  return (
-    <div className="space-y-4">
-      {clients.map(client => (
-        <ClientCard key={client.id} client={client} />
-      ))}
-    </div>
-  );
-};
-```
-
-## 性能优化策略 [新增]
-
-### 组件懒加载实现
-
-使用Next.js的动态导入功能实现组件懒加载:
-
-```jsx
-// 懒加载复杂组件
-import dynamic from 'next/dynamic';
-
-const AnalyticsChart = dynamic(
-  () => import('../components/consultant/Analytics/AnalyticsChart'),
-  {
-    loading: () => <div className="h-64 w-full bg-gray-100 animate-pulse rounded"></div>,
-    ssr: false // 对于客户端渲染的图表组件禁用SSR
-  }
-);
-
-// 使用示例
-const AnalyticsPage = () => {
-  return (
-    <div>
-      <h1>业务分析</h1>
-      <AnalyticsChart />
-    </div>
-  );
-};
-```
-
-### 图片优化
-
-使用Next.js的Image组件优化图片加载:
-
-```jsx
-import Image from 'next/image';
-
-// 优化的响应式图片
-const ProfileHeader = ({ consultant }) => {
-  return (
-    <div className="relative h-48 w-full">
-      <Image
-        src={consultant.coverImage || '/default-cover.jpg'}
-        alt="Profile cover"
-        fill
-        sizes="100vw"
-        priority={true}
-        className="object-cover"
-      />
-      
-      <div className="absolute -bottom-16 left-8">
-        <div className="relative h-32 w-32 rounded-full border-4 border-white overflow-hidden">
-          <Image
-            src={consultant.avatar || '/default-avatar.jpg'}
-            alt={consultant.name}
-            fill
-            sizes="128px"
-            className="object-cover"
-          />
-        </div>
-      </div>
-    </div>
-  );
-};
-```
-
-### 虚拟滚动实现
-
-对于长列表，使用虚拟滚动提高性能:
-
-```jsx
-import { useVirtualizer } from '@tanstack/react-virtual';
-
-// 虚拟滚动列表
-const VirtualizedClientList = ({ clients }) => {
-  const parentRef = React.useRef();
-  
-  const rowVirtualizer = useVirtualizer({
-    count: clients.length,
-    getScrollElement: () => parentRef.current,
-    estimateSize: () => 80,
-    overscan: 5,
-  });
-  
-  return (
-    <div 
-      ref={parentRef}
-      className="h-[600px] overflow-auto border rounded"
-    >
-      <div
-        style={{
-          height: `${rowVirtualizer.getTotalSize()}px`,
-          width: '100%',
-          position: 'relative',
-        }}
-      >
-        {rowVirtualizer.getVirtualItems().map(virtualRow => (
-          <div
-            key={virtualRow.index}
-            style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: `${virtualRow.size}px`,
-              transform: `translateY(${virtualRow.start}px)`,
-            }}
-            className="p-4 border-b"
-          >
-            <ClientListItem client={clients[virtualRow.index]} />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-```
-
-### 渲染优化
-
-使用React.memo和回调函数优化:
+使用React.memo和useMemo优化组件渲染:
 
 ```jsx
 // 使用React.memo避免不必要的重渲染
-const ClientCard = React.memo(({ client, onSelect }) => {
+const ClientCard = React.memo(({ client }) => {
   return (
-    <div className="border rounded p-4">
+    <Card>
       <h3>{client.name}</h3>
       <p>{client.email}</p>
-      <button 
-        onClick={() => onSelect(client.id)}
-        className="mt-2 px-3 py-1 bg-blue-600 text-white rounded"
-      >
-        查看详情
-      </button>
-    </div>
+    </Card>
   );
 });
 
-// 使用useCallback优化事件处理函数
-const ClientListContainer = () => {
-  const [selectedId, setSelectedId] = useState(null);
+// 使用useMemo优化计算
+function ClientAnalytics({ clientData }) {
+  const statistics = useMemo(() => {
+    return calculateStatistics(clientData);
+  }, [clientData]);
   
-  // 使用useCallback避免每次渲染创建新函数
-  const handleSelect = useCallback((id) => {
-    setSelectedId(id);
-  }, []);
-  
-  return (
-    <div>
-      {clients.map(client => (
-        <ClientCard 
-          key={client.id} 
-          client={client} 
-          onSelect={handleSelect}
-        />
-      ))}
-    </div>
-  );
-};
+  return <AnalyticsDisplay data={statistics} />;
+}
 ```
-
-## 用户界面主题更新
-
-顾问专业主题，强调:
-- **主色调**: 深蓝色(#1E3A8A)，传达专业和可靠
-- **辅助色**: 科技蓝(#2563EB)，象征AI创新
-- **强调色**: 成功绿(#10B981)，表示效率与结果
-
-## 所需API端点 (更新优先级)
-
-以下API需优先实现，以支持顾问用户体验:
-
-1. **顾问特有API** [最高优先级]
-   - `GET /api/consultant/dashboard` - 获取顾问仪表盘数据
-   - `GET /api/consultant/clients` - 获取顾问的客户列表
-   - `GET /api/consultant/clients/:id` - 获取特定客户详情
-   - `POST /api/consultant/clients` - 添加新客户
-   - `GET /api/consultant/analytics` - 获取业务分析数据
-
-2. **AI助手API** [高优先级]
-   - `POST /api/assistant/consultant-chat` - 顾问专用AI交互
-   - `POST /api/assistant/document-analysis` - 文档分析
-   - `POST /api/assistant/immigration-pathways` - 移民路径分析
-
-3. **表单处理API** [高优先级]
-   - `GET /api/forms/templates` - 获取表单模板
-   - `POST /api/forms/auto-fill` - 自动填充表单
-   - `POST /api/forms/batch-process` - 批量处理表单
-
-4. **用户管理API** [中等优先级]
-   - 保持原有端点
-
-5. **客户端API** [后期优先级]
-   - 保持原有端点，优先级降低
-
-## 需要修改的关键区域
-
-1. **页面路由结构**:
-   - 增强`/consultant/*`路径下的功能
-   - 重新设计顾问仪表盘为核心入口
-
-2. **导航菜单**:
-   - 为顾问角色提供专用导航
-   - 突出显示效率工具和客户管理
-
-3. **权限系统**:
-   - 为顾问角色增加更多细分权限
-   - 实现基于订阅层级的功能访问控制
-
-4. **AI交互界面**:
-   - 区分顾问专用AI和客户用AI
-   - 增强顾问AI的专业功能
-
-## 顾问订阅计划UI
-
-创建展示三级顾问订阅计划的专业页面:
-
-```jsx
-// 核心组件示例
-<ConsultantPlans>
-  <PlanCard 
-    title="启动合作计划" 
-    price="299" 
-    period="月"
-    features={[
-      "核心AI助手功能",
-      "最多管理15位客户",
-      "基础文档自动化工具",
-      "在线咨询工具"
-    ]} 
-  />
-  <PlanCard 
-    title="成长合作计划" 
-    price="599" 
-    period="月"
-    featured={true}
-    features={[
-      "所有启动计划功能",
-      "最多管理40位客户",
-      "高级AI分析工具",
-      "优先支持",
-      "客户管理仪表板"
-    ]} 
-  />
-  <PlanCard 
-    title="专业合作计划" 
-    price="999" 
-    period="月"
-    features={[
-      "无限客户管理",
-      "完整AI工具套件",
-      "白标选项（简化版）",
-      "营销支持",
-      "定制报告"
-    ]} 
-  />
-</ConsultantPlans>
-```
-
-## 营销与引导页面
-
-创建专为顾问设计的营销页面，强调核心价值主张:
-1. 效率提升页面：展示AI如何节省时间
-2. 业务增长页面：展示如何管理更多客户
-3. 顾问见证页面：早期采用者的成功案例
-
-## 下一步开发优先级
-
-1. **状态管理优化** [当前优先级]
-   - 引入React Query进行数据获取与缓存
-   - 创建可复用的自定义hooks
-   - 优化组件渲染性能
-
-2. **响应式设计优化** [当前优先级]
-   - 修复移动端布局问题
-   - 优化表格在小屏幕上的显示
-   - 实现更好的触摸体验
-
-3. **用户体验改进** [当前优先级]
-   - 增强表单验证与反馈
-   - 优化状态转换的视觉反馈
-   - 改进导航结构
-
-4. **完成顾问仪表盘与客户管理界面** [下一阶段]
-   - 实现顾问专用仪表盘
-   - 完善客户管理功能
-   - 添加业务分析视图
-
-5. **实现顾问专用AI助手增强功能** [下一阶段]
-   - 开发文档分析工具
-   - 实现移民路径推荐
-   - 增强表单填写辅助功能
-   - 构建订阅与计费系统
 
 ## 顾问体验核心组件 (新增重点)
 
@@ -1270,4 +807,242 @@ const ClientListContainer = () => {
   <FormReviewInterface formId={selectedForm.id} />
   <BatchProcessing forms={selectedForms} /> {/* 新增: 批量处理 */}
 </FormAutomationTools>
-``` 
+```
+
+## 国际化实现最佳实践 [新增]
+
+### 1. 组件级翻译
+
+使用翻译Hook在组件内部实现国际化:
+
+```jsx
+// Button.tsx
+import { useTranslation } from 'next-i18next';
+
+export const Button = ({ children, ...props }) => {
+  const { t } = useTranslation('common');
+  
+  return (
+    <button {...props}>
+      {t(children)}
+    </button>
+  );
+};
+```
+
+### 2. 页面级翻译
+
+在页面级别使用getStaticProps或getServerSideProps加载翻译:
+
+```jsx
+// pages/consultant/dashboard.tsx
+export const getStaticProps = async ({ locale }) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, [
+        'common',
+        'dashboard',
+        'consultant'
+      ])),
+    },
+  };
+};
+```
+
+### 3. 日期和数字格式化
+
+使用Intl API实现日期和数字的本地化:
+
+```jsx
+// 日期格式化
+export const formatDate = (date, locale) => {
+  return new Intl.DateTimeFormat(locale, {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  }).format(new Date(date));
+};
+
+// 数字格式化
+export const formatCurrency = (amount, locale, currency = 'USD') => {
+  return new Intl.NumberFormat(locale, {
+    style: 'currency',
+    currency
+  }).format(amount);
+};
+```
+
+### 4. RTL支持
+
+为阿拉伯语等RTL语言提供布局支持:
+
+```jsx
+// RTLWrapper.tsx
+import { useRouter } from 'next/router';
+
+export const RTLWrapper = ({ children }) => {
+  const { locale } = useRouter();
+  const rtlLocales = ['ar']; // RTL语言列表
+  const dir = rtlLocales.includes(locale) ? 'rtl' : 'ltr';
+  
+  return (
+    <div dir={dir} className={dir === 'rtl' ? 'rtl-layout' : ''}>
+      {children}
+    </div>
+  );
+};
+```
+
+### 5. 语言切换器
+
+实现语言切换功能:
+
+```jsx
+// LanguageSwitcher.tsx
+import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
+
+export const LanguageSwitcher = () => {
+  const router = useRouter();
+  const { t } = useTranslation('common');
+  
+  const languages = [
+    { code: 'en', name: 'English' },
+    { code: 'zh-CN', name: '简体中文' },
+    { code: 'zh-TW', name: '繁體中文' },
+    { code: 'fr', name: 'Français' },
+    { code: 'ja', name: '日本語' },
+    { code: 'ko', name: '한국어' },
+    { code: 'ar', name: 'العربية' }
+  ];
+  
+  const changeLanguage = (locale) => {
+    router.push(router.pathname, router.asPath, { locale });
+  };
+  
+  return (
+    <div className="language-switcher">
+      <select
+        value={router.locale}
+        onChange={(e) => changeLanguage(e.target.value)}
+        className="form-select"
+      >
+        {languages.map((lang) => (
+          <option key={lang.code} value={lang.code}>
+            {lang.name}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+};
+```
+
+## 开发规范与最佳实践
+
+### 1. 组件命名与文件结构
+
+- 使用PascalCase命名组件和组件文件
+- 每个组件一个文件
+- 相关组件放在同一目录下
+- 使用index.ts导出组件
+
+### 2. 样式规范
+
+- 使用Tailwind CSS实现样式
+- 复杂组件使用组合类名
+- 自定义样式使用@apply指令
+- 响应式设计使用Tailwind断点
+
+### 3. 状态管理
+
+- 简单状态使用useState和useReducer
+- 跨组件状态使用Context API
+- 服务器状态使用React Query
+- 避免过度使用全局状态
+
+### 4. 性能优化
+
+- 使用React.memo避免不必要的重渲染
+- 使用useMemo和useCallback优化性能
+- 实现组件懒加载
+- 优化图片和资源加载
+
+### 5. 错误处理
+
+- 使用错误边界捕获渲染错误
+- 统一处理API错误
+- 提供用户友好的错误提示
+- 记录错误日志
+
+### 6. 国际化
+
+- 所有用户可见文本使用翻译函数
+- 支持RTL布局
+- 本地化日期、数字和货币
+- 提供语言切换功能
+
+## 后续开发计划
+
+1. **完成顾问体验优化** [进行中]
+   - 完善顾问仪表盘
+   - 优化客户管理界面
+   - 增强AI助手功能
+   - 实现表单自动化工具
+
+2. **增强国际化支持** [进行中]
+   - 完成所有语言翻译
+   - 优化RTL布局支持
+   - 实现完整的日期和数字格式化
+
+3. **性能优化** [计划中]
+   - 实现代码分割
+   - 优化首屏加载时间
+   - 实现虚拟列表
+   - 优化大型表单性能
+
+4. **扩展客户体验** [未来计划]
+   - 设计客户仪表盘
+   - 实现客户自助服务功能
+   - 开发客户端AI助手
+   - 优化移动端体验
+   - 实现客户文档管理系统
+   - 开发进度追踪功能
+   - 添加多语言实时聊天支持
+
+5. **安全与合规** [计划中]
+   - 实现高级数据加密
+   - 完善隐私控制选项
+   - 添加双因素认证
+   - 实现合规性报告生成
+   - 开发数据保留策略工具
+
+## 技术债务与优化计划
+
+1. **重构优先级**
+   - 统一错误处理机制 [高]
+   - 优化组件树结构 [中]
+   - 重构API调用逻辑 [高]
+   - 优化状态管理 [中]
+   - 重构国际化实现 [已完成]
+
+2. **测试覆盖**
+   - 实现核心组件单元测试 [高]
+   - 添加集成测试 [中]
+   - 实现端到端测试 [低]
+   - 添加性能测试 [中]
+
+3. **文档完善**
+   - 更新组件文档 [高]
+   - 完善API文档 [中]
+   - 创建开发指南 [中]
+   - 编写国际化指南 [已完成]
+
+## 结论
+
+ThinkForward移民AI助手前端架构已完成重大更新，重点关注顾问体验优化和国际化支持。通过采用现代前端技术和最佳实践，我们已经建立了一个可扩展、高性能且用户友好的平台，为移民顾问提供AI赋能的工具，并为未来扩展至直接服务终端用户奠定了基础。
+
+---
+
+**文档维护**: ThinkForward开发团队  
+**最后更新**: 2024-06-27 

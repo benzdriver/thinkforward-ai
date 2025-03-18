@@ -1,0 +1,17 @@
+{
+  "page_title": "ログイン",
+  "heading": "アカウントにログイン",
+  "email_label": "電子メール",
+  "password_label": "パスワード",
+  "forgot_password": "パスワードをお忘れですか？",
+  "submit_button": "ログイン",
+  "no_account": "アカウントをお持ちでないですか？",
+  "create_account": "アカウントを作成",
+  "or_continue_with": "または続行",
+  "loading": "読み込み中...",
+  "debug_info": "デバッグ情報",
+  "locale_from_props": "プロップスからのロケール",
+  "locale_from_router": "ルーターからのロケール",
+  "clerk_locale": "Clerkのロケール",
+  "path": "パス"
+}

@@ -1,0 +1,53 @@
+{
+  "header": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact",
+    "dashboard": "Dashboard",
+    "login": "Login",
+    "register": "Register",
+    "signout": "Sign Out"
+  },
+  "footer": {
+    "about": "About Us",
+    "description": "ThinkForward AI helps immigration consultants and clients navigate the complex immigration process with AI-powered tools.",
+    "links": "Quick Links",
+    "home": "Home",
+    "about_link": "About",
+    "services": "Services",
+    "contact": "Contact",
+    "legal": "Legal",
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy",
+    "contact_us": "Contact Us",
+    "email": "Email",
+    "rights": "All rights reserved"
+  },
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "clients": "Clients",
+    "cases": "Cases",
+    "documents": "Documents",
+    "analytics": "Analytics",
+    "applications": "My Applications",
+    "my_documents": "My Documents",
+    "consultant": "My Consultant",
+    "users": "Users",
+    "settings": "Settings",
+    "guest": "Guest"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome back",
+    "overview": "Overview",
+    "recent_activity": "Recent Activity",
+    "notifications": "Notifications",
+    "no_notifications": "No notifications"
+  },
+  "public": {
+    "site_title": "ThinkForward AI - Intelligent Immigration Solutions",
+    "meta_description": "ThinkForward AI provides AI-powered immigration consulting and application management tools to help consultants and applicants streamline the immigration process."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "page_title": "登錄",
+  "heading": "登錄您的帳戶",
+  "email_label": "電子郵箱",
+  "password_label": "密碼",
+  "forgot_password": "忘記密碼?",
+  "submit_button": "登錄",
+  "no_account": "還沒有帳戶?",
+  "create_account": "創建帳戶",
+  "or_continue_with": "或繼續使用",
+  "loading": "加載中...",
+  "debug_info": "調試信息",
+  "locale_from_props": "來自props的區域設置",
+  "locale_from_router": "來自路由的區域設置",
+  "clerk_locale": "Clerk區域設置",
+  "path": "路徑"
+}

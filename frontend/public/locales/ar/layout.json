@@ -1,0 +1,53 @@
+{
+  "header": {
+    "home": "الرئيسية",
+    "about": "حول",
+    "services": "الخدمات",
+    "contact": "اتصل بنا",
+    "dashboard": "لوحة التحكم",
+    "login": "تسجيل الدخول",
+    "register": "التسجيل",
+    "signout": "تسجيل الخروج"
+  },
+  "footer": {
+    "about": "من نحن",
+    "description": "تساعد ThinkForward AI مستشاري الهجرة والعملاء على التنقل في عملية الهجرة المعقدة باستخدام أدوات مدعومة بالذكاء الاصطناعي.",
+    "links": "روابط سريعة",
+    "home": "الرئيسية",
+    "about_link": "حول",
+    "services": "الخدمات",
+    "contact": "اتصل بنا",
+    "legal": "قانوني",
+    "terms": "شروط الخدمة",
+    "privacy": "سياسة الخصوصية",
+    "contact_us": "اتصل بنا",
+    "email": "البريد الإلكتروني",
+    "rights": "جميع الحقوق محفوظة"
+  },
+  "sidebar": {
+    "dashboard": "لوحة التحكم",
+    "profile": "الملف الشخصي",
+    "clients": "العملاء",
+    "cases": "الحالات",
+    "documents": "المستندات",
+    "analytics": "التحليلات",
+    "applications": "طلباتي",
+    "my_documents": "مستنداتي",
+    "consultant": "مستشاري",
+    "users": "المستخدمون",
+    "settings": "الإعدادات",
+    "guest": "ضيف"
+  },
+  "dashboard": {
+    "title": "لوحة التحكم",
+    "welcome": "مرحبًا بعودتك",
+    "overview": "نظرة عامة",
+    "recent_activity": "النشاط الأخير",
+    "notifications": "الإشعارات",
+    "no_notifications": "لا توجد إشعارات"
+  },
+  "public": {
+    "site_title": "ThinkForward AI - حلول الهجرة الذكية",
+    "meta_description": "توفر ThinkForward AI أدوات استشارات الهجرة وإدارة الطلبات المدعومة بالذكاء الاصطناعي لمساعدة المستشارين ومقدمي الطلبات على تبسيط عملية الهجرة."
+  }
+}

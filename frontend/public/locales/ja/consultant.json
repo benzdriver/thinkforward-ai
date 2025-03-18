@@ -1,0 +1,39 @@
+{
+  "dashboard": {
+    "welcome": "お帰りなさい",
+    "consultant": "コンサルタント",
+    "loading": "コンサルタントダッシュボードを読み込んでいます...",
+    "error_fetching": "ダッシュボードデータの取得中にエラーが発生しました",
+    "client_summary": "クライアントサマリー",
+    "total_clients": "総クライアント数",
+    "active_clients": "アクティブクライアント",
+    "active_rate": "アクティブ率",
+    "efficiency_metrics": "効率メトリクス",
+    "time_saved": "時間の節約",
+    "cases_completed": "完了したケース",
+    "hours_minutes": "{{hours}}時間{{minutes}}分",
+    "minutes": "{{minutes}}分",
+    "efficiency_insight": "AIツールが日常業務で多くの時間を節約するのに役立っています。",
+    "recent_activities": "最近のアクティビティ",
+    "no_recent_activities": "最近のアクティビティはありません",
+    "view_all_activities": "すべてのアクティビティを表示",
+    "client": "クライアント",
+    "tasks": "タスク",
+    "no_pending_tasks": "未処理のタスクはありません",
+    "view_all_tasks": "すべてのタスクを表示",
+    "add_task": "タスクを追加",
+    "priority": {
+      "high": "高",
+      "medium": "中",
+      "low": "低"
+    }
+  },
+  "navigation": {
+    "dashboard": "ダッシュボード",
+    "clients": "クライアント管理",
+    "ai_assistant": "AIアシスタント",
+    "forms": "フォーム",
+    "analytics": "データ分析",
+    "settings": "設定"
+  }
+}
