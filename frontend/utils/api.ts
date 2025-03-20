@@ -1,4 +1,4 @@
-import API_CONFIG from '../config/api';
+import { function as API_CONFIG } from '../config/api';
 
 // API 请求工具函数
 export async function fetchApi(

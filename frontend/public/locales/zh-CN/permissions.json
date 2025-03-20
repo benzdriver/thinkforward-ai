@@ -1,0 +1,42 @@
+{
+  "roles": {
+    "admin": "管理员",
+    "user": "普通用户",
+    "editor": "编辑",
+    "moderator": "版主",
+    "guest": "访客"
+  },
+  "subscriptions": {
+    "free": "免费版",
+    "basic": "基础版",
+    "premium": "高级版",
+    "enterprise": "企业版"
+  },
+  "permissions": {
+    "create_post": "创建文章",
+    "edit_post": "编辑文章",
+    "delete_post": "删除文章",
+    "publish_post": "发布文章",
+    "view_analytics": "查看分析",
+    "manage_users": "管理用户",
+    "manage_roles": "管理角色",
+    "manage_settings": "管理设置",
+    "upload_files": "上传文件",
+    "download_data": "下载数据",
+    "export_reports": "导出报告",
+    "access_api": "访问API",
+    "invite_users": "邀请用户",
+    "create_team": "创建团队",
+    "manage_team": "管理团队",
+    "view_dashboard": "查看仪表盘",
+    "comment": "评论",
+    "moderate_comments": "审核评论"
+  },
+  "messages": {
+    "access_denied": "访问被拒绝",
+    "permission_required": "需要{{permission}}权限",
+    "subscription_required": "需要{{plan}}订阅",
+    "upgrade_required": "需要升级您的账户",
+    "contact_admin": "请联系管理员获取权限"
+  }
+} 

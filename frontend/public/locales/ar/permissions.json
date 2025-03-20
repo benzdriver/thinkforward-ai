@@ -1,0 +1,42 @@
+{
+  "roles": {
+    "admin": "المسؤول",
+    "user": "مستخدم عادي",
+    "editor": "محرر",
+    "moderator": "مشرف",
+    "guest": "زائر"
+  },
+  "subscriptions": {
+    "free": "الإصدار المجاني",
+    "basic": "الإصدار الأساسي",
+    "premium": "الإصدار المتميز",
+    "enterprise": "الإصدار التجاري"
+  },
+  "permissions": {
+    "create_post": "إنشاء مشاركة",
+    "edit_post": "تحرير مشاركة",
+    "delete_post": "حذف مشاركة",
+    "publish_post": "نشر مشاركة",
+    "view_analytics": "عرض التحليلات",
+    "manage_users": "إدارة المستخدمين",
+    "manage_roles": "إدارة الأدوار",
+    "manage_settings": "إدارة الإعدادات",
+    "upload_files": "تحميل الملفات",
+    "download_data": "تنزيل البيانات",
+    "export_reports": "تصدير التقارير",
+    "access_api": "الوصول إلى واجهة برمجة التطبيقات",
+    "invite_users": "دعوة المستخدمين",
+    "create_team": "إنشاء فريق",
+    "manage_team": "إدارة الفريق",
+    "view_dashboard": "عرض لوحة التحكم",
+    "comment": "التعليق",
+    "moderate_comments": "مراجعة التعليقات"
+  },
+  "messages": {
+    "access_denied": "تم رفض الوصول",
+    "permission_required": "يتطلب {{permission}} إذن",
+    "subscription_required": "يتطلب {{plan}} اشتراك",
+    "upgrade_required": "يتطلب ترقية حسابك",
+    "contact_admin": "يرجى الاتصال بالمسؤول للحصول على الإذن"
+  }
+}

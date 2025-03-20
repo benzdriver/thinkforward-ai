@@ -1,6 +1,6 @@
 import { useTranslation } from 'next-i18next';
 
-export default function Values() {
+export function Values() {
   const { t } = useTranslation('about');
   
   const values = [

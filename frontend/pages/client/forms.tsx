@@ -13,7 +13,7 @@ interface Form {
   updatedAt: string;
 }
 
-export default function ClientForms() {
+export function ClientForms() {
   const router = useRouter();
   const { isLoaded, userId } = useAuth();
   const [forms, setForms] = useState<Form[]>([]);

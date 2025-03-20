@@ -6,7 +6,7 @@ interface ValuePropositionProps {
   description: string;
 }
 
-export default function ValueProposition({ icon, title, description }: ValuePropositionProps) {
+export function ValueProposition({ icon, title, description }: ValuePropositionProps) {
   return (
     <div className="bg-white rounded-xl shadow-md p-6 text-center">
       <div className="mx-auto flex items-center justify-center h-14 w-14 rounded-full bg-blue-50">

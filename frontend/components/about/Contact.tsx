@@ -1,6 +1,6 @@
 import { useTranslation } from 'next-i18next';
 
-export default function Contact() {
+export function Contact() {
   const { t } = useTranslation('about');
 
   return (

@@ -28,7 +28,7 @@ interface FormErrorsType {
   [key: string]: string;
 }
 
-export default function ImmigrationForm({ formType }: ImmigrationFormProps) {
+export function ImmigrationForm({ formType }: ImmigrationFormProps) {
   const router = useRouter();
   const [currentSection, setCurrentSection] = useState(0);
   const [formData, setFormData] = useState<FormDataType>({});

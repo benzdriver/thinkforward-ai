@@ -15,7 +15,7 @@ interface ClientBasic {
   email: string;
 }
 
-export default function DocumentUpload({ userRole }: DocumentUploadProps) {
+export function DocumentUpload({ userRole }: DocumentUploadProps) {
   const router = useRouter();
   const { id } = router.query;
   const { isLoaded, userId, getToken } = useAuth();

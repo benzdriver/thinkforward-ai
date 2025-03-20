@@ -6,7 +6,7 @@ import path from 'path';
 const LOG_DIR = path.join(process.cwd(), 'logs');
 const APP_LOG_FILE = path.join(LOG_DIR, 'application.log');
 
-export default async function handler(
+export async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -58,3 +58,6 @@ export default async function handler(
     return res.status(500).json({ error: '导出日志失败' });
   }
 } 
+
+// Next.js API路由需要默认导出
+export default handler;

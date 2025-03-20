@@ -636,7 +636,7 @@ const storeLogsLocally = (logs: LogEntry[]) => {
 };
 
 // 导出日志对象
-const logger = {
+export const logger = {
   debug: createLogMethod('debug'),
   info: createLogMethod('info'),
   warn: createLogMethod('warn'),
@@ -719,4 +719,3 @@ const logger = {
   }
 };
 
-export default logger; 

@@ -26,7 +26,7 @@ interface Consultant {
   lastActive: string;
 }
 
-export default function ChatPage({ userRole }: ChatPageProps) {
+export function ChatPage({ userRole }: ChatPageProps) {
   const router = useRouter();
   const { isLoaded, userId } = useAuth();
   const [consultant, setConsultant] = useState<Consultant | null>(null);

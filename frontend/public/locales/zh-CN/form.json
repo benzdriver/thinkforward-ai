@@ -1,0 +1,60 @@
+{
+  "validation": {
+    "required": "此字段为必填项",
+    "email": "请输入有效的电子邮件地址",
+    "password": "密码至少需要8个字符",
+    "password_match": "两次输入的密码不匹配",
+    "username": "用户名只能包含字母、数字和下划线",
+    "phone": "请输入有效的电话号码",
+    "url": "请输入有效的URL",
+    "number": "请输入有效的数字",
+    "date": "请输入有效的日期",
+    "min_length": "此字段至少需要{{count}}个字符",
+    "max_length": "此字段最多允许{{count}}个字符",
+    "min_value": "此字段的最小值为{{value}}",
+    "max_value": "此字段的最大值为{{value}}"
+  },
+  "placeholders": {
+    "email": "请输入您的电子邮件",
+    "password": "请输入您的密码",
+    "confirm_password": "请确认您的密码",
+    "username": "请输入您的用户名",
+    "first_name": "请输入您的名字",
+    "last_name": "请输入您的姓氏",
+    "phone": "请输入您的电话号码",
+    "address": "请输入您的地址",
+    "city": "请输入您的城市",
+    "country": "请选择您的国家",
+    "postal_code": "请输入您的邮政编码",
+    "search": "搜索..."
+  },
+  "labels": {
+    "email": "电子邮件",
+    "password": "密码",
+    "confirm_password": "确认密码",
+    "username": "用户名",
+    "first_name": "名字",
+    "last_name": "姓氏",
+    "phone": "电话号码",
+    "address": "地址",
+    "city": "城市",
+    "country": "国家",
+    "postal_code": "邮政编码",
+    "remember_me": "记住我",
+    "agree_terms": "我同意服务条款和隐私政策"
+  },
+  "buttons": {
+    "submit": "提交",
+    "reset": "重置",
+    "cancel": "取消",
+    "save": "保存",
+    "next": "下一步",
+    "previous": "上一步"
+  },
+  "messages": {
+    "success": "表单提交成功",
+    "error": "表单提交失败，请检查输入",
+    "saving": "正在保存...",
+    "loading": "正在加载..."
+  }
+} 

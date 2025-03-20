@@ -1,0 +1,60 @@
+{
+  "validation": {
+    "required": "이 필드는 필수 항목입니다",
+    "email": "유효한 이메일 주소를 입력하세요",
+    "password": "비밀번호는 최소 8자 이상이어야 합니다",
+    "password_match": "입력한 두 비밀번호가 일치하지 않습니다",
+    "username": "사용자 이름은 문자, 숫자, 밑줄만 포함할 수 있습니다",
+    "phone": "유효한 전화번호를 입력하세요",
+    "url": "유효한 URL을 입력하세요",
+    "number": "유효한 숫자를 입력하세요",
+    "date": "유효한 날짜를 입력하세요",
+    "min_length": "이 필드는 최소 {{count}}자 이상이어야 합니다",
+    "max_length": "이 필드는 최대 {{count}}자까지 허용됩니다",
+    "min_value": "이 필드의 최솟값은 {{value}}입니다",
+    "max_value": "이 필드의 최댓값은 {{value}}입니다"
+  },
+  "placeholders": {
+    "email": "이메일을 입력하세요",
+    "password": "비밀번호를 입력하세요",
+    "confirm_password": "비밀번호를 확인하세요",
+    "username": "사용자 이름을 입력하세요",
+    "first_name": "이름을 입력하세요",
+    "last_name": "성을 입력하세요",
+    "phone": "전화번호를 입력하세요",
+    "address": "주소를 입력하세요",
+    "city": "도시를 입력하세요",
+    "country": "국가를 선택하세요",
+    "postal_code": "우편번호를 입력하세요",
+    "search": "검색..."
+  },
+  "labels": {
+    "email": "이메일",
+    "password": "비밀번호",
+    "confirm_password": "비밀번호 확인",
+    "username": "사용자 이름",
+    "first_name": "이름",
+    "last_name": "성",
+    "phone": "전화번호",
+    "address": "주소",
+    "city": "도시",
+    "country": "국가",
+    "postal_code": "우편번호",
+    "remember_me": "로그인 유지",
+    "agree_terms": "서비스 약관과 개인정보 보호정책에 동의합니다"
+  },
+  "buttons": {
+    "submit": "제출",
+    "reset": "재설정",
+    "cancel": "취소",
+    "save": "저장",
+    "next": "다음",
+    "previous": "이전"
+  },
+  "messages": {
+    "success": "양식 제출 성공",
+    "error": "양식 제출 실패, 입력 사항을 확인하세요",
+    "saving": "저장 중...",
+    "loading": "로딩 중..."
+  }
+}

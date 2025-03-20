@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useAuth, useUser } from '@clerk/nextjs';
 import { UserRole } from '../types/user';
-import AdminDashboard from './admin/dashboard';
+import { function as AdminDashboard } from './admin/dashboard';
 import Link from 'next/link';
-import AIAssistant from '../components/AIAssistant';
+import { function as AIAssistant } from '../components/AIAssistant';
 import { useTranslation } from 'react-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import PageHeader from '../components/ui/PageHeader';
@@ -19,7 +19,7 @@ interface UserInfo {
   // Add other properties as needed
 }
 
-export default function Dashboard() {
+export function Dashboard() {
   const router = useRouter();
   const { isLoaded, userId } = useAuth();
   const { user } = useUser();

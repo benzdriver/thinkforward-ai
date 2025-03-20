@@ -1,5 +1,5 @@
 import { useAuth } from '@clerk/nextjs';
-import Head from 'next/head';
+import { function as Head } from 'next/head';
 import Link from 'next/link';
 import Layout from '../components/Layout';
 import { useState } from 'react';
@@ -7,7 +7,7 @@ import { UserRole } from '../types/user';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-export default function Pricing() {
+export function Pricing() {
   const { isSignedIn } = useAuth();
   const [annual, setAnnual] = useState(true);
   const { t } = useTranslation('pricing');

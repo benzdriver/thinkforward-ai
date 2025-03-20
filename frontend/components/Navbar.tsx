@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function Navbar() {
+export function Navbar() {
   return (
     <nav className="flex justify-between p-4 bg-gray-100">
       <h1 className="text-xl font-bold">ThinkForward</h1>

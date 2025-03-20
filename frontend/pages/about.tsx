@@ -1,17 +1,17 @@
 import { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
+import { function as Head } from 'next/head';
 import { useTranslation } from 'next-i18next';
 import Layout from '@/components/Layout';
 import { UserRole } from '@/types/user';
-import Hero from '@/components/about/Hero';
-import MissionVision from '@/components/about/MissionVision';
-import Values from '@/components/about/Values';
-import Team from '@/components/about/Team';
-import Milestones from '@/components/about/Milestones';
-import Contact from '@/components/about/Contact';
+import { function as Hero } from '@/components/about/Hero';
+import { function as MissionVision } from '@/components/about/MissionVision';
+import { function as Values } from '@/components/about/Values';
+import { function as Team } from '@/components/about/Team';
+import { function as Milestones } from '@/components/about/Milestones';
+import { function as Contact } from '@/components/about/Contact';
 
-export default function AboutPage({ userRole = UserRole.GUEST }) {
+export function AboutPage({ userRole = UserRole.GUEST }) {
   const { t } = useTranslation('about');
 
   return (

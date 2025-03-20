@@ -28,7 +28,7 @@ interface UserProfile {
   currentImmigrationStatus: string;
 }
 
-export default function ClientProfile() {
+export function ClientProfile() {
   const router = useRouter();
   const { isLoaded, userId } = useAuth();
   const { user } = useUser();

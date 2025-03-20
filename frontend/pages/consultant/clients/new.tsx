@@ -25,7 +25,7 @@ interface NewClientProps {
   userRole: UserRole;
 }
 
-export default function NewClient({ userRole }: NewClientProps) {
+export function NewClient({ userRole }: NewClientProps) {
   const router = useRouter();
   const { isLoaded, userId, getToken } = useAuth();
   const [formData, setFormData] = useState<ClientFormData>({

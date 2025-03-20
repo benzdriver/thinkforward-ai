@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'next-i18next';
-import { useSignIn } from '@clerk/nextjs';
+import { useAuth } from '@/contexts/AuthContext';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { 
@@ -12,10 +12,10 @@ import { Form } from '@/components/ui/Form/Form';
 import { FormField } from '@/components/ui/Form/FormField';
 import { AuthLayout } from '@/components/layout/AuthLayout';
 
-export default function LoginPage() {
+export function LoginPage() {
   const { t } = useTranslation('auth');
   const router = useRouter();
-  const { signIn, isLoaded } = useSignIn();
+  const { signIn } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -28,21 +28,10 @@ export default function LoginPage() {
     setIsLoading(true);
     
     try {
-      const result = await signIn?.create({
-        identifier: email,
-        password,
-      });
-      
-      if (result?.status === 'complete') {
-        // 登录成功，重定向到仪表盘
-        router.push('/dashboard');
-      } else {
-        // 需要进一步操作（如2FA）
-        console.log('Further action needed:', result);
-      }
-    } catch (err: any) {
-      console.error('Login error:', err);
-      setError(err.errors?.[0]?.message || t('login.errors.generic'));
+      await signIn(email, password);
+      router.push('/dashboard');
+    } catch (error) {
+      setError(t('login.errors.invalidCredentials'));
     } finally {
       setIsLoading(false);
     }

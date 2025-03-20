@@ -13,7 +13,9 @@ type ButtonVariant =
   | 'dark'
   | 'link'
   | 'ghost'
-  | 'white';
+  | 'white'
+  | 'text'
+  | 'icon';
 type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -52,7 +54,9 @@ export const Button: React.FC<ButtonProps> = ({
     info: 'bg-blue-400 hover:bg-blue-500 text-white focus:ring-blue-400',
     light: 'bg-gray-100 hover:bg-gray-200 text-gray-800 focus:ring-gray-200',
     dark: 'bg-gray-800 hover:bg-gray-900 text-white focus:ring-gray-700',
-    link: 'bg-transparent text-blue-600 hover:text-blue-800 hover:underline focus:ring-blue-300'
+    link: 'bg-transparent text-blue-600 hover:text-blue-800 hover:underline focus:ring-blue-300',
+    text: 'bg-transparent hover:bg-transparent text-gray-700 hover:text-gray-900 shadow-none border-none',
+    icon: 'bg-transparent hover:bg-gray-100 text-gray-700 rounded-full p-2 shadow-none border-none focus:ring-gray-300'
   };
 
   // 尺寸样式映射

@@ -12,7 +12,7 @@ import { VerificationInput } from '@/components/ui/VerificationInput';
 import { Form } from '@/components/ui/Form/Form';
 import { AuthLayout } from '@/components/layout/AuthLayout';
 
-export default function VerifyPage() {
+export function VerifyPage() {
   const { t } = useTranslation('auth');
   const { client } = useClerk();
   const router = useRouter();

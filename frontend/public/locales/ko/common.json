@@ -29,7 +29,22 @@
     "cancel": "취소",
     "submit": "제출",
     "edit": "편집",
-    "delete": "삭제"
+    "delete": "삭제",
+    "create": "생성",
+    "update": "업데이트",
+    "confirm": "확인",
+    "back": "뒤로",
+    "next": "다음",
+    "previous": "이전",
+    "search": "검색",
+    "filter": "필터",
+    "sort": "정렬",
+    "refresh": "새로고침",
+    "more": "더 보기",
+    "view": "보기",
+    "download": "다운로드",
+    "upload": "업로드",
+    "close": "닫기"
   },
   "language_selector": {
     "label": "언어",
@@ -345,5 +360,17 @@
     }
   },
   "hello": "안녕하세요",
-  "includes": "포함"
+  "includes": "포함",
+  "toast": {
+    "success": "성공",
+    "error": "실패",
+    "info": "알림",
+    "warning": "경고",
+    "saved": "저장됨",
+    "deleted": "삭제됨",
+    "updated": "업데이트됨",
+    "created": "생성됨",
+    "loading": "로딩 중...",
+    "please_wait": "잠시 기다려 주세요..."
+  }
 }

@@ -1,0 +1,60 @@
+{
+  "validation": {
+    "required": "このフィールドは必須です",
+    "email": "有効なメールアドレスを入力してください",
+    "password": "パスワードは少なくとも8文字必要です",
+    "password_match": "パスワードが一致しません",
+    "username": "ユーザー名には文字、数字、アンダースコアのみが使用できます",
+    "phone": "有効な電話番号を入力してください",
+    "url": "有効なURLを入力してください",
+    "number": "有効な数字を入力してください",
+    "date": "有効な日付を入力してください",
+    "min_length": "このフィールドには少なくとも{{count}}文字必要です",
+    "max_length": "このフィールドには最大{{count}}文字まで入力できます",
+    "min_value": "このフィールドの最小値は{{value}}です",
+    "max_value": "このフィールドの最大値は{{value}}です"
+  },
+  "placeholders": {
+    "email": "メールアドレスを入力してください",
+    "password": "パスワードを入力してください",
+    "confirm_password": "パスワードを確認してください",
+    "username": "ユーザー名を入力してください",
+    "first_name": "名前を入力してください",
+    "last_name": "姓を入力してください",
+    "phone": "電話番号を入力してください",
+    "address": "住所を入力してください",
+    "city": "都市名を入力してください",
+    "country": "国を選択してください",
+    "postal_code": "郵便番号を入力してください",
+    "search": "検索..."
+  },
+  "labels": {
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "confirm_password": "パスワードを確認",
+    "username": "ユーザー名",
+    "first_name": "名",
+    "last_name": "姓",
+    "phone": "電話番号",
+    "address": "住所",
+    "city": "都市",
+    "country": "国",
+    "postal_code": "郵便番号",
+    "remember_me": "ログイン情報を記憶する",
+    "agree_terms": "利用規約とプライバシーポリシーに同意する"
+  },
+  "buttons": {
+    "submit": "送信",
+    "reset": "リセット",
+    "cancel": "キャンセル",
+    "save": "保存",
+    "next": "次へ",
+    "previous": "前へ"
+  },
+  "messages": {
+    "success": "フォームが正常に送信されました",
+    "error": "フォームの送信に失敗しました。入力内容を確認してください",
+    "saving": "保存中...",
+    "loading": "読み込み中..."
+  }
+}

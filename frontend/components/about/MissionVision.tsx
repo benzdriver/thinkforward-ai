@@ -1,6 +1,6 @@
 import { useTranslation } from 'next-i18next';
 
-export default function MissionVision() {
+export function MissionVision() {
   const { t } = useTranslation('about');
 
   return (

@@ -1,0 +1,29 @@
+{
+  "api": {
+    "unauthorized": "この機能にアクセスするにはログインが必要です",
+    "forbidden": "この操作を実行する権限がありません",
+    "not_found": "リクエストされたリソースが見つかりません",
+    "validation_error": "提出されたデータが無効です",
+    "server_error": "サーバーエラーが発生しました。後でもう一度お試しください",
+    "unknown_error": "未知のエラーが発生しました",
+    "network_error": "ネットワーク接続エラーです。ネットワーク接続を確認してください",
+    "timeout_error": "リクエストがタイムアウトしました。後でもう一度お試しください"
+  },
+  "form": {
+    "required": "このフィールドは必須です",
+    "email_invalid": "有効なメールアドレスを入力してください",
+    "password_too_short": "パスワードが短すぎます。少なくとも8文字必要です",
+    "passwords_not_match": "入力したパスワードが一致しません",
+    "username_invalid": "ユーザー名は英字、数字、アンダースコアのみを含めることができます",
+    "phone_invalid": "有効な電話番号を入力してください",
+    "url_invalid": "有効なURLを入力してください",
+    "number_invalid": "有効な数字を入力してください",
+    "date_invalid": "有効な日付を入力してください",
+    "min_length": "このフィールドには少なくとも{{count}}文字必要です",
+    "max_length": "このフィールドには最大{{count}}文字まで入力できます"
+  },
+  "localStorage": {
+    "read_error": "ローカルストレージからデータを読み取れません: {{key}}",
+    "write_error": "ローカルストレージに書き込めません: {{key}}"
+  }
+}

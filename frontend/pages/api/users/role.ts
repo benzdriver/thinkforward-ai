@@ -3,7 +3,7 @@ import { getAuth } from '@clerk/nextjs/server';
 import { connectToDatabase } from '@/utils/mongodb';
 import { ObjectId } from 'mongodb';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { userId } = getAuth(req);
   
   if (!userId) {
@@ -67,3 +67,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   // 不支持的HTTP方法
   return res.status(405).json({ error: 'Method not allowed' });
 } 
+
+// Next.js API路由需要默认导出
+export default handler;

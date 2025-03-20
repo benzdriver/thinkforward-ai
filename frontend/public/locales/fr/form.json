@@ -1,0 +1,60 @@
+{
+  "validation": {
+    "required": "Ce champ est obligatoire",
+    "email": "Veuillez saisir une adresse e-mail valide",
+    "password": "Le mot de passe doit contenir au moins 8 caractères",
+    "password_match": "Les mots de passe saisis ne correspondent pas",
+    "username": "Le nom d'utilisateur ne peut contenir que des lettres, des chiffres et des traits de soulignement",
+    "phone": "Veuillez saisir un numéro de téléphone valide",
+    "url": "Veuillez saisir une URL valide",
+    "number": "Veuillez saisir un nombre valide",
+    "date": "Veuillez saisir une date valide",
+    "min_length": "Ce champ doit contenir au moins {{count}} caractères",
+    "max_length": "Ce champ peut contenir au maximum {{count}} caractères",
+    "min_value": "La valeur minimale de ce champ est {{value}}",
+    "max_value": "La valeur maximale de ce champ est {{value}}"
+  },
+  "placeholders": {
+    "email": "Veuillez saisir votre adresse e-mail",
+    "password": "Veuillez saisir votre mot de passe",
+    "confirm_password": "Veuillez confirmer votre mot de passe",
+    "username": "Veuillez saisir votre nom d'utilisateur",
+    "first_name": "Veuillez saisir votre prénom",
+    "last_name": "Veuillez saisir votre nom de famille",
+    "phone": "Veuillez saisir votre numéro de téléphone",
+    "address": "Veuillez saisir votre adresse",
+    "city": "Veuillez saisir votre ville",
+    "country": "Veuillez sélectionner votre pays",
+    "postal_code": "Veuillez saisir votre code postal",
+    "search": "Rechercher..."
+  },
+  "labels": {
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "confirm_password": "Confirmer le mot de passe",
+    "username": "Nom d'utilisateur",
+    "first_name": "Prénom",
+    "last_name": "Nom de famille",
+    "phone": "Téléphone",
+    "address": "Adresse",
+    "city": "Ville",
+    "country": "Pays",
+    "postal_code": "Code postal",
+    "remember_me": "Se souvenir de moi",
+    "agree_terms": "J'accepte les conditions d'utilisation et la politique de confidentialité"
+  },
+  "buttons": {
+    "submit": "Soumettre",
+    "reset": "Réinitialiser",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "next": "Suivant",
+    "previous": "Précédent"
+  },
+  "messages": {
+    "success": "Formulaire soumis avec succès",
+    "error": "Échec de la soumission du formulaire, veuillez vérifier les informations saisies",
+    "saving": "Enregistrement en cours...",
+    "loading": "Chargement en cours..."
+  }
+}

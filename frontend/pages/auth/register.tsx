@@ -19,7 +19,7 @@ const STEPS = {
     VERIFICATION: 2
 };
 
-export default function RegisterPage() {
+export function RegisterPage() {
     const { t } = useTranslation('auth');
     const router = useRouter();
     const { signUp, isLoaded } = useSignUp();

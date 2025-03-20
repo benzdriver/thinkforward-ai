@@ -1,7 +1,7 @@
 import { useTranslation } from 'next-i18next';
-import Image from 'next/image';
+import { function as Image } from 'next/image';
 
-export default function Hero() {
+export function Hero() {
   const { t } = useTranslation('about');
 
   return (

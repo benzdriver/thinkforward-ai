@@ -6,7 +6,7 @@ interface EfficiencyMetricsProps {
   casesCompleted: number;
 }
 
-export default function EfficiencyMetrics({ timesSaved, casesCompleted }: EfficiencyMetricsProps) {
+export function EfficiencyMetrics({ timesSaved, casesCompleted }: EfficiencyMetricsProps) {
   const { t } = useTranslation('consultant');
   
   // Convert minutes to hours and minutes

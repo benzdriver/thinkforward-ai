@@ -24,7 +24,7 @@ interface Client {
 // Add this type to ensure sortBy only accepts Client keys
 type SortableClientField = keyof Pick<Client, 'name' | 'email' | 'status' | 'progress' | 'lastActivity'>;
 
-export default function ClientsPage({ userRole }: ClientsPageProps) {
+export function ClientsPage({ userRole }: ClientsPageProps) {
   const [clients, setClients] = useState<Client[]>([]);
   const [filteredClients, setFilteredClients] = useState<Client[]>([]);
   const [isLoading, setIsLoading] = useState(true);

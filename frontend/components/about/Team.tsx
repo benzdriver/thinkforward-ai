@@ -1,7 +1,7 @@
 import { useTranslation } from 'next-i18next';
-import Image from 'next/image';
+import { function as Image } from 'next/image';
 
-export default function Team() {
+export function Team() {
   const { t } = useTranslation('about');
   
   // This would come from your data file in a real implementation

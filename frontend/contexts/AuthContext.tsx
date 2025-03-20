@@ -1,48 +1,63 @@
-import hybridLogger from '../utils/hybridLogger';
+import { logger as hybridLogger } from '../utils/hybridLogger';
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { useAuth as useClerkAuth, useUser, useClerk } from '@clerk/nextjs';
+import { useClerk, useUser, useAuth as useClerkAuth } from '@clerk/nextjs';
 import { UserRole } from '../types/user';
 import { api } from '../utils/api';
+import { useRouter } from 'next/router';
 
 interface AuthContextType {
-  userRole: UserRole;
+  user: any | null;
+  userRole: UserRole | null;
   isLoading: boolean;
-  refreshUserRole: () => Promise<void>;
+  isAuthenticated: boolean;
+  signIn: (email: string, password: string) => Promise<void>;
+  signOut: () => Promise<void>;
+  refreshUser: () => Promise<void>;
   refreshUserData: () => Promise<void>;
   userData: any | null;
-  user: any | null;
-  signOut: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType>({
-  userRole: UserRole.GUEST,
-  isLoading: true,
-  refreshUserRole: async () => {},
-  refreshUserData: async () => {},
-  userData: null,
   user: null,
-  signOut: async () => {}
+  userRole: null,
+  isLoading: true,
+  isAuthenticated: false,
+  signIn: async () => {},
+  signOut: async () => {},
+  refreshUser: async () => {},
+  refreshUserData: async () => {},
+  userData: null
 });
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const { isLoaded, userId, getToken } = useClerkAuth();
-  const { user } = useUser();
   const clerk = useClerk();
+  const { isLoaded: clerkLoaded, session, signOut: clerkSignOut } = clerk;
+  const { isLoaded: authLoaded, userId } = useClerkAuth();
+  const { user } = useUser();
   const [userRole, setUserRole] = useState<UserRole>(UserRole.GUEST);
   const [userData, setUserData] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const router = useRouter();
 
-  // 登出功能
+  // 合并加载状态
+  const isLoaded = clerkLoaded && authLoaded;
+  
+  // 完善 signOut 方法
   const signOut = async () => {
     try {
       localStorage.removeItem('clerk-token');
-      await clerk.signOut();
-      setUserRole(UserRole.GUEST);
-      setUserData(null);
+      await clerkSignOut();
+      router.push('/login');
     } catch (error) {
-      hybridLogger.error('退出登录失败:', error);
+      console.error('Sign out failed:', error);
+      throw error;
     }
+  };
+
+  // 获取 token 的可靠方法
+  const getToken = async () => {
+    return session?.getToken() || '';
   };
 
   // 刷新用户角色
@@ -130,15 +145,37 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     initUserState();
   }, [isLoaded, userId, user]);
 
+  const refreshUser = async () => {
+    await Promise.all([refreshUserRole(), refreshUserData()]);
+  };
+
   return (
     <AuthContext.Provider value={{ 
+      user, 
       userRole, 
       isLoading, 
-      refreshUserRole,
+      isAuthenticated: !!user,
+      signOut,
+      signIn: async (email: string, password: string) => {
+        try {
+          const signInAttempt = await clerk.client.signIn.create({
+            identifier: email,
+            password
+          });
+          
+          if (signInAttempt.status === 'needs_first_factor') {
+            router.push(`/auth/verify?email=${email}`);
+          } else {
+            await refreshUser();
+          }
+        } catch (error) {
+          hybridLogger.error('登录失败:', error);
+          throw error;
+        }
+      },
+      refreshUser,
       refreshUserData,
-      userData,
-      user,
-      signOut
+      userData
     }}>
       {children}
     </AuthContext.Provider>

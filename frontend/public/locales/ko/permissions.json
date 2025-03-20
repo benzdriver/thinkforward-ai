@@ -1,0 +1,42 @@
+{
+  "roles": {
+    "admin": "관리자",
+    "user": "일반 사용자",
+    "editor": "편집자",
+    "moderator": "모더레이터",
+    "guest": "손님"
+  },
+  "subscriptions": {
+    "free": "무료 버전",
+    "basic": "기본 버전",
+    "premium": "프리미엄 버전",
+    "enterprise": "기업용 버전"
+  },
+  "permissions": {
+    "create_post": "게시물 작성",
+    "edit_post": "게시물 편집",
+    "delete_post": "게시물 삭제",
+    "publish_post": "게시물 발행",
+    "view_analytics": "분석 보기",
+    "manage_users": "사용자 관리",
+    "manage_roles": "역할 관리",
+    "manage_settings": "설정 관리",
+    "upload_files": "파일 업로드",
+    "download_data": "데이터 다운로드",
+    "export_reports": "보고서 내보내기",
+    "access_api": "API 접근",
+    "invite_users": "사용자 초대",
+    "create_team": "팀 생성",
+    "manage_team": "팀 관리",
+    "view_dashboard": "대시보드 보기",
+    "comment": "댓글",
+    "moderate_comments": "댓글 심사"
+  },
+  "messages": {
+    "access_denied": "액세스 거부됨",
+    "permission_required": "{{permission}} 권한 필요",
+    "subscription_required": "{{plan}} 구독 필요",
+    "upgrade_required": "계정 업그레이드 필요",
+    "contact_admin": "관리자에게 문의하세요"
+  }
+}

@@ -17,7 +17,7 @@ interface User {
   lastActive: string;
 }
 
-export default function UsersPage({ userRole }: UsersPageProps) {
+export function UsersPage({ userRole }: UsersPageProps) {
   const router = useRouter();
   const { getToken, isLoaded } = useAuth();
   const [users, setUsers] = useState<User[]>([]);

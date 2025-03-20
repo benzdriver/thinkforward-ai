@@ -26,7 +26,7 @@ interface EditClientProps {
   userRole: UserRole;
 }
 
-export default function EditClient({ userRole }: EditClientProps) {
+export function EditClient({ userRole }: EditClientProps) {
   const router = useRouter();
   const { id } = router.query;
   const { isLoaded, userId, getToken } = useAuth();

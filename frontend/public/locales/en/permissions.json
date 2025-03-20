@@ -1,0 +1,42 @@
+{
+  "roles": {
+    "admin": "Administrator",
+    "user": "User",
+    "editor": "Editor",
+    "moderator": "Moderator",
+    "guest": "Guest"
+  },
+  "subscriptions": {
+    "free": "Free",
+    "basic": "Basic",
+    "premium": "Premium",
+    "enterprise": "Enterprise"
+  },
+  "permissions": {
+    "create_post": "Create Post",
+    "edit_post": "Edit Post",
+    "delete_post": "Delete Post",
+    "publish_post": "Publish Post",
+    "view_analytics": "View Analytics",
+    "manage_users": "Manage Users",
+    "manage_roles": "Manage Roles",
+    "manage_settings": "Manage Settings",
+    "upload_files": "Upload Files",
+    "download_data": "Download Data",
+    "export_reports": "Export Reports",
+    "access_api": "Access API",
+    "invite_users": "Invite Users",
+    "create_team": "Create Team",
+    "manage_team": "Manage Team",
+    "view_dashboard": "View Dashboard",
+    "comment": "Comment",
+    "moderate_comments": "Moderate Comments"
+  },
+  "messages": {
+    "access_denied": "Access Denied",
+    "permission_required": "{{permission}} permission required",
+    "subscription_required": "{{plan}} subscription required",
+    "upgrade_required": "Account upgrade required",
+    "contact_admin": "Please contact administrator for permissions"
+  }
+}

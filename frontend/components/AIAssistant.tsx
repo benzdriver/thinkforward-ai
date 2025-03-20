@@ -13,7 +13,7 @@ interface AIAssistantProps {
   isSubscribed?: boolean;
 }
 
-export default function AIAssistant({ userRole, isSubscribed = false }: AIAssistantProps) {
+export function AIAssistant({ userRole, isSubscribed = false }: AIAssistantProps) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);

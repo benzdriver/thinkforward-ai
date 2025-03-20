@@ -6,7 +6,7 @@ interface PlanFeatureProps {
   value?: string;
 }
 
-export default function PlanFeature({ name, included, value }: PlanFeatureProps) {
+export function PlanFeature({ name, included, value }: PlanFeatureProps) {
   return (
     <li className="flex items-start">
       <div className="flex-shrink-0">

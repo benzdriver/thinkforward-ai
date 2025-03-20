@@ -29,7 +29,22 @@
     "cancel": "取消",
     "submit": "提交",
     "edit": "編輯",
-    "delete": "刪除"
+    "delete": "刪除",
+    "create": "创建",
+    "update": "更新",
+    "confirm": "確認",
+    "back": "返回",
+    "next": "下一步",
+    "previous": "上一步",
+    "search": "搜索",
+    "filter": "篩選",
+    "sort": "排序",
+    "refresh": "刷新",
+    "more": "更多",
+    "view": "查看",
+    "download": "下載",
+    "upload": "上傳",
+    "close": "關閉"
   },
   "language_selector": {
     "label": "語言",
@@ -345,5 +360,17 @@
     }
   },
   "hello": "你好",
-  "includes": "包含"
+  "includes": "包含",
+  "toast": {
+    "success": "操作成功",
+    "error": "操作失败",
+    "info": "提示信息",
+    "warning": "警告信息",
+    "saved": "已保存",
+    "deleted": "已删除",
+    "updated": "已更新",
+    "created": "已创建",
+    "loading": "加載中...",
+    "please_wait": "請稍候..."
+  }
 }

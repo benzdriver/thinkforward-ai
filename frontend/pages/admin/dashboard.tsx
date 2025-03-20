@@ -30,7 +30,7 @@ interface DashboardStats {
   };
 }
 
-export default function AdminDashboard({ userRole }: AdminDashboardProps) {
+export function AdminDashboard({ userRole }: AdminDashboardProps) {
   const router = useRouter();
   const { getToken, isLoaded } = useAuth();
   const [stats, setStats] = useState<DashboardStats | null>(null);

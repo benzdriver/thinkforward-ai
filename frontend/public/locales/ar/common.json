@@ -29,7 +29,22 @@
     "cancel": "إلغاء",
     "submit": "إرسال",
     "edit": "تعديل",
-    "delete": "حذف"
+    "delete": "حذف",
+    "create": "إنشاء",
+    "update": "تحديث",
+    "confirm": "تأكيد",
+    "back": "رجوع",
+    "next": "التالي",
+    "previous": "السابق",
+    "search": "بحث",
+    "filter": "تصفية",
+    "sort": "ترتيب",
+    "refresh": "تحديث",
+    "more": "المزيد",
+    "view": "عرض",
+    "download": "تحميل",
+    "upload": "تحميل",
+    "close": "إغلاق"
   },
   "language_selector": {
     "label": "اللغة",
@@ -345,5 +360,17 @@
     }
   },
   "hello": "مرحباً",
-  "includes": "يتضمن"
+  "includes": "يتضمن",
+  "toast": {
+    "success": "تمت العملية بنجاح",
+    "error": "فشلت العملية",
+    "info": "معلومات",
+    "warning": "تحذير",
+    "saved": "تم الحفظ",
+    "deleted": "تم الحذف",
+    "updated": "تم التحديث",
+    "created": "تم الإنشاء",
+    "loading": "جار التحميل...",
+    "please_wait": "يرجى الانتظار..."
+  }
 }

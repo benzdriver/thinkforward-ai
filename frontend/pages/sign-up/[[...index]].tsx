@@ -1,17 +1,17 @@
 import { SignUp } from '@clerk/nextjs';
 import { useRouter } from 'next/router';
-import Head from 'next/head';
+import { function as Head } from 'next/head';
 import Layout from '../../components/Layout';
 import { UserRole } from '../../types/user';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import { useEffect, useState } from 'react';
-import logger from '../../utils/logger';
-import LanguageSwitcher from '@/components/LanguageSwitcher';
+import { defaultLogger as logger } from '../../utils/logger';
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import Link from 'next/link';
-import Image from 'next/image';
+import { function as Image } from 'next/image';
 
-export default function SignUpPage({ locale: serverLocale }: { locale?: string }) {
+export function SignUpPage({ locale: serverLocale }: { locale?: string }) {
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
   const { t } = useTranslation(['sign-up', 'common']);

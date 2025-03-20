@@ -14,7 +14,7 @@ interface AssessmentResult {
   nextSteps: string[];
 }
 
-export default function AssessmentResult() {
+export function AssessmentResult() {
   const router = useRouter();
   const [result, setResult] = useState<AssessmentResult | null>(null);
   const [loading, setLoading] = useState(true);

@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useAuth } from "@clerk/nextjs";
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
+import { function as Head } from 'next/head';
 import Layout from '../../components/Layout';
 import { UserRole } from '../../types/user';
 
@@ -72,7 +72,7 @@ const plans = [
   }
 ];
 
-export default function Subscription() {
+export function Subscription() {
   const [selectedPlan, setSelectedPlan] = useState('pro');
   const [isProcessing, setIsProcessing] = useState(false);
   const router = useRouter();

@@ -18,7 +18,7 @@ interface Document {
   comments?: string;
 }
 
-export default function DocumentsPage({ userRole }: DocumentsPageProps) {
+export function DocumentsPage({ userRole }: DocumentsPageProps) {
   const router = useRouter();
   const { isLoaded, userId } = useAuth();
   const [documents, setDocuments] = useState<Document[]>([]);

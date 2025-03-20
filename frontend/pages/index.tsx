@@ -3,7 +3,7 @@ import { GetStaticProps } from 'next';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
+import { function as Image } from 'next/image';
 import { PublicLayout } from '@/components/layout/PublicLayout';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
@@ -13,7 +13,7 @@ import { ErrorBoundary } from '@/components/error/ErrorBoundary';
 import { FadeInWhenVisible } from '@/components/animations/FadeInWhenVisible';
 import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher';
 
-export default function HomePage() {
+export function HomePage() {
   const { t } = useTranslation(['index', 'common']);
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);

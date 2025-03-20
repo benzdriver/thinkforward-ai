@@ -55,7 +55,7 @@ interface Comment {
   createdAt: string;
 }
 
-export default function CaseDetails({ userRole }: CaseDetailsProps) {
+export function CaseDetails({ userRole }: CaseDetailsProps) {
   const router = useRouter();
   const { id, caseId } = router.query;
   const { isLoaded, userId, getToken } = useAuth();

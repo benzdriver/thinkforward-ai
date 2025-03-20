@@ -7,7 +7,7 @@ import readline from 'readline';
 const LOG_DIR = path.join(process.cwd(), 'logs');
 const APP_LOG_FILE = path.join(LOG_DIR, 'application.log');
 
-export default async function handler(
+export async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -64,4 +64,7 @@ export default async function handler(
     console.error('获取日志失败:', error);
     return res.status(500).json({ error: '获取日志失败' });
   }
-} 
+}
+
+// Next.js API 路由需要默认导出
+export default handler; 

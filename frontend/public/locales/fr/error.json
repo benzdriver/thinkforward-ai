@@ -1,0 +1,29 @@
+{
+  "api": {
+    "unauthorized": "Vous devez vous connecter pour accéder à cette fonctionnalité",
+    "forbidden": "Vous n'êtes pas autorisé à effectuer cette opération",
+    "not_found": "La ressource demandée est introuvable",
+    "validation_error": "Les données soumises ne sont pas valides",
+    "server_error": "Erreur du serveur, veuillez réessayer plus tard",
+    "unknown_error": "Une erreur inconnue s'est produite",
+    "network_error": "Erreur de connexion réseau, veuillez vérifier votre connexion",
+    "timeout_error": "Délai de la requête dépassé, veuillez réessayer plus tard"
+  },
+  "form": {
+    "required": "Ce champ est obligatoire",
+    "email_invalid": "Veuillez saisir une adresse e-mail valide",
+    "password_too_short": "Le mot de passe est trop court, il doit contenir au moins 8 caractères",
+    "passwords_not_match": "Les mots de passe saisis ne correspondent pas",
+    "username_invalid": "Le nom d'utilisateur ne peut contenir que des lettres, des chiffres et des traits de soulignement",
+    "phone_invalid": "Veuillez saisir un numéro de téléphone valide",
+    "url_invalid": "Veuillez saisir une URL valide",
+    "number_invalid": "Veuillez saisir un nombre valide",
+    "date_invalid": "Veuillez saisir une date valide",
+    "min_length": "Ce champ doit contenir au moins {{count}} caractères",
+    "max_length": "Ce champ peut contenir au maximum {{count}} caractères"
+  },
+  "localStorage": {
+    "read_error": "Impossible de lire les données du stockage local : {{key}}",
+    "write_error": "Impossible d'écrire dans le stockage local : {{key}}"
+  }
+}

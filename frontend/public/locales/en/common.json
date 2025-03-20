@@ -29,7 +29,22 @@
     "cancel": "Cancel",
     "submit": "Submit",
     "edit": "Edit",
-    "delete": "Delete"
+    "delete": "Delete",
+    "create": "Create",
+    "update": "Update",
+    "confirm": "Confirm",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "refresh": "Refresh",
+    "more": "More",
+    "view": "View",
+    "download": "Download",
+    "upload": "Upload",
+    "close": "Close"
   },
   "language_selector": {
     "label": "Language",
@@ -345,5 +360,17 @@
     }
   },
   "hello": "Hello",
-  "includes": "Includes"
+  "includes": "Includes",
+  "toast": {
+    "success": "Operation successful",
+    "error": "Operation failed",
+    "info": "Information",
+    "warning": "Warning",
+    "saved": "Saved",
+    "deleted": "Deleted",
+    "updated": "Updated",
+    "created": "Created",
+    "loading": "Loading...",
+    "please_wait": "Please wait..."
+  }
 }

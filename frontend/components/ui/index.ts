@@ -1,41 +1,38 @@
-// 基础UI组件索引
-// 导出所有通用UI组件
+// 此文件由转换脚本自动生成
+// 集中导出目录中的所有组件
 
-// 按钮与交互组件
-export { Button } from '@/components/ui/Button';
-export { Switch } from '@/components/ui/Switch';
-export { Checkbox } from '@/components/ui/Checkbox';
-export { Radio } from '@/components/ui/Radio';
-export { RadioGroup } from '@/components/ui/RadioGroup';
-
-// 输入组件
-export { Input } from '@/components/ui/Input';
-export { PasswordInput } from '@/components/ui/PasswordInput';
-export { TextArea } from '@/components/ui/TextArea';
-export { Select } from '@/components/ui/Select';
-export { FileUpload } from '@/components/ui/FileUpload';
-
-// 布局组件
-export { Card } from '@/components/ui/Card';
-export { Tabs, TabPane } from '@/components/ui/Tabs';
-export { Divider } from '@/components/ui/Divider';
-export { Empty } from '@/components/ui/Empty';
-
-// 反馈组件
-export { Modal, ConfirmModal } from '@/components/ui/Modal';
-export { Alert } from '@/components/ui/Alert';
-export { Tooltip } from '@/components/ui/Tooltip';
-export { Skeleton } from '@/components/ui/Skeleton';
-
-// 导航组件
-export { Pagination } from '@/components/ui/Pagination';
-export { Breadcrumb, BreadcrumbItem } from '@/components/ui/Breadcrumb';
-
-// 数据展示
-export { Table } from '@/components/ui/Table';
-export { Avatar } from '@/components/ui/Avatar';
-export { Badge } from '@/components/ui/Badge';
-export { Tag } from '@/components/ui/Tag';
-
-// 国际化相关
-export { LanguageSwitcher } from '@/components/ui/LanguageSwitcher'; 
+export { VerificationInput } from './VerificationInput';
+export { TouchFeedback } from './TouchFeedback';
+export { Tooltip } from './Tooltip';
+export { TextArea } from './TextArea';
+export { Tag } from './Tag';
+export { Tabs } from './Tabs';
+export { Table } from './Table';
+export { Switch } from './Switch';
+export { Skeleton } from './Skeleton';
+export { Select } from './Select';
+export { RadioGroup } from './RadioGroup';
+export { Radio } from './Radio';
+export { PermissionGuard } from './PermissionGuard';
+export { PasswordInput } from './PasswordInput';
+export { Pagination } from './Pagination';
+export { Modal } from './Modal';
+export { LoadingScreen } from './LoadingScreen';
+export { LoadingSpinner } from './LoadingSpinner';
+export { LoadingButton } from './LoadingButton';
+export { LoadingSkeleton } from './LoadingSkeleton';
+export { LoadingOverlay } from './LoadingOverlay';
+export { LanguageSwitcher } from './LanguageSwitcher';
+export { Input } from './Input';
+export { FileUpload } from './FileUpload';
+export { Empty } from './Empty';
+export { Divider } from './Divider';
+export { DataTable } from './DataTable';
+export { Checkbox } from './Checkbox';
+export { Card } from './Card';
+export { Button } from './Button';
+export { Breadcrumb } from './Breadcrumb';
+export { Badge } from './Badge';
+export { Avatar } from './Avatar';
+export { Alert } from './Alert';
+export { LoadingIndicator } from './LoadingIndicator';

@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Link from 'next/link';
-import Image from 'next/image';
+import { function as Image } from 'next/image';
 import PageHeader from '@/components/ui/PageHeader';
 
 // 成功案例类型
@@ -23,7 +23,7 @@ interface FeatureCard {
   icon: string;
 }
 
-export default function GuestDashboard() {
+export function GuestDashboard() {
   const { t } = useTranslation('dashboard');
   const router = useRouter();
   

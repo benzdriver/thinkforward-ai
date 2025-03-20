@@ -25,7 +25,7 @@ interface ClientBasic {
   email: string;
 }
 
-export default function EditCase({ userRole }: EditCaseProps) {
+export function EditCase({ userRole }: EditCaseProps) {
   const router = useRouter();
   const { id, caseId } = router.query;
   const { isLoaded, userId, getToken } = useAuth();

@@ -19,7 +19,7 @@ interface FormData {
   additionalInfo: string;
 }
 
-export default function InitialAssessment() {
+export function InitialAssessment() {
   const router = useRouter();
   const [currentStep, setCurrentStep] = useState(1);
   const [loading, setLoading] = useState(false);

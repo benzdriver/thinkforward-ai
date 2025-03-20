@@ -1,15 +1,15 @@
 import { SignIn } from "@clerk/nextjs";
-import Head from 'next/head';
+import { function as Head } from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import logger from '../../utils/logger';
+import { defaultLogger as logger } from '../../utils/logger';
 import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher';
 import Link from 'next/link';
-import Image from 'next/image';
+import { function as Image } from 'next/image';
 
-export default function SignInPage({ locale: serverLocale }: { locale?: string }) {
+export function SignInPage({ locale: serverLocale }: { locale?: string }) {
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
   const { t } = useTranslation(['sign-in', 'common']);

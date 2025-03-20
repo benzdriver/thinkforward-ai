@@ -117,6 +117,5 @@ class Logger {
 }
 
 // 默认日志实例
-const defaultLogger = new Logger();
+export const defaultLogger = new Logger();
 
-export default defaultLogger; 

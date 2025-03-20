@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
-export default function SubscriptionSuccess() {
+export function SubscriptionSuccess() {
   const router = useRouter();
   const [countdown, setCountdown] = useState(5);
   

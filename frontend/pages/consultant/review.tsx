@@ -16,7 +16,7 @@ interface FormReview {
   formData: Record<string, any>;
 }
 
-export default function ReviewPage({ userRole }: ReviewPageProps) {
+export function ReviewPage({ userRole }: ReviewPageProps) {
   const router = useRouter();
   const { id } = router.query;
   const { isLoaded, getToken } = useAuth();

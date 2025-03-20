@@ -6,7 +6,7 @@ interface ClientSummaryProps {
   activeClients: number;
 }
 
-export default function ClientSummary({ totalClients, activeClients }: ClientSummaryProps) {
+export function ClientSummary({ totalClients, activeClients }: ClientSummaryProps) {
   const { t } = useTranslation('consultant');
   
   const activePercentage = totalClients > 0 

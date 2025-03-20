@@ -116,4 +116,3 @@ export const ErrorAlert: React.FC<{ message: string; onClose?: () => void }> = (
   );
 };
 
-export default Alert; 

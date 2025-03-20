@@ -25,4 +25,3 @@ const OAuthButton: React.FC<OAuthButtonProps> = ({ provider, onClick }) => {
   );
 };
 
-export default OAuthButton;

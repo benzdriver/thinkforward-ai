@@ -1,5 +1,4 @@
 import React from 'react';
-import { useTranslation } from 'next-i18next';
 import { Locale } from 'date-fns';
 import { enUS } from 'date-fns/locale/en-US';
 import { fr } from 'date-fns/locale/fr';
@@ -63,44 +62,13 @@ export function getDateLocale(locale: string | undefined): Locale {
   }
 }
 
-// 创建一个自定义hook，简化翻译使用
-export function useI18n() {
-  const { t, i18n } = useTranslation();
-  
-  return {
-    // 基本翻译函数
-    t,
-    
-    // 当前语言
-    currentLanguage: i18n.language,
-    
-    // 切换语言
-    changeLanguage: (lang: string) => i18n.changeLanguage(lang),
-    
-    // 格式化日期
-    formatDate: (date: Date | string | number, options?: Intl.DateTimeFormatOptions) => {
-      const dateObj = date instanceof Date ? date : new Date(date);
-      return new Intl.DateTimeFormat(i18n.language, options).format(dateObj);
-    },
-    
-    // 格式化数字
-    formatNumber: (num: number, options?: Intl.NumberFormatOptions) => {
-      return new Intl.NumberFormat(i18n.language, options).format(num);
-    },
-    
-    // 格式化货币
-    formatCurrency: (amount: number, currency = 'CNY') => {
-      return new Intl.NumberFormat(i18n.language, {
-        style: 'currency',
-        currency
-      }).format(amount);
-    }
-  };
-}
-
 // 创建一个高阶组件，用于包装需要国际化的组件
-export function withI18n<P extends object>(Component: React.ComponentType<P & { i18n: ReturnType<typeof useI18n> }>) {
+export function withI18n<P extends object>(
+  Component: React.ComponentType<P & { i18n: any }>
+) {
   return function WithI18nComponent(props: P) {
+    // 动态导入 useI18n 以避免循环依赖
+    const { useI18n } = require('@/hooks/useI18n');
     const i18n = useI18n();
     return React.createElement(Component, { ...props, i18n });
   };

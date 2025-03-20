@@ -1,4 +1,4 @@
-import hybridLogger from '../../utils/hybridLogger';
+import { logger as hybridLogger } from '../../utils/hybridLogger';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import fs from 'fs';
 import path from 'path';
@@ -45,7 +45,7 @@ function writeToLog(logFile: string, logData: any) {
   fs.appendFileSync(logFile, logEntry);
 }
 
-export default async function handler(
+export async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -78,3 +78,6 @@ export default async function handler(
     return res.status(500).json({ error: '处理日志失败' });
   }
 } 
+
+// Next.js API路由需要默认导出
+export default handler;

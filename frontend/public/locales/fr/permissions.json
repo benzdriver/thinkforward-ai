@@ -1,0 +1,42 @@
+{
+  "roles": {
+    "admin": "Administrateur",
+    "user": "Utilisateur régulier",
+    "editor": "Éditeur",
+    "moderator": "Modérateur",
+    "guest": "Invité"
+  },
+  "subscriptions": {
+    "free": "Version gratuite",
+    "basic": "Version de base",
+    "premium": "Version premium",
+    "enterprise": "Version entreprise"
+  },
+  "permissions": {
+    "create_post": "Créer un article",
+    "edit_post": "Modifier un article",
+    "delete_post": "Supprimer un article",
+    "publish_post": "Publier un article",
+    "view_analytics": "Voir les analyses",
+    "manage_users": "Gérer les utilisateurs",
+    "manage_roles": "Gérer les rôles",
+    "manage_settings": "Gérer les paramètres",
+    "upload_files": "Téléverser des fichiers",
+    "download_data": "Télécharger des données",
+    "export_reports": "Exporter des rapports",
+    "access_api": "Accéder à l'API",
+    "invite_users": "Inviter des utilisateurs",
+    "create_team": "Créer une équipe",
+    "manage_team": "Gérer l'équipe",
+    "view_dashboard": "Voir le tableau de bord",
+    "comment": "Commenter",
+    "moderate_comments": "Modérer les commentaires"
+  },
+  "messages": {
+    "access_denied": "Accès refusé",
+    "permission_required": "Permission {{permission}} requise",
+    "subscription_required": "Abonnement {{plan}} requis",
+    "upgrade_required": "Mise à niveau de votre compte requise",
+    "contact_admin": "Veuillez contacter l'administrateur pour obtenir les autorisations"
+  }
+}

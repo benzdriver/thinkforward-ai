@@ -22,7 +22,7 @@ interface RecentActivitiesProps {
   activities: Activity[];
 }
 
-export default function RecentActivities({ activities }: RecentActivitiesProps) {
+export function RecentActivities({ activities }: RecentActivitiesProps) {
   const { t, i18n } = useTranslation('consultant');
   
   const dateLocale = getDateLocale(i18n.language);

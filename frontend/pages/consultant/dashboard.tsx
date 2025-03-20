@@ -4,17 +4,17 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/contexts/AuthContext';
-import ConsultantLayout from '@/components/layout/ConsultantLayout';
-import ClientSummary from '@/components/consultant/dashboard/ClientSummary';
-import EfficiencyMetrics from '@/components/consultant/dashboard/EfficiencyMetrics';
-import RecentActivities from '@/components/consultant/dashboard/RecentActivities';
-import TasksList from '@/components/consultant/dashboard/TasksList';
+import { function as ConsultantLayout } from '@/components/layout/ConsultantLayout';
+import { function as ClientSummary } from '@/components/consultant/dashboard/ClientSummary';
+import { function as EfficiencyMetrics } from '@/components/consultant/dashboard/EfficiencyMetrics';
+import { function as RecentActivities } from '@/components/consultant/dashboard/RecentActivities';
+import { function as TasksList } from '@/components/consultant/dashboard/TasksList';
 import { LoadingScreen } from '@/components/ui/LoadingScreen';
 import { ErrorAlert } from '@/components/ui/ErrorAlert';
 import PageHeader from '@/components/ui/PageHeader';
 import { DashboardData } from '@/types/consultant';
 
-export default function ConsultantDashboard() {
+export function ConsultantDashboard() {
   const { t } = useTranslation('consultant');
   const { user, isLoading: authLoading } = useAuth();
   const router = useRouter();

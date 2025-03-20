@@ -10,7 +10,7 @@ import {
 import { AuthLayout } from '@/components/layout/AuthLayout';
 import { Form } from '@/components/ui/Form/Form';
 import { FormField } from '@/components/ui/Form/FormField';
-export default function ForgotPasswordPage() {
+export function ForgotPasswordPage() {
   const { t } = useTranslation('auth');
   const { client } = useClerk();
   const [email, setEmail] = useState('');

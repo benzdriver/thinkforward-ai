@@ -12,13 +12,13 @@ import {
 } from '@heroicons/react/24/outline';
 import { StarIcon } from '@heroicons/react/24/solid';
 import PageHeader from '@/components/ui/PageHeader';
-import PlanFeature from '@/components/pricing/PlanFeature';
-import SubscriptionForm from '@/components/pricing/SubscriptionForm';
-import TestimonialCard from '@/components/pricing/TestimonialCard';
-import ValueProposition from '@/components/pricing/ValueProposition';
+import { function as PlanFeature } from '@/components/pricing/PlanFeature';
+import { function as SubscriptionForm } from '@/components/pricing/SubscriptionForm';
+import { function as TestimonialCard } from '@/components/pricing/TestimonialCard';
+import { function as ValueProposition } from '@/components/pricing/ValueProposition';
 import { Plan } from '@/types/subscription';
 
-export default function ConsultantPlans() {
+export function ConsultantPlans() {
   const { t } = useTranslation(['consultant', 'pricing']);
   const { user } = useAuth();
   const router = useRouter();

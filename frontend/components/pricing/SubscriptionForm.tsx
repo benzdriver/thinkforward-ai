@@ -14,7 +14,7 @@ interface SubscriptionFormProps {
   onSuccess: () => void;
 }
 
-export default function SubscriptionForm({ selectedPlan, onSuccess }: SubscriptionFormProps) {
+export function SubscriptionForm({ selectedPlan, onSuccess }: SubscriptionFormProps) {
   const { t } = useTranslation('pricing');
   const stripe = useStripe();
   const elements = useElements();

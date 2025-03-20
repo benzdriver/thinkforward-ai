@@ -1,0 +1,42 @@
+{
+  "roles": {
+    "admin": "管理員",
+    "user": "普通用戶",
+    "editor": "編輯",
+    "moderator": "版主",
+    "guest": "訪客"
+  },
+  "subscriptions": {
+    "free": "免費版",
+    "basic": "基礎版",
+    "premium": "高級版",
+    "enterprise": "企業版"
+  },
+  "permissions": {
+    "create_post": "創建文章",
+    "edit_post": "編輯文章",
+    "delete_post": "刪除文章",
+    "publish_post": "發布文章",
+    "view_analytics": "查看分析",
+    "manage_users": "管理用戶",
+    "manage_roles": "管理角色",
+    "manage_settings": "管理設置",
+    "upload_files": "上傳文件",
+    "download_data": "下載數據",
+    "export_reports": "導出報告",
+    "access_api": "訪問API",
+    "invite_users": "邀請用戶",
+    "create_team": "創建團隊",
+    "manage_team": "管理團隊",
+    "view_dashboard": "查看儀表板",
+    "comment": "評論",
+    "moderate_comments": "審核評論"
+  },
+  "messages": {
+    "access_denied": "訪問被拒絕",
+    "permission_required": "需要{{permission}}權限",
+    "subscription_required": "需要{{plan}}訂閱",
+    "upgrade_required": "需要升級您的帳戶",
+    "contact_admin": "請聯繫管理員獲取權限"
+  }
+}

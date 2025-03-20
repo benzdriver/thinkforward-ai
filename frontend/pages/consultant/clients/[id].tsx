@@ -48,7 +48,7 @@ interface Document {
   uploadedAt: string;
 }
 
-export default function ClientDetails({ userRole }: ClientDetailsProps) {
+export function ClientDetails({ userRole }: ClientDetailsProps) {
   const router = useRouter();
   const { id } = router.query;
   const { isLoaded, userId, getToken } = useAuth();

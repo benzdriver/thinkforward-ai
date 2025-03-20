@@ -24,7 +24,7 @@ interface ClientBasic {
   email: string;
 }
 
-export default function NewCase({ userRole }: NewCaseProps) {
+export function NewCase({ userRole }: NewCaseProps) {
   const router = useRouter();
   const { id } = router.query;
   const { isLoaded, userId, getToken } = useAuth();

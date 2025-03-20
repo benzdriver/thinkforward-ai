@@ -1,0 +1,42 @@
+{
+  "roles": {
+    "admin": "管理者",
+    "user": "一般ユーザー",
+    "editor": "編集者",
+    "moderator": "モデレーター",
+    "guest": "ゲスト"
+  },
+  "subscriptions": {
+    "free": "無料版",
+    "basic": "基本版",
+    "premium": "プレミアム版",
+    "enterprise": "エンタープライズ版"
+  },
+  "permissions": {
+    "create_post": "記事を作成",
+    "edit_post": "記事を編集",
+    "delete_post": "記事を削除",
+    "publish_post": "記事を公開",
+    "view_analytics": "分析を表示",
+    "manage_users": "ユーザーを管理",
+    "manage_roles": "役割を管理",
+    "manage_settings": "設定を管理",
+    "upload_files": "ファイルをアップロード",
+    "download_data": "データをダウンロード",
+    "export_reports": "レポートをエクスポート",
+    "access_api": "APIにアクセス",
+    "invite_users": "ユーザーを招待",
+    "create_team": "チームを作成",
+    "manage_team": "チームを管理",
+    "view_dashboard": "ダッシュボードを表示",
+    "comment": "コメント",
+    "moderate_comments": "コメントをモデレート"
+  },
+  "messages": {
+    "access_denied": "アクセスが拒否されました",
+    "permission_required": "{{permission}}権限が必要です",
+    "subscription_required": "{{plan}}サブスクリプションが必要です",
+    "upgrade_required": "アカウントをアップグレードする必要があります",
+    "contact_admin": "管理者に連絡して権限を取得してください"
+  }
+}

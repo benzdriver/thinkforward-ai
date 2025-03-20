@@ -29,7 +29,22 @@
     "cancel": "Annuler",
     "submit": "Soumettre",
     "edit": "Modifier",
-    "delete": "Supprimer"
+    "delete": "Supprimer",
+    "create": "Créer",
+    "update": "Mettre à jour",
+    "confirm": "Confirmer",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "search": "Rechercher",
+    "filter": "Filtrer",
+    "sort": "Trier",
+    "refresh": "Actualiser",
+    "more": "Plus",
+    "view": "Voir",
+    "download": "Télécharger",
+    "upload": "Téléverser",
+    "close": "Fermer"
   },
   "language_selector": {
     "label": "Langue",
@@ -345,5 +360,17 @@
     }
   },
   "hello": "Bonjour",
-  "includes": "包含"
+  "includes": "Inclut",
+  "toast": {
+    "success": "Opération réussie",
+    "error": "Échec de l'opération",
+    "info": "Information",
+    "warning": "Avertissement",
+    "saved": "Enregistré",
+    "deleted": "Supprimé",
+    "updated": "Mis à jour",
+    "created": "Créé",
+    "loading": "Chargement en cours...",
+    "please_wait": "Veuillez patienter..."
+  }
 }

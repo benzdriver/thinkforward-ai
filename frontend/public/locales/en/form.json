@@ -1,0 +1,60 @@
+{
+  "validation": {
+    "required": "This field is required",
+    "email": "Please enter a valid email address",
+    "password": "Password must be at least 8 characters",
+    "password_match": "Passwords do not match",
+    "username": "Username can only contain letters, numbers and underscores",
+    "phone": "Please enter a valid phone number",
+    "url": "Please enter a valid URL",
+    "number": "Please enter a valid number",
+    "date": "Please enter a valid date",
+    "min_length": "This field requires at least {{count}} characters",
+    "max_length": "This field allows at most {{count}} characters",
+    "min_value": "Minimum value for this field is {{value}}",
+    "max_value": "Maximum value for this field is {{value}}"
+  },
+  "placeholders": {
+    "email": "Enter your email",
+    "password": "Enter your password",
+    "confirm_password": "Confirm your password",
+    "username": "Enter your username",
+    "first_name": "Enter your first name",
+    "last_name": "Enter your last name",
+    "phone": "Enter your phone number",
+    "address": "Enter your address",
+    "city": "Enter your city",
+    "country": "Select your country",
+    "postal_code": "Enter your postal code",
+    "search": "Search..."
+  },
+  "labels": {
+    "email": "Email",
+    "password": "Password",
+    "confirm_password": "Confirm Password",
+    "username": "Username",
+    "first_name": "First Name",
+    "last_name": "Last Name",
+    "phone": "Phone Number",
+    "address": "Address",
+    "city": "City",
+    "country": "Country",
+    "postal_code": "Postal Code",
+    "remember_me": "Remember me",
+    "agree_terms": "I agree to the Terms of Service and Privacy Policy"
+  },
+  "buttons": {
+    "submit": "Submit",
+    "reset": "Reset",
+    "cancel": "Cancel",
+    "save": "Save",
+    "next": "Next",
+    "previous": "Previous"
+  },
+  "messages": {
+    "success": "Form submitted successfully",
+    "error": "Form submission failed, please check your inputs",
+    "saving": "Saving...",
+    "loading": "Loading..."
+  }
+}

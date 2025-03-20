@@ -18,7 +18,7 @@ interface TasksListProps {
   tasks: Task[];
 }
 
-export default function TasksList({ tasks }: TasksListProps) {
+export function TasksList({ tasks }: TasksListProps) {
   const { t } = useTranslation('consultant');
   const [tasksList, setTasksList] = useState(tasks);
   

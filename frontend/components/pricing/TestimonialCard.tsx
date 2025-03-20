@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import { function as Image } from 'next/image';
 
 interface TestimonialCardProps {
   quote: string;
@@ -7,7 +7,7 @@ interface TestimonialCardProps {
   imageUrl: string;
 }
 
-export default function TestimonialCard({ quote, author, role, imageUrl }: TestimonialCardProps) {
+export function TestimonialCard({ quote, author, role, imageUrl }: TestimonialCardProps) {
   return (
     <div className="bg-white rounded-xl shadow-md p-6">
       <div className="relative h-8 mb-4">
