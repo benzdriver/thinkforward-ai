@@ -72,4 +72,4 @@ clean-all.sh
 public/videos/
 
 # Cache
-.cache/
+.cache/../.DS_Store
