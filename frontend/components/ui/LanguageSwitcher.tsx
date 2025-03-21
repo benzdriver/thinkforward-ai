@@ -1,9 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import { Menu, Transition } from '@headlessui/react';
-import { ChevronDownIcon } from '@heroicons/react/24/outline';
-import { Fragment } from 'react';
-import { useI18n } from '@/hooks/useI18n';
+import { useTranslation } from 'next-i18next';
 
 interface Language {
   code: string;
@@ -25,14 +22,17 @@ const languages: Language[] = [
   { code: 'ar', name: 'العربية', flag: '🇸🇦' }
 ];
 
-export function LanguageSwitcher() {
-  const { language, changeLanguage } = useI18n();
+export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
+  const { i18n } = useTranslation();
+  const router = useRouter();
+  
+  const changeLanguage = (lng: string) => i18n.changeLanguage(lng);
   
   return (
     <select 
-      value={language} 
+      value={i18n.language} 
       onChange={(e) => changeLanguage(e.target.value)}
-      className="bg-transparent border border-gray-300 rounded px-2 py-1"
+      className={`bg-transparent border border-gray-300 rounded px-2 py-1 ${className}`}
     >
       {languages.map((lang) => (
         <option key={lang.code} value={lang.code}>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useCallback, useMemo, ReactNode } from 'react';
 import { useMediaQuery } from './useMediaQuery';
-import { useI18n } from './useI18n';
+import { useTranslation } from 'next-i18next';
 
 interface OptimizedListOptions<T> {
   items: T[];
@@ -48,7 +48,7 @@ export function useOptimizedList<T>({
   containerClassName = "optimized-list-container",
   itemClassName = "optimized-list-item"
 }: OptimizedListOptions<T>): OptimizedListResult<T> {
-  const { t } = useI18n('common');
+  const { t } = useTranslation('common');
   const isMobile = useMediaQuery('(max-width: 768px)');
   
   // 根据设备类型确定批次大小
@@ -58,27 +58,27 @@ export function useOptimizedList<T>({
   // 当前渲染的项目数量
   const [visibleCount, setVisibleCount] = useState<number>(actualInitialBatchSize);
   
-  // 处理滚动加载更多
-  const handleScroll = useCallback((e: React.UIEvent<HTMLDivElement>): void => {
-    const { scrollTop, scrollHeight, clientHeight } = e.currentTarget;
-    
-    // 当滚动到底部附近时加载更多
-    if (scrollHeight - scrollTop - clientHeight < threshold && visibleCount < items.length) {
-      setVisibleCount(prev => Math.min(prev + actualBatchSize, items.length));
-    }
-  }, [items.length, visibleCount, threshold, actualBatchSize]);
-  
-  // 重置可见数量
-  const resetVisibleCount = useCallback((): void => {
+  // 重置可见项目数量
+  const resetVisibleCount = useCallback(() => {
     setVisibleCount(actualInitialBatchSize);
   }, [actualInitialBatchSize]);
   
-  // 强制显示所有项目
-  const showAll = useCallback((): void => {
+  // 显示所有项目
+  const showAll = useCallback(() => {
     setVisibleCount(items.length);
   }, [items.length]);
   
-  // 计算可见项目
+  // 处理滚动事件，实现无限滚动
+  const handleScroll = useCallback((e: React.UIEvent<HTMLDivElement>) => {
+    const { scrollTop, scrollHeight, clientHeight } = e.currentTarget;
+    
+    // 当滚动到底部附近时，加载更多项目
+    if (scrollHeight - scrollTop - clientHeight < threshold && visibleCount < items.length) {
+      setVisibleCount(prev => Math.min(prev + actualBatchSize, items.length));
+    }
+  }, [threshold, visibleCount, items.length, actualBatchSize]);
+  
+  // 可见项目列表
   const visibleItems = useMemo((): T[] => {
     return items.slice(0, visibleCount);
   }, [items, visibleCount]);
@@ -89,7 +89,7 @@ export function useOptimizedList<T>({
     if (items.length === 0) {
       return (
         <div className={containerClassName}>
-          {emptyComponent || <div className="empty-list">{t('common.no_data')}</div>}
+          {emptyComponent || <div className="empty-list">{t('no_data')}</div>}
         </div>
       );
     }
@@ -107,7 +107,7 @@ export function useOptimizedList<T>({
               onClick={showAll}
               className="load-more-button"
             >
-              {loadMoreText || t('common.show_all')}
+              {loadMoreText || t('show_all')}
             </button>
           </div>
         )}

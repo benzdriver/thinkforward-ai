@@ -12,6 +12,7 @@ interface ModalProps {
   width?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | 'full';
   closeOnClickOutside?: boolean;
   showCloseButton?: boolean;
+  size?: 'sm' | 'md' | 'lg' | 'xl';
 }
 
 export const Modal: React.FC<ModalProps> = ({
@@ -22,7 +23,8 @@ export const Modal: React.FC<ModalProps> = ({
   footer,
   width = 'md',
   closeOnClickOutside = true,
-  showCloseButton = true
+  showCloseButton = true,
+  size = 'md'
 }) => {
   const { t } = useTranslation();
   

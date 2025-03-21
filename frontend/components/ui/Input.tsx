@@ -1,23 +1,42 @@
 import React from 'react';
 import { ExclamationCircleIcon } from '@heroicons/react/24/solid';
 import { useTranslation } from 'next-i18next';
+import { classNames } from '@/utils/classNames';
 
-interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'prefix' | 'suffix'> {
+interface InputProps {
+  label?: string;
+  type?: string;
+  id?: string;
+  name?: string;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  placeholder?: string;
   error?: boolean;
+  required?: boolean;
+  fullWidth?: boolean;
+  className?: string;
+  size?: 'sm' | 'md' | 'lg';
   errorMessage?: string;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
-  size?: 'sm' | 'md' | 'lg';
 }
 
 export const Input: React.FC<InputProps> = ({
-  className = '',
+  label,
+  type = 'text',
+  id,
+  name,
+  value,
+  onChange,
+  placeholder,
   error = false,
+  required = false,
+  fullWidth = false,
+  className = '',
+  size = 'md',
   errorMessage,
   prefix,
   suffix,
-  size = 'md',
-  ...props
 }) => {
   const { t } = useTranslation();
   
@@ -37,7 +56,16 @@ export const Input: React.FC<InputProps> = ({
   // 如果有前缀或后缀，使用容器
   if (prefix || suffix) {
     return (
-      <div>
+      <div className={classNames(fullWidth ? 'w-full' : 'w-auto', className)}>
+        {label && (
+          <label 
+            htmlFor={id}
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
+            {label}
+            {required && <span className="text-red-500 ml-1">*</span>}
+          </label>
+        )}
         <div className={`${prefixSuffixContainerClass} ${error ? 'border-red-300 focus-within:ring-red-500 focus-within:border-red-500' : ''}`}>
           {prefix && (
             <div className="pl-3 flex items-center pointer-events-none">
@@ -45,8 +73,14 @@ export const Input: React.FC<InputProps> = ({
             </div>
           )}
           <input
+            type={type}
+            id={id}
+            name={name}
+            value={value}
+            onChange={onChange}
+            placeholder={placeholder}
             className={`block w-full border-0 p-0 focus:ring-0 ${sizeClasses[size]} ${className}`}
-            {...props}
+            required={required}
           />
           {suffix && (
             <div className="pr-3 flex items-center">
@@ -66,19 +100,37 @@ export const Input: React.FC<InputProps> = ({
   
   // 没有前缀或后缀的标准输入框
   return (
-    <div>
+    <div className={classNames(fullWidth ? 'w-full' : 'w-auto', className)}>
+      {label && (
+        <label 
+          htmlFor={id}
+          className="block text-sm font-medium text-gray-700 mb-1"
+        >
+          {label}
+          {required && <span className="text-red-500 ml-1">*</span>}
+        </label>
+      )}
       <input
-        className={`block w-full rounded-md shadow-sm ${
-          error
-            ? 'border-red-300 text-red-900 placeholder-red-300 focus:ring-red-500 focus:border-red-500'
-            : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
-        } ${sizeClasses[size]} ${className}`}
+        type={type}
+        id={id}
+        name={name}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        className={classNames(
+          'form-input block w-full rounded-md border-gray-300 shadow-sm',
+          'focus:border-blue-500 focus:ring-blue-500',
+          error ? 'border-red-500' : 'border-gray-300',
+          size === 'sm' && 'text-sm px-3 py-2',
+          size === 'md' && 'px-4 py-2',
+          size === 'lg' && 'px-4 py-3 text-base'
+        )}
+        required={required}
         aria-invalid={error ? 'true' : 'false'}
-        aria-describedby={error && errorMessage ? `${props.id}-error` : undefined}
-        {...props}
+        aria-describedby={error && errorMessage ? `${id}-error` : undefined}
       />
       {error && errorMessage && (
-        <p id={`${props.id}-error`} className="mt-2 text-sm text-red-600 flex items-center">
+        <p id={`${id}-error`} className="mt-2 text-sm text-red-600 flex items-center">
           <ExclamationCircleIcon className="h-4 w-4 mr-1" />
           {errorMessage}
         </p>

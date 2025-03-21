@@ -1,5 +1,5 @@
 import { useState, useCallback, ChangeEvent, FormEvent } from 'react';
-import { useI18n } from './useI18n';
+import { useTranslation } from 'next-i18next';
 
 interface FormOptions<T> {
   initialValues: T;
@@ -14,7 +14,7 @@ export function useForm<T extends Record<string, any>>({
   validate,
   i18nNamespace = 'form',
 }: FormOptions<T>) {
-  const { t } = useI18n(i18nNamespace);
+  const { t } = useTranslation([i18nNamespace, 'common']);
   const [values, setValues] = useState<T>(initialValues);
   const [errors, setErrors] = useState<Partial<Record<keyof T, string>>>({});
   const [touched, setTouched] = useState<Partial<Record<keyof T, boolean>>>({});

@@ -1,27 +1,38 @@
-import { useState, useEffect } from 'react';
-import { useTranslation } from 'next-i18next';
-import { useClerk } from '@clerk/nextjs';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Link from 'next/link';
+import Image from 'next/image';
+import { useClerk } from '@clerk/nextjs';
 import { 
-  Card, 
+  ResponsiveContainer, 
+  Grid, 
+  GridItem,
+  RTLWrapper
+} from '@/components/layout';
+import { 
   Button, 
-  Alert
+  FormError,
+  ErrorNotification,
+  LoadingButton,
+  Alert,
+  VerificationInput
 } from '@/components/ui';
-import { VerificationInput } from '@/components/ui/VerificationInput';
-import { Form } from '@/components/ui/Form/Form';
-import { AuthLayout } from '@/components/layout/AuthLayout';
+import { Breadcrumbs } from '@/components/navigation';
+import { useError } from '@/contexts/ErrorContext';
 
-export function VerifyPage() {
-  const { t } = useTranslation('auth');
-  const { client } = useClerk();
+export default function VerifyPage() {
+  const { t } = useTranslation(['auth', 'common']);
   const router = useRouter();
+  const { client } = useClerk();
+  const { showErrorMessage } = useError();
   const { token, email } = router.query;
   
   const [verificationCode, setVerificationCode] = useState('');
+  const [error, setError] = useState('');
   const [isVerifying, setIsVerifying] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const [resendCooldown, setResendCooldown] = useState(0);
   
   // 处理自动验证（如果URL中有token）
@@ -31,21 +42,20 @@ export function VerifyPage() {
     }
   }, [token]);
   
-  // 倒计时逻辑
+  // 处理重发冷却时间
   useEffect(() => {
-    let timer: NodeJS.Timeout;
     if (resendCooldown > 0) {
-      timer = setTimeout(() => {
+      const timer = setTimeout(() => {
         setResendCooldown(resendCooldown - 1);
       }, 1000);
+      return () => clearTimeout(timer);
     }
-    return () => clearTimeout(timer);
   }, [resendCooldown]);
-  
+
   // 使用token验证
   const verifyWithToken = async (verificationToken: string) => {
     setIsVerifying(true);
-    setError(null);
+    setError('');
     
     try {
       // 使用正确的Clerk API
@@ -62,7 +72,11 @@ export function VerifyPage() {
       }, 3000);
     } catch (err: any) {
       console.error('Verification error:', err);
-      setError(err.message || t('verify.errors.generic'));
+      setError(err.message || t('auth:verify.errors.generic'));
+      showErrorMessage(
+        err.message || t('auth:verify.errors.generic'),
+        t('auth:verify.errors.title')
+      );
     } finally {
       setIsVerifying(false);
     }
@@ -70,10 +84,13 @@ export function VerifyPage() {
   
   // 使用验证码验证
   const verifyWithCode = async () => {
-    if (verificationCode.length !== 6 || !email) return;
+    if (verificationCode.length !== 6 || !email) {
+      setError(t('auth:verify.errors.invalid_code'));
+      return;
+    }
     
     setIsVerifying(true);
-    setError(null);
+    setError('');
     
     try {
       // 使用Clerk的signIn流程验证邮箱
@@ -94,7 +111,11 @@ export function VerifyPage() {
       }, 3000);
     } catch (err: any) {
       console.error('Verification error:', err);
-      setError(err.errors?.[0]?.message || t('verify.errors.generic'));
+      setError(err.errors?.[0]?.message || t('auth:verify.errors.generic'));
+      showErrorMessage(
+        err.errors?.[0]?.message || t('auth:verify.errors.generic'),
+        t('auth:verify.errors.title')
+      );
     } finally {
       setIsVerifying(false);
     }
@@ -104,7 +125,7 @@ export function VerifyPage() {
   const resendVerification = async () => {
     if (!email || resendCooldown > 0) return;
     
-    setError(null);
+    setError('');
     
     try {
       // 创建新的signIn尝试并发送验证邮件
@@ -130,91 +151,162 @@ export function VerifyPage() {
       setResendCooldown(60);
     } catch (err: any) {
       console.error('Resend verification error:', err);
-      setError(err.errors?.[0]?.message || t('verify.errors.resend'));
+      setError(err.errors?.[0]?.message || t('auth:verify.errors.resend'));
+      showErrorMessage(
+        err.errors?.[0]?.message || t('auth:verify.errors.resend'),
+        t('auth:verify.errors.resend_title')
+      );
     }
   };
-  
+
+  const breadcrumbItems = [
+    { label: t('common:navigation.home'), href: '/' },
+    { label: t('auth:verify.title') }
+  ];
+
   return (
-    <AuthLayout 
-      title={t('verify.title') as string}
-      subtitle={email ? (t('verify.subtitle', { email }) as string) : (t('verify.subtitleGeneric') as string)}
-    >
-      <Card>
-        <Card.Body>
-          {error && (
-            <Alert type="error" className="mb-4" message={error} />
-          )}
+    <RTLWrapper>
+      <ErrorNotification position="top" />
+      
+      <div className="min-h-screen bg-gray-50">
+        <ResponsiveContainer maxWidth="xl" className="py-8">
+          <Breadcrumbs items={breadcrumbItems} className="mb-8" />
           
-          {isVerified ? (
-            <div className="text-center py-4">
-              <Alert type="success" className="mb-4" message={t('verify.success') as string} />
-              <p className="mt-2 text-sm text-gray-600">
-                {t('verify.redirecting')}
-              </p>
-            </div>
-          ) : (
-            <>
-              {!token && (
-                <div className="space-y-6">
-                  <p className="text-sm text-gray-600">
-                    {t('verify.enterCode')}
+          <Grid cols={1} lgCols={2} gap={8} className="items-center">
+            <GridItem className="hidden lg:block">
+              <div className="relative h-[500px] w-full rounded-xl overflow-hidden shadow-xl">
+                <Image
+                  src="/images/verify-email-illustration.jpg"
+                  alt={t('auth:verify.illustration_alt')}
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  priority
+                />
+                <div className="absolute inset-0 bg-blue-900 bg-opacity-40 flex flex-col justify-end p-8">
+                  <h2 className="text-white text-3xl font-bold mb-4">
+                    {t('auth:verify.welcome_message')}
+                  </h2>
+                  <p className="text-white text-lg">
+                    {t('auth:verify.welcome_description')}
                   </p>
-                  
-                  <div className="flex justify-center">
-                    <VerificationInput
-                      onChange={setVerificationCode}
-                      disabled={isVerifying}
+                </div>
+              </div>
+            </GridItem>
+            
+            <GridItem>
+              <div className="bg-white p-8 rounded-xl shadow-md">
+                <div className="text-center mb-8">
+                  <Image
+                    src="/logo.png"
+                    alt="ThinkForward AI"
+                    width={180}
+                    height={48}
+                    className="mx-auto mb-6"
+                  />
+                  <h1 className="text-2xl font-bold text-gray-900">
+                    {t('auth:verify.title')}
+                  </h1>
+                  <p className="text-gray-600 mt-2">
+                    {email 
+                      ? t('auth:verify.subtitle', { email }) 
+                      : t('auth:verify.subtitle_generic')}
+                  </p>
+                </div>
+                
+                {!isVerified ? (
+                  <div className="space-y-6">
+                    {!token && (
+                      <>
+                        <div className="text-center">
+                          <p className="text-gray-700 mb-4">
+                            {t('auth:verify.enter_code')}
+                          </p>
+                          
+                          <VerificationInput
+                            length={6}
+                            value={verificationCode}
+                            onChange={setVerificationCode}
+                            error={!!error}
+                            className="justify-center"
+                          />
+                          
+                          <FormError error={error} className="mt-2" />
+                        </div>
+                        
+                        <LoadingButton
+                          onClick={verifyWithCode}
+                          variant="primary"
+                          size="large"
+                          isLoading={isVerifying}
+                          loadingText={t('auth:verify.verifying')}
+                          fullWidth
+                          disabled={verificationCode.length !== 6 || !email}
+                        >
+                          {t('auth:verify.verify_email')}
+                        </LoadingButton>
+                        
+                        <div className="text-center mt-4">
+                          <p className="text-gray-600 mb-2">
+                            {t('auth:verify.no_code')}
+                          </p>
+                          <Button
+                            variant="text"
+                            onClick={resendVerification}
+                            disabled={isVerifying || resendCooldown > 0 || !email}
+                          >
+                            {resendCooldown > 0
+                              ? t('auth:verify.resend_countdown', { seconds: resendCooldown })
+                              : t('auth:verify.resend_code')}
+                          </Button>
+                        </div>
+                      </>
+                    )}
+                    
+                    {token && (
+                      <div className="text-center py-4">
+                        <p className="text-gray-700">
+                          {t('auth:verify.verifying_token')}
+                        </p>
+                        <div className="mt-4 flex justify-center">
+                          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div className="text-center py-4">
+                    <Alert 
+                      type="success" 
+                      className="mb-4" 
+                      message={t('auth:verify.verification_success')}
                     />
+                    <p className="mt-2 text-sm text-gray-600">
+                      {t('auth:verify.redirecting_login')}
+                    </p>
+                    <div className="mt-6">
+                      <Button
+                        variant="outline"
+                        onClick={() => router.push('/auth/login')}
+                        fullWidth
+                      >
+                        {t('auth:verify.go_to_login')}
+                      </Button>
+                    </div>
                   </div>
-                  
-                  <div className="mt-6">
-                    <Button
-                      onClick={verifyWithCode}
-                      fullWidth
-                      isLoading={isVerifying}
-                      disabled={verificationCode.length !== 6}
-                    >
-                      {t('verify.verifyButton')}
-                    </Button>
-                  </div>
-                  
-                  <div className="text-center mt-4">
-                    <button
-                      type="button"
-                      onClick={resendVerification}
-                      disabled={resendCooldown > 0}
-                      className="text-sm font-medium text-blue-600 hover:text-blue-500 disabled:text-gray-400"
-                    >
-                      {resendCooldown > 0
-                        ? t('verify.resendIn', { seconds: resendCooldown })
-                        : t('verify.resendButton')}
-                    </button>
-                  </div>
-                </div>
-              )}
-              
-              {token && (
-                <div className="text-center py-4">
-                  <p className="text-sm text-gray-600">
-                    {t('verify.verifying')}
-                  </p>
-                  {/* 可以添加加载动画 */}
-                </div>
-              )}
-            </>
-          )}
-        </Card.Body>
-        
-        <Card.Footer>
-          <p className="text-center text-sm text-gray-600">
-            <Link href="/auth/login">
-              <a className="font-medium text-blue-600 hover:text-blue-500">
-                {t('verify.backToLogin')}
-              </a>
-            </Link>
-          </p>
-        </Card.Footer>
-      </Card>
-    </AuthLayout>
+                )}
+              </div>
+            </GridItem>
+          </Grid>
+        </ResponsiveContainer>
+      </div>
+    </RTLWrapper>
   );
+}
+
+export async function getStaticProps({ locale }: { locale: string }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['auth', 'common'])),
+    },
+  };
 }

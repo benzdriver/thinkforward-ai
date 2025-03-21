@@ -97,7 +97,9 @@
         "md": "중간",
         "lg": "크게",
         "xl": "아주 크게"
-      }
+      },
+      "submit": "제출",
+      "cancel": "취소"
     },
     "dataTable": {
       "emptyText": "데이터 없음",
@@ -372,5 +374,6 @@
     "created": "생성됨",
     "loading": "로딩 중...",
     "please_wait": "잠시 기다려 주세요..."
-  }
+  },
+  "loading": "로딩 중..."
 }

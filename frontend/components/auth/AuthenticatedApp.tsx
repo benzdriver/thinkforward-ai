@@ -1,72 +1,55 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
 import { useUser } from '@clerk/nextjs';
-import { useUserRole } from '../../hooks/useUserRole';
+import { usePermissions } from '@/hooks/usePermissions';
 import { LoadingScreen } from '../ui/LoadingScreen';
 
 interface AuthenticatedAppProps {
   children: React.ReactNode;
-  publicRoutes?: string[];
-  adminRoutes?: string[];
-  consultantRoutes?: string[];
-  clientRoutes?: string[];
 }
 
-export const AuthenticatedApp: React.FC<AuthenticatedAppProps> = ({
-  children,
-  publicRoutes = ['/login', '/signup', '/forgot-password', '/'],
-  adminRoutes = ['/admin'],
-  consultantRoutes = ['/consultant'],
-  clientRoutes = ['/client'],
-}) => {
+// 不需要认证的路由列表
+const publicRoutes = [
+  '/',
+  '/auth/login',
+  '/auth/register',
+  '/auth/verify',
+  '/auth/forgot-password',
+  '/about',
+  '/contact',
+  '/pricing',
+  '/features',
+  '/blog',
+  '/terms',
+  '/privacy',
+];
+
+export function AuthenticatedApp({ children }: AuthenticatedAppProps) {
   const router = useRouter();
-  const { isLoaded, isSignedIn, user } = useUser();
-  const { role, isLoading: roleLoading } = useUserRole();
-  const [isAuthorized, setIsAuthorized] = useState(false);
-  const [isChecking, setIsChecking] = useState(true);
+  const { isLoaded: isUserLoaded, isSignedIn } = useUser();
+  const { isAuthenticated, userRole } = usePermissions();
+  
+  // 检查当前路径是否是公共路由
+  const isPublicRoute = publicRoutes.some(route => 
+    router.pathname === route || router.pathname.startsWith(`${route}/`)
+  );
 
-  useEffect(() => {
-    if (!isLoaded || roleLoading) {
-      return;
-    }
-
-    const currentPath = router.pathname;
-    
-    // 公共路由总是允许访问
-    if (publicRoutes.some(route => currentPath.startsWith(route))) {
-      setIsAuthorized(true);
-      setIsChecking(false);
-      return;
-    }
-
-    // 需要登录才能访问的路由
-    if (!isSignedIn) {
-      router.push('/login');
-      setIsChecking(false);
-      return;
-    }
-
-    // 基于角色的路由访问控制
-    if (adminRoutes.some(route => currentPath.startsWith(route)) && role !== 'ADMIN') {
-      router.push('/unauthorized');
-    } else if (consultantRoutes.some(route => currentPath.startsWith(route)) && role !== 'CONSULTANT' && role !== 'ADMIN') {
-      router.push('/unauthorized');
-    } else if (clientRoutes.some(route => currentPath.startsWith(route)) && role !== 'CLIENT' && role !== 'ADMIN') {
-      router.push('/unauthorized');
-    } else {
-      setIsAuthorized(true);
-    }
-
-    setIsChecking(false);
-  }, [isLoaded, isSignedIn, role, roleLoading, router, publicRoutes, adminRoutes, consultantRoutes, clientRoutes]);
-
-  if (!isLoaded || roleLoading || isChecking) {
+  // 如果用户信息正在加载，显示加载屏幕
+  if (!isUserLoaded) {
     return <LoadingScreen />;
   }
 
-  if (!isAuthorized) {
-    return null; // 将重定向到适当的页面
+  // 如果是公共路由，直接显示内容
+  if (isPublicRoute) {
+    return <>{children}</>;
   }
 
+  // 如果用户未登录且当前路由需要认证，重定向到登录页面
+  if (!isSignedIn || !isAuthenticated) {
+    router.push('/auth/login');
+    return <LoadingScreen />;
+  }
+
+  // 用户已登录，显示内容
   return <>{children}</>;
-};
+}

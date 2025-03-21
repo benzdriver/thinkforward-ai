@@ -1,5 +1,5 @@
 import { toast } from '@/components/ui/Toast';
-import { useI18n } from '@/hooks/useI18n';
+import { useTranslation } from 'next-i18next';
 
 interface ApiOptions {
   headers?: Record<string, string>;
@@ -60,12 +60,7 @@ async function fetchApi<T>(
     
     return responseData;
   } catch (error) {
-    // 处理网络错误或解析错误
-    if (!(error instanceof Error)) {
-      throw new Error('Unknown error occurred');
-    }
-    
-    // 重新抛出错误，让调用者处理
+    // 重新抛出错误，以便调用者处理
     throw error;
   }
 }
@@ -74,19 +69,19 @@ async function fetchApi<T>(
  * API 请求方法
  */
 export const api = {
-  get: <T>(url: string, options?: ApiOptions) => 
+  get: <T>(url: string, options?: ApiOptions): Promise<T> => 
     fetchApi<T>(url, 'GET', undefined, options),
   
-  post: <T>(url: string, data?: any, options?: ApiOptions) => 
+  post: <T>(url: string, data?: any, options?: ApiOptions): Promise<T> => 
     fetchApi<T>(url, 'POST', data, options),
   
-  put: <T>(url: string, data?: any, options?: ApiOptions) => 
+  put: <T>(url: string, data?: any, options?: ApiOptions): Promise<T> => 
     fetchApi<T>(url, 'PUT', data, options),
   
-  patch: <T>(url: string, data?: any, options?: ApiOptions) => 
+  patch: <T>(url: string, data?: any, options?: ApiOptions): Promise<T> => 
     fetchApi<T>(url, 'PATCH', data, options),
   
-  delete: <T>(url: string, options?: ApiOptions) => 
+  delete: <T>(url: string, options?: ApiOptions): Promise<T> => 
     fetchApi<T>(url, 'DELETE', undefined, options),
 };
 
@@ -131,7 +126,7 @@ export function handleApiError(error: unknown): string {
  * 这个函数应该在组件中使用，以便访问翻译函数
  */
 export function useApiErrorHandler() {
-  const { t } = useI18n('error');
+  const { t } = useTranslation('error');
   
   return {
     showError: (error: unknown) => {

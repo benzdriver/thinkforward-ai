@@ -1,0 +1,118 @@
+{
+  "meta": {
+    "title": "ThinkForward AI - Assistant intelligent pour les immigrés"
+  },
+  "hero": {
+    "title": "ThinkForward AI - Assistant intelligent pour les immigrés",
+    "subtitle": "Fournir des outils pilotés par l'IA aux conseillers en immigration pour améliorer l'efficacité et simplifier les processus",
+    "cta_primary": "Commencer maintenant",
+    "cta_secondary": "En savoir plus"
+  },
+  "features": {
+    "title": "Outils intelligents pour les conseillers en immigration",
+    "subtitle": "Améliorer l'efficacité, simplifier les processus, améliorer l'expérience client",
+    "ai_powered": {
+      "title": "Assistant conseiller en IA",
+      "description": "Obtenez des conseils professionnels instantanés, répondez à des questions complexes sur l'immigration"
+    },
+    "collaboration": {
+      "title": "Analyse intelligente des documents",
+      "description": "Analyse automatique et extraction des informations clés, économie de temps de vérification manuelle"
+    },
+    "communication": {
+      "title": "Automatisation des formulaires",
+      "description": "Remplissage intelligent des formulaires d'immigration, réduction des erreurs et gain de temps"
+    }
+  },
+  "how_it_works": {
+    "title": "Comment ça marche",
+    "subtitle": "Trois étapes simples pour démarrer le service d'immigration intelligent",
+    "step1": {
+      "title": "Créer un compte",
+      "description": "Créez votre compte ThinkForward AI, choisissez le plan qui vous convient"
+    },
+    "step2": {
+      "title": "Télécharger des documents",
+      "description": "Téléchargez les informations client et les documents pertinents, analyse automatique par le système"
+    },
+    "step3": {
+      "title": "Obtenir des conseils intelligents",
+      "description": "Recevoir des conseils générés par l'IA et des formulaires pré-remplis automatiquement"
+    }
+  },
+  "testimonials": {
+    "title": "Choix de confiance des conseillers",
+    "subtitle": "Écoutez comment d'autres conseillers en immigration utilisent ThinkForward AI pour améliorer leur activité",
+    "quote1": "ThinkForward AI m'a aidé à réduire de 60% le temps de traitement des documents, me permettant de me concentrer sur la fourniture d'un meilleur service à mes clients.",
+    "quote2": "La fonction de remplissage automatique des formulaires est un véritable jeu changer. Non seulement elle fait gagner du temps, mais elle réduit considérablement le taux d'erreurs.",
+    "quote3": "Le système de gestion des clients me permet de suivre facilement le progrès de toutes les demandes, améliorant ainsi mon efficacité au travail.",
+    "role1": "Conseiller en immigration senior, Canada",
+    "role2": "Conseiller en immigration, Australie",
+    "role3": "Conseiller en immigration, Nouvelle-Zélande"
+  },
+  "pricing": {
+    "title": "Plans personnalisés pour les conseillers en immigration",
+    "subtitle": "Choisissez le plan qui correspond le mieux à vos besoins commerciaux",
+    "popular": "Le plus populaire",
+    "basic": {
+      "name": "Plan de démarrage",
+      "price": "¥299",
+      "description": "Adapté aux conseillers en immigration débutants ou de petite taille",
+      "feature1": "Assistant conseiller en IA de base",
+      "feature2": "Gestion d'un maximum de 10 clients",
+      "feature3": "Analyse documentaire de base",
+      "cta": "Choisir ce plan"
+    },
+    "pro": {
+      "name": "Plan professionnel",
+      "price": "¥599",
+      "description": "Adapté aux entreprises de conseil en immigration en croissance",
+      "feature1": "Assistant conseiller en IA avancé",
+      "feature2": "Gestion d'un maximum de 50 clients",
+      "feature3": "Analyse et extraction avancées des documents",
+      "feature4": "Support prioritaire par e-mail et chat",
+      "cta": "Choisir ce plan"
+    },
+    "enterprise": {
+      "name": "Plan entreprise",
+      "price": "¥999",
+      "description": "Adapté aux grandes entreprises de conseil en immigration",
+      "feature1": "Assistant AI d'entreprise",
+      "feature2": "Gestion illimitée des clients",
+      "feature3": "Analyse avancée de documents et traitement en lot",
+      "feature4": "Suite complète d'automatisation de formulaires",
+      "feature5": "Support prioritaire 24/7",
+      "cta": "Nous contacter"
+    }
+  },
+  "cta": {
+    "title": "Prêt à améliorer votre activité de conseil en immigration ?",
+    "subtitle": "Inscrivez-vous dès maintenant et découvrez comment l'IA peut transformer votre façon de travailler",
+    "button_primary": "Essai gratuit de 14 jours",
+    "button_secondary": "Planifier une démo"
+  },
+  "faq": {
+    "title": "Questions fréquentes",
+    "subtitle": "En savoir plus sur ThinkForward AI",
+    "q1": "Comment ThinkForward AI aide-t-il les conseillers en immigration à améliorer leur efficacité ?",
+    "a1": "Notre système d'IA peut analyser automatiquement des documents, remplir des formulaires, fournir des conseils professionnels, aidant les conseillers à économiser jusqu'à 60 % de leur temps pour se concentrer sur la fourniture de services à plus grande valeur ajoutée à leurs clients.",
+    "q2": "Est-ce qu'il faut avoir des compétences techniques pour utiliser ThinkForward AI ?",
+    "a2": "Non. Notre plateforme est conçue de manière simple et intuitive, accessible à tous sans nécessiter de connaissances techniques particulières.",
+    "q3": "Mes données clients sont-elles sécurisées ?",
+    "a3": "Oui, nous accordons une grande importance à la sécurité des données. Toutes les données sont stockées de manière chiffrée et respectent des politiques strictes de protection de la vie privée, conformes aux normes internationales de protection des données.",
+    "q4": "Est-il possible de bénéficier d'un essai gratuit ?",
+    "a4": "Oui, nous offrons une période d'essai gratuit de 14 jours pour vous permettre de découvrir toutes les fonctionnalités de la plateforme, sans avoir besoin de carte de crédit.",
+    "q5": "Comment puis-je obtenir du support si j'en ai besoin ?",
+    "a5": "Nous proposons plusieurs canaux de support, y compris des documents en ligne, une assistance par e-mail et un chat en direct. Les utilisateurs d'entreprise peuvent également bénéficier du support d'un gestionnaire de compte dédié.",
+    "more_questions": "Vous avez d'autres questions ?",
+    "contact_us": "Nous contacter"
+  },
+  "trusted_by": "Partenaires de confiance",
+  "newsletter": {
+    "title": "Abonnez-vous à notre newsletter",
+    "description": "Recevez les dernières mises à jour sur les politiques d'immigration et des astuces d'utilisation des outils d'IA",
+    "placeholder": "Votre adresse e-mail",
+    "button": "S'abonner",
+    "privacy_note": "Nous respectons votre vie privée et ne vous enverrons pas de courriers indésirables"
+  }
+}

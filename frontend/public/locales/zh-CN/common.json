@@ -97,7 +97,9 @@
         "md": "中",
         "lg": "大",
         "xl": "超大"
-      }
+      },
+      "submit": "提交",
+      "cancel": "取消"
     },
     "dataTable": {
       "emptyText": "暂无数据",
@@ -372,5 +374,22 @@
     "created": "已创建",
     "loading": "加载中...",
     "please_wait": "请稍候..."
+  },
+  "loading": "加载中...",
+  "header": {
+    "home": "首页",
+    "about": "关于我们",
+    "services": "服务",
+    "contact": "联系我们",
+    "login": "登录",
+    "register": "注册"
+  },
+  "navigation": {
+    "home": "首页",
+    "features": "功能",
+    "pricing": "价格",
+    "about": "关于我们",
+    "contact": "联系我们",
+    "toggle_menu": "切换菜单"
   }
 } 

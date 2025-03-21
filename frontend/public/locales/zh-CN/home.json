@@ -1,0 +1,191 @@
+{
+  "meta": {
+    "title": "ThinkForward AI - 智能移民助手",
+    "description": "ThinkForward AI为移民顾问提供AI驱动的工具，提高效率，简化流程，增强客户体验。"
+  },
+  "hero": {
+    "title": "用智能AI解决方案",
+    "highlight": "提升您的移民顾问业务",
+    "subtitle": "为移民顾问提供AI驱动的工具，提高效率，简化流程，增强客户体验",
+    "watch_demo": "观看演示",
+    "get_started": "免费开始使用",
+    "users_count": "专业人士信赖ThinkForward AI",
+    "live_feature": "AI助手",
+    "live_feature_description": "我们的AI助手正在实时帮助用户解决问题。",
+    "stats": {
+      "satisfaction": "客户满意度",
+      "support": "全天候客户支持",
+      "integrations": "集成服务",
+      "uptime": "平台运行时间"
+    }
+  },
+  "trusted_by": "受到全球创新公司的信赖",
+  "features": {
+    "title": "为移民顾问打造的智能工具",
+    "subtitle": "提高效率，简化流程，增强客户体验",
+    "learn_more": "了解更多",
+    "explore_all": "探索所有功能",
+    "ai_powered": {
+      "title": "AI顾问助手",
+      "description": "获取即时专业建议，回答复杂的移民问题",
+      "long_description": "我们的AI引擎可以在几分钟内分析数千份文档，提取关键信息，识别模式，并生成可行的见解。节省手动工作的时间，发现数据中隐藏的机会。"
+    },
+    "collaboration": {
+      "title": "文档智能分析",
+      "description": "自动分析和提取关键信息，节省手动审核时间",
+      "long_description": "使用实时文档编辑、评论和版本控制，让您的团队无缝协作。我们的平台使跨部门共享见解、分配任务和跟踪进度变得简单。"
+    },
+    "communication": {
+      "title": "表单自动化",
+      "description": "智能填充移民表格，减少错误和节省时间",
+      "long_description": "我们的平台分析通信模式，提供智能建议，自动回复，确保重要信息不会被忽略。改善团队协调和客户关系。"
+    },
+    "analytics": {
+      "title": "高级分析与报告",
+      "description": "通过全面的分析和报告获取有价值的见解",
+      "long_description": "将原始数据转化为可行的见解，使用我们的高级分析工具。创建自定义仪表板，生成详细报告，可视化趋势，做出推动业务增长的数据驱动决策。"
+    },
+    "security": {
+      "title": "企业级安全保障",
+      "description": "通过我们强大的安全措施保护您的敏感数据",
+      "long_description": "我们非常重视安全。我们的平台具有端到端加密、基于角色的访问控制、符合行业标准，并定期进行安全审计，确保您的数据受到保护。"
+    }
+  },
+  "workflow": {
+    "title": "ThinkForward AI如何工作",
+    "subtitle": "我们的流程帮助您快速有效地实施AI解决方案",
+    "learn_more": "了解更多",
+    "watch_demo": "观看工作原理",
+    "step1": {
+      "title": "确定您的目标",
+      "description": "与我们的团队合作，识别您的业务挑战并为您的AI实施定义明确的目标。"
+    },
+    "step2": {
+      "title": "配置您的解决方案",
+      "description": "我们的专家将配置平台以满足您的特定需求，与您现有的系统集成。"
+    },
+    "step3": {
+      "title": "协作与完善",
+      "description": "与您的团队一起使用平台，提供反馈，帮助我们完善和优化您的解决方案。"
+    },
+    "step4": {
+      "title": "分析与改进",
+      "description": "查看性能指标和见解，持续改进您的流程和成果。"
+    }
+  },
+  "testimonials": {
+    "title": "顾问的信任之选",
+    "subtitle": "听听其他移民顾问如何使用ThinkForward AI提升业务",
+    "view_case_studies": "查看案例研究",
+    "quote1": "ThinkForward AI帮助我将文档处理时间减少了60%，让我能够专注于为客户提供更好的服务。",
+    "role1": "资深移民顾问，加拿大",
+    "company1": "全球金融服务",
+    "quote2": "智能表单填充功能是一个游戏规则的改变者。它不仅节省了时间，还大大减少了错误率。",
+    "role2": "移民顾问，澳大利亚",
+    "company2": "科技创新公司",
+    "quote3": "客户管理系统让我能够轻松跟踪所有申请的进度，提高了我的工作效率。",
+    "role3": "移民顾问，新西兰",
+    "company3": "零售解决方案集团",
+    "quote4": "实施过程非常顺利，投资回报率令人难以置信。我们在提高准确性的同时，将处理成本降低了40%。",
+    "role4": "财务副总裁",
+    "company4": "医疗系统"
+  },
+  "pricing": {
+    "title": "为移民顾问定制的方案",
+    "subtitle": "选择最适合您业务需求的方案",
+    "per_month": "每月",
+    "get_started": "开始使用",
+    "most_popular": "最受欢迎",
+    "basic": {
+      "name": "启动计划",
+      "price": "299",
+      "billing": "每月计费",
+      "description": "适合刚开始或规模较小的移民顾问",
+      "feature1": "基础AI顾问助手",
+      "feature2": "最多管理10位客户",
+      "feature3": "基础文档分析",
+      "feature4": "标准支持",
+      "feature5": "基本报告功能",
+      "limitation1": "无高级分析",
+      "limitation2": "无批量处理",
+      "cta": "选择此方案"
+    },
+    "pro": {
+      "name": "专业计划",
+      "price": "599",
+      "billing": "每月计费",
+      "description": "适合成长中的移民顾问业务",
+      "feature1": "高级AI顾问助手",
+      "feature2": "最多管理50位客户",
+      "feature3": "高级文档分析与提取",
+      "feature4": "优先电子邮件和聊天支持",
+      "feature5": "高级报告与分析",
+      "feature6": "批量处理功能",
+      "cta": "选择此方案"
+    },
+    "enterprise": {
+      "name": "企业计划",
+      "price": "定制",
+      "billing": "年度计费",
+      "description": "适合大型移民顾问公司",
+      "feature1": "企业级AI顾问助手",
+      "feature2": "无限客户管理",
+      "feature3": "高级文档分析与批量处理",
+      "feature4": "完整表单自动化套件",
+      "feature5": "24/7优先支持",
+      "feature6": "专属客户经理",
+      "feature7": "自定义集成与API访问",
+      "contact_us": "联系我们",
+      "cta": "选择此方案",
+      "title": "企业解决方案"
+    }
+  },
+  "faq": {
+    "title": "常见问题",
+    "subtitle": "了解更多关于ThinkForward AI的信息",
+    "more_questions": "还有其他问题？",
+    "contact_support": "联系支持",
+    "question1": "ThinkForward AI如何帮助移民顾问提高效率？",
+    "answer1": "我们的AI系统可以自动分析文档、填充表格、提供专业建议，帮助顾问节省高达60%的时间，专注于为客户提供更有价值的服务。",
+    "question2": "使用ThinkForward AI需要具备技术背景吗？",
+    "answer2": "不需要。我们的平台设计简单直观，任何人都可以轻松上手使用，无需特殊的技术知识。",
+    "question3": "我的客户数据安全吗？",
+    "answer3": "是的，我们非常重视数据安全。所有数据都经过加密存储，并遵循严格的隐私保护政策，符合国际数据保护标准。",
+    "question4": "可以免费试用吗？",
+    "answer4": "是的，我们提供14天的免费试用期，让您充分体验平台的所有功能，无需信用卡。"
+  },
+  "contact": {
+    "title": "联系我们",
+    "subtitle": "我们随时准备回答您的问题并提供支持",
+    "form_title": "发送消息",
+    "info_title": "联系信息",
+    "form": {
+      "name": "您的姓名",
+      "email": "电子邮箱",
+      "company": "公司名称",
+      "message": "您的消息",
+      "policy": "我同意隐私政策和服务条款",
+      "submit": "发送消息"
+    },
+    "info": {
+      "email_title": "电子邮箱",
+      "phone_title": "电话",
+      "office_title": "办公地址",
+      "hours_title": "工作时间",
+      "hours_value": "周一至周五: 9:00 - 18:00",
+      "social_title": "社交媒体"
+    },
+    "success_message": "您的消息已成功发送，我们将尽快回复您。"
+  },
+  "cta": {
+    "title": "准备好提升您的移民顾问业务了吗？",
+    "subtitle": "立即注册，体验AI如何改变您的工作方式",
+    "primary_button": "免费试用14天",
+    "secondary_button": "联系我们"
+  },
+  "demo_modal": {
+    "title": "ThinkForward AI演示",
+    "description": "了解ThinkForward AI如何帮助移民顾问提高效率，简化流程，增强客户体验。完成演示后，您可以免费注册并开始14天的试用期。",
+    "close": "关闭"
+  }
+} 

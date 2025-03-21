@@ -6,7 +6,7 @@ import React, {
     ComponentProps,
     FC
   } from 'react';
-  import { useI18n } from './useI18n';
+  import { useTranslation } from 'next-i18next';
   
   interface LazyComponentOptions {
     fallback?: ReactNode;
@@ -56,14 +56,14 @@ import React, {
     factory: () => Promise<{ default: T }>,
     options: LazyComponentOptions = {}
   ): FC<ComponentProps<T>> {
-    const { t } = useI18n('common');
+    const { t } = useTranslation(['common']);
     const {
       fallback = <div className="lazy-loading">{t('loading')}</div>,
       errorComponent = <div className="lazy-error">{t('error.loading_component')}</div>,
       minDelay = 0
     } = options;
   
-    // lazy() 内部：Promise.all 用来实现“最小延迟 + 异步加载”
+    // lazy() 内部：Promise.all 用来实现"最小延迟 + 异步加载"
     const LazyComponent = lazy(async () => {
       try {
         const [module] = await Promise.all([
@@ -72,7 +72,7 @@ import React, {
         ]);
         return module;
       } catch (error) {
-        // 用类型断言确保“默认导出”与 T 相匹配，避免编译报错
+        // 用类型断言确保"默认导出"与 T 相匹配，避免编译报错
         return {
           default: (() => errorComponent) as unknown as T
         };

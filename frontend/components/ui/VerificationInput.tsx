@@ -1,8 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
+import classNames from 'classnames';
 
 interface VerificationInputProps {
   length?: number;
+  value: string;
   onChange: (code: string) => void;
+  error?: boolean;
   autoFocus?: boolean;
   disabled?: boolean;
   className?: string;
@@ -10,7 +13,9 @@ interface VerificationInputProps {
 
 export const VerificationInput: React.FC<VerificationInputProps> = ({
   length = 6,
+  value,
   onChange,
+  error = false,
   autoFocus = true,
   disabled = false,
   className = ''
@@ -97,6 +102,11 @@ export const VerificationInput: React.FC<VerificationInputProps> = ({
     }
   };
   
+  const inputClassName = classNames(
+    'border rounded-md p-2 text-center',
+    error ? 'border-red-500' : 'border-gray-300'
+  );
+  
   return (
     <div className={`flex space-x-2 ${className}`}>
       {Array.from({ length }).map((_, index) => (
@@ -111,7 +121,7 @@ export const VerificationInput: React.FC<VerificationInputProps> = ({
           onChange={(e) => handleChange(e, index)}
           onKeyDown={(e) => handleKeyDown(e, index)}
           disabled={disabled}
-          className="w-12 h-12 text-center text-xl font-semibold border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-100 disabled:text-gray-400"
+          className={inputClassName}
           aria-label={`Verification code digit ${index + 1}`}
         />
       ))}

@@ -1,15 +1,39 @@
 import React, { useState, useEffect } from 'react';
+import * as RadixTabs from '@radix-ui/react-tabs';
 
 interface TabPaneProps {
   tab: React.ReactNode;
   key: string;
+  value: string;
+  label?: string;
+  icon?: React.ReactNode;
   disabled?: boolean;
   children: React.ReactNode;
   className?: string;
 }
 
-export const TabPane: React.FC<TabPaneProps> = ({ children, className = '' }) => {
-  return <div className={className}>{children}</div>;
+// 创建独立的 TabPanelProps
+interface TabPanelProps {
+  value: string;
+  label: string;
+  icon?: React.ReactNode;
+  children?: React.ReactNode;  // 添加 children 属性
+  className?: string;
+}
+
+// 更新组件定义
+export const TabPanel: React.FC<TabPanelProps> = ({ 
+  children, 
+  className = '',
+  label,
+  icon 
+}) => {
+  return (
+    <div className={className}>
+      {icon && <div className="tab-icon">{icon}</div>}
+      <div className="tab-content">{children}</div>
+    </div>
+  );
 };
 
 interface TabsProps {
@@ -23,9 +47,10 @@ interface TabsProps {
   className?: string;
   tabBarClassName?: string;
   tabContentClassName?: string;
+  defaultValue?: string;
 }
 
-export const Tabs: React.FC<TabsProps> = ({
+export const CustomTabs: React.FC<TabsProps> = ({
   defaultActiveKey,
   activeKey: propActiveKey,
   onChange,
@@ -35,7 +60,8 @@ export const Tabs: React.FC<TabsProps> = ({
   centered = false,
   className = '',
   tabBarClassName = '',
-  tabContentClassName = ''
+  tabContentClassName = '',
+  defaultValue
 }) => {
   const [activeKey, setActiveKey] = useState(propActiveKey || defaultActiveKey || '');
   
@@ -58,15 +84,15 @@ export const Tabs: React.FC<TabsProps> = ({
     onChange?.(newActiveKey);
   };
   
-  // 获取所有TabPane子组件
-  const panes = React.Children.toArray(children).filter(
-    (child) => React.isValidElement(child) && (child.type as any) === TabPane
+  // 获取所有TabPanel子组件
+  const panels = React.Children.toArray(children).filter(
+    (child) => React.isValidElement(child) && (child.type as any) === TabPanel
   ) as React.ReactElement<TabPaneProps>[];
   
   // 如果没有设置activeKey，使用第一个非禁用标签
   useEffect(() => {
-    if (!activeKey && panes.length > 0) {
-      const firstNonDisabledKey = panes.find((pane) => !pane.props.disabled)?.props.key as string;
+    if (!activeKey && panels.length > 0) {
+      const firstNonDisabledKey = panels.find((panel) => !panel.props.disabled)?.props.key as string;
       if (firstNonDisabledKey) {
         handleTabClick(firstNonDisabledKey);
       }
@@ -103,13 +129,13 @@ export const Tabs: React.FC<TabsProps> = ({
   };
   
   return (
-    <div className={className}>
+    <div className={className} data-default-value={defaultValue}>
       <div className={`${typeClasses[type].tabBar} ${tabBarClassName}`}>
         <nav className={`-mb-px flex ${centered ? 'justify-center' : 'space-x-8'} ${sizeClasses[size]}`}>
-          {panes.map((pane) => {
-            const key = pane.props.key as string;
+          {panels.map((panel) => {
+            const key = panel.props.key as string;
             const isActive = key === activeKey;
-            const isDisabled = pane.props.disabled;
+            const isDisabled = panel.props.disabled;
             
             return (
               <button
@@ -125,7 +151,7 @@ export const Tabs: React.FC<TabsProps> = ({
                 aria-disabled={isDisabled}
                 tabIndex={isDisabled ? -1 : 0}
               >
-                {pane.props.tab}
+                {panel.props.tab}
               </button>
             );
           })}
@@ -133,8 +159,8 @@ export const Tabs: React.FC<TabsProps> = ({
       </div>
       
       <div className={`mt-4 ${tabContentClassName}`}>
-        {panes.map((pane) => {
-          const key = pane.props.key as string;
+        {panels.map((panel) => {
+          const key = panel.props.key as string;
           return (
             <div
               key={key}
@@ -142,7 +168,7 @@ export const Tabs: React.FC<TabsProps> = ({
               hidden={key !== activeKey}
               aria-hidden={key !== activeKey}
             >
-              {key === activeKey && pane}
+              {key === activeKey && panel.props.children}
             </div>
           );
         })}

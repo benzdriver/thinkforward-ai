@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { useI18n } from './useI18n';
+import { useTranslation } from 'next-i18next';
 
 export function useLocalStorage<T>(key: string, initialValue: T) {
-  const { t } = useI18n('errors');
+  const { t } = useTranslation(['error', 'common']);
   
   // 获取初始值
   const readValue = (): T => {

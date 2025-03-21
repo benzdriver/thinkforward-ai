@@ -20,6 +20,3 @@ export { useThrottle } from './useThrottle';
 export { useMediaQuery } from './useMediaQuery';
 export { useIntersectionObserver } from './useIntersectionObserver';
 export { usePrevious } from './usePrevious';
-
-// 国际化
-export { useI18n } from './useI18n';

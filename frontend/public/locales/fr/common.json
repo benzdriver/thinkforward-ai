@@ -97,7 +97,9 @@
         "md": "Moyen",
         "lg": "Grand",
         "xl": "Très grand"
-      }
+      },
+      "submit": "Soumettre",
+      "cancel": "Annuler"
     },
     "dataTable": {
       "emptyText": "Aucune donnée disponible",
@@ -372,5 +374,6 @@
     "created": "Créé",
     "loading": "Chargement en cours...",
     "please_wait": "Veuillez patienter..."
-  }
+  },
+  "loading": "Chargement en cours..."
 }

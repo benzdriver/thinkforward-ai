@@ -12,6 +12,7 @@ type AlertType = 'success' | 'info' | 'warning' | 'error';
 
 interface AlertProps {
   type?: AlertType;
+  title?: React.ReactNode;
   message: React.ReactNode;
   description?: React.ReactNode;
   showIcon?: boolean;
@@ -32,7 +33,8 @@ export const Alert: React.FC<AlertProps> = ({
   onClose,
   className = '',
   children,
-  leftBorder = false
+  leftBorder = false,
+  title
 }) => {
   const { t } = useTranslation(['common']);
   
@@ -67,6 +69,7 @@ export const Alert: React.FC<AlertProps> = ({
       <div className="flex items-start">
         {showIcon && <div className="flex-shrink-0">{icons[type]}</div>}
         <div className={`${showIcon ? 'ml-3' : ''} flex-1`}>
+          {title && <h3 className="font-medium">{title}</h3>}
           <div className="text-sm font-medium">{message}</div>
           {description && <div className="mt-2 text-sm">{description}</div>}
           {children}

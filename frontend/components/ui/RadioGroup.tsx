@@ -1,6 +1,7 @@
 import React from 'react';
 import { Radio } from './Radio';
 import { useTranslation } from 'next-i18next';
+import { RadioOption } from './RadioOption';
 
 interface RadioOption {
   value: string;
@@ -11,25 +12,25 @@ interface RadioOption {
 
 interface RadioGroupProps {
   name: string;
-  options: RadioOption[];
   value: string;
   onChange: (value: string) => void;
+  className?: string;
+  children: React.ReactNode;
   label?: string;
   error?: boolean;
   errorMessage?: string;
-  className?: string;
   layout?: 'vertical' | 'horizontal';
 }
 
 export const RadioGroup: React.FC<RadioGroupProps> = ({
   name,
-  options,
   value,
   onChange,
+  className = '',
+  children,
   label,
   error = false,
   errorMessage,
-  className = '',
   layout = 'vertical'
 }) => {
   const { t } = useTranslation();
@@ -47,21 +48,7 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
       )}
       
       <div className={`space-${layout === 'vertical' ? 'y' : 'x'}-4 ${layout === 'horizontal' ? 'flex items-center' : ''}`}>
-        {options.map((option) => (
-          <Radio
-            key={option.value}
-            id={`${name}-${option.value}`}
-            name={name}
-            value={option.value}
-            checked={value === option.value}
-            onChange={handleChange}
-            label={option.label}
-            description={option.description}
-            disabled={option.disabled}
-            error={error}
-            className={layout === 'horizontal' ? 'mr-4' : ''}
-          />
-        ))}
+        {children}
       </div>
       
       {error && errorMessage && (

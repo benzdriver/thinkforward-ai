@@ -97,7 +97,9 @@
         "md": "Medium",
         "lg": "Large",
         "xl": "Extra Large"
-      }
+      },
+      "submit": "Submit",
+      "cancel": "Cancel"
     },
     "dataTable": {
       "emptyText": "No data available",
@@ -372,5 +374,6 @@
     "created": "Created",
     "loading": "Loading...",
     "please_wait": "Please wait..."
-  }
+  },
+  "loading": "Loading..."
 }

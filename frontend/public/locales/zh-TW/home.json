@@ -1,0 +1,118 @@
+{
+  "meta": {
+    "title": "ThinkForward AI - 智能移民助手"
+  },
+  "hero": {
+    "title": "ThinkForward AI - 智能移民助手",
+    "subtitle": "為移民顧問提供AI驅動的工具，提高效率，簡化流程",
+    "cta_primary": "立即開始",
+    "cta_secondary": "了解更多"
+  },
+  "features": {
+    "title": "為移民顧問打造的智能工具",
+    "subtitle": "提高效率，簡化流程，增強客戶體驗",
+    "ai_powered": {
+      "title": "AI顧問助手",
+      "description": "獲取即時專業建議，回答複雜的移民問題"
+    },
+    "collaboration": {
+      "title": "文檔智能分析",
+      "description": "自動分析和提取關鍵信息，節省手動審核時間"
+    },
+    "communication": {
+      "title": "表單自動化",
+      "description": "智能填充移民表格，減少錯誤和節省時間"
+    }
+  },
+  "how_it_works": {
+    "title": "如何使用",
+    "subtitle": "簡單三步，開啟智能移民服務",
+    "step1": {
+      "title": "註冊帳戶",
+      "description": "創建您的ThinkForward AI帳戶，選擇適合您的方案"
+    },
+    "step2": {
+      "title": "上傳資料",
+      "description": "上傳客戶資料和相關文檔，系統自動分析"
+    },
+    "step3": {
+      "title": "獲取智能建議",
+      "description": "接收AI生成的建議和自動填充的表單"
+    }
+  },
+  "testimonials": {
+    "title": "顧問的信任之選",
+    "subtitle": "聽聽其他移民顧問如何使用ThinkForward AI提升業務",
+    "quote1": "ThinkForward AI幫助我將文檔處理時間減少了60%，讓我能夠專注於為客戶提供更好的服務。",
+    "quote2": "智能表單填充功能是一個遊戲規則的改變者。它不僅節省了時間，還大大減少了錯誤率。",
+    "quote3": "客戶管理系統讓我能夠輕鬆跟踪所有申請的進度，提高了我的工作效率。",
+    "role1": "資深移民顧問，加拿大",
+    "role2": "移民顧問，澳大利亞",
+    "role3": "移民顧問，新西蘭"
+  },
+  "pricing": {
+    "title": "為移民顧問定制的方案",
+    "subtitle": "選擇最適合您業務需求的方案",
+    "popular": "最受歡迎",
+    "basic": {
+      "name": "啟動計劃",
+      "price": "¥299",
+      "description": "適合剛開始或規模較小的移民顧問",
+      "feature1": "基礎AI顧問助手",
+      "feature2": "最多管理10位客戶",
+      "feature3": "基礎文檔分析",
+      "cta": "選擇此方案"
+    },
+    "pro": {
+      "name": "專業計劃",
+      "price": "¥599",
+      "description": "適合成長中的移民顧問業務",
+      "feature1": "高級AI顧問助手",
+      "feature2": "最多管理50位客戶",
+      "feature3": "高級文檔分析與提取",
+      "feature4": "優先電子郵件和聊天支持",
+      "cta": "選擇此方案"
+    },
+    "enterprise": {
+      "name": "企業計劃",
+      "price": "¥999",
+      "description": "適合大型移民顧問公司",
+      "feature1": "企業級AI顧問助手",
+      "feature2": "無限客戶管理",
+      "feature3": "高級文檔分析與批量處理",
+      "feature4": "完整表單自動化套件",
+      "feature5": "24/7優先支援",
+      "cta": "聯繫我們"
+    }
+  },
+  "cta": {
+    "title": "準備好提升您的移民顧問業務了嗎？",
+    "subtitle": "立即註冊，體驗AI如何改變您的工作方式",
+    "button_primary": "免費試用14天",
+    "button_secondary": "預約演示"
+  },
+  "faq": {
+    "title": "常見問題",
+    "subtitle": "了解更多關於ThinkForward AI的信息",
+    "q1": "ThinkForward AI如何幫助移民顧問提高效率？",
+    "a1": "我們的AI系統可以自動分析文檔、填充表格、提供專業建議，幫助顧問節省高達60%的時間，專注於為客戶提供更有價值的服務。",
+    "q2": "使用ThinkForward AI需要具備技術背景嗎？",
+    "a2": "不需要。我們的平台設計簡單直觀，任何人都可以輕鬆上手使用，無需特殊的技術知識。",
+    "q3": "我的客戶數據安全嗎？",
+    "a3": "是的，我們非常重視數據安全。所有數據都經過加密存儲，並遵循嚴格的隱私保護政策，符合國際數據保護標準。",
+    "q4": "可以免費試用嗎？",
+    "a4": "是的，我們提供14天的免費試用期，讓您充分體驗平台的所有功能，無需信用卡。",
+    "q5": "如果我需要幫助，如何獲得支援？",
+    "a5": "我們提供多種支援渠道，包括在線文檔、電子郵件支援和實時聊天。企業級用戶還可以獲得專屬客戶經理的支援。",
+    "more_questions": "還有其他問題？",
+    "contact_us": "聯繫我們"
+  },
+  "trusted_by": "受到信賴的合作夥伴",
+  "newsletter": {
+    "title": "訂閱我們的通訊",
+    "description": "獲取最新的移民政策更新和AI工具使用技巧",
+    "placeholder": "您的電子郵箱",
+    "button": "訂閱",
+    "privacy_note": "我們尊重您的隱私，不會發送垃圾郵件"
+  }
+}

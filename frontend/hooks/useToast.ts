@@ -1,9 +1,9 @@
 import { useCallback } from 'react';
 import { toast, ToastOptions } from '@/components/ui/Toast';
-import { useI18n } from './useI18n';
+import { useTranslation } from 'next-i18next';
 
 export function useToast() {
-  const { t } = useI18n('common');
+  const { t } = useTranslation('common');
   
   const success = useCallback((messageKey: string, options?: ToastOptions & { values?: Record<string, any> }) => {
     const message = options?.values ? t(messageKey, options.values) : t(messageKey);

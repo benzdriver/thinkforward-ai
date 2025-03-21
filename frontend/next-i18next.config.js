@@ -10,7 +10,7 @@ module.exports = {
   rtlLocales: ['ar'],
   localePath: typeof window === 'undefined' ? require('path').resolve('./public/locales') : '/locales',
   reloadOnPrerender: process.env.NODE_ENV === 'development',
-  ns: ['common', 'index', 'layout'],
+  ns: ['common', 'layout', 'home', 'navigation'],
   defaultNS: 'common',
   debug: process.env.NODE_ENV === 'development',
   interpolation: {
@@ -19,5 +19,6 @@ module.exports = {
   react: {
     useSuspense: false
   },
-  returnObjects: true
+  returnObjects: true,
+  returnNull: false,
 };

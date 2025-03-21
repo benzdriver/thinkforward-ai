@@ -14,6 +14,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { queryClient } from '@/lib/reactQuery';
 import { Toaster } from 'react-hot-toast';
 import '../lib/i18n'; // 确保在其他导入之前导入
+import { ResponsiveProvider } from '@/contexts/ResponsiveContext';
 
 // 确保在客户端初始化 i18next 后端
 if (typeof window !== 'undefined') {
@@ -48,7 +49,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           <ErrorBoundary>
             <RTLWrapper>
               <AuthenticatedApp>
-                <Component {...pageProps} />
+                <ResponsiveProvider>
+                  <Component {...pageProps} />
+                </ResponsiveProvider>
               </AuthenticatedApp>
             </RTLWrapper>
           </ErrorBoundary>

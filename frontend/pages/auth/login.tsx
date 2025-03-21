@@ -1,135 +1,257 @@
-import { useState } from 'react';
-import { useTranslation } from 'next-i18next';
-import { useAuth } from '@/contexts/AuthContext';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Link from 'next/link';
+import Image from 'next/image';
+import { useSignIn } from '@clerk/nextjs';
 import { 
-  Card,
-  Button,
-  Alert
+  ResponsiveContainer, 
+  Grid, 
+  GridItem,
+  RTLWrapper
+} from '@/components/layout';
+import { 
+  Button, 
+  Input, 
+  PasswordInput, 
+  FormError,
+  ErrorNotification,
+  LoadingButton,
+  Checkbox
 } from '@/components/ui';
-import { Form } from '@/components/ui/Form/Form';
-import { FormField } from '@/components/ui/Form/FormField';
-import { AuthLayout } from '@/components/layout/AuthLayout';
+import { Breadcrumbs } from '@/components/navigation';
+import { useError } from '@/contexts/ErrorContext';
 
-export function LoginPage() {
-  const { t } = useTranslation('auth');
+export default function LoginPage() {
+  const { t } = useTranslation(['auth', 'common']);
   const router = useRouter();
-  const { signIn } = useAuth();
-  const [isLoading, setIsLoading] = useState(false);
+  const { isLoaded, signIn, setActive } = useSignIn();
+  const { showErrorMessage } = useError();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState<string | null>(null);
   const [rememberMe, setRememberMe] = useState(false);
-  
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isLoading, setIsLoading] = useState(false);
+  const { redirect, verified } = router.query;
+
+  // 显示验证成功消息
+  useEffect(() => {
+    if (verified === 'true') {
+      showErrorMessage(
+        t('auth:login.verification_success_message') as string,
+        t('auth:login.verification_success_title') as string
+      );
+    }
+  }, [verified, showErrorMessage, t]);
+
+  // 确保Clerk已加载
+  if (!isLoaded) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+      </div>
+    );
+  }
+
+  const validateForm = () => {
+    setErrors({});
+    const newErrors: Record<string, string> = {};
+    
+    if (!email) {
+      newErrors.email = t('auth:errors.email_required');
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      newErrors.email = t('auth:errors.email_invalid');
+    }
+    
+    if (!password) {
+      newErrors.password = t('auth:errors.password_required');
+    }
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError(null);
+    
+    if (!validateForm()) {
+      return;
+    }
+    
     setIsLoading(true);
     
     try {
-      await signIn(email, password);
-      router.push('/dashboard');
-    } catch (error) {
-      setError(t('login.errors.invalidCredentials'));
+      const result = await signIn.create({
+        identifier: email,
+        password,
+      });
+      
+      if (result.status === 'complete') {
+        // 设置活跃会话
+        await setActive({ session: result.createdSessionId });
+        
+        // 重定向到指定页面或默认到仪表板
+        const redirectPath = typeof redirect === 'string' ? redirect : '/dashboard';
+        router.push(redirectPath);
+      } else {
+        // 处理多因素认证或其他情况
+        console.log('Sign in needs more steps:', result);
+        
+        // 如果需要验证邮箱
+        if (result.status === 'needs_first_factor') {
+          router.push('/auth/verify?email=' + encodeURIComponent(email));
+        }
+      }
+    } catch (error: any) {
+      console.error('Login error:', error);
+      showErrorMessage(
+        error.errors?.[0]?.message || t('auth:errors.login_failed'),
+        t('auth:errors.login_failed_title') as string
+      );
     } finally {
       setIsLoading(false);
     }
   };
-  
+
+  const breadcrumbItems = [
+    { label: t('common:navigation.home'), href: '/' },
+    { label: t('auth:login.title') }
+  ];
+
   return (
-    <AuthLayout 
-      title={t('login.title') as string}
-      subtitle={t('login.subtitle') as string}
-    >
-      <Card>
-        <Card.Body>
-          {error && (
-            <Alert type="error" className="mb-4" message={error} />
-          )}
+    <RTLWrapper>
+      <ErrorNotification position="top" />
+      
+      <div className="min-h-screen bg-gray-50">
+        <ResponsiveContainer maxWidth="xl" className="py-8">
+          <Breadcrumbs items={breadcrumbItems} className="mb-8" />
           
-          <Form onSubmit={handleSubmit}>
-            <FormField
-              label={t('login.email') as string}
-              name="email"
-              required
-            >
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                placeholder={t('login.emailPlaceholder') as string}
-              />
-            </FormField>
-            
-            <FormField
-              label={t('login.password') as string}
-              name="password"
-              required
-            >
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                placeholder={t('login.passwordPlaceholder') as string}
-              />
-            </FormField>
-            
-            <div className="flex items-center justify-between mt-4">
-              <div className="flex items-center">
-                <input
-                  id="remember-me"
-                  name="remember-me"
-                  type="checkbox"
-                  checked={rememberMe}
-                  onChange={(e) => setRememberMe(e.target.checked)}
-                  className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+          <Grid cols={1} lgCols={2} gap={8} className="items-center">
+            <GridItem className="hidden lg:block">
+              <div className="relative h-[500px] w-full rounded-xl overflow-hidden shadow-xl">
+                <Image
+                  src="/images/login-illustration.jpg"
+                  alt={t('auth:login.illustration_alt')}
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  priority
                 />
-                <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
-                  {t('login.rememberMe')}
-                </label>
+                <div className="absolute inset-0 bg-blue-900 bg-opacity-40 flex flex-col justify-end p-8">
+                  <h2 className="text-white text-3xl font-bold mb-4">
+                    {t('auth:login.welcome_message')}
+                  </h2>
+                  <p className="text-white text-lg">
+                    {t('auth:login.welcome_description')}
+                  </p>
+                </div>
               </div>
-              
-              <div className="text-sm">
-                <Link href="/auth/forgot-password">
-                  <a className="font-medium text-blue-600 hover:text-blue-500">
-                    {t('login.forgotPassword')}
-                  </a>
-                </Link>
-              </div>
-            </div>
+            </GridItem>
             
-            <div className="mt-6">
-              <Button
-                type="submit"
-                fullWidth
-                isLoading={isLoading}
-              >
-                {t('login.signIn')}
-              </Button>
-            </div>
-          </Form>
-        </Card.Body>
-        
-        <Card.Footer>
-          <p className="text-center text-sm text-gray-600">
-            {t('login.noAccount')}{' '}
-            <Link href="/auth/register">
-              <a className="font-medium text-blue-600 hover:text-blue-500">
-                {t('login.signUp')}
-              </a>
-            </Link>
-          </p>
-        </Card.Footer>
-      </Card>
-    </AuthLayout>
+            <GridItem>
+              <div className="bg-white p-8 rounded-xl shadow-md">
+                <div className="text-center mb-8">
+                  <Image
+                    src="/logo.png"
+                    alt="ThinkForward AI"
+                    width={180}
+                    height={48}
+                    className="mx-auto mb-6"
+                  />
+                  <h1 className="text-2xl font-bold text-gray-900">
+                    {t('auth:login.title')}
+                  </h1>
+                  <p className="text-gray-600 mt-2">
+                    {t('auth:login.subtitle')}
+                  </p>
+                </div>
+                
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div>
+                    <Input
+                      label={t('auth:login.email') as string}
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder={t('auth:login.email_placeholder') as string}
+                      error={!!errors.email}
+                      required
+                      fullWidth
+                    />
+                    <FormError error={errors.email} />
+                  </div>
+                  
+                  <div>
+                    <PasswordInput
+                      label={t('auth:login.password') as string}
+                      id="password"
+                      name="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      placeholder={t('auth:login.password_placeholder') as string}
+                      error={!!errors.password}
+                      required
+                      fullWidth
+                    />
+                    <FormError error={errors.password} />
+                  </div>
+                  
+                  <div className="flex items-center justify-between">
+                    <Checkbox
+                      id="remember-me"
+                      label={t('auth:login.remember_me') as string}
+                      checked={rememberMe}
+                      onChange={(e) => setRememberMe(e.target.checked)}
+                    />
+                    
+                    <div className="text-sm">
+                      <Link
+                        href="/auth/forgot-password"
+                        className="text-blue-600 hover:text-blue-800 font-medium"
+                      >
+                        {t('auth:login.forgot_password')}
+                      </Link>
+                    </div>
+                  </div>
+                  
+                  <LoadingButton
+                    type="submit"
+                    variant="primary"
+                    size="large"
+                    isLoading={isLoading}
+                    loadingText={t('auth:login.signing_in') as string}
+                    fullWidth
+                  >
+                    {t('auth:login.sign_in')}
+                  </LoadingButton>
+                  
+                  <div className="text-center mt-6">
+                    <p className="text-gray-600">
+                      {t('auth:login.no_account')}{' '}
+                      <Link
+                        href="/auth/register"
+                        className="text-blue-600 hover:text-blue-800 font-medium"
+                      >
+                        {t('auth:login.sign_up')}
+                      </Link>
+                    </p>
+                  </div>
+                </form>
+              </div>
+            </GridItem>
+          </Grid>
+        </ResponsiveContainer>
+      </div>
+    </RTLWrapper>
   );
+}
+
+export async function getStaticProps({ locale }: { locale: string }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['auth', 'common'])),
+    },
+  };
 }

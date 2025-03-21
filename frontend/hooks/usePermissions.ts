@@ -7,7 +7,7 @@ import {
   rolePermissions, 
   subscriptionPermissions 
 } from '@/types/permissions';
-import { useI18n } from './useI18n';
+import { useTranslation } from 'next-i18next';
 
 /**
  * 统一的权限管理 Hook
@@ -15,7 +15,7 @@ import { useI18n } from './useI18n';
  */
 export const usePermissions = () => {
   const { user, userRole, isAuthenticated } = useAuth();
-  const { t } = useI18n('permissions');
+  const { t } = useTranslation('permissions');
   
   // 获取用户订阅信息
   const subscriptionPlan = user?.subscriptionPlan || 'free';
@@ -61,11 +61,12 @@ export const usePermissions = () => {
     // 检查订阅权限
     const hasSubscriptionPermission = subscriptionPermissions[subscriptionPlan]?.includes(permission);
     
-    return hasRolePermission && hasSubscriptionPermission;
+    // 同时满足角色和订阅权限
+    return Boolean(hasRolePermission && hasSubscriptionPermission);
   };
   
   /**
-   * 获取用户所有的细粒度权限
+   * 获取用户所有权限
    */
   const getAllPermissions = (): Permission[] => {
     if (!isAuthenticated || !userRole) return [];

@@ -1,0 +1,118 @@
+{
+  "meta": {
+    "title": "ThinkForward AI - Intelligent Immigration Assistant"
+  },
+  "hero": {
+    "title": "ThinkForward AI - Intelligent Immigration Assistant",
+    "subtitle": "Provides AI-driven tools for immigration consultants to increase efficiency and simplify processes",
+    "cta_primary": "Get Started Now",
+    "cta_secondary": "Learn More"
+  },
+  "features": {
+    "title": "Intelligent Tools for Immigration Consultants",
+    "subtitle": "Improve efficiency, simplify processes, enhance customer experience",
+    "ai_powered": {
+      "title": "AI Consultant Assistant",
+      "description": "Get instant professional advice, answer complex immigration questions"
+    },
+    "collaboration": {
+      "title": "Document Intelligence Analysis",
+      "description": "Automatically analyze and extract key information, saving manual review time"
+    },
+    "communication": {
+      "title": "Form Automation",
+      "description": "Intelligently fill out immigration forms, reduce errors and save time"
+    }
+  },
+  "how_it_works": {
+    "title": "How It Works",
+    "subtitle": "Simple three steps to start intelligent immigration services",
+    "step1": {
+      "title": "Create an Account",
+      "description": "Create your ThinkForward AI account, choose the plan that suits you"
+    },
+    "step2": {
+      "title": "Upload Documents",
+      "description": "Upload client information and relevant documents, system automatically analyzes"
+    },
+    "step3": {
+      "title": "Get Intelligent Advice",
+      "description": "Receive AI-generated advice and automatically filled forms"
+    }
+  },
+  "testimonials": {
+    "title": "Choice of Trusted Advisors",
+    "subtitle": "Listen to how other immigration consultants use ThinkForward AI to enhance their business",
+    "quote1": "ThinkForward AI helped me reduce document processing time by 60%, allowing me to focus on providing better service to clients.",
+    "quote2": "The intelligent form filling feature is a game-changer. It not only saves time but also significantly reduces error rates.",
+    "quote3": "The client management system allows me to easily track the progress of all applications, improving my work efficiency.",
+    "role1": "Senior Immigration Consultant, Canada",
+    "role2": "Immigration Consultant, Australia",
+    "role3": "Immigration Consultant, New Zealand"
+  },
+  "pricing": {
+    "title": "Custom Plans for Immigration Consultants",
+    "subtitle": "Choose the plan that best suits your business needs",
+    "popular": "Most Popular",
+    "basic": {
+      "name": "Starter Plan",
+      "price": "¥299",
+      "description": "Suitable for new or small-scale immigration consultants",
+      "feature1": "Basic AI Consultant Assistant",
+      "feature2": "Manage up to 10 clients",
+      "feature3": "Basic document analysis",
+      "cta": "Choose this Plan"
+    },
+    "pro": {
+      "name": "Professional Plan",
+      "price": "¥599",
+      "description": "Suitable for growing immigration consultant businesses",
+      "feature1": "Advanced AI Consultant Assistant",
+      "feature2": "Manage up to 50 clients",
+      "feature3": "Advanced document analysis and extraction",
+      "feature4": "Priority email and chat support",
+      "cta": "Choose this Plan"
+    },
+    "enterprise": {
+      "name": "Enterprise Plan",
+      "price": "¥999",
+      "description": "Suitable for large immigration consultant companies",
+      "feature1": "Enterprise AI Assistant",
+      "feature2": "Unlimited Customer Management",
+      "feature3": "Advanced Document Analysis and Batch Processing",
+      "feature4": "Complete Form Automation Suite",
+      "feature5": "24/7 Priority Support",
+      "cta": "Contact Us"
+    }
+  },
+  "cta": {
+    "title": "Ready to Elevate Your Immigration Consulting Business?",
+    "subtitle": "Sign up now to experience how AI is transforming your workflow",
+    "button_primary": "Free Trial for 14 Days",
+    "button_secondary": "Schedule a Demo"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Learn more about ThinkForward AI",
+    "q1": "How does ThinkForward AI help immigration consultants improve efficiency?",
+    "a1": "Our AI system can automatically analyze documents, fill out forms, provide professional advice, helping consultants save up to 60% of their time, focusing on providing more valuable services to clients.",
+    "q2": "Do I need a technical background to use ThinkForward AI?",
+    "a2": "No, you don't. Our platform is designed to be simple and intuitive, so anyone can easily use it without any special technical knowledge.",
+    "q3": "Is my customer data secure?",
+    "a3": "Yes, we take data security very seriously. All data is stored encrypted and follows strict privacy protection policies, complying with international data protection standards.",
+    "q4": "Can I try it for free?",
+    "a4": "Yes, we offer a 14-day free trial for you to fully experience all the platform features without needing a credit card.",
+    "q5": "How can I get support if I need help?",
+    "a5": "We provide multiple support channels, including online documentation, email support, and real-time chat. Enterprise users also have access to dedicated customer manager support.",
+    "more_questions": "Have more questions?",
+    "contact_us": "Contact Us"
+  },
+  "trusted_by": "Trusted Partners",
+  "newsletter": {
+    "title": "Subscribe to Our Newsletter",
+    "description": "Get the latest immigration policy updates and AI tool usage tips",
+    "placeholder": "Your Email Address",
+    "button": "Subscribe",
+    "privacy_note": "We respect your privacy and will not send spam emails"
+  }
+}

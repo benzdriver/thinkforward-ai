@@ -97,7 +97,9 @@
         "md": "中",
         "lg": "大",
         "xl": "極大"
-      }
+      },
+      "submit": "提交",
+      "cancel": "取消"
     },
     "dataTable": {
       "emptyText": "暫無數據",
@@ -367,10 +369,11 @@
     "info": "提示信息",
     "warning": "警告信息",
     "saved": "已保存",
-    "deleted": "已删除",
+    "deleted": "已刪除",
     "updated": "已更新",
-    "created": "已创建",
+    "created": "已創建",
     "loading": "加載中...",
     "please_wait": "請稍候..."
-  }
+  },
+  "loading": "加載中..."
 }

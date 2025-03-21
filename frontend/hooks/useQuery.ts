@@ -10,7 +10,7 @@ import {
   useQueryClient
 } from '@tanstack/react-query';
 import { api, handleApiError } from '@/lib/api';
-import { useI18n } from '@/hooks/useI18n';
+import { useTranslation } from 'next-i18next';
 import { toast } from 'react-hot-toast';
 import { useEffect } from 'react';
 
@@ -22,7 +22,7 @@ export function useFetch<TData = unknown, TError = unknown>(
   url: string,
   options?: UseQueryOptions<TData, TError> & { onError?: (error: TError) => void }
 ) {
-  const { t } = useI18n('error');
+  const { t } = useTranslation('error');
   
   const result = useQuery<TData, TError>({
     queryKey: key,
@@ -50,7 +50,7 @@ export function useCreate<TData = unknown, TVariables = unknown, TError = unknow
   url: string,
   options?: UseMutationOptions<TData, TError, TVariables>
 ) {
-  const { t } = useI18n('error');
+  const { t } = useTranslation('error');
   
   return useMutation<TData, TError, TVariables>({
     mutationFn: (variables) => api.post<TData>(url, variables),
@@ -72,7 +72,7 @@ export function useUpdate<TData = unknown, TVariables = unknown, TError = unknow
   url: string,
   options?: UseMutationOptions<TData, TError, TVariables>
 ) {
-  const { t } = useI18n('error');
+  const { t } = useTranslation('error');
   
   return useMutation<TData, TError, TVariables>({
     mutationFn: (variables) => api.put<TData>(url, variables),
@@ -94,7 +94,7 @@ export function usePatch<TData = unknown, TVariables = unknown, TError = unknown
   url: string,
   options?: UseMutationOptions<TData, TError, TVariables>
 ) {
-  const { t } = useI18n('error');
+  const { t } = useTranslation('error');
   
   return useMutation<TData, TError, TVariables>({
     mutationFn: (variables) => api.patch<TData>(url, variables),
@@ -116,7 +116,7 @@ export function useDelete<TData = unknown, TVariables = unknown, TError = unknow
   url: string,
   options?: UseMutationOptions<TData, TError, TVariables>
 ) {
-  const { t } = useI18n('error');
+  const { t } = useTranslation('error');
   
   return useMutation<TData, TError, TVariables>({
     mutationFn: (variables) => {
@@ -145,7 +145,7 @@ export function useInfiniteData<TData = unknown, TError = unknown>(
   getNextPageParam: (lastPage: any) => any,
   options?: Omit<UseInfiniteQueryOptions<TData, TError, InfiniteData<TData, unknown>, TData, QueryKey, unknown>, 'queryKey' | 'queryFn' | 'getNextPageParam'>
 ) {
-  const { t } = useI18n('error');
+  const { t } = useTranslation('error');
   
   const result = useInfiniteQuery<TData, TError>({
     queryKey: key,
@@ -174,7 +174,7 @@ export function useInfiniteData<TData = unknown, TError = unknown>(
  */
 export function useOptimisticUpdate() {
   const queryClient = useQueryClient();
-  const { t } = useI18n('common');
+  const { t } = useTranslation('common');
   
   return {
     // 乐观添加项目到列表
