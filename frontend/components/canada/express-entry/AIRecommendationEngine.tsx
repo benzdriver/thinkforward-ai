@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { useCanadianImmigration } from '../../../contexts/CanadianImmigrationContext';
-import { AIRecommendation, ExpressEntryProfile } from '../../../types/canada';
+import { ExpressEntryProfile } from '../../../types/canada';
+import type { AIRecommendation } from '../../../types/canada/ai-types';
 
 interface AIRecommendationEngineProps {
   profile: ExpressEntryProfile;
@@ -138,7 +139,7 @@ export const AIRecommendationEngine: React.FC<AIRecommendationEngineProps> = ({
               
               {recommendation.relevantFactors && recommendation.relevantFactors.length > 0 && (
                 <div className="flex flex-wrap gap-2 mb-3">
-                  {recommendation.relevantFactors.map((factor, i) => (
+                  {recommendation.relevantFactors.map((factor: string, i: number) => (
                     <span key={i} className="inline-block px-2 py-1 text-xs bg-gray-100 text-gray-800 rounded-full">
                       {factor}
                     </span>
