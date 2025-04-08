@@ -8,6 +8,9 @@ export { default as DocumentAnalyzer } from '../../components/canada/common/Docu
 export { default as AIEligibilityAssessment } from '../../components/canada/express-entry/AIEligibilityAssessment';
 export { default as AIRecommendationEngine } from '../../components/canada/express-entry/AIRecommendationEngine';
 
+import { Education, WorkExperience, JobOfferDetails, AdaptabilityFactors, LanguageProficiency } from './job-types';
+export type { Education, WorkExperience, JobOfferDetails, AdaptabilityFactors, LanguageProficiency } from './job-types';
+
 // Type definitions for Canadian immigration system
 
 // Enums
@@ -57,11 +60,20 @@ export interface ExpressEntryProfile {
   id?: string;
   _id?: string;
   age: number;
-  educationLevel: string;
-  firstLanguageCLB: string;
+  maritalStatus?: 'single' | 'married' | 'commonLaw' | 'divorced' | 'separated' | 'widowed';
+  education?: Education[];
+  languageProficiency?: LanguageProficiency[];
+  workExperience?: WorkExperience[];
+  hasProvincialNomination?: boolean;
+  hasJobOffer?: boolean;
+  jobOfferDetails?: JobOfferDetails;
+  adaptabilityFactors?: AdaptabilityFactors;
+  
+  educationLevel?: string;
+  firstLanguageCLB?: string;
   secondLanguageCLB?: string;
-  canadianWorkExperience: number; // in months
-  foreignWorkExperience: number; // in months
+  canadianWorkExperience?: number; // in months
+  foreignWorkExperience?: number; // in months
   certificateOfQualification?: boolean;
   provincialNomination?: boolean;
   arrangedEmployment?: boolean;
