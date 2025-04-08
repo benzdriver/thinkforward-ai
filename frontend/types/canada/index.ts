@@ -55,6 +55,7 @@ export type DocumentType =
 // Core interfaces
 export interface ExpressEntryProfile {
   id?: string;
+  _id?: string;
   age: number;
   educationLevel: string;
   firstLanguageCLB: string;
