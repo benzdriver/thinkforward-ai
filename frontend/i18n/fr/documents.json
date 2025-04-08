@@ -1,0 +1,27 @@
+{
+  "documents_title": "Documents",
+  "document_analyzer": "Analyseur de Documents",
+  "analyzing_document": "Analyse du document en cours...",
+  "no_analysis_available": "Aucune analyse n'est disponible pour ce document",
+  
+  "document_analysis_results": "Résultats de l'Analyse de Document",
+  "completeness": "Exhaustivité",
+  "confidence": "Confiance",
+  "verification_status": "Statut de Vérification",
+  "verified": "Vérifié",
+  "needs_review": "Nécessite une Révision",
+  "rejected": "Rejeté",
+  
+  "identified_issues": "Problèmes Identifiés",
+  "suggested_actions": "Actions Suggérées",
+  "extracted_data": "Données Extraites",
+  "ai_reasoning": "Raisonnement de l'IA",
+  
+  "potential_issue": "Problème Potentiel",
+  "high_severity": "Gravité Élevée",
+  "medium_severity": "Gravité Moyenne",
+  "low_severity": "Gravité Faible",
+  "recommendation": "Recommandation",
+  
+  "analysis_disclaimer": "Cette analyse est fournie par l'IA et doit être vérifiée par un professionnel de l'immigration."
+} 

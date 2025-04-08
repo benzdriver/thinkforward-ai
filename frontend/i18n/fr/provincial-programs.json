@@ -1,0 +1,18 @@
+{
+  "provincial_programs_title": "Programmes des Candidats Provinciaux",
+  "program_finder": "Chercheur de Programmes",
+  "province_selector": "Sélecteur de Province",
+  
+  "regional_trends": "Tendances Régionales",
+  "regional_trends_description": "Notre IA analyse les données historiques d'immigration pour identifier les tendances et prévoir les invitations futures pour les provinces canadiennes.",
+  "ai_powered_regional_trends": "Tendances Régionales Propulsées par l'IA",
+  "regional_trends_for": "Tendances Régionales pour",
+  "minimum_score_trends": "Tendances des Scores Minimums",
+  "invitation_trends": "Tendances des Invitations",
+  "target_occupations": "Professions Ciblées",
+  "minimum_score": "Score Minimum",
+  "projected_score": "Score Projeté",
+  "invitations": "Invitations",
+  "growth_rate": "Taux de Croissance",
+  "data_disclaimer": "L'analyse des tendances est basée sur des données historiques et des prévisions d'IA. Les résultats réels peuvent varier."
+} 

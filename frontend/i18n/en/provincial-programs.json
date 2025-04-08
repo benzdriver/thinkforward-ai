@@ -1,0 +1,18 @@
+{
+  "provincial_programs_title": "Provincial Nominee Programs",
+  "program_finder": "Program Finder",
+  "province_selector": "Province Selector",
+  
+  "regional_trends": "Regional Trends",
+  "regional_trends_description": "Our AI analyzes historical immigration data to identify trends and forecast future draws for Canadian provinces.",
+  "ai_powered_regional_trends": "AI-Powered Regional Trends",
+  "regional_trends_for": "Regional Trends for",
+  "minimum_score_trends": "Minimum Score Trends",
+  "invitation_trends": "Invitation Trends",
+  "target_occupations": "Target Occupations",
+  "minimum_score": "Minimum Score",
+  "projected_score": "Projected Score",
+  "invitations": "Invitations",
+  "growth_rate": "Growth Rate",
+  "data_disclaimer": "Trend analysis is based on historical data and AI forecasting. Actual results may vary."
+} 
