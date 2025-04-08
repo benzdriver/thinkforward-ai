@@ -1,11 +1,10 @@
-const { Configuration, OpenAIApi } = require('openai');
+const OpenAI = require('openai');
 const ExpressEntryProfile = require('../../models/canada/ExpressEntryProfile');
 const DocumentSubmission = require('../../models/canada/DocumentSubmission');
 
-const configuration = new Configuration({
+const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
-const openai = new OpenAIApi(configuration);
 
 exports.analyzeDocument = async (req, res) => {
   try {
@@ -127,14 +126,17 @@ async function analyzeDocumentWithAI(document) {
       4. What actions should be taken regarding this document?
     `;
     
-    const response = await openai.createCompletion({
+    const response = await openai.chat.completions.create({
       model: 'gpt-4',
-      prompt,
+      messages: [
+        { role: 'system', content: 'You are an AI assistant that analyzes immigration documents.' },
+        { role: 'user', content: prompt }
+      ],
       max_tokens: 1000,
       temperature: 0.5,
     });
     
-    const aiResponse = response.data.choices[0].text.trim();
+    const aiResponse = response.choices[0].message.content.trim();
     
     const isComplete = aiResponse.includes('complete') && aiResponse.includes('valid');
     const missingInformation = extractMissingInformation(aiResponse);
@@ -186,14 +188,17 @@ async function assessEligibilityWithAI(profile, programId) {
       6. What actions can be taken to improve eligibility?
     `;
     
-    const response = await openai.createCompletion({
+    const response = await openai.chat.completions.create({
       model: 'gpt-4',
-      prompt,
+      messages: [
+        { role: 'system', content: 'You are an AI assistant that analyzes immigration documents.' },
+        { role: 'user', content: prompt }
+      ],
       max_tokens: 1000,
       temperature: 0.5,
     });
     
-    const aiResponse = response.data.choices[0].text.trim();
+    const aiResponse = response.choices[0].message.content.trim();
     
     const isEligible = aiResponse.includes('eligible') && !aiResponse.includes('not eligible');
     const factorScores = extractFactorScores(aiResponse);
@@ -282,14 +287,17 @@ async function predictTrendsWithAI(province, historicalTrends) {
       6. Overall confidence score
     `;
     
-    const response = await openai.createCompletion({
+    const response = await openai.chat.completions.create({
       model: 'gpt-4',
-      prompt,
+      messages: [
+        { role: 'system', content: 'You are an AI assistant that analyzes immigration documents.' },
+        { role: 'user', content: prompt }
+      ],
       max_tokens: 1000,
       temperature: 0.5,
     });
     
-    const aiResponse = response.data.choices[0].text.trim();
+    const aiResponse = response.choices[0].message.content.trim();
     
     const predictedPeriods = extractPredictedPeriods(aiResponse);
     const growingOccupations = extractGrowingOccupations(aiResponse);
