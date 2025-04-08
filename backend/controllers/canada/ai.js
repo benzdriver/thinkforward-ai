@@ -2,9 +2,23 @@ const OpenAI = require('openai');
 const ExpressEntryProfile = require('../../models/canada/ExpressEntryProfile');
 const DocumentSubmission = require('../../models/canada/DocumentSubmission');
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+let openai;
+try {
+  openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY || 'dummy-key-for-development',
+  });
+} catch (error) {
+  console.warn('Failed to initialize OpenAI client:', error.message);
+  openai = {
+    chat: {
+      completions: {
+        create: async () => ({
+          choices: [{ message: { content: 'This is a fallback response from the mock OpenAI client.' } }]
+        })
+      }
+    }
+  };
+}
 
 exports.analyzeDocument = async (req, res) => {
   try {
