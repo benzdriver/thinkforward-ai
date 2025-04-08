@@ -21,7 +21,7 @@ describe('Express Entry Profile Model Tests', function() {
 
   it('should create a valid Express Entry profile', async function() {
     const profileData = {
-      userId: 'user123',
+      userId: new mongoose.Types.ObjectId(),
       age: 30,
       maritalStatus: 'single',
       education: [
@@ -108,7 +108,7 @@ describe('Express Entry Profile Model Tests', function() {
 
   it('should validate age range', async function() {
     const profileWithInvalidAge = new ExpressEntryProfile({
-      userId: 'user123',
+      userId: new mongoose.Types.ObjectId(),
       age: 65, // Assuming max age is 64 for Express Entry
       maritalStatus: 'single'
     });
@@ -124,7 +124,7 @@ describe('Express Entry Profile Model Tests', function() {
 
   it('should validate language proficiency scores', async function() {
     const profileWithInvalidLanguageScore = new ExpressEntryProfile({
-      userId: 'user123',
+      userId: new mongoose.Types.ObjectId(),
       age: 30,
       maritalStatus: 'single',
       languageProficiency: [
@@ -150,7 +150,7 @@ describe('Express Entry Profile Model Tests', function() {
 
   it('should update timestamps on save', async function() {
     const profile = new ExpressEntryProfile({
-      userId: 'user123',
+      userId: new mongoose.Types.ObjectId(),
       age: 30,
       maritalStatus: 'single'
     });

@@ -21,14 +21,18 @@ describe('Document Submission Model Tests', function() {
 
   it('should create a valid document submission', async function() {
     const documentData = {
-      userId: 'user123',
-      documentType: 'Passport',
-      fileName: 'passport.pdf',
+      userId: new mongoose.Types.ObjectId(),
+      documentType: 'passport',
+      name: 'Passport Document',
+      fileType: 'application/pdf',
       fileSize: 1024000,
       fileUrl: 'https://example.com/files/passport.pdf',
       uploadDate: new Date(),
       status: 'Pending',
-      notes: 'Passport expiry date needs to be verified'
+      notes: [{
+        content: 'Passport expiry date needs to be verified',
+        createdBy: new mongoose.Types.ObjectId()
+      }]
     };
 
     const document = new DocumentSubmission(documentData);
@@ -48,8 +52,10 @@ describe('Document Submission Model Tests', function() {
 
   it('should require userId field', async function() {
     const documentWithoutUserId = new DocumentSubmission({
-      documentType: 'Passport',
-      fileName: 'passport.pdf',
+      documentType: 'passport',
+      name: 'Passport Document',
+      fileType: 'application/pdf',
+      fileSize: 1024000,
       fileUrl: 'https://example.com/files/passport.pdf'
     });
 
@@ -64,8 +70,10 @@ describe('Document Submission Model Tests', function() {
 
   it('should require documentType field', async function() {
     const documentWithoutType = new DocumentSubmission({
-      userId: 'user123',
-      fileName: 'document.pdf',
+      userId: new mongoose.Types.ObjectId(),
+      name: 'Document',
+      fileType: 'application/pdf',
+      fileSize: 1024000,
       fileUrl: 'https://example.com/files/document.pdf'
     });
 
@@ -80,9 +88,11 @@ describe('Document Submission Model Tests', function() {
 
   it('should validate document status', async function() {
     const documentWithInvalidStatus = new DocumentSubmission({
-      userId: 'user123',
-      documentType: 'Passport',
-      fileName: 'passport.pdf',
+      userId: new mongoose.Types.ObjectId(),
+      documentType: 'passport',
+      name: 'Passport Document',
+      fileType: 'application/pdf',
+      fileSize: 1024000,
       fileUrl: 'https://example.com/files/passport.pdf',
       status: 'InvalidStatus' // Invalid status
     });
@@ -98,9 +108,11 @@ describe('Document Submission Model Tests', function() {
 
   it('should update status and add review notes', async function() {
     const document = new DocumentSubmission({
-      userId: 'user123',
-      documentType: 'Passport',
-      fileName: 'passport.pdf',
+      userId: new mongoose.Types.ObjectId(),
+      documentType: 'passport',
+      name: 'Passport Document',
+      fileType: 'application/pdf',
+      fileSize: 1024000,
       fileUrl: 'https://example.com/files/passport.pdf',
       status: 'Pending'
     });
@@ -108,15 +120,18 @@ describe('Document Submission Model Tests', function() {
     const savedDocument = await document.save();
     
     savedDocument.status = 'Approved';
-    savedDocument.reviewNotes = 'Document verified and approved';
-    savedDocument.reviewedBy = 'consultant123';
+    savedDocument.notes.push({
+      content: 'Document verified and approved',
+      createdBy: new mongoose.Types.ObjectId()
+    });
+    savedDocument.reviewedBy = new mongoose.Types.ObjectId();
     savedDocument.reviewDate = new Date();
     
     const updatedDocument = await savedDocument.save();
     
     expect(updatedDocument.status).to.equal('Approved');
-    expect(updatedDocument.reviewNotes).to.equal('Document verified and approved');
-    expect(updatedDocument.reviewedBy).to.equal('consultant123');
+    expect(updatedDocument.notes[0].content).to.equal('Document verified and approved');
+    expect(updatedDocument.reviewedBy).to.be.instanceOf(mongoose.Types.ObjectId);
     expect(updatedDocument.reviewDate).to.be.instanceOf(Date);
     expect(updatedDocument.updatedAt.getTime()).to.be.greaterThan(savedDocument.updatedAt.getTime());
   });
