@@ -662,7 +662,7 @@ export default function HomePage() {
                   <Button 
                     variant="primary" 
                     size="lg" 
-                    className="w-full"
+                    className="w-full transition-colors duration-200 bg-white text-blue-600 border border-blue-600 hover:bg-blue-600 hover:text-white rounded-md"
                   >
                     {t('pricing.get_started')}
                   </Button>

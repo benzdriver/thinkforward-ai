@@ -1,0 +1,109 @@
+{
+  "pageTitle": "Calculateur Entrée Express",
+  "pageDescription": "Calculez votre score du Système de classement global (SCG) pour l'immigration canadienne Entrée Express",
+  "pageIntro": "Entrée Express est le système de gestion des demandes du Canada pour les travailleurs qualifiés. Utilisez notre calculateur pour estimer votre score du Système de classement global (SCG) et voir si vous êtes admissible à l'immigration canadienne.",
+  
+  "calculatorSection": "Calculateur de Score SCG",
+  "eligibilitySection": "Vérification d'Admissibilité",
+  "profileSection": "Créer un Profil Entrée Express",
+  
+  "calculator": {
+    "title": "Calculez Votre Score SCG",
+    "description": "Remplissez vos informations ci-dessous pour calculer votre score potentiel d'Entrée Express. Le score maximum possible est de 1 200 points.",
+    "personalInfo": "Informations Personnelles",
+    "age": "Âge",
+    "educationLevel": "Niveau d'Éducation le Plus Élevé",
+    "language": "Langue",
+    "languageProficiency": "Compétence Linguistique",
+    "languageTest": "Test de Langue",
+    "speaking": "Score en Expression Orale",
+    "listening": "Score en Compréhension Orale",
+    "reading": "Score en Compréhension Écrite",
+    "writing": "Score en Expression Écrite",
+    "workExperience": "Expérience Professionnelle",
+    "canadianWorkExperience": "Expérience de Travail Canadienne",
+    "foreignWorkExperience": "Expérience de Travail Étrangère",
+    "additionalFactors": "Facteurs Supplémentaires",
+    "maritalStatus": "État Civil",
+    "provincialNomination": "Nomination Provinciale",
+    "jobOffer": "Offre d'Emploi Valide au Canada",
+    "jobOfferNOC": "Code CNP de l'Offre d'Emploi",
+    "siblingInCanada": "Frère ou Sœur au Canada",
+    "calculating": "Calcul en cours...",
+    "calculateButton": "Calculer Mon Score",
+    "yourScore": "Votre Score SCG",
+    "scoreExplanation": "Il s'agit d'une estimation basée sur les informations que vous avez fournies. Les scores réels peuvent varier en fonction de l'évaluation officielle."
+  },
+  
+  "eligibility": {
+    "title": "Vérificateur d'Admissibilité à Entrée Express",
+    "description": "Vérifiez si vous êtes admissible à l'un des programmes d'Entrée Express du Canada : Programme des travailleurs qualifiés (fédéral), Catégorie de l'expérience canadienne, ou Programme des travailleurs de métiers spécialisés (fédéral).",
+    "checkButton": "Vérifier Mon Admissibilité",
+    "checking": "Vérification en cours...",
+    "eligible": "Vous pourriez être admissible à Entrée Express",
+    "notEligible": "Vous pourriez ne pas être admissible à Entrée Express",
+    "eligiblePrograms": "Programmes auxquels vous pourriez être admissible :",
+    "programs": {
+      "fswp": "Programme des travailleurs qualifiés (fédéral) (PTQF)",
+      "cec": "Catégorie de l'expérience canadienne (CEC)",
+      "fstp": "Programme des travailleurs de métiers spécialisés (fédéral) (PTMSF)"
+    },
+    "reasons": {
+      "title": "Raisons de l'inadmissibilité :",
+      "noEducation": "Aucun diplôme d'études fourni",
+      "noLanguageTest": "Aucun résultat de test de langue fourni",
+      "noEnglishTest": "Aucun résultat de test d'anglais fourni",
+      "lowLanguageScore": "Scores de langue inférieurs à l'exigence minimale (NCLC 7)",
+      "lowLanguageScoreCEC": "Scores de langue inférieurs à l'exigence minimale (NCLC 5)",
+      "noWorkExperience": "Aucune expérience de travail fournie",
+      "insufficientWorkExperience": "Moins d'un an d'expérience de travail fournie",
+      "noCanadianExperience": "Aucune expérience de travail canadienne fournie"
+    },
+    "nextSteps": {
+      "eligible": "D'après les informations fournies, vous pourriez être admissible à Entrée Express. Envisagez d'utiliser notre Calculateur SCG pour estimer votre score.",
+      "notEligible": "D'après les informations fournies, vous pourriez ne pas être admissible à Entrée Express. Envisagez d'explorer les Programmes de nomination provinciale ou d'autres voies d'immigration."
+    }
+  },
+  
+  "education": {
+    "highSchool": "École Secondaire",
+    "oneYearDiploma": "Programme Postsecondaire d'Un An",
+    "twoYearDiploma": "Programme Postsecondaire de Deux Ans",
+    "bachelors": "Baccalauréat",
+    "twoOrMoreDegrees": "Deux Diplômes Postsecondaires ou Plus (un de 3+ ans)",
+    "masters": "Maîtrise",
+    "phd": "Doctorat"
+  },
+  
+  "language": {
+    "ielts": "IELTS - Système International de Test de la Langue Anglaise",
+    "celpip": "CELPIP - Programme d'Indice de Compétence en Anglais Canadien",
+    "tef": "TEF - Test d'évaluation de français",
+    "tcf": "TCF - Test de connaissance du français"
+  },
+  
+  "workExperience": {
+    "none": "Aucune",
+    "oneYear": "1 an",
+    "twoYears": "2 ans",
+    "threeYears": "3 ans",
+    "fourYears": "4 ans",
+    "fiveYears": "5 ans",
+    "sixPlusYears": "6+ ans"
+  },
+  
+  "maritalStatus": {
+    "single": "Célibataire",
+    "married": "Marié(e)",
+    "commonLaw": "Conjoint(e) de Fait",
+    "divorced": "Divorcé(e)",
+    "separated": "Séparé(e)",
+    "widowed": "Veuf/Veuve"
+  },
+  
+  "errors": {
+    "missingRequiredFields": "Veuillez remplir tous les champs obligatoires",
+    "invalidAge": "L'âge doit être compris entre 18 et 100 ans",
+    "invalidLanguageScore": "Les scores de langue doivent être valides pour le test sélectionné"
+  }
+} 

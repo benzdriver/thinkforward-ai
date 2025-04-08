@@ -1,0 +1,69 @@
+{
+  "pageTitle": "Canadian Immigration",
+  "pageDescription": "Explore Canadian immigration pathways and find the best option for you",
+  "welcomeMessage": "Welcome to ThinkForward AI's Canadian Immigration Portal",
+  "introText": "Canada offers various immigration pathways for skilled workers, families, entrepreneurs, and more. Our AI-powered platform helps you navigate the complex Canadian immigration system with ease.",
+  "pathways": {
+    "title": "Immigration Pathways",
+    "expressEntry": {
+      "title": "Express Entry",
+      "description": "A system that manages applications for permanent residence under three federal economic immigration programs."
+    },
+    "pnp": {
+      "title": "Provincial Nominee Programs",
+      "description": "Programs that allow Canadian provinces and territories to nominate individuals for immigration based on local needs."
+    },
+    "familySponsorship": {
+      "title": "Family Sponsorship",
+      "description": "Programs that allow Canadian citizens and permanent residents to sponsor eligible family members."
+    },
+    "businessImmigration": {
+      "title": "Business Immigration",
+      "description": "Programs for entrepreneurs, investors, and self-employed individuals who want to establish businesses in Canada."
+    },
+    "temporaryResidence": {
+      "title": "Temporary Residence",
+      "description": "Options for work permits, study permits, and visitor visas for those seeking temporary stay in Canada."
+    }
+  },
+  "provinces": {
+    "title": "Canadian Provinces and Territories",
+    "ab": "Alberta",
+    "bc": "British Columbia",
+    "mb": "Manitoba",
+    "nb": "New Brunswick",
+    "nl": "Newfoundland and Labrador",
+    "ns": "Nova Scotia",
+    "nt": "Northwest Territories",
+    "nu": "Nunavut",
+    "on": "Ontario",
+    "pe": "Prince Edward Island",
+    "qc": "Quebec",
+    "sk": "Saskatchewan",
+    "yt": "Yukon"
+  },
+  "consultantDashboard": {
+    "title": "Consultant Dashboard",
+    "caseManagement": "Case Management",
+    "clientProgress": "Client Progress",
+    "feeCalculator": "Fee Calculator",
+    "regulatoryCompliance": "Regulatory Compliance",
+    "immigrationUpdates": "Immigration Updates"
+  },
+  "common": {
+    "learnMore": "Learn More",
+    "getStarted": "Get Started",
+    "checkEligibility": "Check Eligibility",
+    "calculatePoints": "Calculate Points",
+    "createProfile": "Create Profile",
+    "viewDetails": "View Details",
+    "back": "Back",
+    "next": "Next",
+    "save": "Save",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success"
+  }
+} 

@@ -1,0 +1,109 @@
+{
+  "pageTitle": "Express Entry Calculator",
+  "pageDescription": "Calculate your Comprehensive Ranking System (CRS) score for Canadian Express Entry immigration",
+  "pageIntro": "Express Entry is Canada's application management system for skilled workers. Use our calculator to estimate your Comprehensive Ranking System (CRS) score and see if you qualify for Canadian immigration.",
+  
+  "calculatorSection": "CRS Score Calculator",
+  "eligibilitySection": "Eligibility Check",
+  "profileSection": "Create Express Entry Profile",
+  
+  "calculator": {
+    "title": "Calculate Your CRS Score",
+    "description": "Fill in your details below to calculate your potential Express Entry score. The maximum possible score is 1,200 points.",
+    "personalInfo": "Personal Information",
+    "age": "Age",
+    "educationLevel": "Highest Level of Education",
+    "language": "Language",
+    "languageProficiency": "Language Proficiency",
+    "languageTest": "Language Test",
+    "speaking": "Speaking Score",
+    "listening": "Listening Score",
+    "reading": "Reading Score",
+    "writing": "Writing Score",
+    "workExperience": "Work Experience",
+    "canadianWorkExperience": "Canadian Work Experience",
+    "foreignWorkExperience": "Foreign Work Experience",
+    "additionalFactors": "Additional Factors",
+    "maritalStatus": "Marital Status",
+    "provincialNomination": "Provincial Nomination",
+    "jobOffer": "Valid Job Offer in Canada",
+    "jobOfferNOC": "Job Offer NOC Code",
+    "siblingInCanada": "Sibling in Canada",
+    "calculating": "Calculating...",
+    "calculateButton": "Calculate My Score",
+    "yourScore": "Your CRS Score",
+    "scoreExplanation": "This is an estimate based on the information you provided. Actual scores may vary based on official assessment."
+  },
+  
+  "eligibility": {
+    "title": "Express Entry Eligibility Checker",
+    "description": "Check if you're eligible for one of Canada's Express Entry programs: Federal Skilled Worker Program (FSWP), Canadian Experience Class (CEC), or Federal Skilled Trades Program (FSTP).",
+    "checkButton": "Check My Eligibility",
+    "checking": "Checking...",
+    "eligible": "You may be eligible for Express Entry",
+    "notEligible": "You may not be eligible for Express Entry",
+    "eligiblePrograms": "Programs you may be eligible for:",
+    "programs": {
+      "fswp": "Federal Skilled Worker Program (FSWP)",
+      "cec": "Canadian Experience Class (CEC)",
+      "fstp": "Federal Skilled Trades Program (FSTP)"
+    },
+    "reasons": {
+      "title": "Reasons for ineligibility:",
+      "noEducation": "No education credentials provided",
+      "noLanguageTest": "No language test results provided",
+      "noEnglishTest": "No English language test results provided",
+      "lowLanguageScore": "Language scores below minimum requirement (CLB 7)",
+      "lowLanguageScoreCEC": "Language scores below minimum requirement (CLB 5)",
+      "noWorkExperience": "No work experience provided",
+      "insufficientWorkExperience": "Less than 1 year of work experience provided",
+      "noCanadianExperience": "No Canadian work experience provided"
+    },
+    "nextSteps": {
+      "eligible": "Based on the information provided, you may be eligible for Express Entry. Consider using our CRS Calculator to estimate your score.",
+      "notEligible": "Based on the information provided, you may not be eligible for Express Entry. Consider exploring Provincial Nominee Programs or other immigration pathways."
+    }
+  },
+  
+  "education": {
+    "highSchool": "High School",
+    "oneYearDiploma": "One-year Post-secondary Program",
+    "twoYearDiploma": "Two-year Post-secondary Program",
+    "bachelors": "Bachelor's Degree",
+    "twoOrMoreDegrees": "Two or more Post-secondary Credentials (one 3+ years)",
+    "masters": "Master's Degree",
+    "phd": "PhD"
+  },
+  
+  "language": {
+    "ielts": "IELTS - International English Language Testing System",
+    "celpip": "CELPIP - Canadian English Language Proficiency Index Program",
+    "tef": "TEF - Test d'évaluation de français",
+    "tcf": "TCF - Test de connaissance du français"
+  },
+  
+  "workExperience": {
+    "none": "None",
+    "oneYear": "1 year",
+    "twoYears": "2 years",
+    "threeYears": "3 years",
+    "fourYears": "4 years",
+    "fiveYears": "5 years",
+    "sixPlusYears": "6+ years"
+  },
+  
+  "maritalStatus": {
+    "single": "Single",
+    "married": "Married",
+    "commonLaw": "Common-Law",
+    "divorced": "Divorced",
+    "separated": "Separated",
+    "widowed": "Widowed"
+  },
+  
+  "errors": {
+    "missingRequiredFields": "Please fill in all required fields",
+    "invalidAge": "Age must be between 18 and 100",
+    "invalidLanguageScore": "Language scores must be valid for the selected test"
+  }
+} 

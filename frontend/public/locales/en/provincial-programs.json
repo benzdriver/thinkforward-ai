@@ -1,0 +1,48 @@
+{
+  "pageTitle": "Provincial Nominee Programs",
+  "pageDescription": "Explore immigration opportunities through Canadian Provincial Nominee Programs (PNPs)",
+  "pageIntro": "Provincial Nominee Programs allow Canadian provinces and territories to nominate individuals who wish to immigrate to Canada and who are interested in settling in a particular province or territory.",
+  
+  "provinceSelector": {
+    "title": "Select a Province or Territory",
+    "description": "Each Canadian province and territory (except Québec and Nunavut) has its own Provincial Nominee Program. Select a province to explore its immigration programs.",
+    "mapView": "Map View",
+    "listView": "List View",
+    "mapInstructions": "Click on a province or territory to view its immigration programs",
+    "selectedProvince": "Selected Province",
+    "clickForDetails": "Click 'View Programs' to see immigration options for this province"
+  },
+  
+  "programFinder": {
+    "title": "{{province}} Immigration Programs",
+    "description": "Explore immigration pathways available through the {{province}} Provincial Nominee Program.",
+    "noPrograms": "No programs found for {{province}}. Please try another province.",
+    "processingTime": "{{count}} days processing time",
+    "applicationFee": "CAD ${{fee}} application fee",
+    "eligibilityCriteria": "Eligibility Criteria",
+    "requiredDocuments": "Required Documents",
+    "applicationSteps": "Application Steps"
+  },
+  
+  "provinces": {
+    "ab": "Alberta",
+    "bc": "British Columbia",
+    "mb": "Manitoba",
+    "nb": "New Brunswick",
+    "nl": "Newfoundland and Labrador",
+    "ns": "Nova Scotia",
+    "nt": "Northwest Territories",
+    "nu": "Nunavut",
+    "on": "Ontario",
+    "pe": "Prince Edward Island",
+    "qc": "Quebec",
+    "sk": "Saskatchewan",
+    "yt": "Yukon"
+  },
+  
+  "error": {
+    "title": "Error loading programs",
+    "provincialSystemDown": "Provincial system is currently unavailable",
+    "tryAgain": "Please try again later"
+  }
+} 

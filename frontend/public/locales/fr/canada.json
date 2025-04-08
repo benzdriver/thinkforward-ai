@@ -1,0 +1,69 @@
+{
+  "pageTitle": "Immigration Canadienne",
+  "pageDescription": "Explorez les voies d'immigration canadiennes et trouvez la meilleure option pour vous",
+  "welcomeMessage": "Bienvenue sur le portail d'immigration canadienne de ThinkForward AI",
+  "introText": "Le Canada offre diverses voies d'immigration pour les travailleurs qualifiés, les familles, les entrepreneurs et plus encore. Notre plateforme alimentée par l'IA vous aide à naviguer facilement dans le système d'immigration canadien complexe.",
+  "pathways": {
+    "title": "Voies d'Immigration",
+    "expressEntry": {
+      "title": "Entrée Express",
+      "description": "Un système qui gère les demandes de résidence permanente dans le cadre de trois programmes fédéraux d'immigration économique."
+    },
+    "pnp": {
+      "title": "Programmes des Candidats des Provinces",
+      "description": "Programmes qui permettent aux provinces et territoires canadiens de désigner des individus pour l'immigration en fonction des besoins locaux."
+    },
+    "familySponsorship": {
+      "title": "Parrainage Familial",
+      "description": "Programmes qui permettent aux citoyens canadiens et aux résidents permanents de parrainer des membres de leur famille admissibles."
+    },
+    "businessImmigration": {
+      "title": "Immigration d'Affaires",
+      "description": "Programmes pour les entrepreneurs, les investisseurs et les travailleurs autonomes qui souhaitent établir des entreprises au Canada."
+    },
+    "temporaryResidence": {
+      "title": "Résidence Temporaire",
+      "description": "Options pour les permis de travail, les permis d'études et les visas de visiteur pour ceux qui cherchent un séjour temporaire au Canada."
+    }
+  },
+  "provinces": {
+    "title": "Provinces et Territoires Canadiens",
+    "ab": "Alberta",
+    "bc": "Colombie-Britannique",
+    "mb": "Manitoba",
+    "nb": "Nouveau-Brunswick",
+    "nl": "Terre-Neuve-et-Labrador",
+    "ns": "Nouvelle-Écosse",
+    "nt": "Territoires du Nord-Ouest",
+    "nu": "Nunavut",
+    "on": "Ontario",
+    "pe": "Île-du-Prince-Édouard",
+    "qc": "Québec",
+    "sk": "Saskatchewan",
+    "yt": "Yukon"
+  },
+  "consultantDashboard": {
+    "title": "Tableau de Bord du Consultant",
+    "caseManagement": "Gestion des Dossiers",
+    "clientProgress": "Progrès des Clients",
+    "feeCalculator": "Calculateur de Frais",
+    "regulatoryCompliance": "Conformité Réglementaire",
+    "immigrationUpdates": "Mises à Jour d'Immigration"
+  },
+  "common": {
+    "learnMore": "En Savoir Plus",
+    "getStarted": "Commencer",
+    "checkEligibility": "Vérifier l'Admissibilité",
+    "calculatePoints": "Calculer les Points",
+    "createProfile": "Créer un Profil",
+    "viewDetails": "Voir les Détails",
+    "back": "Retour",
+    "next": "Suivant",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "submit": "Soumettre",
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès"
+  }
+} 

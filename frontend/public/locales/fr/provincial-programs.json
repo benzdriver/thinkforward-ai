@@ -1,0 +1,48 @@
+{
+  "pageTitle": "Programmes de Nomination Provinciale",
+  "pageDescription": "Explorez les opportunités d'immigration via les Programmes de Nomination Provinciale (PNP) canadiens",
+  "pageIntro": "Les Programmes de Nomination Provinciale permettent aux provinces et territoires canadiens de nommer des individus qui souhaitent immigrer au Canada et qui sont intéressés à s'installer dans une province ou un territoire particulier.",
+  
+  "provinceSelector": {
+    "title": "Sélectionnez une Province ou un Territoire",
+    "description": "Chaque province et territoire canadien (sauf le Québec et le Nunavut) a son propre Programme de Nomination Provinciale. Sélectionnez une province pour explorer ses programmes d'immigration.",
+    "mapView": "Vue Carte",
+    "listView": "Vue Liste",
+    "mapInstructions": "Cliquez sur une province ou un territoire pour voir ses programmes d'immigration",
+    "selectedProvince": "Province Sélectionnée",
+    "clickForDetails": "Cliquez sur 'Voir les Programmes' pour consulter les options d'immigration pour cette province"
+  },
+  
+  "programFinder": {
+    "title": "Programmes d'Immigration de {{province}}",
+    "description": "Explorez les voies d'immigration disponibles via le Programme de Nomination Provinciale de {{province}}.",
+    "noPrograms": "Aucun programme trouvé pour {{province}}. Veuillez essayer une autre province.",
+    "processingTime": "{{count}} jours de délai de traitement",
+    "applicationFee": "Frais de demande de {{fee}} $ CAD",
+    "eligibilityCriteria": "Critères d'Admissibilité",
+    "requiredDocuments": "Documents Requis",
+    "applicationSteps": "Étapes de Demande"
+  },
+  
+  "provinces": {
+    "ab": "Alberta",
+    "bc": "Colombie-Britannique",
+    "mb": "Manitoba",
+    "nb": "Nouveau-Brunswick",
+    "nl": "Terre-Neuve-et-Labrador",
+    "ns": "Nouvelle-Écosse",
+    "nt": "Territoires du Nord-Ouest",
+    "nu": "Nunavut",
+    "on": "Ontario",
+    "pe": "Île-du-Prince-Édouard",
+    "qc": "Québec",
+    "sk": "Saskatchewan",
+    "yt": "Yukon"
+  },
+  
+  "error": {
+    "title": "Erreur lors du chargement des programmes",
+    "provincialSystemDown": "Le système provincial est actuellement indisponible",
+    "tryAgain": "Veuillez réessayer plus tard"
+  }
+} 
