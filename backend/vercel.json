@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "buildCommand": "npm install",
+  "outputDirectory": ".",
+  "functions": {
+    "api/serverless/*.js": {
+      "memory": 1024,
+      "maxDuration": 10
+    }
+  },
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/$1" },
+    { "source": "/api/serverless/(.*)", "destination": "/api/serverless/$1" }
+  ],
+  "env": {
+    "MONGO_URL": "@mongo_url",
+    "JWT_SECRET": "@jwt_secret",
+    "CLERK_SECRET_KEY": "@clerk_secret_key",
+    "OPENAI_API_KEY": "@openai_api_key"
+  }
+}

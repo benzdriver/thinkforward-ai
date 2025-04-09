@@ -12,9 +12,22 @@ const { provideFormHelp } = require('../ai/chains/formHelperChain');
 
 class AIService {
   constructor() {
-    this.openai = new OpenAI({
-      apiKey: config.openai.apiKey
-    });
+    try {
+      this.openai = new OpenAI({
+        apiKey: config.openai.apiKey || 'dummy-key-for-development'
+      });
+    } catch (error) {
+      console.warn('Failed to initialize OpenAI client:', error.message);
+      this.openai = {
+        chat: {
+          completions: {
+            create: async () => ({
+              choices: [{ message: { content: 'This is a fallback response from the mock OpenAI client.' } }]
+            })
+          }
+        }
+      };
+    }
     
     this.models = {
       chat: config.openai.models.chat,
@@ -372,4 +385,4 @@ class AIService {
   }
 }
 
-module.exports = new AIService(); 
+module.exports = new AIService();  

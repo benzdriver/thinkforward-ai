@@ -14,6 +14,7 @@ const clerkWebhookRoutes = require('./webhooks/clerkWebhook');
 const routes = require('./routes');
 const uploadRoutes = require('./routes/uploadRoutes');
 const healthRoutes = require('./routes/healthRoutes');
+const serverlessRoutes = require('./routes/serverless');
 
 // 初始化Express应用
 const app = express();
@@ -41,6 +42,8 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // Webhook路由 - 不需要认证
 // 注意：这个路由必须在认证中间件前定义，因为webhook不需要认证
 app.use('/api/webhooks/clerk', clerkWebhookRoutes);
+
+app.use('/api/serverless', serverlessRoutes);
 
 // 认证中间件
 app.use(auth);
@@ -78,4 +81,4 @@ app._router.stack.forEach(function(r){
   }
 });
 
-module.exports = app; 
+module.exports = app;    

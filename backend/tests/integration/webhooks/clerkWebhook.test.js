@@ -6,39 +6,34 @@ const crypto = require('crypto');
 const { ROLES } = require('../../../constants/roles');
 const config = require('../../../config');
 
-// 模拟clerkClient
-jest.mock('@clerk/clerk-sdk-node', () => ({
-  clerkClient: {
-    users: {
-      getUser: jest.fn().mockImplementation((userId) => {
-        return Promise.resolve({
-          id: userId,
-          first_name: 'Test',
-          last_name: 'User',
-          email_addresses: [
-            { id: 'email_123', email_address: 'test@example.com' }
-          ],
-          primary_email_address_id: 'email_123',
-          created_at: new Date().toISOString()
-        });
-      })
-    }
-  }
-}));
+const sinon = require('sinon');
+const { clerkClient } = require('@clerk/clerk-sdk-node');
 
-describe('Clerk Webhook Tests', () => {
-  beforeAll(async () => {
-    // 连接测试数据库
+sinon.stub(clerkClient.users, 'getUser').callsFake((userId) => {
+  return Promise.resolve({
+    id: userId,
+    first_name: 'Test',
+    last_name: 'User',
+    email_addresses: [
+      { id: 'email_123', email_address: 'test@example.com' }
+    ],
+    primary_email_address_id: 'email_123',
+    created_at: new Date().toISOString()
+  });
+});
+
+describe('Clerk Webhook Tests', function() {
+  const { expect } = require('chai');
+  
+  before(async function() {
     await mongoose.connect(process.env.MONGODB_TEST_URI || 'mongodb://localhost:27017/test_db');
   });
 
-  afterAll(async () => {
-    // 断开数据库连接
+  after(async function() {
     await mongoose.connection.close();
   });
 
-  beforeEach(async () => {
-    // 清理测试数据
+  beforeEach(async function() {
     await User.deleteMany({});
   });
 
@@ -61,7 +56,7 @@ describe('Clerk Webhook Tests', () => {
     };
   }
 
-  test('应正确处理user.created事件', async () => {
+  it('should correctly handle user.created event', async function() {
     // 准备测试数据
     const payload = {
       type: 'user.created',
@@ -86,20 +81,18 @@ describe('Clerk Webhook Tests', () => {
       .set(headers)
       .send(payload);
       
-    // 验证响应
-    expect(response.status).toBe(200);
-    expect(response.body.success).toBe(true);
+    expect(response.status).to.equal(200);
+    expect(response.body.success).to.be.true;
     
-    // 验证数据库状态
     const user = await User.findOne({ clerkId: 'clerk_user_123' });
-    expect(user).toBeTruthy();
-    expect(user.email).toBe('john.doe@example.com');
-    expect(user.firstName).toBe('John');
-    expect(user.lastName).toBe('Doe');
-    expect(user.role).toBe(ROLES.CLIENT);
+    expect(user).to.exist;
+    expect(user.email).to.equal('john.doe@example.com');
+    expect(user.firstName).to.equal('John');
+    expect(user.lastName).to.equal('Doe');
+    expect(user.role).to.equal(ROLES.CLIENT);
   });
 
-  test('应正确处理user.updated事件', async () => {
+  it('should correctly handle user.updated event', async function() {
     // 先创建用户
     await User.create({
       clerkId: 'clerk_user_456',
@@ -132,19 +125,17 @@ describe('Clerk Webhook Tests', () => {
       .set(headers)
       .send(payload);
       
-    // 验证响应
-    expect(response.status).toBe(200);
-    expect(response.body.success).toBe(true);
+    expect(response.status).to.equal(200);
+    expect(response.body.success).to.be.true;
     
-    // 验证数据库状态
     const user = await User.findOne({ clerkId: 'clerk_user_456' });
-    expect(user).toBeTruthy();
-    expect(user.email).toBe('new.email@example.com');
-    expect(user.firstName).toBe('New');
-    expect(user.lastName).toBe('Name');
+    expect(user).to.exist;
+    expect(user.email).to.equal('new.email@example.com');
+    expect(user.firstName).to.equal('New');
+    expect(user.lastName).to.equal('Name');
   });
 
-  test('应正确处理user.deleted事件', async () => {
+  it('should correctly handle user.deleted event', async function() {
     // 先创建用户
     await User.create({
       clerkId: 'clerk_user_789',
@@ -171,18 +162,16 @@ describe('Clerk Webhook Tests', () => {
       .set(headers)
       .send(payload);
       
-    // 验证响应
-    expect(response.status).toBe(200);
-    expect(response.body.success).toBe(true);
+    expect(response.status).to.equal(200);
+    expect(response.body.success).to.be.true;
     
-    // 验证数据库状态 - 应该标记为已删除而不是真正删除
     const user = await User.findOne({ clerkId: 'clerk_user_789' });
-    expect(user).toBeTruthy();
-    expect(user.isDeleted).toBe(true);
-    expect(user.deletedAt).toBeTruthy();
+    expect(user).to.exist;
+    expect(user.isDeleted).to.be.true;
+    expect(user.deletedAt).to.exist;
   });
 
-  test('应拒绝无效签名的请求', async () => {
+  it('should reject requests with invalid signatures', async function() {
     // 准备测试数据
     const payload = {
       type: 'user.created',
@@ -201,12 +190,10 @@ describe('Clerk Webhook Tests', () => {
       .set(headers)
       .send(payload);
       
-    // 验证响应应该是401
-    expect(response.status).toBe(401);
-    expect(response.body.message).toBe('Invalid signature');
+    expect(response.status).to.equal(401);
+    expect(response.body.message).to.equal('Invalid signature');
     
-    // 验证数据库没有改变
     const userCount = await User.countDocuments();
-    expect(userCount).toBe(0);
+    expect(userCount).to.equal(0);
   });
-}); 
+});                

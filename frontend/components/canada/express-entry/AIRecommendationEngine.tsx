@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'next-i18next';
-import { useCanadianImmigration } from '../../../contexts/CanadianImmigrationContext';
-import { AIRecommendation, ExpressEntryProfile } from '../../../types/canada';
+import { ExpressEntryProfile } from '../../../types/canada';
+import type { AIRecommendation } from '../../../types/canada/ai-types';
+import { api } from '../../../lib/api';
 
 interface AIRecommendationEngineProps {
-  profile: ExpressEntryProfile;
+  profile: Partial<ExpressEntryProfile>;
   className?: string;
   onRecommendationSelect?: (recommendation: AIRecommendation) => void;
 }
@@ -15,7 +16,6 @@ export const AIRecommendationEngine: React.FC<AIRecommendationEngineProps> = ({
   onRecommendationSelect
 }) => {
   const { t } = useTranslation(['express-entry', 'common']);
-  const { getRecommendations } = useCanadianImmigration();
   
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -26,8 +26,16 @@ export const AIRecommendationEngine: React.FC<AIRecommendationEngineProps> = ({
       setLoading(true);
       setError(null);
       
-      const result = await getRecommendations(profile);
-      setRecommendations(result);
+      const response = await api.serverless.post<{ success: boolean, recommendations: AIRecommendation[] }>(
+        '/api/canada/ai/recommendations',
+        { profile }
+      );
+      
+      if (response.success) {
+        setRecommendations(response.recommendations);
+      } else {
+        throw new Error('Failed to get recommendations');
+      }
       
       setLoading(false);
     } catch (err) {
@@ -138,7 +146,7 @@ export const AIRecommendationEngine: React.FC<AIRecommendationEngineProps> = ({
               
               {recommendation.relevantFactors && recommendation.relevantFactors.length > 0 && (
                 <div className="flex flex-wrap gap-2 mb-3">
-                  {recommendation.relevantFactors.map((factor, i) => (
+                  {recommendation.relevantFactors.map((factor: string, i: number) => (
                     <span key={i} className="inline-block px-2 py-1 text-xs bg-gray-100 text-gray-800 rounded-full">
                       {factor}
                     </span>

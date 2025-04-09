@@ -69,9 +69,13 @@ class PDFGenerator {
    */
   static _addHeader(doc, title) {
     // 添加logo
-    const logoPath = path.join(__dirname, '../assets/images/logo.png');
-    if (fs.existsSync(logoPath)) {
-      doc.image(logoPath, 50, 45, { width: 150 });
+    try {
+      const logoPath = path.join(__dirname, '../assets/images/logo.png');
+      if (fs.existsSync(logoPath)) {
+        doc.image(logoPath, 50, 45, { width: 150 });
+      }
+    } catch (error) {
+      logger.warn('Could not load logo image:', error.message);
     }
     
     // 添加标题
@@ -256,4 +260,4 @@ class PDFGenerator {
   }
 }
 
-module.exports = PDFGenerator; 
+module.exports = PDFGenerator;  

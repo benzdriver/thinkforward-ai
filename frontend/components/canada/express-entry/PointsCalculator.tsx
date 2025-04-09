@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'next-i18next';
 import { useCanadianImmigration } from '../../../contexts/CanadianImmigrationContext';
 import type { ExpressEntryProfile, LanguageProficiency } from '../../../types/canada';
+import type { Education, WorkExperience, JobOfferDetails, AdaptabilityFactors } from '../../../types/canada/job-types';
 
 interface PointsCalculatorProps {
   initialProfile?: Partial<ExpressEntryProfile>;
@@ -499,4 +500,4 @@ export const PointsCalculator: React.FC<PointsCalculatorProps> = ({
   );
 };
 
-export default PointsCalculator; 
+export default PointsCalculator;    

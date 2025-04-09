@@ -9,6 +9,7 @@ const formRoutes = require('./formRoutes');
 const applicationRoutes = require('./applicationRoutes');
 const aiRoutes = require('./aiRoutes');
 const assessmentRoutes = require('./assessmentRoutes');
+const canadaRoutes = require('./canada');
 
 // 注册路由
 router.use('/auth', authRoutes);
@@ -18,6 +19,7 @@ router.use('/forms', formRoutes);
 router.use('/applications', applicationRoutes);
 router.use('/ai', aiRoutes);
 router.use('/assessments', assessmentRoutes);
+router.use('/canada', canadaRoutes);
 
 // API根路径
 router.get('/', (req, res) => {
@@ -32,4 +34,4 @@ router.get('/health', (req, res) => {
   res.status(200).json({ status: 'ok' });
 });
 
-module.exports = router; 
+module.exports = router;   

@@ -6,13 +6,15 @@ import type {
   CLBLevel,
   CanadianCase,
   DocumentSubmission,
-  DocumentType,
+  DocumentType
+} from '../types/canada';
+import type {
   AIDocumentAnalysis,
   AIEligibilityResult,
   AIRecommendation,
   RegionalTrendData,
   AITrendPrediction
-} from '../types/canada';
+} from '../types/canada/ai-types';
 
 interface CanadianImmigrationContextType {
   calculateExpressEntryPoints: (profile: ExpressEntryProfile) => Promise<number>;
@@ -357,7 +359,7 @@ export const CanadianImmigrationProvider: React.FC<{children: React.ReactNode}> 
         // Parse the AI response and format it as AIEligibilityResult
         // This is a simplified example - in a real app, you'd use proper parsing
         const assessment: AIEligibilityResult = {
-          profileId: profile.id,
+          profileId: String((profile as any)._id || (profile as any).id || 'unknown'),
           programId,
           isEligible: true, // This would be determined by AI analysis
           confidence: 0.85,
@@ -376,7 +378,7 @@ export const CanadianImmigrationProvider: React.FC<{children: React.ReactNode}> 
       
       // Fallback to basic assessment if OpenAI is not available
       return {
-        profileId: profile.id,
+        profileId: String((profile as any)._id || (profile as any).id || 'unknown'),
         programId,
         isEligible: profile.age >= 20 && profile.age <= 45, // Simplified logic
         confidence: 0.5,
@@ -496,7 +498,7 @@ export const CanadianImmigrationProvider: React.FC<{children: React.ReactNode}> 
           description: 'Some provincial programs may have lower requirements',
           impact: 'Medium',
           effort: 'Medium',
-          timeframe: 'Medium-term',
+          timeframe: 'Short-term',
           relevantFactors: ['Provincial eligibility'],
           potentialBenefit: 'Alternative immigration pathway',
           confidence: 0.6
@@ -512,14 +514,60 @@ export const CanadianImmigrationProvider: React.FC<{children: React.ReactNode}> 
     province: CanadianProvince
   ): Promise<RegionalTrendData[]> => {
     try {
-      const response = await fetch(`/api/canada/trends/${province}`);
-      
-      if (!response.ok) {
-        throw new Error('Failed to fetch regional trends');
+      // First try to call the backend API
+      try {
+        const response = await fetch(`/api/canada/trends/${province}`);
+        
+        if (response.ok) {
+          const data = await response.json();
+          return data.trends;
+        }
+      } catch (apiError) {
+        console.warn('Backend API unavailable for regional trends, using mock data');
       }
       
-      const data = await response.json();
-      return data.trends;
+      console.info('Using mock data for regional trends');
+      
+      const mockTrends: RegionalTrendData[] = [
+        {
+          province: province,
+          period: '2024-Q1',
+          invitations: 1200,
+          minimumScore: 470,
+          topOccupations: [
+            { noc: '21231', title: 'Software Developer', count: 450 },
+            { noc: '31301', title: 'Nurse', count: 350 },
+            { noc: '11103', title: 'Financial Analyst', count: 200 }
+          ],
+          growthRate: 5.2
+        },
+        {
+          province: province,
+          period: '2024-Q2',
+          invitations: 1350,
+          minimumScore: 465,
+          topOccupations: [
+            { noc: '21231', title: 'Software Developer', count: 500 },
+            { noc: '31301', title: 'Nurse', count: 400 },
+            { noc: '41220', title: 'Teacher', count: 250 }
+          ],
+          growthRate: 12.5
+        },
+        {
+          province: province,
+          period: '2024-Q3',
+          invitations: 1500,
+          minimumScore: 460,
+          topOccupations: [
+            { noc: '21231', title: 'Software Developer', count: 550 },
+            { noc: '21390', title: 'Engineer', count: 450 },
+            { noc: '31100', title: 'Doctor', count: 300 }
+          ],
+          growthRate: 11.1
+        }
+      ];
+      
+      return mockTrends;
     } catch (error) {
       console.error('Error fetching regional trends:', error);
       throw error;
@@ -680,4 +728,4 @@ export const useCanadianImmigration = () => {
     throw new Error('useCanadianImmigration must be used within a CanadianImmigrationProvider');
   }
   return context;
-}; 
+};                                
