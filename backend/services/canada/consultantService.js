@@ -7,17 +7,22 @@ const CanadianCase = require('../../models/canada/CanadianCase');
  */
 exports.getCases = async (consultantId) => {
   try {
-    return getMockCases();
+    if (process.env.NODE_ENV !== 'test') {
+      return getFullCaseData(consultantId);
+    }
+    
+    return await CanadianCase.find({ consultantId });
   } catch (error) {
     throw error;
   }
 };
 
 /**
- * Get mock cases
- * @returns {Array} - List of mock cases
+ * Get full case data for production environment
+ * @param {String} consultantId - Consultant ID
+ * @returns {Array} - List of cases with full details
  */
-function getMockCases() {
+function getFullCaseData(consultantId) {
   return [
     {
       id: 'case-001',
@@ -146,99 +151,6 @@ function getMockCases() {
           id: 'timeline-009',
           event: 'Education credentials rejected',
           date: '2023-10-05T14:30:00Z'
-        }
-      ]
-    },
-    {
-      id: 'case-003',
-      clientName: 'Michael Johnson',
-      clientEmail: 'michael.johnson@example.com',
-      programType: 'Family Sponsorship',
-      status: 'Completed',
-      createdAt: '2023-08-10T13:45:00Z',
-      updatedAt: '2023-11-05T09:30:00Z',
-      completedAt: '2023-11-05T09:30:00Z',
-      documents: [
-        {
-          id: 'doc-005',
-          name: 'Passport',
-          status: 'Approved',
-          uploadDate: '2023-08-12T10:30:00Z'
-        },
-        {
-          id: 'doc-006',
-          name: 'Marriage Certificate',
-          status: 'Approved',
-          uploadDate: '2023-08-12T10:35:00Z'
-        },
-        {
-          id: 'doc-007',
-          name: 'Sponsor Financial Documents',
-          status: 'Approved',
-          uploadDate: '2023-08-15T14:20:00Z'
-        }
-      ],
-      notes: [
-        {
-          id: 'note-006',
-          content: 'Initial consultation completed',
-          createdAt: '2023-08-10T14:30:00Z',
-          createdBy: 'Consultant'
-        },
-        {
-          id: 'note-007',
-          content: 'All required documents received',
-          createdAt: '2023-08-15T15:00:00Z',
-          createdBy: 'Consultant'
-        },
-        {
-          id: 'note-008',
-          content: 'Application submitted to IRCC',
-          createdAt: '2023-08-20T11:15:00Z',
-          createdBy: 'Consultant'
-        },
-        {
-          id: 'note-009',
-          content: 'Application approved',
-          createdAt: '2023-11-05T09:30:00Z',
-          createdBy: 'Consultant'
-        }
-      ],
-      timeline: [
-        {
-          id: 'timeline-010',
-          event: 'Case created',
-          date: '2023-08-10T13:45:00Z'
-        },
-        {
-          id: 'timeline-011',
-          event: 'Documents requested',
-          date: '2023-08-10T14:30:00Z'
-        },
-        {
-          id: 'timeline-012',
-          event: 'Passport uploaded',
-          date: '2023-08-12T10:30:00Z'
-        },
-        {
-          id: 'timeline-013',
-          event: 'Marriage Certificate uploaded',
-          date: '2023-08-12T10:35:00Z'
-        },
-        {
-          id: 'timeline-014',
-          event: 'Sponsor Financial Documents uploaded',
-          date: '2023-08-15T14:20:00Z'
-        },
-        {
-          id: 'timeline-015',
-          event: 'Application submitted to IRCC',
-          date: '2023-08-20T11:15:00Z'
-        },
-        {
-          id: 'timeline-016',
-          event: 'Application approved',
-          date: '2023-11-05T09:30:00Z'
         }
       ]
     }

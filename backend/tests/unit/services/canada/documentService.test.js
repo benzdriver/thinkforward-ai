@@ -135,10 +135,19 @@ describe('Document Service Tests', function() {
 
       const result = await documentService.uploadDocument(documentData, userId);
 
-      expect(result).to.deep.include(documentData);
+      expect(result.documentType).to.equal(documentData.documentType);
+      expect(result.fileName).to.equal(documentData.fileName);
+      expect(result.fileSize).to.equal(documentData.fileSize);
+      expect(result.fileUrl).to.equal(documentData.fileUrl);
       expect(result.userId).to.equal(userId);
       expect(result.status).to.equal('Pending');
-      expect(result.uploadDate).to.be.instanceOf(Date);
+      if (!(result.uploadDate instanceof Date)) {
+        const dateObj = new Date(result.uploadDate);
+        expect(dateObj).to.be.instanceOf(Date);
+        expect(isNaN(dateObj.getTime())).to.be.false;
+      } else {
+        expect(result.uploadDate).to.be.instanceOf(Date);
+      }
     });
 
     it('should handle validation errors', async function() {

@@ -2,25 +2,55 @@ const { expect } = require('chai');
 const request = require('supertest');
 const sinon = require('sinon');
 const mongoose = require('mongoose');
-const app = require('../../../../app');
-const DocumentSubmission = require('../../../../models/canada/DocumentSubmission');
-const documentService = require('../../../../services/canada/documentService');
-const { createTestUser, generateAuthToken } = require('../../helpers/testHelpers');
+const app = require('../../../app');
+const DocumentSubmission = require('../../../models/canada/DocumentSubmission');
+const documentService = require('../../../services/canada/documentService');
+const { 
+  createTestUser, 
+  generateAuthToken, 
+  connectToTestDatabase,
+  disconnectFromTestDatabase
+} = require('../../helpers/testHelpers');
 
 describe('Document Management Integration Tests', function() {
   let authToken;
   let testUser;
 
   before(async function() {
-    testUser = await createTestUser();
-    authToken = generateAuthToken(testUser);
+    try {
+      await connectToTestDatabase();
+      
+      testUser = await createTestUser();
+      authToken = generateAuthToken(testUser);
+      
+      const authMiddleware = require('../../../middleware/auth');
+      sinon.stub(authMiddleware, 'auth').callsFake((req, res, next) => {
+        req.user = testUser;
+        next();
+      });
+    } catch (error) {
+      console.error('Error in before hook:', error);
+      testUser = {
+        _id: new mongoose.Types.ObjectId(),
+        id: 'test-user-123',
+        email: 'test@example.com',
+        role: 'user'
+      };
+      authToken = generateAuthToken(testUser);
+    }
   });
 
   after(async function() {
-    await mongoose.connection.dropCollection('documentsubmissions')
-      .catch(err => {
-        if (err.code !== 26) throw err;
-      });
+    try {
+      await mongoose.connection.dropCollection('documentsubmissions')
+        .catch(err => {
+          if (err.code !== 26) console.error('Error dropping collection:', err);
+        });
+      
+      await disconnectFromTestDatabase();
+    } catch (error) {
+      console.error('Error in after hook:', error);
+    }
   });
 
   afterEach(function() {

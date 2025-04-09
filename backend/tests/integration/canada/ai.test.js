@@ -2,27 +2,77 @@ const { expect } = require('chai');
 const request = require('supertest');
 const sinon = require('sinon');
 const mongoose = require('mongoose');
-const app = require('../../../../app');
-const DocumentSubmission = require('../../../../models/canada/DocumentSubmission');
-const aiService = require('../../../../services/canada/aiService');
-const { createTestUser, generateAuthToken } = require('../../helpers/testHelpers');
+const app = require('../../../app');
+const DocumentSubmission = require('../../../models/canada/DocumentSubmission');
+const aiService = require('../../../services/canada/aiService');
+const { 
+  createTestUser, 
+  generateAuthToken, 
+  connectToTestDatabase,
+  disconnectFromTestDatabase,
+  mockAuthMiddleware
+} = require('../../helpers/testHelpers');
 
-describe('AI Features Integration Tests', function() {
+describe('Canada Integration Tests - AI Features', function() {
   let authToken;
   let testUser;
 
   before(async function() {
-    testUser = await createTestUser();
-    authToken = generateAuthToken(testUser);
+    try {
+      await connectToTestDatabase();
+      
+      testUser = await createTestUser();
+      authToken = generateAuthToken(testUser);
+      
+      const AuthService = require('../../../services/authService');
+      const authServiceProto = AuthService.prototype;
+      sinon.stub(authServiceProto, 'verifyToken').resolves({ 
+        id: testUser._id.toString() 
+      });
+      
+    } catch (error) {
+      console.error('Error in before hook:', error);
+      testUser = {
+        _id: new mongoose.Types.ObjectId(),
+        id: 'test-user-123',
+        email: 'test@example.com',
+        role: 'user'
+      };
+      authToken = generateAuthToken(testUser);
+      
+      const AuthService = require('../../../services/authService');
+      const authServiceProto = AuthService.prototype;
+      sinon.stub(authServiceProto, 'verifyToken').resolves({ 
+        id: testUser._id.toString() 
+      });
+    }
   });
 
   after(async function() {
-    await mongoose.connection.dropCollection('documentsubmissions')
-      .catch(err => {
-        if (err.code !== 26) throw err;
-      });
+    this.timeout(30000);
+    
+    try {
+      await mongoose.connection.dropCollection('documentsubmissions');
+    } catch (err) {
+      if (err.code !== 26) console.error('Error dropping collection:', err);
+    }
+    
+    try {
+      await disconnectFromTestDatabase();
+      console.log('Successfully disconnected from test database');
+    } catch (err) {
+      console.error('Error disconnecting from test database:', err);
+    }
   });
 
+  beforeEach(function() {
+    const User = require('../../../models/User');
+    sinon.stub(User, 'findById').callsFake((id) => {
+      console.log('Stubbed User.findById called with:', id);
+      return Promise.resolve(testUser);
+    });
+  });
+  
   afterEach(function() {
     sinon.restore();
   });
@@ -67,8 +117,7 @@ describe('AI Features Integration Tests', function() {
     it('should return 404 when document is not found', async function() {
       const nonExistentId = 'nonexistent';
 
-      const notFoundError = new Error('Document not found');
-      sinon.stub(aiService, 'analyzeDocument').rejects(notFoundError);
+      sinon.stub(DocumentSubmission, 'findById').resolves(null);
 
       const response = await request(app)
         .get(`/api/canada/ai/document-analysis/${nonExistentId}`)
@@ -183,6 +232,20 @@ describe('AI Features Integration Tests', function() {
       expect(response.body.success).to.be.true;
       expect(response.body.recommendations).to.deep.equal(recommendations);
     });
+
+    it('should return 400 for invalid request data', async function() {
+      const invalidData = {
+      };
+
+      const response = await request(app)
+        .post('/api/canada/ai/recommendations')
+        .set('Authorization', `Bearer ${authToken}`)
+        .send(invalidData)
+        .expect(400);
+
+      expect(response.body.success).to.be.false;
+      expect(response.body.error).to.exist;
+    });
   });
 
   describe('GET /api/canada/ai/trend-predictions/:province', function() {
@@ -223,6 +286,55 @@ describe('AI Features Integration Tests', function() {
 
       expect(response.body.success).to.be.true;
       expect(response.body.predictions).to.deep.equal(predictions);
+    });
+  });
+
+  describe('Serverless API Integration', function() {
+    it('should integrate with serverless AI recommendation endpoint', async function() {
+      const requestData = {
+        profile: {
+          age: 35,
+          education: [{ level: 'bachelors' }],
+          languageProficiency: [{ language: 'english', test: 'IELTS', speaking: 6, listening: 7, reading: 6, writing: 6 }],
+          workExperience: [{ occupation: { title: 'Marketing Manager' }, isCanadianExperience: false }]
+        }
+      };
+
+      const recommendations = [
+        {
+          id: 'rec1',
+          title: 'Improve English language scores',
+          description: 'Retake IELTS to achieve CLB 9 in all abilities',
+          impact: 'High',
+          effort: 'Medium',
+          timeframe: 'Short-term',
+          relevantFactors: ['Language proficiency', 'Express Entry points'],
+          potentialBenefit: '+50 CRS points',
+          confidence: 0.95
+        }
+      ];
+
+      sinon.stub(aiService, 'getRecommendations').resolves(recommendations);
+
+      try {
+        const response = await request(app)
+          .post('/api/serverless/canada/recommendations')
+          .set('Authorization', `Bearer ${authToken}`)
+          .send(requestData);
+        
+        console.log('Serverless response status:', response.status);
+        console.log('Serverless response body:', JSON.stringify(response.body, null, 2));
+        
+        expect(response.status).to.equal(200);
+        expect(response.body.success).to.be.true;
+        expect(response.body.recommendations).to.deep.equal(recommendations);
+      } catch (error) {
+        console.error('Serverless test error:', error.message);
+        if (error.response) {
+          console.error('Response body:', JSON.stringify(error.response.body, null, 2));
+        }
+        throw error;
+      }
     });
   });
 

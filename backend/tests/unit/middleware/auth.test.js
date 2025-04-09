@@ -4,7 +4,6 @@ const proxyquire = require('proxyquire').noCallThru();
 // 使用我们的增强版 httpMocks
 const httpMocks = require('../../helpers/mock-request');
 const AuthService = require('../../../services/authService');
-const auth = require('../../../middleware/auth');
 const User = require('../../../models/User');
 const { ROLES } = require('../../../constants/roles');
 const mocki18n = require('../../mocks/i18nMock');
@@ -12,7 +11,7 @@ const mocki18n = require('../../mocks/i18nMock');
 // 使用 sinon 代替 jest 进行模拟
 describe('Auth Middleware', function() {
   let clerkMock;
-  let auth;
+  let authMiddleware;
   
   beforeEach(function() {
     // 创建模拟响应和请求对象的辅助函数
@@ -29,18 +28,18 @@ describe('Auth Middleware', function() {
     
     // 模拟日志系统避免错误输出
     const loggerMock = {
-      error: sinon.stub(),
+      warn: sinon.stub(),
       info: sinon.stub()
     };
     
     // 使用proxyquire替换clerk依赖
-    auth = proxyquire('../../../middleware/auth', {
+    authMiddleware = proxyquire('../../../middleware/auth', {
       '@clerk/clerk-sdk-node': {
         Clerk: function() {
           return clerkMock;
         }
       },
-      '../config/logger': loggerMock
+      '../utils/logger': loggerMock
     });
 
     // 创建AuthService实例的存根
@@ -82,7 +81,7 @@ describe('Auth Middleware', function() {
     });
     
     // 模拟数据库查询返回用户
-    sinon.stub(User, 'findOne').resolves(mockUser);
+    sinon.stub(User, 'findById').resolves(mockUser);
     
     // 创建请求
     const req = httpMocks.createRequest({
@@ -91,7 +90,7 @@ describe('Auth Middleware', function() {
       }
     });
     
-    await auth(req, this.res, this.next);
+    await authMiddleware.auth(req, this.res, this.next);
     
     expect(this.next.calledOnce).to.be.true;
     expect(req.user).to.equal(mockUser);
@@ -102,7 +101,7 @@ describe('Auth Middleware', function() {
     const req = httpMocks.createRequest();
     
     // 直接调用中间件
-    await auth(req, this.res, this.next);
+    await authMiddleware.auth(req, this.res, this.next);
     
     expect(this.res.statusCode).to.equal(401);
     const data = JSON.parse(this.res._getData());
@@ -121,9 +120,9 @@ describe('Auth Middleware', function() {
     });
     
     // 模拟令牌验证抛出错误
-    clerkMock.verifyToken.rejects(new Error('Invalid token'));
+    this.authServiceStub.verifyToken.rejects(new Error('Invalid token'));
     
-    await auth(req, this.res, this.next);
+    await authMiddleware.auth(req, this.res, this.next);
     
     expect(this.res.statusCode).to.equal(401);
     const data = JSON.parse(this.res._getData());
@@ -142,20 +141,12 @@ describe('Auth Middleware', function() {
     });
     
     // 模拟令牌验证返回有效负载
-    clerkMock.verifyToken.resolves({ sub: 'clerk_123' });
-    
-    // 模拟 clerk.users.getUser 返回 Clerk 用户
-    clerkMock.users.getUser.resolves({
-      id: 'clerk_123',
-      emailAddresses: [{ emailAddress: 'test@example.com' }],
-      firstName: 'Test',
-      lastName: 'User'
-    });
+    this.authServiceStub.verifyToken.resolves({ id: 'user_id' });
     
     // 模拟用户不存在
-    sinon.stub(User, 'findOne').resolves(null);
+    sinon.stub(User, 'findById').resolves(null);
     
-    await auth(req, this.res, this.next);
+    await authMiddleware.auth(req, this.res, this.next);
     
     expect(this.res.statusCode).to.equal(401);
     const data = JSON.parse(this.res._getData());
@@ -164,4 +155,4 @@ describe('Auth Middleware', function() {
     expect(data.error).to.be.a('string');
     expect(this.next.called).to.be.false;
   });
-}); 
+});   

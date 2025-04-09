@@ -4,6 +4,7 @@ import { useTranslation } from 'next-i18next';
 interface ApiOptions {
   headers?: Record<string, string>;
   withCredentials?: boolean;
+  useServerless?: boolean;
 }
 
 interface ApiError extends Error {
@@ -16,6 +17,7 @@ const defaultOptions: ApiOptions = {
     'Content-Type': 'application/json',
   },
   withCredentials: true, // 包含凭证（cookies）
+  useServerless: false,
 };
 
 /**
@@ -27,13 +29,19 @@ async function fetchApi<T>(
   data?: any,
   options?: ApiOptions
 ): Promise<T> {
+  const mergedOptions = { ...defaultOptions, ...options };
+  
+  if (mergedOptions.useServerless && !url.includes('/api/serverless/')) {
+    url = url.replace('/api/', '/api/serverless/');
+  }
+  
   const fetchOptions: RequestInit = {
     method,
     headers: {
       ...defaultOptions.headers,
-      ...options?.headers,
+      ...mergedOptions.headers,
     },
-    credentials: options?.withCredentials ? 'include' : 'same-origin',
+    credentials: mergedOptions.withCredentials ? 'include' : 'same-origin',
     body: data ? JSON.stringify(data) : undefined,
   };
 
@@ -83,6 +91,23 @@ export const api = {
   
   delete: <T>(url: string, options?: ApiOptions): Promise<T> => 
     fetchApi<T>(url, 'DELETE', undefined, options),
+  
+  serverless: {
+    get: <T>(url: string, options?: ApiOptions): Promise<T> => 
+      fetchApi<T>(url, 'GET', undefined, { ...options, useServerless: true }),
+    
+    post: <T>(url: string, data?: any, options?: ApiOptions): Promise<T> => 
+      fetchApi<T>(url, 'POST', data, { ...options, useServerless: true }),
+    
+    put: <T>(url: string, data?: any, options?: ApiOptions): Promise<T> => 
+      fetchApi<T>(url, 'PUT', data, { ...options, useServerless: true }),
+    
+    patch: <T>(url: string, data?: any, options?: ApiOptions): Promise<T> => 
+      fetchApi<T>(url, 'PATCH', data, { ...options, useServerless: true }),
+    
+    delete: <T>(url: string, options?: ApiOptions): Promise<T> => 
+      fetchApi<T>(url, 'DELETE', undefined, { ...options, useServerless: true }),
+  }
 };
 
 /**

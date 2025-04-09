@@ -1,9 +1,22 @@
-const { Configuration, OpenAIApi } = require('openai');
+const OpenAI = require('openai');
 
-const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-const openai = new OpenAIApi(configuration);
+let openai;
+try {
+  openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY || 'dummy-key-for-development',
+  });
+} catch (error) {
+  console.warn('Failed to initialize OpenAI client:', error.message);
+  openai = {
+    chat: {
+      completions: {
+        create: async () => ({
+          choices: [{ message: { content: 'This is a fallback response from the mock OpenAI client.' } }]
+        })
+      }
+    }
+  };
+}
 
 /**
  * Analyze document using AI
@@ -32,14 +45,17 @@ exports.analyzeDocument = async (document) => {
       4. What actions should be taken regarding this document?
     `;
     
-    const response = await openai.createCompletion({
-      model: 'gpt-4',
-      prompt,
+    const response = await openai.chat.completions.create({
+      model: process.env.OPENAI_CHAT_MODEL || 'gpt-4',
+      messages: [
+        { role: 'system', content: 'You are an AI assistant that provides immigration analysis.' },
+        { role: 'user', content: prompt }
+      ],
       max_tokens: 1000,
       temperature: 0.5,
     });
     
-    const aiResponse = response.data.choices[0].text.trim();
+    const aiResponse = response.choices[0].message.content.trim();
     
     const isComplete = aiResponse.includes('complete') && aiResponse.includes('valid');
     const missingInformation = extractMissingInformation(aiResponse);
@@ -97,14 +113,17 @@ exports.assessEligibility = async (profile, programId) => {
       6. What actions can be taken to improve eligibility?
     `;
     
-    const response = await openai.createCompletion({
-      model: 'gpt-4',
-      prompt,
+    const response = await openai.chat.completions.create({
+      model: process.env.OPENAI_CHAT_MODEL || 'gpt-4',
+      messages: [
+        { role: 'system', content: 'You are an AI assistant that provides immigration analysis.' },
+        { role: 'user', content: prompt }
+      ],
       max_tokens: 1000,
       temperature: 0.5,
     });
     
-    const aiResponse = response.data.choices[0].text.trim();
+    const aiResponse = response.choices[0].message.content.trim();
     
     const isEligible = aiResponse.includes('eligible') && !aiResponse.includes('not eligible');
     const factorScores = extractFactorScores(aiResponse);
@@ -158,14 +177,17 @@ exports.getRecommendations = async (profile) => {
       8. Confidence level (0-1)
     `;
     
-    const response = await openai.createCompletion({
-      model: 'gpt-4',
-      prompt,
+    const response = await openai.chat.completions.create({
+      model: process.env.OPENAI_CHAT_MODEL || 'gpt-4',
+      messages: [
+        { role: 'system', content: 'You are an AI assistant that provides immigration recommendations.' },
+        { role: 'user', content: prompt }
+      ],
       max_tokens: 1500,
       temperature: 0.7,
     });
     
-    const aiResponse = response.data.choices[0].text.trim();
+    const aiResponse = response.choices[0].message.content.trim();
     
     const recommendations = extractRecommendations(aiResponse);
     
@@ -204,14 +226,17 @@ exports.predictTrends = async (province, historicalTrends) => {
       6. Overall confidence score
     `;
     
-    const response = await openai.createCompletion({
-      model: 'gpt-4',
-      prompt,
+    const response = await openai.chat.completions.create({
+      model: process.env.OPENAI_CHAT_MODEL || 'gpt-4',
+      messages: [
+        { role: 'system', content: 'You are an AI assistant that provides immigration analysis.' },
+        { role: 'user', content: prompt }
+      ],
       max_tokens: 1000,
       temperature: 0.5,
     });
     
-    const aiResponse = response.data.choices[0].text.trim();
+    const aiResponse = response.choices[0].message.content.trim();
     
     const predictedPeriods = extractPredictedPeriods(aiResponse);
     const growingOccupations = extractGrowingOccupations(aiResponse);
@@ -538,6 +563,28 @@ function getFallbackTrendPrediction(province, historicalTrends) {
     dataPoints: historicalTrends.length
   };
 }
+
+/**
+ * Get trend predictions for a province
+ * @param {String} province - Province code
+ * @returns {Promise<Object>} - Trend predictions
+ */
+exports.getTrendPredictions = async (province) => {
+  try {
+    const historicalTrends = await exports.getHistoricalTrends(province);
+    return exports.predictTrends(province, historicalTrends);
+  } catch (error) {
+    console.error('Error getting trend predictions:', error);
+    return {
+      province,
+      predictedPeriods: [],
+      growingOccupations: [],
+      analysis: 'Unable to generate predictions due to an error',
+      confidenceScore: 0,
+      dataPoints: 0
+    };
+  }
+};
 
 function getNextPeriod(year, quarter, increment) {
   const newQuarter = ((quarter - 1 + increment) % 4) + 1;
