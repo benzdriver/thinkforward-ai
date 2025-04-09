@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'next-i18next';
 import { Spinner } from '@/components/ui/Spinner';
 
@@ -10,15 +10,24 @@ interface LoadingScreenProps {
 /**
  * LoadingScreen component
  * Displays a loading spinner with an optional message
+ * Uses a hydration-safe approach to prevent React hydration errors
  */
 export function LoadingScreen({ 
   message,
   translationKey = 'common:loading' 
 }: LoadingScreenProps) {
   const { t } = useTranslation();
+  const [isClient, setIsClient] = useState(false);
   
-  // 如果提供了自定义消息，使用它；否则使用翻译键
-  const displayMessage = message || t(translationKey);
+  const serverMessage = message || "Loading...";
+  
+  const clientMessage = message || t(translationKey);
+  
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+  
+  const displayMessage = isClient ? clientMessage : serverMessage;
 
   return (
     <div className="fixed inset-0 flex flex-col items-center justify-center bg-white dark:bg-gray-900 z-50">
