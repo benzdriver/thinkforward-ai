@@ -5,7 +5,7 @@ import type { AIRecommendation } from '../../../types/canada/ai-types';
 import { api } from '../../../lib/api';
 
 interface AIRecommendationEngineProps {
-  profile: ExpressEntryProfile;
+  profile: Partial<ExpressEntryProfile>;
   className?: string;
   onRecommendationSelect?: (recommendation: AIRecommendation) => void;
 }

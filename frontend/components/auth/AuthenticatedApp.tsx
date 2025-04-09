@@ -22,6 +22,7 @@ const publicRoutes = [
   '/blog',
   '/terms',
   '/privacy',
+  '/test-canadian-features', // Added for testing Canadian features without authentication
 ];
 
 export function AuthenticatedApp({ children }: AuthenticatedAppProps) {

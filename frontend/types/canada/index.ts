@@ -109,8 +109,8 @@ export interface DocumentSubmission {
   documentType: DocumentType | string;
   fileName: string;
   fileSize: number;
-  uploadDate: string;
-  expiryDate?: string;
+  uploadDate: string; // ISO string format
+  expiryDate?: string; // ISO string format
   status: 'Pending' | 'Approved' | 'Rejected' | 'Needs Review';
   notes?: string;
   fileUrl: string;

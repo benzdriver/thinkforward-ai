@@ -23,7 +23,7 @@ interface AIEligibilityResult {
 }
 
 interface AIEligibilityAssessmentProps {
-  profile: ExpressEntryProfile;
+  profile: Partial<ExpressEntryProfile>;
   programId: string;
   className?: string;
 }
